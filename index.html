@@ -381,147 +381,57 @@
             font-weight: 500;
         }
 
-        /* Experience Section */
-        .experience {
-            background-color: var(--dark-light);
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--primary);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-        }
-
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-
-        .timeline-content {
-            padding: 20px;
-            background-color: var(--dark);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            position: relative;
-        }
-
-        .timeline-content::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: var(--dark);
-            top: 20px;
-            border-radius: 50%;
-            z-index: 1;
-            border: 4px solid var(--primary);
-        }
-
-        .timeline-item:nth-child(even) .timeline-content::after {
-            left: -10px;
-        }
-
-        .timeline-date {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .timeline-role {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .timeline-company {
-            color: var(--secondary);
-            margin-bottom: 10px;
-        }
-
-        .timeline-location {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 10px;
-        }
-
-        .timeline-details {
-            margin-top: 10px;
-        }
-
-        .timeline-details ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-
-        .timeline-details li {
-            margin-bottom: 5px;
-            color: var(--secondary);
-        }
-
-        /* Projects Section */
+        /* Projects Section - UPDATED */
         .projects {
-            background-color: var(--dark);
+            background-color: var(--dark-light);
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
         }
 
         .project-card {
-            background-color: var(--dark-light);
+            background-color: var(--dark);
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
+            height: 480px; /* Increased height */
         }
 
         .project-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
         .project-image {
-            height: 180px;
-            background-color: var(--gray);
+            height: 220px; /* Increased height */
+            background-color: var(--dark);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            padding: 20px;
         }
 
         .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
         }
 
         .project-content {
-            padding: 20px;
+            padding: 25px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -535,7 +445,7 @@
         }
 
         .project-tag {
-            background-color: var(--dark);
+            background-color: var(--dark-light);
             padding: 5px 10px;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -549,7 +459,7 @@
 
         /* Certifications Section - Updated with Dual Carousels */
         .certifications {
-            background-color: var(--dark-light);
+            background-color: var(--dark);
             overflow: hidden;
             position: relative;
         }
@@ -591,7 +501,7 @@
             flex: 0 0 auto;
             width: 300px;
             height: 220px;
-            background-color: var(--dark);
+            background-color: var(--dark-light);
             border-radius: var(--border-radius);
             display: flex;
             align-items: center;
@@ -629,7 +539,7 @@
             flex: 0 0 auto;
             width: 180px;
             height: 180px;
-            background-color: var(--dark);
+            background-color: var(--dark-light);
             border-radius: var(--border-radius);
             display: flex;
             align-items: center;
@@ -773,7 +683,7 @@
 
         /* Contact Section */
         .contact {
-            background-color: var(--dark);
+            background-color: var(--dark-light);
         }
 
         .contact-container {
@@ -797,7 +707,7 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background-color: var(--dark-light);
+            background-color: var(--dark);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -827,7 +737,7 @@
             border: 1px solid var(--gray);
             border-radius: var(--border-radius);
             font-family: 'Inter', sans-serif;
-            background-color: var(--dark-light);
+            background-color: var(--dark);
             color: var(--light);
             transition: var(--transition);
         }
@@ -1085,6 +995,10 @@
             .about-stats {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
@@ -1111,24 +1025,6 @@
             
             .mobile-menu {
                 display: block;
-            }
-            
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .timeline-content::after {
-                left: -10px;
             }
             
             .skills-container {
@@ -1261,7 +1157,6 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#certifications">Certifications</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -1282,7 +1177,7 @@
                     <h2>Data Analytics & Business Intelligence Specialist</h2>
                     <p>Transforming complex data into actionable insights and building data-driven solutions that drive business growth and operational efficiency.</p>
                     <div class="hero-btns">
-                        <a href="#projects" class="btn">View My Work</a>
+                        <a href="#projects" class="btn">View Projects</a>
                         <a href="#contact" class="btn btn-outline">Get In Touch</a>
                     </div>
                 </div>
@@ -1398,113 +1293,30 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2>Work Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Oct 2025 – Present</div>
-                        <div class="timeline-role">Business Intelligence Consultant</div>
-                        <div class="timeline-company">A+ Development • Part-Time</div>
-                        <div class="timeline-location">Cairo, Egypt</div>
-                        <div class="timeline-details">
-                            <ul>
-                                <li>Developed 8+ data dashboards and automated 500+ monthly workflows to track and optimize property performance.</li>
-                                <li>Processed 5GB+ of monthly data using DAX, SQL and Google BigQuery to support analytics and reporting.</li>
-                                <li>Created 20+ monthly performance reports and guided 2 junior analysts in data analysis and visualization.</li>
-                                <li>Managed full data pipeline from processing to visualization, enabling data-driven decision making across operations.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Apr 2025 – Present</div>
-                        <div class="timeline-role">Data Analyst</div>
-                        <div class="timeline-company">RSI Research Science Institute • Full-time</div>
-                        <div class="timeline-location">Dubai, United Arab Emirates</div>
-                        <div class="timeline-details">
-                            <ul>
-                                <li>Developed key internal systems including a visitor management system, an HR automation platform, and a national reading program dashboard for 27 governorates.</li>
-                                <li>Managed full development lifecycle from data pipelines to user-facing analytics.</li>
-                                <li>Built 8+ Power Platform tools that centralized workflows for HR, operations, and visitor management serving 200+ users.</li>
-                                <li>Translated business needs into technical specs by writing 100+ user stories and test cases to ensure systems met business goals.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Mar 2022 – Present</div>
-                        <div class="timeline-role">Data Analytics & Business Intelligence Specialist</div>
-                        <div class="timeline-company">Upwork • Freelancer</div>
-                        <div class="timeline-location">California, LA, United States</div>
-                        <div class="timeline-details">
-                            <ul>
-                                <li>Delivered 12+ end-to-end analytics solutions with Power BI and Looker Studio, automating reporting and saving clients 10+ hours/week.</li>
-                                <li>Engineered ETL pipelines integrating SQL, HubSpot, and APIs, boosting data quality by ~25% and enabling real-time dashboards.</li>
-                                <li>Automated data workflows using Power Automate and Python, ensuring data integrity and streamlining client operations.</li>
-                                <li>Maintained a 100% Job Success Score (4.9/5.0 rating) and secured repeat contracts through high-impact delivery and clear communication.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jul 2024 – Oct 2024</div>
-                        <div class="timeline-role">DEMI Coding Instructor</div>
-                        <div class="timeline-company">iSchool • Seasonal</div>
-                        <div class="timeline-location">Cairo, Egypt</div>
-                        <div class="timeline-details">
-                            <ul>
-                                <li>Led programming and AI fundamentals courses for 600+ students aged 6-18, utilizing project-based learning in both physical and virtual classrooms.</li>
-                                <li>Achieved a 90% student completion rate by adapting teaching methods to diverse learning styles.</li>
-                                <li>Guided students through the development of 15+ final projects, with 5 selected for a term-end showcase.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Aug 2024 – Oct 2024</div>
-                        <div class="timeline-role">Microsoft Certified Power Platform Developer</div>
-                        <div class="timeline-company">Microsoft Power Platform Community • Internship</div>
-                        <div class="timeline-location">Thames Valley Park, United Kingdom</div>
-                        <div class="timeline-details">
-                            <ul>
-                                <li>Built an end-to-end automation solution for the Power Up Challenge, eliminating a manual process that took ~4 hours per week.</li>
-                                <li>Automated 15+ routine tasks across departments using Power Automate, saving an estimated 15 person-hour weekly.</li>
-                                <li>Consolidated reporting data from 5 sources into Microsoft Dataverse, enabling analysts to generate 80% faster reports.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Oct 2023 – Apr 2024</div>
-                        <div class="timeline-role">Technical Supervisor</div>
-                        <div class="timeline-company">OnCall • Full-time</div>
-                        <div class="timeline-location">Sharq, Al Asimah, Kuwait</div>
-                        <div class="timeline-details">
-                            <ul>
-                                <li>Managed project execution for a 10-person technical team, coordinating 12+ projects using Basecamp and Airtable.</li>
-                                <li>Improved project alignment by facilitating weekly stakeholder syncs, reducing requirement misunderstandings by an estimated 20%.</li>
-                                <li>Introduced a peer-review checkpoint that increased first-pass approval rates on deliverables from 85% to 95%.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
+    <!-- Projects Section - UPDATED WITH PROPER LOGOS -->
     <section id="projects" class="projects">
         <div class="container">
             <h2>Featured Projects</h2>
             <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://github.com/user-attachments/assets/fe0430d6-5dcd-4c1c-aba5-286a7a22137d" alt="Mobile Ventilator GP">
+                    </div>
+                    <div class="project-content">
+                        <h3>Mobile Ventilator GP</h3>
+                        <p>Innovative mobile ventilator solution designed for emergency medical situations with portability and efficiency in mind.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Medical Technology</span>
+                            <span class="project-tag">Hardware</span>
+                            <span class="project-tag">Emergency Response</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP" class="btn btn-github" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="project-card">
                     <div class="project-image">
                         <img src="https://github.com/user-attachments/assets/3976afc4-6d42-43bc-9223-9975389cb1c5" alt="MaxAB Sales Analysis">
@@ -1519,6 +1331,25 @@
                         </div>
                         <div class="project-actions">
                             <a href="https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study" class="btn btn-github" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://github.com/user-attachments/assets/a2a97696-f449-4c5b-865d-a11428243c24" alt="Walmart Product Analysis">
+                    </div>
+                    <div class="project-content">
+                        <h3>Walmart Product Analysis</h3>
+                        <p>Comprehensive retail analytics dashboard analyzing Walmart's product performance, inventory optimization, and pricing strategies.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Retail Analytics</span>
+                            <span class="project-tag">Inventory Management</span>
+                            <span class="project-tag">Pricing Strategy</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study" class="btn btn-github" target="_blank">
                                 <i class="fab fa-github"></i> View on GitHub
                             </a>
                         </div>
@@ -1545,6 +1376,25 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
+                        <img src="https://github.com/user-attachments/assets/d9ee090d-82b6-4a14-9cab-cd4e37e40b54" alt="Immigration to Canada">
+                    </div>
+                    <div class="project-content">
+                        <h3>Immigration to Canada Analysis</h3>
+                        <p>Comprehensive analysis of immigration patterns to Canada from 1980 to 2013, identifying trends and key factors.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Data Analysis</span>
+                            <span class="project-tag">Immigration</span>
+                            <span class="project-tag">Trend Analysis</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013" class="btn btn-github" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
                         <img src="https://github.com/user-attachments/assets/4bc1a204-e368-4755-8bf9-12e677eaa9f6" alt="HR System">
                     </div>
                     <div class="project-content">
@@ -1564,26 +1414,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/e4c613db-bbb8-4899-8d34-dcea1539af97" alt="Animal Shelter Home" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="project-content">
-                        <h3>Animal Shelter Home</h3>
-                        <p>Power Platform solution for managing animal shelter operations, tracking animals, and streamlining adoption processes.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Power Platform</span>
-                            <span class="project-tag">Automation</span>
-                            <span class="project-tag">Non-profit</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange" class="btn btn-github" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/80c36de8-74e9-4210-8cc4-8dd7d5c5ed0b" alt="Improvado Marketing Homework">
+                        <img src="https://github.com/user-attachments/assets/316a70d5-2674-4407-92fe-b8e44ddfac9c" alt="Improvado Marketing Homework">
                     </div>
                     <div class="project-content">
                         <h3>Improvado Marketing Homework</h3>
@@ -1602,18 +1433,18 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/a2a97696-f449-4c5b-865d-a11428243c24" alt="Walmart Product Analysis">
+                        <img src="https://github.com/user-attachments/assets/e4c613db-bbb8-4899-8d34-dcea1539af97" alt="Animal Shelter Home">
                     </div>
                     <div class="project-content">
-                        <h3>Walmart Product Analysis</h3>
-                        <p>Comprehensive analysis of Walmart product data to identify sales trends, inventory optimization, and pricing strategies.</p>
+                        <h3>Animal Shelter Home</h3>
+                        <p>Power Platform solution for managing animal shelter operations, tracking animals, and streamlining adoption processes.</p>
                         <div class="project-tags">
-                            <span class="project-tag">Retail Analytics</span>
-                            <span class="project-tag">Inventory Management</span>
-                            <span class="project-tag">Pricing Strategy</span>
+                            <span class="project-tag">Power Platform</span>
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">Non-profit</span>
                         </div>
                         <div class="project-actions">
-                            <a href="https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study" class="btn btn-github" target="_blank">
+                            <a href="https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange" class="btn btn-github" target="_blank">
                                 <i class="fab fa-github"></i> View on GitHub
                             </a>
                         </div>
@@ -1764,7 +1595,6 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#skills">Skills</a></li>
-                        <li><a href="#experience">Experience</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#certifications">Certifications</a></li>
                         <li><a href="#contact">Contact</a></li>
