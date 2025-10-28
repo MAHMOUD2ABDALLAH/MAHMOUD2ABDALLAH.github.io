@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
+        /* All your existing CSS styles remain the same */
         :root {
             --primary: #3b82f6;
             --primary-dark: #2563eb;
@@ -549,11 +550,13 @@
         /* Certifications Section */
         .certifications {
             background-color: var(--dark-light);
+            overflow: hidden;
+            position: relative;
         }
 
         .certifications-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
 
@@ -565,6 +568,7 @@
             transition: var(--transition);
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
 
         .certification-card:hover {
@@ -572,7 +576,7 @@
         }
 
         .certification-image {
-            height: 160px;
+            height: 200px;
             background-color: var(--dark-light);
             display: flex;
             align-items: center;
@@ -604,6 +608,76 @@
             color: var(--secondary);
             font-size: 0.9rem;
             margin-bottom: 15px;
+        }
+
+        .certification-date {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow: auto;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: var(--dark);
+            margin: 5% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
+        .modal-title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .modal-details {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         /* Contact Section */
@@ -1344,7 +1418,7 @@
                 </div>
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/71b88cc4-66f8-4ee1-9753-7380a46dde56" alt="Animal Shelter Home">
+                        <img src="https://github.com/user-attachments/assets/e4c613db-bbb8-4899-8d34-dcea1539af97" alt="Animal Shelter Home" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="project-content">
                         <h3>Animal Shelter Home</h3>
@@ -1406,151 +1480,206 @@
     <!-- Certifications Section -->
     <section id="certifications" class="certifications">
         <div class="container">
-            <h2>Certifications</h2>
+            <h2>Certifications and Badges</h2>
             <div class="certifications-grid">
-                <div class="certification-card">
+                <!-- Microsoft Power Up Program - Low Code Maker Course -->
+                <div class="certification-card" data-cert="microsoft-power-up-low-code">
                     <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/ab1e11f3-8383-4126-a5f8-8f8973fad99c" alt="Python for Data Science">
+                        <img src="https://github.com/user-attachments/assets/c5ff064b-9abe-47b3-9929-bf55999f4215" alt="Microsoft Power Up Program - Low Code Maker Course">
                     </div>
                     <div class="certification-content">
-                        <h3>Python for Data Science</h3>
-                        <div class="certification-issuer">IBM</div>
-                        <a href="https://www.credly.com/badges/5a3e33ed-8f14-478d-9a76-69542436e8d" class="btn" target="_blank">View Certificate</a>
+                        <h3>Microsoft Power Up Program - Low Code Maker Course</h3>
+                        <div class="certification-issuer">Microsoft</div>
+                        <div class="certification-date">Issued: 2024</div>
+                        <button class="btn">View Certificate</button>
                     </div>
                 </div>
-                <div class="certification-card">
+
+                <!-- Microsoft Power Up Program - Power Platform Adventure -->
+                <div class="certification-card" data-cert="microsoft-power-up-adventure">
                     <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/afb7e742-2821-4fb5-af45-cc2c41c6a808" alt="Introduction to Data Science">
+                        <img src="https://github.com/user-attachments/assets/0cb0e3f8-82ea-464a-8331-7ecf6eb4cc01" alt="Microsoft Power Up Program - Power Platform Adventure">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Microsoft Power Up Program - Power Platform Adventure</h3>
+                        <div class="certification-issuer">Microsoft</div>
+                        <div class="certification-date">Issued: 2024</div>
+                        <button class="btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Introduction to Data Science -->
+                <div class="certification-card" data-cert="intro-data-science">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/4592b5da-d701-4ea8-ac8d-f0f1db4894be" alt="Introduction to Data Science">
                     </div>
                     <div class="certification-content">
                         <h3>Introduction to Data Science</h3>
                         <div class="certification-issuer">Cisco</div>
-                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                        <div class="certification-date">Issued: Nov 30, 2023</div>
+                        <button class="btn">View Certificate</button>
                     </div>
                 </div>
-                <div class="certification-card">
+
+                <!-- IBM Data Analysis Using Python -->
+                <div class="certification-card" data-cert="ibm-data-analysis-python">
                     <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/ab1e11f3-8383-4126-a5f8-8f8973fad99c" alt="Data Analysis Using Python">
+                        <img src="https://github.com/user-attachments/assets/b09cdd4d-d1f4-43ee-826d-cc45582b1b7c" alt="IBM Data Analysis Using Python">
                     </div>
                     <div class="certification-content">
-                        <h3>Data Analysis Using Python</h3>
+                        <h3>IBM Data Analysis Using Python</h3>
                         <div class="certification-issuer">IBM</div>
-                        <a href="https://courses.cognitiveclass.al/certificates/6e5ef3f5c97c4581806635f5ed2d713e" class="btn" target="_blank">View Certificate</a>
+                        <div class="certification-date">Issued: 2024</div>
+                        <button class="btn">View Certificate</button>
                     </div>
                 </div>
-                <div class="certification-card">
+
+                <!-- IBM AI Fundamentals -->
+                <div class="certification-card" data-cert="ibm-ai-fundamentals">
                     <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/ab1e11f3-8383-4126-a5f8-8f8973fad99c" alt="AI Fundamentals">
+                        <img src="https://github.com/user-attachments/assets/0de8da5e-cd48-4b73-b134-e43a0a38d80e" alt="IBM AI Fundamentals">
                     </div>
                     <div class="certification-content">
-                        <h3>AI Fundamentals</h3>
+                        <h3>IBM AI Fundamentals</h3>
                         <div class="certification-issuer">IBM</div>
-                        <a href="https://www.credly.com/badges/f011ab63-95c7-45c0-8afd-97af6c11745d" class="btn" target="_blank">View Certificate</a>
+                        <div class="certification-date">Issued: 2024</div>
+                        <button class="btn">View Certificate</button>
                     </div>
                 </div>
-                <div class="certification-card">
+
+                <!-- Getting Started With Tableau -->
+                <div class="certification-card" data-cert="tableau">
                     <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/afb7e742-2821-4fb5-af45-cc2c41c6a808" alt="Python Essentials 2">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Python Essentials 2</h3>
-                        <div class="certification-issuer">Cisco</div>
-                        <a href="#" class="btn" target="_blank">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certification-card">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/afb7e742-2821-4fb5-af45-cc2c41c6a808" alt="Python Essentials 1">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Python Essentials 1</h3>
-                        <div class="certification-issuer">Cisco</div>
-                        <a href="#" class="btn" target="_blank">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certification-card">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/afb7e742-2821-4fb5-af45-cc2c41c6a808" alt="Data Analytics Essentials">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Data Analytics Essentials</h3>
-                        <div class="certification-issuer">Cisco</div>
-                        <a href="#" class="btn" target="_blank">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certification-card">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/9130b65c-5557-4371-bed2-e4dafb59f031" alt="Microsoft Power Up Program">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Microsoft Power Up Program</h3>
-                        <div class="certification-issuer">Microsoft</div>
-                        <a href="#" class="btn" target="_blank">View Certificate</a>
-                    </div>
-                </div>
-                <div class="certification-card">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/aa80284b-532f-47f4-94a8-31d1b5f2d0b5" alt="Getting Started With Tableau">
+                        <img src="https://github.com/user-attachments/assets/b14545e8-139a-4094-9a3d-3402a344810c" alt="Getting Started With Tableau">
                     </div>
                     <div class="certification-content">
                         <h3>Getting Started With Tableau</h3>
                         <div class="certification-issuer">Cognitive Class</div>
-                        <a href="https://courses.cognitivedass.alicertificates/5ds7eb54b3ef4d76b9273ef84064c65e" class="btn" target="_blank">View Certificate</a>
+                        <div class="certification-date">Issued: Oct 25, 2025</div>
+                        <button class="btn">View Certificate</button>
                     </div>
                 </div>
-                <div class="certification-card">
+
+                <!-- Data Analytics Essentials -->
+                <div class="certification-card" data-cert="data-analytics-essentials">
                     <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/afb7e742-2821-4fb5-af45-cc2c41c6a808" alt="Introduction to Modern AI">
+                        <img src="https://github.com/user-attachments/assets/f2df529c-377d-40b2-a3f6-02371c1f0179" alt="Data Analytics Essentials">
                     </div>
                     <div class="certification-content">
-                        <h3>Introduction to Modern AI</h3>
+                        <h3>Data Analytics Essentials</h3>
                         <div class="certification-issuer">Cisco</div>
-                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                        <div class="certification-date">Issued: Dec 06, 2024</div>
+                        <button class="btn">View Certificate</button>
                     </div>
                 </div>
-                <div class="certification-card">
+
+                <!-- Data Wrangling Using Python -->
+                <div class="certification-card" data-cert="data-wrangling">
                     <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/a75fda7d-70de-4085-8f46-9aa78f9dd439" alt="Programming for Everybody">
+                        <img src="https://github.com/user-attachments/assets/faae0203-0d8a-4a7f-b9ff-ec9399bba6b8" alt="Data Wrangling Using Python">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Data Wrangling Using Python</h3>
+                        <div class="certification-issuer">IBM Skills Network</div>
+                        <div class="certification-date">Issued: 2024</div>
+                        <button class="btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Coursera Programming for Everybody -->
+                <div class="certification-card" data-cert="coursera-programming">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/90984453-ee23-40ec-a2e0-32a3c0a8e547" alt="Programming for Everybody">
                     </div>
                     <div class="certification-content">
                         <h3>Programming for Everybody</h3>
                         <div class="certification-issuer">Coursera</div>
-                        <a href="https://coursera.org/verify/42D2VAURHXQ3" class="btn" target="_blank">View Certificate</a>
+                        <div class="certification-date">Issued: Oct 17, 2020</div>
+                        <button class="btn">View Certificate</button>
                     </div>
                 </div>
-                <div class="certification-card">
+
+                <!-- AI Fundamentals -->
+                <div class="certification-card" data-cert="ai-fundamentals">
                     <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/afb7e742-2821-4fb5-af45-cc2c41c6a808" alt="AI Fundamentals">
+                        <img src="https://github.com/user-attachments/assets/5bd0dabd-952c-47b6-99f9-4ec335ebaa67" alt="AI Fundamentals">
                     </div>
                     <div class="certification-content">
                         <h3>AI Fundamentals</h3>
+                        <div class="certification-issuer">IBM SkillsBuild</div>
+                        <div class="certification-date">Issued: Jan 15, 2025</div>
+                        <button class="btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Python Essentials 2 -->
+                <div class="certification-card" data-cert="python-essentials-2">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/a835620e-dbf7-437f-9aac-3970e56154fd" alt="Python Essentials 2">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Python Essentials 2</h3>
                         <div class="certification-issuer">Cisco</div>
-                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                        <div class="certification-date">Issued: Jul 30, 2024</div>
+                        <button class="btn">View Certificate</button>
                     </div>
                 </div>
-                <div class="certification-card">
+
+                <!-- Python Essentials 1 -->
+                <div class="certification-card" data-cert="python-essentials-1">
                     <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/aa80284b-532f-47f4-94a8-31d1b5f2d0b5" alt="Data Wrangling Using Python">
+                        <img src="https://github.com/user-attachments/assets/abf78bca-7bec-4fbc-880a-c6e8d1305bf0" alt="Python Essentials 1">
                     </div>
                     <div class="certification-content">
-                        <h3>Data Wrangling Using Python</h3>
-                        <div class="certification-issuer">Cognitive Class</div>
-                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                        <h3>Python Essentials 1</h3>
+                        <div class="certification-issuer">Cisco</div>
+                        <div class="certification-date">Issued: Jul 06, 2024</div>
+                        <button class="btn">View Certificate</button>
                     </div>
                 </div>
-                <div class="certification-card">
+
+                <!-- Python for Data Science -->
+                <div class="certification-card" data-cert="python-data-science">
                     <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/9130b65c-5557-4371-bed2-e4dafb59f031" alt="Power Platform Adventure">
+                        <img src="https://github.com/user-attachments/assets/da6afaed-e9f5-482a-9050-f4df75326949" alt="Python for Data Science">
                     </div>
                     <div class="certification-content">
-                        <h3>Power Platform Adventure</h3>
-                        <div class="certification-issuer">Microsoft</div>
-                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                        <h3>Python for Data Science</h3>
+                        <div class="certification-issuer">IBM</div>
+                        <div class="certification-date">Issued: Oct 11, 2025</div>
+                        <button class="btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Introduction to Modern AI -->
+                <div class="certification-card" data-cert="modern-ai">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/1ebbc427-4f77-4f3e-8756-682ebec877f3" alt="Introduction to Modern AI">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Introduction to Modern AI</h3>
+                        <div class="certification-issuer">Cisco</div>
+                        <div class="certification-date">Issued: Dec 22, 2024</div>
+                        <button class="btn">View Certificate</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Certificate Modal -->
+    <div id="certModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <div class="modal-details" id="modalDetails"></div>
+            <img class="modal-image" id="modalImage" src="" alt="Certificate">
+            <div class="modal-actions">
+                <button class="btn" id="modalCloseBtn">Close</button>
+                <a href="#" class="btn btn-outline" id="modalLinkBtn" target="_blank">View Original</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
@@ -1585,7 +1714,6 @@
                             <p>Cairo, Egypt, 13612</p>
                         </div>
                     </div>
-                    <!-- Online Profiles section has been removed as requested -->
                 </div>
                 
                 <!-- Contact Form -->
@@ -1593,12 +1721,12 @@
                     <form class="contact-form" id="contactForm">
                         <div class="form-group">
                             <label for="name">Your Name *</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+                            <input type="text" id="name" name="from_name" class="form-control" placeholder="Enter your name" required>
                             <div class="error-message" id="nameError"></div>
                         </div>
                         <div class="form-group">
                             <label for="email">Your Email *</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                            <input type="email" id="email" name="from_email" class="form-control" placeholder="Enter your email" required>
                             <div class="error-message" id="emailError"></div>
                         </div>
                         <div class="form-group">
@@ -1611,7 +1739,7 @@
                             <textarea id="message" name="message" class="form-control" placeholder="Enter your message" required></textarea>
                             <div class="error-message" id="messageError"></div>
                         </div>
-                        <button type="submit" class="btn">
+                        <button type="submit" class="btn" id="submitBtn">
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
                         <div class="email-status" id="emailStatus"></div>
@@ -1689,15 +1817,160 @@
     </div>
 
     <script>
+        // Certificate data for modal
+        const certificates = {
+            "microsoft-power-up-low-code": {
+                title: "Microsoft Power Up Program - Low Code Maker Course",
+                issuer: "Microsoft",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/c5ff064b-9abe-47b3-9929-bf55999f4215",
+                link: "#"
+            },
+            "microsoft-power-up-adventure": {
+                title: "Microsoft Power Up Program - Power Platform Adventure",
+                issuer: "Microsoft",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/0cb0e3f8-82ea-464a-8331-7ecf6eb4cc01",
+                link: "#"
+            },
+            "intro-data-science": {
+                title: "Introduction to Data Science",
+                issuer: "Cisco",
+                date: "Issued: Nov 30, 2023",
+                image: "https://github.com/user-attachments/assets/4592b5da-d701-4ea8-ac8d-f0f1db4894be",
+                link: "#"
+            },
+            "ibm-data-analysis-python": {
+                title: "IBM Data Analysis Using Python",
+                issuer: "IBM",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/b09cdd4d-d1f4-43ee-826d-cc45582b1b7c",
+                link: "#"
+            },
+            "ibm-ai-fundamentals": {
+                title: "IBM AI Fundamentals",
+                issuer: "IBM",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/0de8da5e-cd48-4b73-b134-e43a0a38d80e",
+                link: "#"
+            },
+            "tableau": {
+                title: "Getting Started With Tableau",
+                issuer: "Cognitive Class",
+                date: "Issued: Oct 25, 2025",
+                image: "https://github.com/user-attachments/assets/b14545e8-139a-4094-9a3d-3402a344810c",
+                link: "#"
+            },
+            "data-analytics-essentials": {
+                title: "Data Analytics Essentials",
+                issuer: "Cisco",
+                date: "Issued: Dec 06, 2024",
+                image: "https://github.com/user-attachments/assets/f2df529c-377d-40b2-a3f6-02371c1f0179",
+                link: "#"
+            },
+            "data-wrangling": {
+                title: "Data Wrangling Using Python",
+                issuer: "IBM Skills Network",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/faae0203-0d8a-4a7f-b9ff-ec9399bba6b8",
+                link: "#"
+            },
+            "coursera-programming": {
+                title: "Programming for Everybody",
+                issuer: "Coursera",
+                date: "Issued: Oct 17, 2020",
+                image: "https://github.com/user-attachments/assets/90984453-ee23-40ec-a2e0-32a3c0a8e547",
+                link: "#"
+            },
+            "ai-fundamentals": {
+                title: "AI Fundamentals",
+                issuer: "IBM SkillsBuild",
+                date: "Issued: Jan 15, 2025",
+                image: "https://github.com/user-attachments/assets/5bd0dabd-952c-47b6-99f9-4ec335ebaa67",
+                link: "#"
+            },
+            "python-essentials-2": {
+                title: "Python Essentials 2",
+                issuer: "Cisco",
+                date: "Issued: Jul 30, 2024",
+                image: "https://github.com/user-attachments/assets/a835620e-dbf7-437f-9aac-3970e56154fd",
+                link: "#"
+            },
+            "python-essentials-1": {
+                title: "Python Essentials 1",
+                issuer: "Cisco",
+                date: "Issued: Jul 06, 2024",
+                image: "https://github.com/user-attachments/assets/abf78bca-7bec-4fbc-880a-c6e8d1305bf0",
+                link: "#"
+            },
+            "python-data-science": {
+                title: "Python for Data Science",
+                issuer: "IBM",
+                date: "Issued: Oct 11, 2025",
+                image: "https://github.com/user-attachments/assets/da6afaed-e9f5-482a-9050-f4df75326949",
+                link: "#"
+            },
+            "modern-ai": {
+                title: "Introduction to Modern AI",
+                issuer: "Cisco",
+                date: "Issued: Dec 22, 2024",
+                image: "https://github.com/user-attachments/assets/1ebbc427-4f77-4f3e-8756-682ebec877f3",
+                link: "#"
+            }
+        };
+
+        // Modal functionality
+        const modal = document.getElementById('certModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDetails = document.getElementById('modalDetails');
+        const modalImage = document.getElementById('modalImage');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+        const modalLinkBtn = document.getElementById('modalLinkBtn');
+        const closeModal = document.querySelector('.modal-close');
+
+        // Open modal when certificate card is clicked
+        document.querySelectorAll('.certification-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const certId = this.getAttribute('data-cert');
+                const cert = certificates[certId];
+                
+                modalTitle.textContent = cert.title;
+                modalDetails.innerHTML = `<p>${cert.issuer}</p><p>${cert.date}</p>`;
+                modalImage.src = cert.image;
+                modalImage.alt = cert.title;
+                modalLinkBtn.href = cert.link;
+                
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Close modal
+        function closeCertificateModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        modalCloseBtn.addEventListener('click', closeCertificateModal);
+        closeModal.addEventListener('click', closeCertificateModal);
+
+        // Close modal when clicking outside the content
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeCertificateModal();
+            }
+        });
+
         // EmailJS Configuration
         (function() {
-            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+            emailjs.init("0gVF1R9GNL-p3ZLbj"); // Your EmailJS public key
         })();
 
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
         const contactForm = document.getElementById('contactForm');
         const thankYouMessage = document.getElementById('thankYouMessage');
+        const submitBtn = document.getElementById('submitBtn');
         const toast = document.getElementById('toast');
         const errorToast = document.getElementById('errorToast');
         const emailStatus = document.getElementById('emailStatus');
@@ -1787,20 +2060,33 @@
 
         // Send email using EmailJS API
         async function sendEmailEmailJS(formData) {
-            const name = formData.get('name');
-            const email = formData.get('email');
+            const name = formData.get('from_name');
+            const email = formData.get('from_email');
             const subject = formData.get('subject');
             const message = formData.get('message');
             
+            // Get current time for the email template
+            const now = new Date();
+            const time = now.toLocaleString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
             try {
                 const response = await emailjs.send(
-                    'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-                    'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+                    'service_lhcxo98', // Your EmailJS service ID
+                    'template_dd3bmbz', // Your EmailJS template ID
                     {
+                        name: name,
                         from_name: name,
                         from_email: email,
                         subject: subject,
                         message: message,
+                        time: time,
                         to_email: 'Mahmoud_abdallah20@outlook.com'
                     }
                 );
@@ -1812,31 +2098,6 @@
                 }
             } catch (error) {
                 console.error('EmailJS Error:', error);
-                return { 
-                    success: false, 
-                    message: 'Failed to send message. Please try again or contact me directly at Mahmoud_abdallah20@outlook.com' 
-                };
-            }
-        }
-
-        // Send email using Formspree API
-        async function sendEmailFormspree(formData) {
-            try {
-                const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', { // Replace with your Formspree form ID
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    return { success: true, message: 'Message sent successfully!' };
-                } else {
-                    throw new Error('Failed to send message');
-                }
-            } catch (error) {
-                console.error('Formspree Error:', error);
                 return { 
                     success: false, 
                     message: 'Failed to send message. Please try again or contact me directly at Mahmoud_abdallah20@outlook.com' 
@@ -1856,8 +2117,8 @@
             
             // Get form data
             const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
+            const name = formData.get('from_name');
+            const email = formData.get('from_email');
             const subject = formData.get('subject');
             const message = formData.get('message');
             
@@ -1888,17 +2149,11 @@
             
             // Show loading status
             showEmailStatus('loading', '<i class="fas fa-spinner fa-spin"></i> Sending your message...');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             
-            // Try multiple email sending methods
-            let result = null;
-            
-            // Try EmailJS first
-            result = await sendEmailEmailJS(formData);
-            
-            // If EmailJS fails, try Formspree
-            if (!result.success) {
-                result = await sendEmailFormspree(formData);
-            }
+            // Try EmailJS
+            let result = await sendEmailEmailJS(formData);
             
             // Handle result
             if (result.success) {
@@ -1910,6 +2165,10 @@
                 showEmailStatus('error', '<i class="fas fa-exclamation-circle"></i> ' + result.message);
                 showErrorToast(result.message);
             }
+            
+            // Reset button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
         });
 
         // Real-time validation for better UX
