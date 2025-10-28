@@ -6,6 +6,7 @@
     <title>The Analyst | Data Analytics & Business Intelligence Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         :root {
             --primary: #3b82f6;
@@ -139,6 +140,7 @@
             background-color: #000;
         }
 
+        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -165,19 +167,10 @@
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .logo span {
             color: var(--light);
-        }
-
-        .powerbi-logo {
-            width: 32px;
-            height: 32px;
-            filter: brightness(0) saturate(100%) invert(39%) sepia(90%) saturate(1743%) hue-rotate(202deg) brightness(97%) contrast(91%);
         }
 
         .nav-links {
@@ -211,6 +204,7 @@
             cursor: pointer;
         }
 
+        /* Hero Section */
         .hero {
             padding-top: 150px;
             background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('https://www.theasset.com/storage/Image/2023/Oct/1698213807assetservicingcharrot.jpg');
@@ -287,6 +281,7 @@
             z-index: -1;
         }
 
+        /* About Section */
         .about {
             background-color: var(--dark-light);
             padding: 80px 0;
@@ -337,6 +332,7 @@
             font-size: 0.9rem;
         }
 
+        /* Skills Section */
         .skills {
             background-color: var(--dark);
         }
@@ -384,6 +380,7 @@
             font-weight: 500;
         }
 
+        /* Experience Section */
         .experience {
             background-color: var(--dark-light);
         }
@@ -481,6 +478,7 @@
             color: var(--secondary);
         }
 
+        /* Projects Section */
         .projects {
             background-color: var(--dark);
         }
@@ -548,6 +546,7 @@
             gap: 10px;
         }
 
+        /* Certifications Section */
         .certifications {
             background-color: var(--dark-light);
         }
@@ -607,6 +606,7 @@
             margin-bottom: 15px;
         }
 
+        /* Contact Section */
         .contact {
             background-color: var(--dark);
         }
@@ -688,6 +688,7 @@
             border-color: var(--error);
         }
 
+        /* Toast Notification */
         .toast {
             position: fixed;
             top: 100px;
@@ -713,14 +714,11 @@
             background-color: var(--error);
         }
 
-        .toast.email {
-            background-color: #0078D4; /* Outlook blue color */
-        }
-
         .toast i {
             font-size: 1.2rem;
         }
 
+        /* Footer */
         footer {
             background-color: var(--dark);
             color: white;
@@ -740,9 +738,6 @@
             font-weight: 700;
             color: white;
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .footer-logo span {
@@ -804,21 +799,29 @@
             font-size: 0.9rem;
         }
 
+        /* Social Media Icons Styling */
         .social-link i,
         .social-link img {
             color: white;
-            filter: brightness(0) invert(1);
+            filter: brightness(0) invert(1); /* Makes the logo white */
+        }
+
+        /* Enlarged Upwork and LinkedIn Icons */
+        .social-link .fa-linkedin-in,
+        .social-link .upwork-icon {
             font-size: 20px;
             width: 20px;
             height: 20px;
         }
 
+        /* Upwork Icon Styling - Fixed to be circular */
         .social-link img.upwork-icon {
-            width: 32px;
-            height: 32px;
+            width: 20px;
+            height: 20px;
             object-fit: contain;
         }
 
+        /* Email Status */
         .email-status {
             margin-top: 20px;
             padding: 15px;
@@ -852,6 +855,7 @@
             margin-right: 10px;
         }
 
+        /* Thank You Message */
         .thank-you-message {
             display: none;
             text-align: center;
@@ -879,6 +883,7 @@
             margin-bottom: 0;
         }
 
+        /* Responsive Styles */
         @media (max-width: 1200px) {
             .container {
                 padding: 0 30px;
@@ -1027,13 +1032,11 @@
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header id="header">
         <div class="container">
             <nav class="navbar">
-                <a href="#" class="logo">
-                    The <span>Analyst</span>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI" class="powerbi-logo">
-                </a>
+                <a href="#" class="logo">The <span>Analyst</span></a>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -1050,9 +1053,506 @@
         </div>
     </header>
 
-    <!-- All your existing sections remain the same -->
-    <!-- ... (hero, about, skills, experience, projects, certifications) ... -->
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Mahmoud Abdallah</h1>
+                    <h2>Data Analytics & Business Intelligence Specialist</h2>
+                    <p>Transforming complex data into actionable insights and building data-driven solutions that drive business growth and operational efficiency.</p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn">View My Work</a>
+                        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-frame">
+                        <!-- Your LinkedIn Profile Picture -->
+                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQEKIppAJlU7Fw/profile-displayphoto-scale_400_400/B4DZnIB8P5GQAg-/0/1759997577132?e=1762992000&v=beta&t=UBEdPMgE1pCg4aKF0SswiM_rIzgm8FNfiXEaIYLanRQ" 
+                             alt="Mahmoud Abdallah" class="profile-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Data Analytics & Business Intelligence Specialist with 3+ years of experience in the full data lifecycle, from ETL to dashboard development.</p>
+                    <p>Leads the design and development of internal tools for HR, visitor tracking, and maintenance using Microsoft Power Platform to optimize operations and ensure secure, cross-departmental access.</p>
+                    <p>Proficient in data management (Pandas, SQL), machine learning (Scikit-learn, TensorFlow), ETL pipeline development (Snowflake, HubSpot), and building interactive dashboards (Power BI, Tableau, Looker Studio).</p>
+                    <p>Automate workflows to improve efficiency and accuracy, collaborating in Agile teams to align technology with business objectives.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>3+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat">
+                            <h3>15+</h3>
+                            <p>GitHub Repositories</p>
+                        </div>
+                        <div class="stat">
+                            <h3>100%</h3>
+                            <p>Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Data Engineering & Analytics</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">ETL / ELT</span>
+                        <span class="skill-item">Data Warehousing</span>
+                        <span class="skill-item">Data Modeling</span>
+                        <span class="skill-item">Data Quality & Validation</span>
+                        <span class="skill-item">Machine Learning</span>
+                        <span class="skill-item">Statistical Analysis</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-line"></i> Business Intelligence & Visualization</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Power BI</span>
+                        <span class="skill-item">Tableau</span>
+                        <span class="skill-item">Looker Studio</span>
+                        <span class="skill-item">Data Storytelling</span>
+                        <span class="skill-item">KPI Dashboard Development</span>
+                        <span class="skill-item">Geospatial Analysis</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud"></i> Cloud Platforms & Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Microsoft Azure</span>
+                        <span class="skill-item">Snowflake</span>
+                        <span class="skill-item">AWS Redshift / BigQuery</span>
+                        <span class="skill-item">HubSpot CRM</span>
+                        <span class="skill-item">Dataverse</span>
+                        <span class="skill-item">Microsoft Fabric</span>
+                        <span class="skill-item">Databases</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-cogs"></i> Development & Automation</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Power Apps</span>
+                        <span class="skill-item">Power Automate</span>
+                        <span class="skill-item">Power Pages</span>
+                        <span class="skill-item">Azure Logic Apps</span>
+                        <span class="skill-item">API Integrations</span>
+                        <span class="skill-item">Git / Version Control</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tasks"></i> Project Management</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Agile / Scrum Methodology</span>
+                        <span class="skill-item">Project Planning & Execution</span>
+                        <span class="skill-item">Jira / Azure Boards</span>
+                        <span class="skill-item">Brainstorming</span>
+                        <span class="skill-item">Cross-Functional Collaboration</span>
+                        <span class="skill-item">Requirements Gathering</span>
+                        <span class="skill-item">Client Consultation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Oct 2025 – Present</div>
+                        <div class="timeline-role">Business Intelligence Consultant</div>
+                        <div class="timeline-company">A+ Development • Part-Time</div>
+                        <div class="timeline-location">Cairo, Egypt</div>
+                        <div class="timeline-details">
+                            <ul>
+                                <li>Developed 8+ data dashboards and automated 500+ monthly workflows to track and optimize property performance.</li>
+                                <li>Processed 5GB+ of monthly data using DAX, SQL and Google BigQuery to support analytics and reporting.</li>
+                                <li>Created 20+ monthly performance reports and guided 2 junior analysts in data analysis and visualization.</li>
+                                <li>Managed full data pipeline from processing to visualization, enabling data-driven decision making across operations.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Apr 2025 – Present</div>
+                        <div class="timeline-role">Data Analyst</div>
+                        <div class="timeline-company">RSI Research Science Institute • Full-time</div>
+                        <div class="timeline-location">Dubai, United Arab Emirates</div>
+                        <div class="timeline-details">
+                            <ul>
+                                <li>Developed key internal systems including a visitor management system, an HR automation platform, and a national reading program dashboard for 27 governorates.</li>
+                                <li>Managed full development lifecycle from data pipelines to user-facing analytics.</li>
+                                <li>Built 8+ Power Platform tools that centralized workflows for HR, operations, and visitor management serving 200+ users.</li>
+                                <li>Translated business needs into technical specs by writing 100+ user stories and test cases to ensure systems met business goals.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Mar 2022 – Present</div>
+                        <div class="timeline-role">Data Analytics & Business Intelligence Specialist</div>
+                        <div class="timeline-company">Upwork • Freelancer</div>
+                        <div class="timeline-location">California, LA, United States</div>
+                        <div class="timeline-details">
+                            <ul>
+                                <li>Delivered 12+ end-to-end analytics solutions with Power BI and Looker Studio, automating reporting and saving clients 10+ hours/week.</li>
+                                <li>Engineered ETL pipelines integrating SQL, HubSpot, and APIs, boosting data quality by ~25% and enabling real-time dashboards.</li>
+                                <li>Automated data workflows using Power Automate and Python, ensuring data integrity and streamlining client operations.</li>
+                                <li>Maintained a 100% Job Success Score (4.9/5.0 rating) and secured repeat contracts through high-impact delivery and clear communication.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jul 2024 – Oct 2024</div>
+                        <div class="timeline-role">DEMI Coding Instructor</div>
+                        <div class="timeline-company">iSchool • Seasonal</div>
+                        <div class="timeline-location">Cairo, Egypt</div>
+                        <div class="timeline-details">
+                            <ul>
+                                <li>Led programming and AI fundamentals courses for 600+ students aged 6-18, utilizing project-based learning in both physical and virtual classrooms.</li>
+                                <li>Achieved a 90% student completion rate by adapting teaching methods to diverse learning styles.</li>
+                                <li>Guided students through the development of 15+ final projects, with 5 selected for a term-end showcase.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Aug 2024 – Oct 2024</div>
+                        <div class="timeline-role">Microsoft Certified Power Platform Developer</div>
+                        <div class="timeline-company">Microsoft Power Platform Community • Internship</div>
+                        <div class="timeline-location">Thames Valley Park, United Kingdom</div>
+                        <div class="timeline-details">
+                            <ul>
+                                <li>Built an end-to-end automation solution for the Power Up Challenge, eliminating a manual process that took ~4 hours per week.</li>
+                                <li>Automated 15+ routine tasks across departments using Power Automate, saving an estimated 15 person-hour weekly.</li>
+                                <li>Consolidated reporting data from 5 sources into Microsoft Dataverse, enabling analysts to generate 80% faster reports.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Oct 2023 – Apr 2024</div>
+                        <div class="timeline-role">Technical Supervisor</div>
+                        <div class="timeline-company">OnCall • Full-time</div>
+                        <div class="timeline-location">Sharq, Al Asimah, Kuwait</div>
+                        <div class="timeline-details">
+                            <ul>
+                                <li>Managed project execution for a 10-person technical team, coordinating 12+ projects using Basecamp and Airtable.</li>
+                                <li>Improved project alignment by facilitating weekly stakeholder syncs, reducing requirement misunderstandings by an estimated 20%.</li>
+                                <li>Introduced a peer-review checkpoint that increased first-pass approval rates on deliverables from 85% to 95%.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://github.com/user-attachments/assets/3976afc4-6d42-43bc-9223-9975389cb1c5" alt="MaxAB Sales Analysis">
+                    </div>
+                    <div class="project-content">
+                        <h3>MaxAB Sales Analysis</h3>
+                        <p>Comprehensive analysis of sales data for MaxAB, identifying trends, patterns, and opportunities for optimization.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Data Analysis</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Pandas</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study" class="btn btn-github" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://github.com/user-attachments/assets/3c1aa919-3edb-41d6-8f3d-accaea3477f9" alt="Elezaby Pharmacy E-commerce Analysis">
+                    </div>
+                    <div class="project-content">
+                        <h3>Elezaby Pharmacy E-commerce Analysis</h3>
+                        <p>Digital analysis of Elezaby Pharmacy's e-commerce platform, providing insights for growth and optimization.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">E-commerce</span>
+                            <span class="project-tag">Digital Analytics</span>
+                            <span class="project-tag">Business Intelligence</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study" class="btn btn-github" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://github.com/user-attachments/assets/4bc1a204-e368-4755-8bf9-12e677eaa9f6" alt="HR System">
+                    </div>
+                    <div class="project-content">
+                        <h3>HR System</h3>
+                        <p>Comprehensive HR management system built with Power Platform for employee management and workflow automation.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Power Platform</span>
+                            <span class="project-tag">HR Automation</span>
+                            <span class="project-tag">Workflow</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/MAHMOUD2ABDALLAH/HR-System" class="btn btn-github" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://github.com/user-attachments/assets/71b88cc4-66f8-4ee1-9753-7380a46dde56" alt="Animal Shelter Home">
+                    </div>
+                    <div class="project-content">
+                        <h3>Animal Shelter Home</h3>
+                        <p>Power Platform solution for managing animal shelter operations, tracking animals, and streamlining adoption processes.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Power Platform</span>
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">Non-profit</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange" class="btn btn-github" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://github.com/user-attachments/assets/80c36de8-74e9-4210-8cc4-8dd7d5c5ed0b" alt="Improvado Marketing Homework">
+                    </div>
+                    <div class="project-content">
+                        <h3>Improvado Marketing Homework</h3>
+                        <p>Marketing data analysis project focusing on campaign performance, ROI optimization, and customer segmentation.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Marketing Analytics</span>
+                            <span class="project-tag">ROI Analysis</span>
+                            <span class="project-tag">Segmentation</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework" class="btn btn-github" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://github.com/user-attachments/assets/a2a97696-f449-4c5b-865d-a11428243c24" alt="Walmart Product Analysis">
+                    </div>
+                    <div class="project-content">
+                        <h3>Walmart Product Analysis</h3>
+                        <p>Comprehensive analysis of Walmart product data to identify sales trends, inventory optimization, and pricing strategies.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Retail Analytics</span>
+                            <span class="project-tag">Inventory Management</span>
+                            <span class="project-tag">Pricing Strategy</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study" class="btn btn-github" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/ab1e11f3-8383-4126-a5f8-8f8973fad99c" alt="Python for Data Science">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Python for Data Science</h3>
+                        <div class="certification-issuer">IBM</div>
+                        <a href="https://www.credly.com/badges/5a3e33ed-8f14-478d-9a76-69542436e8d" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/afb7e742-2821-4fb5-af45-cc2c41c6a808" alt="Introduction to Data Science">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Introduction to Data Science</h3>
+                        <div class="certification-issuer">Cisco</div>
+                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/ab1e11f3-8383-4126-a5f8-8f8973fad99c" alt="Data Analysis Using Python">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Data Analysis Using Python</h3>
+                        <div class="certification-issuer">IBM</div>
+                        <a href="https://courses.cognitiveclass.al/certificates/6e5ef3f5c97c4581806635f5ed2d713e" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/ab1e11f3-8383-4126-a5f8-8f8973fad99c" alt="AI Fundamentals">
+                    </div>
+                    <div class="certification-content">
+                        <h3>AI Fundamentals</h3>
+                        <div class="certification-issuer">IBM</div>
+                        <a href="https://www.credly.com/badges/f011ab63-95c7-45c0-8afd-97af6c11745d" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/afb7e742-2821-4fb5-af45-cc2c41c6a808" alt="Python Essentials 2">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Python Essentials 2</h3>
+                        <div class="certification-issuer">Cisco</div>
+                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/afb7e742-2821-4fb5-af45-cc2c41c6a808" alt="Python Essentials 1">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Python Essentials 1</h3>
+                        <div class="certification-issuer">Cisco</div>
+                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/afb7e742-2821-4fb5-af45-cc2c41c6a808" alt="Data Analytics Essentials">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Data Analytics Essentials</h3>
+                        <div class="certification-issuer">Cisco</div>
+                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/9130b65c-5557-4371-bed2-e4dafb59f031" alt="Microsoft Power Up Program">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Microsoft Power Up Program</h3>
+                        <div class="certification-issuer">Microsoft</div>
+                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/aa80284b-532f-47f4-94a8-31d1b5f2d0b5" alt="Getting Started With Tableau">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Getting Started With Tableau</h3>
+                        <div class="certification-issuer">Cognitive Class</div>
+                        <a href="https://courses.cognitivedass.alicertificates/5ds7eb54b3ef4d76b9273ef84064c65e" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/afb7e742-2821-4fb5-af45-cc2c41c6a808" alt="Introduction to Modern AI">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Introduction to Modern AI</h3>
+                        <div class="certification-issuer">Cisco</div>
+                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/a75fda7d-70de-4085-8f46-9aa78f9dd439" alt="Programming for Everybody">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Programming for Everybody</h3>
+                        <div class="certification-issuer">Coursera</div>
+                        <a href="https://coursera.org/verify/42D2VAURHXQ3" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/afb7e742-2821-4fb5-af45-cc2c41c6a808" alt="AI Fundamentals">
+                    </div>
+                    <div class="certification-content">
+                        <h3>AI Fundamentals</h3>
+                        <div class="certification-issuer">Cisco</div>
+                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/aa80284b-532f-47f4-94a8-31d1b5f2d0b5" alt="Data Wrangling Using Python">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Data Wrangling Using Python</h3>
+                        <div class="certification-issuer">Cognitive Class</div>
+                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-image">
+                        <img src="https://github.com/user-attachments/assets/9130b65c-5557-4371-bed2-e4dafb59f031" alt="Power Platform Adventure">
+                    </div>
+                    <div class="certification-content">
+                        <h3>Power Platform Adventure</h3>
+                        <div class="certification-issuer">Microsoft</div>
+                        <a href="#" class="btn" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <h2>Get In Touch</h2>
@@ -1085,15 +1585,7 @@
                             <p>Cairo, Egypt, 13612</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-microsoft"></i>
-                        </div>
-                        <div>
-                            <h3>Outlook Email</h3>
-                            <p>Send directly to my Outlook</p>
-                        </div>
-                    </div>
+                    <!-- Online Profiles section has been removed as requested -->
                 </div>
                 
                 <!-- Contact Form -->
@@ -1120,7 +1612,7 @@
                             <div class="error-message" id="messageError"></div>
                         </div>
                         <button type="submit" class="btn">
-                            <i class="fas fa-paper-plane"></i> Send via Outlook Email
+                            <i class="fas fa-paper-plane"></i> Send Message
                         </button>
                         <div class="email-status" id="emailStatus"></div>
                     </form>
@@ -1136,14 +1628,12 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo">
-                        The <span>Analyst</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI" class="powerbi-logo">
-                    </div>
+                    <div class="footer-logo">The <span>Analyst</span></div>
                     <p>Data Analytics & Business Intelligence Specialist transforming complex data into actionable insights and building data-driven solutions.</p>
                     <div class="social-links">
                         <a href="https://github.com/MAHMOUD2ABDALLAH" class="social-link" target="_blank">
@@ -1187,9 +1677,10 @@
         </div>
     </footer>
 
-    <div id="toast" class="toast email">
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast">
         <i class="fas fa-check-circle"></i>
-        <span>Message Sent Successfully to Outlook!</span>
+        <span>Message successfully sent to: Mahmoud_abdallah20@outlook.com</span>
     </div>
 
     <div id="errorToast" class="toast error">
@@ -1198,8 +1689,10 @@
     </div>
 
     <script>
-        // Web3Forms Configuration
-        const WEB3FORMS_ACCESS_KEY = 'b7c912e2-0b0b-4c6a-9e7a-1c8e9f8d3a7c'; // Free access key
+        // EmailJS Configuration
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        })();
 
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
@@ -1292,113 +1785,134 @@
             thankYouMessage.style.display = 'block';
         }
 
-        // Send email using Web3Forms API
-        async function sendEmailWeb3Forms(formData) {
+        // Send email using EmailJS API
+        async function sendEmailEmailJS(formData) {
             const name = formData.get('name');
             const email = formData.get('email');
             const subject = formData.get('subject');
             const message = formData.get('message');
             
             try {
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        access_key: WEB3FORMS_ACCESS_KEY,
-                        name: name,
-                        email: email,
+                const response = await emailjs.send(
+                    'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+                    'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+                    {
+                        from_name: name,
+                        from_email: email,
                         subject: subject,
                         message: message,
-                        from_name: 'Portfolio Website Contact',
-                        redirect: false
-                    })
-                });
+                        to_email: 'Mahmoud_abdallah20@outlook.com'
+                    }
+                );
 
-                const result = await response.json();
-
-                if (response.ok && result.success) {
+                if (response.status === 200) {
                     return { success: true, message: 'Message sent successfully!' };
                 } else {
-                    throw new Error(result.message || 'Failed to send message');
+                    throw new Error('Failed to send message');
                 }
             } catch (error) {
-                console.error('Web3Forms Error:', error);
-                return { success: false, message: error.message };
+                console.error('EmailJS Error:', error);
+                return { 
+                    success: false, 
+                    message: 'Failed to send message. Please try again or contact me directly at Mahmoud_abdallah20@outlook.com' 
+                };
             }
         }
 
-        // Form submission handler
+        // Send email using Formspree API
+        async function sendEmailFormspree(formData) {
+            try {
+                const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', { // Replace with your Formspree form ID
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    return { success: true, message: 'Message sent successfully!' };
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                console.error('Formspree Error:', error);
+                return { 
+                    success: false, 
+                    message: 'Failed to send message. Please try again or contact me directly at Mahmoud_abdallah20@outlook.com' 
+                };
+            }
+        }
+
+        // Main contact form submission handler
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value.trim();
-            const message = document.getElementById('message').value.trim();
-            
+            // Reset error messages
             hideError('nameError');
             hideError('emailError');
             hideError('subjectError');
             hideError('messageError');
             
+            // Get form data
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Validate form
             let isValid = true;
             
-            if (!name) {
+            if (!name || name.trim() === '') {
                 showError('nameError', 'Name is required');
                 isValid = false;
             }
             
-            if (!email) {
-                showError('emailError', 'Email is required');
-                isValid = false;
-            } else if (!validateEmail(email)) {
+            if (!email || !validateEmail(email)) {
                 showError('emailError', 'Please enter a valid email address');
                 isValid = false;
             }
             
-            if (!subject) {
+            if (!subject || subject.trim() === '') {
                 showError('subjectError', 'Subject is required');
                 isValid = false;
             }
             
-            if (!message) {
+            if (!message || message.trim() === '') {
                 showError('messageError', 'Message is required');
                 isValid = false;
             }
             
-            if (isValid) {
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                submitBtn.disabled = true;
-                
-                showEmailStatus('loading', '<i class="fas fa-spinner fa-spin"></i> Sending message to Outlook...');
-                
-                try {
-                    const formData = new FormData(contactForm);
-                    const result = await sendEmailWeb3Forms(formData);
-                    
-                    if (result.success) {
-                        showEmailStatus('success', '<i class="fas fa-check-circle"></i> Message sent successfully!');
-                        showToast();
-                        showThankYouMessage();
-                    } else {
-                        throw new Error(result.message);
-                    }
-                } catch (error) {
-                    console.error('Email Error:', error);
-                    showEmailStatus('error', '<i class="fas fa-exclamation-circle"></i> Failed to send message. Please try again.');
-                    showErrorToast('Failed to send message. Please try again.');
-                } finally {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }
+            if (!isValid) return;
+            
+            // Show loading status
+            showEmailStatus('loading', '<i class="fas fa-spinner fa-spin"></i> Sending your message...');
+            
+            // Try multiple email sending methods
+            let result = null;
+            
+            // Try EmailJS first
+            result = await sendEmailEmailJS(formData);
+            
+            // If EmailJS fails, try Formspree
+            if (!result.success) {
+                result = await sendEmailFormspree(formData);
+            }
+            
+            // Handle result
+            if (result.success) {
+                showEmailStatus('success', '<i class="fas fa-check-circle"></i> ' + result.message);
+                showToast();
+                showThankYouMessage();
+                contactForm.reset();
+            } else {
+                showEmailStatus('error', '<i class="fas fa-exclamation-circle"></i> ' + result.message);
+                showErrorToast(result.message);
             }
         });
 
-        // Form validation
+        // Real-time validation for better UX
         document.getElementById('name').addEventListener('blur', function() {
             if (!this.value.trim()) {
                 showError('nameError', 'Name is required');
