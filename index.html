@@ -547,73 +547,164 @@
             gap: 10px;
         }
 
-        /* Certifications Section */
+        /* Certifications Section - Updated with Dual Carousels */
         .certifications {
             background-color: var(--dark-light);
             overflow: hidden;
             position: relative;
         }
 
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+        .certifications-section {
+            margin-bottom: 60px;
         }
 
-        .certification-card {
+        .certifications-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .certifications-section h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .certifications-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 40px 0;
+        }
+
+        .certifications-track {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+        }
+
+        /* Certificates (larger) */
+        .certificates-track {
+            animation: scroll-certificates 40s linear infinite;
+        }
+
+        .certificate-item {
+            flex: 0 0 auto;
+            width: 300px;
+            height: 220px;
             background-color: var(--dark);
             border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .certification-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .certification-image {
-            height: 200px;
-            background-color: var(--dark-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
             padding: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
         }
 
-        .certification-image img {
+        .certificate-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .certificate-item img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+            filter: brightness(0.9);
+            transition: var(--transition);
         }
 
-        .certification-content {
-            padding: 20px;
-            flex-grow: 1;
+        .certificate-item:hover img {
+            filter: brightness(1);
+        }
+
+        /* Badges (smaller) */
+        .badges-track {
+            animation: scroll-badges 30s linear infinite;
+        }
+
+        .badge-item {
+            flex: 0 0 auto;
+            width: 180px;
+            height: 180px;
+            background-color: var(--dark);
+            border-radius: var(--border-radius);
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
         }
 
-        .certification-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+        .badge-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .certification-issuer {
-            color: var(--secondary);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+        .badge-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(0.9);
+            transition: var(--transition);
         }
 
-        .certification-date {
-            color: var(--gray);
-            font-size: 0.85rem;
-            margin-bottom: 15px;
+        .badge-item:hover img {
+            filter: brightness(1);
+        }
+
+        .certification-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+        }
+
+        .certificate-item:hover .certification-overlay,
+        .badge-item:hover .certification-overlay {
+            opacity: 1;
+        }
+
+        .certification-overlay i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        @keyframes scroll-certificates {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-300px * 12 - 30px * 12));
+            }
+        }
+
+        @keyframes scroll-badges {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-180px * 11 - 30px * 11));
+            }
+        }
+
+        /* Pause animation on hover */
+        .certificates-track:hover,
+        .badges-track:hover {
+            animation-play-state: paused;
         }
 
         /* Modal Styles */
@@ -890,8 +981,8 @@
 
         /* Upwork Icon Styling - Fixed to be circular */
         .social-link img.upwork-icon {
-            width: 20px;
-            height: 20px;
+            width: 32px;
+            height: 32px;
             object-fit: contain;
         }
 
@@ -1048,9 +1139,36 @@
                 grid-template-columns: 1fr;
             }
             
-            .projects-grid,
-            .certifications-grid {
+            .projects-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .certificate-item {
+                width: 350px;
+                height: 250px;
+            }
+            
+            .badge-item {
+                width: 250px;
+                height: 250px;
+            }
+            
+            @keyframes scroll-certificates {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-250px * 12 - 30px * 12));
+                }
+            }
+            
+            @keyframes scroll-badges {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-150px * 11 - 30px * 11));
+                }
             }
         }
 
@@ -1082,6 +1200,34 @@
             
             .container {
                 padding: 0 15px;
+            }
+            
+            .certificate-item {
+                width: 350px;
+                height: 250px;
+            }
+            
+            .badge-item {
+                width: 250px;
+                height: 250px;
+            }
+            
+            @keyframes scroll-certificates {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-200px * 12 - 30px * 12));
+                }
+            }
+            
+            @keyframes scroll-badges {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-120px * 11 - 30px * 11));
+                }
             }
         }
 
@@ -1477,190 +1623,27 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
+    <!-- Certifications Section - Updated with Dual Carousels -->
     <section id="certifications" class="certifications">
         <div class="container">
             <h2>Certifications and Badges</h2>
-            <div class="certifications-grid">
-                <!-- Microsoft Power Up Program - Low Code Maker Course -->
-                <div class="certification-card" data-cert="microsoft-power-up-low-code">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/c5ff064b-9abe-47b3-9929-bf55999f4215" alt="Microsoft Power Up Program - Low Code Maker Course">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Microsoft Power Up Program - Low Code Maker Course</h3>
-                        <div class="certification-issuer">Microsoft</div>
-                        <div class="certification-date">Issued: 2024</div>
-                        <button class="btn">View Certificate</button>
+            
+            <!-- Certificates Section -->
+            <div class="certifications-section">
+                <h3>Certificates</h3>
+                <div class="certifications-carousel">
+                    <div class="certifications-track certificates-track">
+                        <!-- Certificate items will be added here by JavaScript -->
                     </div>
                 </div>
-
-                <!-- Microsoft Power Up Program - Power Platform Adventure -->
-                <div class="certification-card" data-cert="microsoft-power-up-adventure">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/0cb0e3f8-82ea-464a-8331-7ecf6eb4cc01" alt="Microsoft Power Up Program - Power Platform Adventure">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Microsoft Power Up Program - Power Platform Adventure</h3>
-                        <div class="certification-issuer">Microsoft</div>
-                        <div class="certification-date">Issued: 2024</div>
-                        <button class="btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Introduction to Data Science -->
-                <div class="certification-card" data-cert="intro-data-science">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/4592b5da-d701-4ea8-ac8d-f0f1db4894be" alt="Introduction to Data Science">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Introduction to Data Science</h3>
-                        <div class="certification-issuer">Cisco</div>
-                        <div class="certification-date">Issued: Nov 30, 2023</div>
-                        <button class="btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- IBM Data Analysis Using Python -->
-                <div class="certification-card" data-cert="ibm-data-analysis-python">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/b09cdd4d-d1f4-43ee-826d-cc45582b1b7c" alt="IBM Data Analysis Using Python">
-                    </div>
-                    <div class="certification-content">
-                        <h3>IBM Data Analysis Using Python</h3>
-                        <div class="certification-issuer">IBM</div>
-                        <div class="certification-date">Issued: 2024</div>
-                        <button class="btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- IBM AI Fundamentals -->
-                <div class="certification-card" data-cert="ibm-ai-fundamentals">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/0de8da5e-cd48-4b73-b134-e43a0a38d80e" alt="IBM AI Fundamentals">
-                    </div>
-                    <div class="certification-content">
-                        <h3>IBM AI Fundamentals</h3>
-                        <div class="certification-issuer">IBM</div>
-                        <div class="certification-date">Issued: 2024</div>
-                        <button class="btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Getting Started With Tableau -->
-                <div class="certification-card" data-cert="tableau">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/b14545e8-139a-4094-9a3d-3402a344810c" alt="Getting Started With Tableau">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Getting Started With Tableau</h3>
-                        <div class="certification-issuer">Cognitive Class</div>
-                        <div class="certification-date">Issued: Oct 25, 2025</div>
-                        <button class="btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Data Analytics Essentials -->
-                <div class="certification-card" data-cert="data-analytics-essentials">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/f2df529c-377d-40b2-a3f6-02371c1f0179" alt="Data Analytics Essentials">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Data Analytics Essentials</h3>
-                        <div class="certification-issuer">Cisco</div>
-                        <div class="certification-date">Issued: Dec 06, 2024</div>
-                        <button class="btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Data Wrangling Using Python -->
-                <div class="certification-card" data-cert="data-wrangling">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/faae0203-0d8a-4a7f-b9ff-ec9399bba6b8" alt="Data Wrangling Using Python">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Data Wrangling Using Python</h3>
-                        <div class="certification-issuer">IBM Skills Network</div>
-                        <div class="certification-date">Issued: 2024</div>
-                        <button class="btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Coursera Programming for Everybody -->
-                <div class="certification-card" data-cert="coursera-programming">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/90984453-ee23-40ec-a2e0-32a3c0a8e547" alt="Programming for Everybody">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Programming for Everybody</h3>
-                        <div class="certification-issuer">Coursera</div>
-                        <div class="certification-date">Issued: Oct 17, 2020</div>
-                        <button class="btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- AI Fundamentals -->
-                <div class="certification-card" data-cert="ai-fundamentals">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/5bd0dabd-952c-47b6-99f9-4ec335ebaa67" alt="AI Fundamentals">
-                    </div>
-                    <div class="certification-content">
-                        <h3>AI Fundamentals</h3>
-                        <div class="certification-issuer">IBM SkillsBuild</div>
-                        <div class="certification-date">Issued: Jan 15, 2025</div>
-                        <button class="btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Python Essentials 2 -->
-                <div class="certification-card" data-cert="python-essentials-2">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/a835620e-dbf7-437f-9aac-3970e56154fd" alt="Python Essentials 2">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Python Essentials 2</h3>
-                        <div class="certification-issuer">Cisco</div>
-                        <div class="certification-date">Issued: Jul 30, 2024</div>
-                        <button class="btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Python Essentials 1 -->
-                <div class="certification-card" data-cert="python-essentials-1">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/abf78bca-7bec-4fbc-880a-c6e8d1305bf0" alt="Python Essentials 1">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Python Essentials 1</h3>
-                        <div class="certification-issuer">Cisco</div>
-                        <div class="certification-date">Issued: Jul 06, 2024</div>
-                        <button class="btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Python for Data Science -->
-                <div class="certification-card" data-cert="python-data-science">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/da6afaed-e9f5-482a-9050-f4df75326949" alt="Python for Data Science">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Python for Data Science</h3>
-                        <div class="certification-issuer">IBM</div>
-                        <div class="certification-date">Issued: Oct 11, 2025</div>
-                        <button class="btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Introduction to Modern AI -->
-                <div class="certification-card" data-cert="modern-ai">
-                    <div class="certification-image">
-                        <img src="https://github.com/user-attachments/assets/1ebbc427-4f77-4f3e-8756-682ebec877f3" alt="Introduction to Modern AI">
-                    </div>
-                    <div class="certification-content">
-                        <h3>Introduction to Modern AI</h3>
-                        <div class="certification-issuer">Cisco</div>
-                        <div class="certification-date">Issued: Dec 22, 2024</div>
-                        <button class="btn">View Certificate</button>
+            </div>
+            
+            <!-- Badges Section -->
+            <div class="certifications-section">
+                <h3>Badges</h3>
+                <div class="certifications-carousel">
+                    <div class="certifications-track badges-track">
+                        <!-- Badge items will be added here by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -1817,107 +1800,266 @@
     </div>
 
     <script>
-        // Certificate data for modal
-        const certificates = {
-            "microsoft-power-up-low-code": {
-                title: "Microsoft Power Up Program - Low Code Maker Course",
-                issuer: "Microsoft",
-                date: "Issued: 2024",
-                image: "https://github.com/user-attachments/assets/c5ff064b-9abe-47b3-9929-bf55999f4215",
-                link: "#"
-            },
-            "microsoft-power-up-adventure": {
-                title: "Microsoft Power Up Program - Power Platform Adventure",
-                issuer: "Microsoft",
-                date: "Issued: 2024",
-                image: "https://github.com/user-attachments/assets/0cb0e3f8-82ea-464a-8331-7ecf6eb4cc01",
-                link: "#"
-            },
-            "intro-data-science": {
+        // Certificate data for carousels
+        const certificates = [
+            {
+                id: "intro-data-science",
                 title: "Introduction to Data Science",
                 issuer: "Cisco",
                 date: "Issued: Nov 30, 2023",
                 image: "https://github.com/user-attachments/assets/4592b5da-d701-4ea8-ac8d-f0f1db4894be",
                 link: "#"
             },
-            "ibm-data-analysis-python": {
+            {
+                id: "ibm-data-analysis-python",
                 title: "IBM Data Analysis Using Python",
                 issuer: "IBM",
                 date: "Issued: 2024",
                 image: "https://github.com/user-attachments/assets/b09cdd4d-d1f4-43ee-826d-cc45582b1b7c",
                 link: "#"
             },
-            "ibm-ai-fundamentals": {
+            {
+                id: "ibm-ai-fundamentals",
                 title: "IBM AI Fundamentals",
                 issuer: "IBM",
                 date: "Issued: 2024",
                 image: "https://github.com/user-attachments/assets/0de8da5e-cd48-4b73-b134-e43a0a38d80e",
                 link: "#"
             },
-            "tableau": {
+            {
+                id: "tableau",
                 title: "Getting Started With Tableau",
                 issuer: "Cognitive Class",
                 date: "Issued: Oct 25, 2025",
                 image: "https://github.com/user-attachments/assets/b14545e8-139a-4094-9a3d-3402a344810c",
                 link: "#"
             },
-            "data-analytics-essentials": {
+            {
+                id: "data-analytics-essentials",
                 title: "Data Analytics Essentials",
                 issuer: "Cisco",
                 date: "Issued: Dec 06, 2024",
                 image: "https://github.com/user-attachments/assets/f2df529c-377d-40b2-a3f6-02371c1f0179",
                 link: "#"
             },
-            "data-wrangling": {
+            {
+                id: "data-wrangling",
                 title: "Data Wrangling Using Python",
                 issuer: "IBM Skills Network",
                 date: "Issued: 2024",
                 image: "https://github.com/user-attachments/assets/faae0203-0d8a-4a7f-b9ff-ec9399bba6b8",
                 link: "#"
             },
-            "coursera-programming": {
+            {
+                id: "coursera-programming",
                 title: "Programming for Everybody",
                 issuer: "Coursera",
                 date: "Issued: Oct 17, 2020",
                 image: "https://github.com/user-attachments/assets/90984453-ee23-40ec-a2e0-32a3c0a8e547",
                 link: "#"
             },
-            "ai-fundamentals": {
+            {
+                id: "ai-fundamentals",
                 title: "AI Fundamentals",
                 issuer: "IBM SkillsBuild",
                 date: "Issued: Jan 15, 2025",
                 image: "https://github.com/user-attachments/assets/5bd0dabd-952c-47b6-99f9-4ec335ebaa67",
                 link: "#"
             },
-            "python-essentials-2": {
+            {
+                id: "python-essentials-2",
                 title: "Python Essentials 2",
                 issuer: "Cisco",
                 date: "Issued: Jul 30, 2024",
                 image: "https://github.com/user-attachments/assets/a835620e-dbf7-437f-9aac-3970e56154fd",
                 link: "#"
             },
-            "python-essentials-1": {
+            {
+                id: "python-essentials-1",
                 title: "Python Essentials 1",
                 issuer: "Cisco",
                 date: "Issued: Jul 06, 2024",
                 image: "https://github.com/user-attachments/assets/abf78bca-7bec-4fbc-880a-c6e8d1305bf0",
                 link: "#"
             },
-            "python-data-science": {
+            {
+                id: "python-data-science",
                 title: "Python for Data Science",
                 issuer: "IBM",
                 date: "Issued: Oct 11, 2025",
                 image: "https://github.com/user-attachments/assets/da6afaed-e9f5-482a-9050-f4df75326949",
                 link: "#"
             },
-            "modern-ai": {
+            {
+                id: "modern-ai",
                 title: "Introduction to Modern AI",
                 issuer: "Cisco",
                 date: "Issued: Dec 22, 2024",
                 image: "https://github.com/user-attachments/assets/1ebbc427-4f77-4f3e-8756-682ebec877f3",
                 link: "#"
             }
-        };
+        ];
+
+        const badges = [
+            {
+                id: "microsoft-power-up-low-code",
+                title: "Microsoft Power Up Program - Low Code Maker Course",
+                issuer: "Microsoft",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/c5ff064b-9abe-47b3-9929-bf55999f4215",
+                link: "#"
+            },
+            {
+                id: "microsoft-power-up-adventure",
+                title: "Microsoft Power Up Program - Power Platform Adventure",
+                issuer: "Microsoft",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/0cb0e3f8-82ea-464a-8331-7ecf6eb4cc01",
+                link: "#"
+            },
+            {
+                id: "python-for-data-science",
+                title: "Python for Data Science",
+                issuer: "IBM",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/4b0ba356-eab1-404c-b3a3-c8d510b9d0ba",
+                link: "#"
+            },
+            {
+                id: "python-essentials-2-badge",
+                title: "Python Essentials 2",
+                issuer: "Cisco",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/0d6feac6-6a32-4b75-a19b-d92d7cb0ac8e",
+                link: "#"
+            },
+            {
+                id: "python-essentials-1-badge",
+                title: "Python Essentials 1",
+                issuer: "Cisco",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/f695ac34-d5b9-4529-a722-dd5ea4b5040a",
+                link: "#"
+            },
+            {
+                id: "introduction-to-modern-ai-badge",
+                title: "Introduction to Modern AI",
+                issuer: "Cisco",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/87364b3b-b649-4403-a199-9b4507c84585",
+                link: "#"
+            },
+            {
+                id: "introduction-to-data-science-badge",
+                title: "Introduction to Data Science",
+                issuer: "Cisco",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/c7932b15-f0dc-4c77-a3c3-cb8ef2bbcd66",
+                link: "#"
+            },
+            {
+                id: "data-analytics-essentials-badge",
+                title: "Data Analytics Essentials",
+                issuer: "Cisco",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/9d7dacc4-b1da-48a5-85c0-baa7fcb00922",
+                link: "#"
+            },
+            {
+                id: "data-analysis-using-python-badge",
+                title: "Data Analysis Using Python",
+                issuer: "IBM",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/ef12be0e-8c54-435c-8f1f-e6fdd8156acd",
+                link: "#"
+            },
+            {
+                id: "artificial-intelligence-fundamentals-badge",
+                title: "Artificial Intelligence Fundamentals",
+                issuer: "IBM",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/d6fbf2b1-b4f9-4e37-85fb-c78bac98ba63",
+                link: "#"
+            },
+            {
+                id: "ai-fundamentals-with-ibm-skillsbuild",
+                title: "AI Fundamentals with IBM SkillsBuild",
+                issuer: "IBM SkillsBuild",
+                date: "Issued: 2024",
+                image: "https://github.com/user-attachments/assets/bf9d6073-488f-478f-8bf8-e264f65ac94d",
+                link: "#"
+            }
+        ];
+
+        // Initialize the carousels
+        function initCarousels() {
+            const certificatesTrack = document.querySelector('.certificates-track');
+            const badgesTrack = document.querySelector('.badges-track');
+            
+            // Create certificate items
+            certificates.forEach(cert => {
+                const item = document.createElement('div');
+                item.className = 'certificate-item';
+                item.setAttribute('data-cert', cert.id);
+                
+                item.innerHTML = `
+                    <img src="${cert.image}" alt="${cert.title}">
+                    <div class="certification-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                `;
+                
+                certificatesTrack.appendChild(item);
+            });
+            
+            // Duplicate certificate items for seamless looping
+            certificates.forEach(cert => {
+                const item = document.createElement('div');
+                item.className = 'certificate-item';
+                item.setAttribute('data-cert', cert.id);
+                
+                item.innerHTML = `
+                    <img src="${cert.image}" alt="${cert.title}">
+                    <div class="certification-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                `;
+                
+                certificatesTrack.appendChild(item);
+            });
+            
+            // Create badge items
+            badges.forEach(badge => {
+                const item = document.createElement('div');
+                item.className = 'badge-item';
+                item.setAttribute('data-cert', badge.id);
+                
+                item.innerHTML = `
+                    <img src="${badge.image}" alt="${badge.title}">
+                    <div class="certification-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                `;
+                
+                badgesTrack.appendChild(item);
+            });
+            
+            // Duplicate badge items for seamless looping
+            badges.forEach(badge => {
+                const item = document.createElement('div');
+                item.className = 'badge-item';
+                item.setAttribute('data-cert', badge.id);
+                
+                item.innerHTML = `
+                    <img src="${badge.image}" alt="${badge.title}">
+                    <div class="certification-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                `;
+                
+                badgesTrack.appendChild(item);
+            });
+        }
 
         // Modal functionality
         const modal = document.getElementById('certModal');
@@ -1928,21 +2070,28 @@
         const modalLinkBtn = document.getElementById('modalLinkBtn');
         const closeModal = document.querySelector('.modal-close');
 
-        // Open modal when certificate card is clicked
-        document.querySelectorAll('.certification-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const certId = this.getAttribute('data-cert');
-                const cert = certificates[certId];
+        // Open modal when certificate or badge item is clicked
+        document.addEventListener('click', function(e) {
+            const item = e.target.closest('.certificate-item, .badge-item');
+            if (item) {
+                const certId = item.getAttribute('data-cert');
+                let cert = certificates.find(c => c.id === certId);
                 
-                modalTitle.textContent = cert.title;
-                modalDetails.innerHTML = `<p>${cert.issuer}</p><p>${cert.date}</p>`;
-                modalImage.src = cert.image;
-                modalImage.alt = cert.title;
-                modalLinkBtn.href = cert.link;
+                if (!cert) {
+                    cert = badges.find(b => b.id === certId);
+                }
                 
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            });
+                if (cert) {
+                    modalTitle.textContent = cert.title;
+                    modalDetails.innerHTML = `<p>${cert.issuer}</p><p>${cert.date}</p>`;
+                    modalImage.src = cert.image;
+                    modalImage.alt = cert.title;
+                    modalLinkBtn.href = cert.link;
+                    
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                }
+            }
         });
 
         // Close modal
@@ -2206,6 +2355,9 @@
                 hideError('messageError');
             }
         });
+
+        // Initialize the carousels when the page loads
+        document.addEventListener('DOMContentLoaded', initCarousels);
     </script>
 </body>
 </html>
