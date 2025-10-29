@@ -616,7 +616,7 @@
             animation-play-state: paused;
         }
 
-        /* Modal Styles */
+        /* Modal Styles - UPDATED */
         .modal {
             display: none;
             position: fixed;
@@ -1170,6 +1170,27 @@
         <div class="container">
             <h2>Featured Projects</h2>
             <div class="projects-grid">
+                <!-- National Reading Program Project -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://github.com/user-attachments/assets/5414b94d-9249-4f26-8bbe-d7472baf0f00" alt="National Reading Program">
+                    </div>
+                    <div class="project-content">
+                        <h3>National Reading Program</h3>
+                        <p>A comprehensive educational initiative designed to promote literacy and reading culture through data-driven insights and program management.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Education</span>
+                            <span class="project-tag">Data Analysis</span>
+                            <span class="project-tag">Program Management</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/MAHMOUD2ABDALLAH/National-Reading-Program" class="btn btn-github" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="project-card">
                     <div class="project-image">
                         <img src="https://github.com/user-attachments/assets/fe0430d6-5dcd-4c1c-aba5-286a7a22137d" alt="Mobile Ventilator GP">
@@ -1353,7 +1374,7 @@
         </div>
     </section>
 
-    <!-- Certificate Modal -->
+    <!-- Certificate Modal - UPDATED (Removed View Original Button) -->
     <div id="certModal" class="modal">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
@@ -1362,7 +1383,7 @@
             <img class="modal-image" id="modalImage" src="" alt="Certificate">
             <div class="modal-actions">
                 <button class="btn" id="modalCloseBtn">Close</button>
-                <a href="#" class="btn btn-outline" id="modalLinkBtn" target="_blank">View Original</a>
+                <!-- View Original Button Removed -->
             </div>
         </div>
     </div>
@@ -1723,7 +1744,6 @@
         const modalDetails = document.getElementById('modalDetails');
         const modalImage = document.getElementById('modalImage');
         const modalCloseBtn = document.getElementById('modalCloseBtn');
-        const modalLinkBtn = document.getElementById('modalLinkBtn');
         const closeModal = document.querySelector('.modal-close');
 
         // Open modal when certificate or badge item is clicked
@@ -1742,7 +1762,6 @@
                     modalDetails.innerHTML = `<p>${cert.issuer}</p><p>${cert.date}</p>`;
                     modalImage.src = cert.image;
                     modalImage.alt = cert.title;
-                    modalLinkBtn.href = cert.link;
                     
                     modal.style.display = 'block';
                     document.body.style.overflow = 'hidden'; // Prevent scrolling
