@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* All your existing CSS styles remain the same */
         :root {
             --primary: #3b82f6;
             --primary-dark: #2563eb;
@@ -380,7 +379,7 @@
             font-weight: 500;
         }
 
-        /* Projects Section - UPDATED */
+        /* Projects Section */
         .projects {
             background-color: var(--dark-light);
         }
@@ -399,7 +398,7 @@
             transition: var(--transition);
             display: flex;
             flex-direction: column;
-            height: 480px; /* Increased height */
+            height: 480px;
         }
 
         .project-card:hover {
@@ -408,7 +407,7 @@
         }
 
         .project-image {
-            height: 220px; /* Increased height */
+            height: 220px;
             background-color: var(--dark);
             display: flex;
             align-items: center;
@@ -456,7 +455,7 @@
             gap: 10px;
         }
 
-        /* Certifications Section - Updated with Dual Carousels */
+        /* Certifications Section */
         .certifications {
             background-color: var(--dark);
             overflow: hidden;
@@ -616,7 +615,7 @@
             animation-play-state: paused;
         }
 
-        /* Modal Styles - UPDATED */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -680,7 +679,7 @@
             margin-top: 20px;
         }
 
-        /* Contact Section - Horizontal Layout */
+        /* Contact Section - Fixed Icons */
         .contact {
             background-color: var(--dark-light);
         }
@@ -711,9 +710,11 @@
             transform: translateY(-5px);
         }
 
+        /* FIXED: Ensure contact icons remain perfectly circular */
         .contact-icon {
             width: 50px;
             height: 50px;
+            min-width: 50px;
             background-color: var(--dark-light);
             border-radius: 50%;
             display: flex;
@@ -721,6 +722,48 @@
             justify-content: center;
             color: var(--primary);
             font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Additional mobile-specific fix */
+        @media (max-width: 768px) {
+            .contact-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .contact-row .contact-item {
+                flex-direction: row;
+                text-align: left;
+                padding: 20px;
+            }
+            
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                min-width: 50px;
+                flex-shrink: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contact-row .contact-item {
+                padding: 15px;
+            }
+            
+            .contact-icon {
+                width: 45px;
+                height: 45px;
+                min-width: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Additional fix for circular contact icons */
+        .contact-item .contact-icon {
+            border-radius: 50% !important;
+            aspect-ratio: 1 / 1 !important;
+            flex-shrink: 0 !important;
         }
 
         /* Footer */
@@ -808,7 +851,7 @@
         .social-link i,
         .social-link img {
             color: white;
-            filter: brightness(0) invert(1); /* Makes the logo white */
+            filter: brightness(0) invert(1);
         }
 
         /* Enlarged Upwork and LinkedIn Icons */
@@ -904,11 +947,6 @@
             
             .projects-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .contact-row {
-                flex-direction: column;
-                gap: 20px;
             }
             
             .certificate-item {
@@ -1165,7 +1203,7 @@
         </div>
     </section>
 
-    <!-- Projects Section - UPDATED WITH PROPER LOGOS -->
+    <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
             <h2>Featured Projects</h2>
@@ -1347,7 +1385,7 @@
         </div>
     </section>
 
-    <!-- Certifications Section - Updated with Dual Carousels -->
+    <!-- Certifications Section -->
     <section id="certifications" class="certifications">
         <div class="container">
             <h2>Certifications and Badges</h2>
@@ -1374,7 +1412,7 @@
         </div>
     </section>
 
-    <!-- Certificate Modal - UPDATED (Removed View Original Button) -->
+    <!-- Certificate Modal -->
     <div id="certModal" class="modal">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
@@ -1383,12 +1421,11 @@
             <img class="modal-image" id="modalImage" src="" alt="Certificate">
             <div class="modal-actions">
                 <button class="btn" id="modalCloseBtn">Close</button>
-                <!-- View Original Button Removed -->
             </div>
         </div>
     </div>
 
-    <!-- Contact Section - Updated with Horizontal Layout -->
+    <!-- Contact Section - Fixed Icons -->
     <section id="contact" class="contact">
         <div class="container">
             <h2>Contact Details</h2>
@@ -1764,7 +1801,7 @@
                     modalImage.alt = cert.title;
                     
                     modal.style.display = 'block';
-                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    document.body.style.overflow = 'hidden';
                 }
             }
         });
@@ -1772,7 +1809,7 @@
         // Close modal
         function closeCertificateModal() {
             modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
+            document.body.style.overflow = 'auto';
         }
 
         modalCloseBtn.addEventListener('click', closeCertificateModal);
