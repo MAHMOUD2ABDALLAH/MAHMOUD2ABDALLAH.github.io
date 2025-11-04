@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Analyst | Data Analytics & Business Intelligence Specialist</title>
+    
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/x-icon" href="https://github.com/user-attachments/assets/43e5ca71-5c48-4d15-bebe-4d63ffbebc9d">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://github.com/user-attachments/assets/43e5ca71-5c48-4d15-bebe-4d63ffbebc9d">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://github.com/user-attachments/assets/43e5ca71-5c48-4d15-bebe-4d63ffbebc9d">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://github.com/user-attachments/assets/43e5ca71-5c48-4d15-bebe-4d63ffbebc9d">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -139,6 +146,24 @@
             background-color: #000;
         }
 
+        /* Icon in top-right corner - matching header size */
+        .top-right-icon {
+            position: fixed;
+            top: 22px;
+            right: 60px;
+            z-index: 1001;
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+        }
+
+        .top-right-icon:hover {
+            transform: scale(1.1);
+        }
+
         /* Header */
         header {
             position: fixed;
@@ -255,8 +280,8 @@
 
        .profile-image {
         width: 100%;
-        max-width: 300px;
-        height: 300px;
+        max-width: 400px;
+        height: 400px;
         border-radius: 50%;
         border: 8px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -1058,6 +1083,9 @@
     </style>
 </head>
 <body>
+    <!-- Icon in top-right corner -->
+    <img width="45" height="45" class="top-right-icon" alt="donut-chart" src="https://github.com/user-attachments/assets/43e5ca71-5c48-4d15-bebe-4d63ffbebc9d" />
+
     <!-- Header -->
     <header id="header">
         <div class="container">
