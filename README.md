@@ -1,3 +1,5 @@
+<img width="50" height="50" align="right" alt="donut-chart" src="https://github.com/user-attachments/assets/43e5ca71-5c48-4d15-bebe-4d63ffbebc9d" />
+
 # The Analyst - Data Analytics & Business Intelligence Portfolio
 
 A modern, responsive portfolio website showcasing data analytics and business intelligence projects, skills, and certifications.
