@@ -1,4 +1,4 @@
-<img width="50" height="50" align="right" alt="icon" src="https://github.com/user-attachments/assets/5a17b902-957c-42c4-8be6-34e40cb440ae" />
+<img width="50" height="50" align="right" alt="donut-chart" src="https://github.com/user-attachments/assets/43e5ca71-5c48-4d15-bebe-4d63ffbebc9d" />
 
 # The Analyst - Data Analytics & Business Intelligence Portfolio
 
