@@ -1,3 +1,5 @@
+<img width="50" height="50" align="right" alt="icon" src="https://github.com/user-attachments/assets/5a17b902-957c-42c4-8be6-34e40cb440ae" />
+
 # The Analyst - Data Analytics & Business Intelligence Portfolio
 
 A modern, responsive portfolio website showcasing data analytics and business intelligence projects, skills, and certifications.
