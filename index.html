@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Analyst | Data Analytics & Business Intelligence Specialist</title>
+    <title>The Analyst | Data Visualization Engineer</title>
     <link rel="icon" type="image/x-icon" href="https://github.com/user-attachments/assets/43e5ca71-5c48-4d15-bebe-4d63ffbebc9d">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -54,6 +54,7 @@
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 1rem;
+            color: var(--light);
         }
 
         h1 {
@@ -85,7 +86,7 @@
 
         p {
             margin-bottom: 1rem;
-            color: var(--secondary);
+            color: var(--light);
         }
 
         a {
@@ -203,6 +204,7 @@
         .nav-links a {
             font-weight: 500;
             position: relative;
+            color: var(--light);
         }
 
         .nav-links a::after {
@@ -224,6 +226,7 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--light);
         }
 
         .hero {
@@ -250,7 +253,7 @@
         }
 
         .hero-text h2 {
-            color: white;
+            color: var(--primary);
             text-align: left;
         }
 
@@ -262,7 +265,7 @@
         .hero-text p {
             font-size: 1.2rem;
             margin-bottom: 30px;
-            color: #cbd5e1;
+            color: var(--light);
         }
 
         .hero-btns {
@@ -319,6 +322,39 @@
 
         .about-text p {
             margin-bottom: 20px;
+            color: var(--light);
+        }
+
+        .core-expertise {
+            margin: 30px 0;
+        }
+
+        .core-expertise h3 {
+            color: var(--light);
+            margin-bottom: 15px;
+        }
+
+        .core-expertise ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .core-expertise li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            color: var(--light);
+        }
+
+        .core-expertise li:before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        .core-expertise strong {
+            color: var(--light);
         }
 
         .about-stats {
@@ -350,6 +386,7 @@
         .stat p {
             margin: 0;
             font-size: 0.9rem;
+            color: var(--light);
         }
 
         .skills {
@@ -379,6 +416,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            color: var(--light);
         }
 
         .skill-category h3 i {
@@ -397,6 +435,7 @@
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
+            color: var(--light);
         }
 
         .projects {
@@ -454,6 +493,14 @@
             flex-direction: column;
         }
 
+        .project-content h3 {
+            color: var(--light);
+        }
+
+        .project-content p {
+            color: var(--light);
+        }
+
         .project-tags {
             display: flex;
             flex-wrap: wrap;
@@ -466,6 +513,7 @@
             padding: 5px 10px;
             border-radius: 20px;
             font-size: 0.8rem;
+            color: var(--light);
         }
 
         .project-actions {
@@ -680,11 +728,13 @@
         .modal-title {
             text-align: center;
             margin-bottom: 10px;
+            color: var(--light);
         }
 
         .modal-details {
             text-align: center;
             margin-bottom: 20px;
+            color: var(--light);
         }
 
         .modal-actions {
@@ -737,6 +787,14 @@
             flex-shrink: 0;
         }
 
+        .contact-item h3 {
+            color: var(--light);
+        }
+
+        .contact-item p {
+            color: var(--light);
+        }
+
         footer {
             background-color: var(--dark);
             color: white;
@@ -763,7 +821,7 @@
         }
 
         .footer-about p {
-            color: var(--gray);
+            color: var(--light);
             margin-bottom: 20px;
         }
 
@@ -801,19 +859,19 @@
         }
 
         .footer-links a {
-            color: var(--gray);
+            color: var(--light);
             transition: var(--transition);
         }
 
         .footer-links a:hover {
-            color: white;
+            color: var(--primary);
         }
 
         .copyright {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--gray);
+            color: var(--light);
             font-size: 0.9rem;
         }
 
@@ -1072,7 +1130,7 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Mahmoud Abdallah</h1>
-                    <h2>Data Analytics & Business Intelligence Specialist</h2>
+                    <h2>Data Visualization Engineer</h2>
                     <p>Transforming complex data into actionable insights and building data-driven solutions that drive business growth and operational efficiency.</p>
                     <div class="hero-btns">
                         <a href="#projects" class="btn">View Projects</a>
@@ -1094,10 +1152,20 @@
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Data Analytics & Business Intelligence Specialist with 3+ years of experience in the full data lifecycle, from ETL to dashboard development.</p>
-                    <p>Leads the design and development of internal tools for HR, visitor tracking, and maintenance using Microsoft Power Platform to optimize operations and ensure secure, cross-departmental access.</p>
-                    <p>Proficient in data management (Pandas, SQL), machine learning (Scikit-learn, TensorFlow), ETL pipeline development (Snowflake, HubSpot), and building interactive dashboards (Power BI, Tableau, Looker Studio).</p>
-                    <p>Automate workflows to improve efficiency and accuracy, collaborating in Agile teams to align technology with business objectives.</p>
+                    <p>I am a Data Visualization Engineer with a proven ability to transform complex datasets into actionable insights, My expertise spans advanced analytics, scalable data engineering, and interactive business intelligence solutions that empower organizations to make data-driven decisions with confidence.</p>
+                    <p>Through continuous learning and industry-recognized certifications, I have developed strong capabilities in:</p>
+                    
+                    <div class="core-expertise">
+                        <h3>Core Expertise</h3>
+                        <ul>
+                            <li><strong>Advanced Analytics:</strong> Predictive modeling with Python and TensorFlow, statistical analysis (SciPy, A/B testing), and machine learning fundamentals</li>
+                            <li><strong>Data Engineering:</strong> ETL pipeline development with Snowflake and Databricks, optimizing workflows for large-scale datasets</li>
+                            <li><strong>Business Intelligence:</strong> Interactive dashboards and KPI tracking with Power BI, Tableau, and Looker Studio, driving adoption and executive reporting</li>
+                            <li><strong>Process Automation:</strong> Microsoft Power Platform (Power Apps, Power Automate, Power Pages) solutions for streamlined workflows</li>
+                            <li><strong>Cloud & AI Foundations:</strong> Microsoft Azure (Data Factory, Synapse Analytics, Fabric), IBM AI Fundamentals, Cisco AI Essentials</li>
+                        </ul>
+                    </div>
+
                     <div class="about-stats">
                         <div class="stat">
                             <h3>3+</h3>
@@ -1446,7 +1514,7 @@
             <div class="footer-content">
                 <div class="footer-about">
                     <div class="footer-logo">The <span>Analyst</span></div>
-                    <p>Data Analytics & Business Intelligence Specialist transforming complex data into actionable insights and building data-driven solutions.</p>
+                    <p>Data Visualization Engineer transforming complex data into actionable insights and building data-driven solutions.</p>
                     <div class="social-links">
                         <a href="https://github.com/MAHMOUD2ABDALLAH" class="social-link" target="_blank">
                             <i class="fab fa-github"></i>
