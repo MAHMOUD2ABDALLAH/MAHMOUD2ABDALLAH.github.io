@@ -43,5 +43,5 @@ This project is open source and available.
 ## Live Demo 
 **[The Analyst](https://mahmoud2abdallah.github.io)**
 
-<img width="300" height="300" alt="Linkedin Profile" src="https://github.com/user-attachments/assets/09d70353-b643-46d5-aee5-c524b497583a" />
+<img width="300" height="300" alt="Linkedin Profile" src="https://github.com/user-attachments/assets/195a1487-78f1-40e2-9684-8ef2fe10ba95" />
 
