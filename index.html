@@ -6,7 +6,6 @@
     <title>BI Analyst</title>
     <link rel="icon" type="image/x-icon" href="https://github.com/user-attachments/assets/43e5ca71-5c48-4d15-bebe-4d63ffbebc9d">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Add Boxicons for Upwork icon -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -32,6 +31,8 @@
 
         html {
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
@@ -40,6 +41,23 @@
             color: var(--light);
             background-color: var(--darker);
             overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Network Background Canvas */
+        #network-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            image-rendering: optimizeSpeed;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: optimize-contrast;
+            -ms-interpolation-mode: nearest-neighbor;
         }
 
         .container {
@@ -51,6 +69,9 @@
 
         section {
             padding: 80px 0;
+            position: relative;
+            z-index: 1;
+            will-change: transform;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -114,6 +135,7 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
+            will-change: transform;
         }
 
         .btn:hover {
@@ -150,6 +172,7 @@
             gap: 10px;
             cursor: pointer;
             transition: var(--transition);
+            will-change: transform;
         }
 
         .logo-icon {
@@ -188,6 +211,8 @@
             box-shadow: var(--shadow);
             z-index: 1000;
             transition: var(--transition);
+            backdrop-filter: blur(10px);
+            will-change: transform;
         }
 
         header.scrolled {
@@ -240,12 +265,6 @@
 
         .hero {
             padding-top: 150px;
-            background: 
-                linear-gradient(rgba(5, 5, 5, 0.85), rgba(10, 10, 10, 0.9)),
-                url('https://wallpaperaccess.com/full/2327618.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -271,6 +290,8 @@
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-text h1 {
@@ -311,39 +332,24 @@
             max-width: 320px;
             height: 320px;
             border-radius: 50%;
-            border: 8px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 
-                0 0 40px rgba(59, 130, 246, 0.3),
-                0 10px 30px rgba(0, 0, 0, 0.5);
             object-fit: cover;
             filter: brightness(0.95) contrast(1.05);
-            backdrop-filter: blur(5px);
+            will-change: transform;
+            border: 4px solid transparent;
+            transition: var(--transition);
         }
 
-        .image-frame {
-            position: relative;
-            display: inline-block;
-        }
-
-        .image-frame::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0.3;
+        .profile-image:hover {
+            transform: scale(1.02);
         }
 
         .about {
-            background-color: var(--dark);
+            background-color: rgba(10, 10, 10, 0.85);
             padding: 80px 0;
             width: 100%;
             margin: 0;
             position: relative;
+            backdrop-filter: blur(5px);
         }
 
         .about::before {
@@ -411,11 +417,13 @@
         .stat {
             text-align: center;
             padding: 25px 20px;
-            background-color: var(--dark-light);
+            background-color: rgba(18, 18, 18, 0.8);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            will-change: transform;
         }
 
         .stat:hover {
@@ -436,8 +444,9 @@
         }
 
         .skills {
-            background-color: var(--darker);
+            background-color: rgba(5, 5, 5, 0.85);
             position: relative;
+            backdrop-filter: blur(5px);
         }
 
         .skills::before {
@@ -457,12 +466,14 @@
         }
 
         .skill-category {
-            background-color: var(--dark);
+            background-color: rgba(18, 18, 18, 0.8);
             padding: 30px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            will-change: transform;
         }
 
         .skill-category:hover {
@@ -489,7 +500,7 @@
         }
 
         .skill-item {
-            background-color: var(--dark-light);
+            background-color: rgba(30, 30, 30, 0.8);
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
@@ -497,6 +508,7 @@
             color: var(--gray);
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition);
+            will-change: transform;
         }
 
         .skill-item:hover {
@@ -505,8 +517,9 @@
         }
 
         .projects {
-            background-color: var(--dark);
+            background-color: rgba(10, 10, 10, 0.85);
             position: relative;
+            backdrop-filter: blur(5px);
         }
 
         .projects::before {
@@ -526,7 +539,7 @@
         }
 
         .project-card {
-            background-color: var(--dark-light);
+            background-color: rgba(18, 18, 18, 0.8);
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -535,6 +548,8 @@
             flex-direction: column;
             height: 480px;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            will-change: transform;
         }
 
         .project-card:hover {
@@ -545,7 +560,7 @@
 
         .project-image {
             height: 220px;
-            background-color: var(--dark);
+            background-color: rgba(10, 10, 10, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -560,6 +575,7 @@
             object-fit: contain;
             transition: var(--transition);
             filter: brightness(0.9) contrast(1.1);
+            will-change: transform;
         }
 
         .project-card:hover .project-image img {
@@ -590,7 +606,7 @@
         }
 
         .project-tag {
-            background-color: var(--dark);
+            background-color: rgba(10, 10, 10, 0.8);
             padding: 5px 10px;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -605,9 +621,10 @@
         }
 
         .certifications {
-            background-color: var(--darker);
+            background-color: rgba(5, 5, 5, 0.85);
             overflow: hidden;
             position: relative;
+            backdrop-filter: blur(5px);
         }
 
         .certifications::before {
@@ -646,6 +663,7 @@
             display: flex;
             gap: 30px;
             width: max-content;
+            will-change: transform;
         }
 
         .certificates-track {
@@ -656,7 +674,7 @@
             flex: 0 0 auto;
             width: 300px;
             height: 220px;
-            background-color: var(--dark);
+            background-color: rgba(18, 18, 18, 0.8);
             border-radius: var(--border-radius);
             display: flex;
             align-items: center;
@@ -667,6 +685,8 @@
             cursor: pointer;
             position: relative;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            will-change: transform;
         }
 
         .certificate-item:hover {
@@ -681,6 +701,7 @@
             object-fit: contain;
             filter: brightness(0.85) contrast(1.1);
             transition: var(--transition);
+            will-change: transform;
         }
 
         .certificate-item:hover img {
@@ -695,7 +716,7 @@
             flex: 0 0 auto;
             width: 180px;
             height: 180px;
-            background-color: var(--dark);
+            background-color: rgba(18, 18, 18, 0.8);
             border-radius: var(--border-radius);
             display: flex;
             align-items: center;
@@ -706,6 +727,8 @@
             cursor: pointer;
             position: relative;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            will-change: transform;
         }
 
         .badge-item:hover {
@@ -720,6 +743,7 @@
             object-fit: contain;
             filter: brightness(0.85) contrast(1.1);
             transition: var(--transition);
+            will-change: transform;
         }
 
         .badge-item:hover img {
@@ -751,6 +775,7 @@
             color: var(--primary);
         }
 
+        /* Default animations (will be updated by JavaScript) */
         @keyframes scroll-certificates {
             0% {
                 transform: translateX(0);
@@ -781,14 +806,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             overflow: auto;
+            backdrop-filter: blur(10px);
         }
 
         .modal-content {
             position: relative;
-            background-color: var(--dark);
+            background-color: rgba(18, 18, 18, 0.95);
             margin: 5% auto;
             padding: 20px;
             width: 90%;
@@ -799,6 +825,7 @@
             flex-direction: column;
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .modal-image {
@@ -843,8 +870,9 @@
         }
 
         .contact {
-            background-color: var(--dark);
+            background-color: rgba(10, 10, 10, 0.85);
             position: relative;
+            backdrop-filter: blur(5px);
         }
 
         .contact::before {
@@ -872,12 +900,14 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            background-color: var(--dark-light);
+            background-color: rgba(18, 18, 18, 0.8);
             padding: 25px;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            will-change: transform;
         }
 
         .contact-row .contact-item:hover {
@@ -889,7 +919,7 @@
             width: 50px;
             height: 50px;
             min-width: 50px;
-            background-color: var(--dark);
+            background-color: rgba(10, 10, 10, 0.8);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -909,10 +939,11 @@
         }
 
         footer {
-            background-color: var(--darker);
+            background-color: rgba(5, 5, 5, 0.95);
             color: white;
             padding: 50px 0 20px;
-            border-top: 1px solid var(--dark);
+            border-top: 1px solid rgba(10, 10, 10, 0.5);
+            backdrop-filter: blur(5px);
         }
 
         .footer-content {
@@ -953,6 +984,7 @@
             justify-content: center;
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            will-change: transform;
         }
 
         .social-link:hover {
@@ -1027,6 +1059,13 @@
             background: var(--primary);
         }
 
+        /* Performance Optimizations */
+        .perf-optimized {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000;
+        }
+
         @media (max-width: 1200px) {
             .container {
                 padding: 0 30px;
@@ -1075,6 +1114,16 @@
             .contact-row {
                 flex-direction: column;
             }
+            
+            .certificate-item {
+                width: 280px;
+                height: 200px;
+            }
+            
+            .badge-item {
+                width: 160px;
+                height: 160px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1088,13 +1137,14 @@
                 top: 70px;
                 left: 0;
                 width: 100%;
-                background-color: var(--dark-light);
+                background-color: rgba(18, 18, 18, 0.95);
                 flex-direction: column;
                 padding: 20px;
                 box-shadow: var(--shadow);
                 text-align: center;
                 border-top: 1px solid rgba(255, 255, 255, 0.05);
                 border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
             }
             
             .nav-links.active {
@@ -1131,24 +1181,6 @@
                 max-width: 250px;
                 height: 250px;
             }
-            
-            @keyframes scroll-certificates {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(calc(-250px * 14 - 30px * 14));
-                }
-            }
-            
-            @keyframes scroll-badges {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(calc(-150px * 11 - 30px * 11));
-                }
-            }
         }
 
         @media (max-width: 576px) {
@@ -1182,36 +1214,18 @@
             }
             
             .certificate-item {
-                width: 350px;
-                height: 250px;
+                width: 320px;
+                height: 220px;
             }
             
             .badge-item {
-                width: 250px;
-                height: 250px;
+                width: 200px;
+                height: 200px;
             }
             
             .profile-image {
                 max-width: 220px;
                 height: 220px;
-            }
-            
-            @keyframes scroll-certificates {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(calc(-200px * 14 - 30px * 14));
-                }
-            }
-            
-            @keyframes scroll-badges {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(calc(-120px * 11 - 30px * 11));
-                }
             }
         }
 
@@ -1246,10 +1260,23 @@
                 height: auto;
                 min-height: 480px;
             }
+            
+            .certificate-item {
+                width: 280px;
+                height: 200px;
+            }
+            
+            .badge-item {
+                width: 180px;
+                height: 180px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Interactive Network Background -->
+    <canvas id="network-bg"></canvas>
+
     <header id="header">
         <div class="container">
             <nav class="navbar">
@@ -1285,10 +1312,8 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <div class="image-frame">
-                        <img src="https://github.com/user-attachments/assets/09d70353-b643-46d5-aee5-c524b497583a" 
-                             alt="Mahmoud Abdallah" class="profile-image">
-                    </div>
+                    <img src="https://github.com/user-attachments/assets/09d70353-b643-46d5-aee5-c524b497583a" 
+                         alt="Mahmoud Abdallah" class="profile-image">
                 </div>
             </div>
         </div>
@@ -1618,6 +1643,7 @@
                 <h3>Certificates</h3>
                 <div class="certifications-carousel">
                     <div class="certifications-track certificates-track">
+                        <!-- Certificates will be inserted here by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -1626,6 +1652,7 @@
                 <h3>Badges</h3>
                 <div class="certifications-carousel">
                     <div class="certifications-track badges-track">
+                        <!-- Badges will be inserted here by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -1731,28 +1758,206 @@
     </footer>
 
     <script>
+        // ============================================
+        // OPTIMIZED INTERACTIVE NETWORK BACKGROUND
+        // ============================================
+        
+        const canvas = document.getElementById("network-bg");
+        const ctx = canvas.getContext("2d");
+        
+        // Performance optimizations
+        let animationId = null;
+        let lastTime = 0;
+        const frameRate = 60; // Target FPS
+        const frameInterval = 1000 / frameRate;
+        
+        // Store computed values
+        let computedWidth = 0;
+        let computedHeight = 0;
+        
+        function resizeCanvas() {
+            computedWidth = window.innerWidth;
+            computedHeight = window.innerHeight;
+            canvas.width = computedWidth;
+            canvas.height = computedHeight;
+        }
+        
+        resizeCanvas();
+        
+        // Debounced resize
+        let resizeTimeout;
+        window.addEventListener("resize", () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(resizeCanvas, 100);
+        });
+        
+        // Optimized particle system
+        const particlesArray = [];
+        const numberOfParticles = Math.min(180, Math.floor((computedWidth * computedHeight) / 10000));
+        const maxDistance = 140;
+        const mouse = { x: null, y: null, radius: 150 };
+        const particleSpeed = 0.5; // Reduced for smoother motion
+        
+        // Mouse tracking with debouncing
+        let mouseUpdateTimeout;
+        window.addEventListener("mousemove", e => {
+            clearTimeout(mouseUpdateTimeout);
+            mouseUpdateTimeout = setTimeout(() => {
+                mouse.x = e.x;
+                mouse.y = e.y;
+            }, 16); // ~60fps update rate
+        });
+        
+        window.addEventListener("mouseleave", () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * computedWidth;
+                this.y = Math.random() * computedHeight;
+                this.size = Math.random() * 2 + 0.5; // Smaller size
+                this.speedX = (Math.random() - 0.5) * particleSpeed;
+                this.speedY = (Math.random() - 0.5) * particleSpeed;
+                // Pre-calculate random offsets for organic motion
+                this.waveOffsetX = Math.random() * Math.PI * 2;
+                this.waveOffsetY = Math.random() * Math.PI * 2;
+                this.waveSpeed = 0.02 + Math.random() * 0.02;
+            }
+            
+            update(time) {
+                // Add subtle wave motion for organic movement
+                const waveX = Math.sin(time * this.waveSpeed + this.waveOffsetX) * 0.1;
+                const waveY = Math.cos(time * this.waveSpeed + this.waveOffsetY) * 0.1;
+                
+                this.x += this.speedX + waveX;
+                this.y += this.speedY + waveY;
+                
+                // Bounce from edges with buffer zone
+                const buffer = 20;
+                if (this.x <= buffer || this.x >= computedWidth - buffer) {
+                    this.speedX *= -0.95; // Dampen bounce
+                    this.x = Math.max(buffer, Math.min(computedWidth - buffer, this.x));
+                }
+                if (this.y <= buffer || this.y >= computedHeight - buffer) {
+                    this.speedY *= -0.95;
+                    this.y = Math.max(buffer, Math.min(computedHeight - buffer, this.y));
+                }
+                
+                // Mouse interaction with distance-based falloff
+                if (mouse.x && mouse.y) {
+                    const dx = this.x - mouse.x;
+                    const dy = this.y - mouse.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < mouse.radius) {
+                        // Smooth falloff using inverse square
+                        const force = (mouse.radius - distance) / mouse.radius;
+                        const influence = force * force * 2; // Square falloff for smoother effect
+                        this.x += (dx / distance) * influence;
+                        this.y += (dy / distance) * influence;
+                    }
+                }
+            }
+            
+            draw() {
+                ctx.fillStyle = "#ffffff";
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function initNetwork() {
+            particlesArray.length = 0;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        
+        // Pre-calculate distance checks for optimization
+        const maxDistanceSquared = maxDistance * maxDistance;
+        
+        function connectParticles() {
+            // Use distance squared for optimization (avoid sqrt)
+            for (let a = 0; a < particlesArray.length; a++) {
+                const particleA = particlesArray[a];
+                
+                for (let b = a + 1; b < particlesArray.length; b++) {
+                    const particleB = particlesArray[b];
+                    const dx = particleA.x - particleB.x;
+                    const dy = particleA.y - particleB.y;
+                    const distanceSquared = dx * dx + dy * dy;
+                    
+                    if (distanceSquared < maxDistanceSquared) {
+                        const distance = Math.sqrt(distanceSquared);
+                        const opacity = 0.3 * (1 - distance / maxDistance);
+                        
+                        ctx.strokeStyle = `rgba(0, 119, 255, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particleA.x, particleA.y);
+                        ctx.lineTo(particleB.x, particleB.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+        
+        function animateNetwork(currentTime) {
+            // Frame rate limiting
+            const deltaTime = currentTime - lastTime;
+            
+            if (deltaTime < frameInterval) {
+                animationId = requestAnimationFrame(animateNetwork);
+                return;
+            }
+            
+            lastTime = currentTime - (deltaTime % frameInterval);
+            
+            // Clear canvas efficiently
+            ctx.clearRect(0, 0, computedWidth, computedHeight);
+            
+            // Update and draw particles
+            particlesArray.forEach(particle => {
+                particle.update(currentTime * 0.001); // Convert to seconds
+                particle.draw();
+            });
+            
+            connectParticles();
+            
+            animationId = requestAnimationFrame(animateNetwork);
+        }
+        
+        // Initialize and start animation
+        initNetwork();
+        animateNetwork(0);
+        
+        // Pause animation when page is not visible
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
+            } else {
+                if (!animationId) {
+                    animateNetwork(0);
+                }
+            }
+        });
+        
+        // ============================================
+        // UPDATED CERTIFICATIONS AND BADGES DATA
+        // ============================================
+        
         const certificates = [
-            {
-                id: "sql-certificate",
-                title: "SQL Certificate",
-                issuer: "HackerRank",
-                date: "Issued: 2024",
-                image: "https://github.com/user-attachments/assets/fbe52270-eedf-4c66-bf67-f1fda5a2a54b",
-                link: "#"
-            },
-            {
-                id: "tableau-certificate",
-                title: "Tableau Certificate",
-                issuer: "HackerRank",
-                date: "Issued: 2024",
-                image: "https://github.com/user-attachments/assets/6256996f-5d6b-4f29-8c47-4658d16087e8",
-                link: "#"
-            },
             {
                 id: "intro-data-science",
                 title: "Introduction to Data Science",
-                issuer: "Cisco",
-                date: "Issued: Nov 30, 2023",
+                issuer: "Cisco Networking Academy",
+                description: "Certification covering data science fundamentals and applications",
                 image: "https://github.com/user-attachments/assets/4592b5da-d701-4ea8-ac8d-f0f1db4894be",
                 link: "#"
             },
@@ -1760,7 +1965,7 @@
                 id: "ibm-data-analysis-python",
                 title: "IBM Data Analysis Using Python",
                 issuer: "IBM",
-                date: "Issued: 2024",
+                description: "Certification for data analysis techniques using Python programming language",
                 image: "https://github.com/user-attachments/assets/b09cdd4d-d1f4-43ee-826d-cc45582b1b7c",
                 link: "#"
             },
@@ -1768,7 +1973,7 @@
                 id: "ibm-ai-fundamentals",
                 title: "IBM AI Fundamentals",
                 issuer: "IBM",
-                date: "Issued: 2024",
+                description: "Certification covering fundamental concepts of artificial intelligence",
                 image: "https://github.com/user-attachments/assets/0de8da5e-cd48-4b73-b134-e43a0a38d80e",
                 link: "#"
             },
@@ -1776,55 +1981,55 @@
                 id: "tableau",
                 title: "Getting Started With Tableau",
                 issuer: "Cognitive Class",
-                date: "Issued: Oct 25, 2025",
+                description: "Certification for Tableau data visualization software",
                 image: "https://github.com/user-attachments/assets/b14545e8-139a-4094-9a3d-3402a344810c",
                 link: "#"
             },
             {
                 id: "data-analytics-essentials",
                 title: "Data Analytics Essentials",
-                issuer: "Cisco",
-                date: "Issued: Dec 06, 2024",
+                issuer: "Cisco Networking Academy",
+                description: "Certification for data analytics fundamentals",
                 image: "https://github.com/user-attachments/assets/f2df529c-377d-40b2-a3f6-02371c1f0179",
                 link: "#"
             },
             {
-                id: "data-wrangling",
+                id: "data-wrangling-python",
                 title: "Data Wrangling Using Python",
-                issuer: "IBM Skills Network",
-                date: "Issued: 2024",
+                issuer: "IBM",
+                description: "Certification for data cleaning and preparation using Python",
                 image: "https://github.com/user-attachments/assets/faae0203-0d8a-4a7f-b9ff-ec9399bba6b8",
                 link: "#"
             },
             {
-                id: "coursera-programming",
-                title: "Programming for Everybody",
+                id: "coursera",
+                title: "Coursera Certificate",
                 issuer: "Coursera",
-                date: "Issued: Oct 17, 2020",
+                description: "Professional certification from Coursera platform",
                 image: "https://github.com/user-attachments/assets/90984453-ee23-40ec-a2e0-32a3c0a8e547",
                 link: "#"
             },
             {
                 id: "ai-fundamentals",
                 title: "AI Fundamentals",
-                issuer: "IBM SkillsBuild",
-                date: "Issued: Jan 15, 2025",
+                issuer: "Cisco Networking Academy",
+                description: "Artificial Intelligence fundamentals certification",
                 image: "https://github.com/user-attachments/assets/5bd0dabd-952c-47b6-99f9-4ec335ebaa67",
                 link: "#"
             },
             {
                 id: "python-essentials-2",
                 title: "Python Essentials 2",
-                issuer: "Cisco",
-                date: "Issued: Jul 30, 2024",
+                issuer: "Cisco Networking Academy",
+                description: "Intermediate Python programming certification",
                 image: "https://github.com/user-attachments/assets/a835620e-dbf7-437f-9aac-3970e56154fd",
                 link: "#"
             },
             {
                 id: "python-essentials-1",
                 title: "Python Essentials 1",
-                issuer: "Cisco",
-                date: "Issued: Jul 06, 2024",
+                issuer: "Cisco Networking Academy",
+                description: "Fundamental Python programming certification",
                 image: "https://github.com/user-attachments/assets/abf78bca-7bec-4fbc-880a-c6e8d1305bf0",
                 link: "#"
             },
@@ -1832,26 +2037,42 @@
                 id: "python-data-science",
                 title: "Python for Data Science",
                 issuer: "IBM",
-                date: "Issued: Oct 11, 2025",
+                description: "Python programming for data science applications",
                 image: "https://github.com/user-attachments/assets/da6afaed-e9f5-482a-9050-f4df75326949",
                 link: "#"
             },
             {
-                id: "modern-ai",
+                id: "intro-modern-ai",
                 title: "Introduction to Modern AI",
-                issuer: "Cisco",
-                date: "Issued: Dec 22, 2024",
+                issuer: "Cisco Networking Academy",
+                description: "Modern artificial intelligence concepts and applications",
                 image: "https://github.com/user-attachments/assets/1ebbc427-4f77-4f3e-8756-682ebec877f3",
+                link: "#"
+            },
+            {
+                id: "sql-certificate",
+                title: "SQL Certificate",
+                issuer: "HackerRank",
+                description: "Proficiency in SQL querying and database management",
+                image: "https://github.com/user-attachments/assets/fbe52270-eedf-4c66-bf67-f1fda5a2a54b",
+                link: "#"
+            },
+            {
+                id: "tableau-certificate",
+                title: "Tableau Certificate",
+                issuer: "HackerRank",
+                description: "Tableau skills in data visualization and dashboard creation",
+                image: "https://github.com/user-attachments/assets/6256996f-5d6b-4f29-8c47-4658d16087e8",
                 link: "#"
             }
         ];
-
+        
         const badges = [
             {
                 id: "microsoft-power-up-low-code",
                 title: "Microsoft Power Up Program - Low Code Maker Course",
                 issuer: "Microsoft",
-                date: "Issued: 2024",
+                description: "Microsoft Power Up Program completion for low-code application development",
                 image: "https://github.com/user-attachments/assets/c5ff064b-9abe-47b3-9929-bf55999f4215",
                 link: "#"
             },
@@ -1859,15 +2080,15 @@
                 id: "microsoft-power-up-adventure",
                 title: "Microsoft Power Up Program - Power Platform Adventure",
                 issuer: "Microsoft",
-                date: "Issued: 2024",
+                description: "Microsoft Power Platform Adventure completion badge",
                 image: "https://github.com/user-attachments/assets/0cb0e3f8-82ea-464a-8331-7ecf6eb4cc01",
                 link: "#"
             },
             {
-                id: "python-for-data-science",
+                id: "python-for-data-science-badge",
                 title: "Python for Data Science",
                 issuer: "IBM",
-                date: "Issued: 2024",
+                description: "Python programming skills in data science applications",
                 image: "https://github.com/user-attachments/assets/4b0ba356-eab1-404c-b3a3-c8d510b9d0ba",
                 link: "#"
             },
@@ -1875,7 +2096,7 @@
                 id: "python-essentials-2-badge",
                 title: "Python Essentials 2",
                 issuer: "Cisco",
-                date: "Issued: 2024",
+                description: "Intermediate Python programming skills",
                 image: "https://github.com/user-attachments/assets/0d6feac6-6a32-4b75-a19b-d92d7cb0ac8e",
                 link: "#"
             },
@@ -1883,7 +2104,7 @@
                 id: "python-essentials-1-badge",
                 title: "Python Essentials 1",
                 issuer: "Cisco",
-                date: "Issued: 2024",
+                description: "Fundamental Python programming skills",
                 image: "https://github.com/user-attachments/assets/f695ac34-d5b9-4529-a722-dd5ea4b5040a",
                 link: "#"
             },
@@ -1891,7 +2112,7 @@
                 id: "introduction-to-modern-ai-badge",
                 title: "Introduction to Modern AI",
                 issuer: "Cisco",
-                date: "Issued: 2024",
+                description: "Modern artificial intelligence concepts",
                 image: "https://github.com/user-attachments/assets/87364b3b-b649-4403-a199-9b4507c84585",
                 link: "#"
             },
@@ -1899,7 +2120,7 @@
                 id: "introduction-to-data-science-badge",
                 title: "Introduction to Data Science",
                 issuer: "Cisco",
-                date: "Issued: 2024",
+                description: "Data science fundamentals and applications",
                 image: "https://github.com/user-attachments/assets/c7932b15-f0dc-4c77-a3c3-cb8ef2bbcd66",
                 link: "#"
             },
@@ -1907,7 +2128,7 @@
                 id: "data-analytics-essentials-badge",
                 title: "Data Analytics Essentials",
                 issuer: "Cisco",
-                date: "Issued: 2024",
+                description: "Data analytics fundamentals",
                 image: "https://github.com/user-attachments/assets/9d7dacc4-b1da-48a5-85c0-baa7fcb00922",
                 link: "#"
             },
@@ -1915,152 +2136,315 @@
                 id: "data-analysis-using-python-badge",
                 title: "Data Analysis Using Python",
                 issuer: "IBM",
-                date: "Issued: 2024",
+                description: "Data analysis techniques using Python",
                 image: "https://github.com/user-attachments/assets/ef12be0e-8c54-435c-8f1f-e6fdd8156acd",
                 link: "#"
             },
             {
                 id: "artificial-intelligence-fundamentals-badge",
                 title: "Artificial Intelligence Fundamentals",
-                issuer: "IBM",
-                date: "Issued: 2024",
+                issuer: "Cisco",
+                description: "Artificial intelligence fundamental concepts",
                 image: "https://github.com/user-attachments/assets/d6fbf2b1-b4f9-4e37-85fb-c78bac98ba63",
                 link: "#"
             },
             {
-                id: "ai-fundamentals-with-ibm-skillsbuild",
+                id: "ai-fundamentals-ibm-skillsbuild",
                 title: "AI Fundamentals with IBM SkillsBuild",
-                issuer: "IBM SkillsBuild",
-                date: "Issued: 2024",
+                issuer: "IBM",
+                description: "AI fundamentals through IBM SkillsBuild platform",
                 image: "https://github.com/user-attachments/assets/bf9d6073-488f-478f-8bf8-e264f65ac94d",
                 link: "#"
             }
         ];
-
+        
+        // Optimized carousel initialization with PROPER seamless looping
         function initCarousels() {
             const certificatesTrack = document.querySelector('.certificates-track');
             const badgesTrack = document.querySelector('.badges-track');
             
-            certificates.forEach(cert => {
-                const item = document.createElement('div');
-                item.className = 'certificate-item';
-                item.setAttribute('data-cert', cert.id);
-                
-                item.innerHTML = `
-                    <img src="${cert.image}" alt="${cert.title}">
-                    <div class="certification-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                `;
-                
-                certificatesTrack.appendChild(item);
-            });
+            // Clear existing content
+            certificatesTrack.innerHTML = '';
+            badgesTrack.innerHTML = '';
             
-            certificates.forEach(cert => {
-                const item = document.createElement('div');
-                item.className = 'certificate-item';
-                item.setAttribute('data-cert', cert.id);
-                
-                item.innerHTML = `
-                    <img src="${cert.image}" alt="${cert.title}">
-                    <div class="certification-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                `;
-                
-                certificatesTrack.appendChild(item);
-            });
+            // For certificates: create enough duplicates for seamless looping
+            // We need at least 2 full sets for proper infinite scroll illusion
+            const certificateItems = [];
+            const badgeItems = [];
             
-            badges.forEach(badge => {
-                const item = document.createElement('div');
-                item.className = 'badge-item';
-                item.setAttribute('data-cert', badge.id);
-                
-                item.innerHTML = `
-                    <img src="${badge.image}" alt="${badge.title}">
-                    <div class="certification-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                `;
-                
-                badgesTrack.appendChild(item);
-            });
+            // Create certificates (2 full sets for seamless looping)
+            for (let set = 0; set < 2; set++) {
+                certificates.forEach(cert => {
+                    certificateItems.push(createCertificateElement(cert));
+                });
+            }
             
-            badges.forEach(badge => {
-                const item = document.createElement('div');
-                item.className = 'badge-item';
-                item.setAttribute('data-cert', badge.id);
-                
-                item.innerHTML = `
-                    <img src="${badge.image}" alt="${badge.title}">
-                    <div class="certification-overlay">
-                        <i class="fas fa-search-plus"></i>
-                    </div>
-                `;
-                
-                badgesTrack.appendChild(item);
-            });
+            // Create badges (2 full sets for seamless looping)
+            for (let set = 0; set < 2; set++) {
+                badges.forEach(badge => {
+                    badgeItems.push(createBadgeElement(badge));
+                });
+            }
+            
+            // Append all items
+            certificateItems.forEach(item => certificatesTrack.appendChild(item));
+            badgeItems.forEach(item => badgesTrack.appendChild(item));
+            
+            // Now adjust animations based on actual item count
+            adjustAnimations();
         }
-
+        
+        function createCertificateElement(cert) {
+            const item = document.createElement('div');
+            item.className = 'certificate-item';
+            item.setAttribute('data-cert', cert.id);
+            
+            item.innerHTML = `
+                <img src="${cert.image}" alt="${cert.title}" loading="lazy">
+                <div class="certification-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            `;
+            
+            return item;
+        }
+        
+        function createBadgeElement(badge) {
+            const item = document.createElement('div');
+            item.className = 'badge-item';
+            item.setAttribute('data-cert', badge.id);
+            
+            item.innerHTML = `
+                <img src="${badge.image}" alt="${badge.title}" loading="lazy">
+                <div class="certification-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            `;
+            
+            return item;
+        }
+        
+        function adjustAnimations() {
+            // Calculate the total width of all certificate items (2 sets)
+            const certificateItemWidth = 300; // px from CSS
+            const certificateGap = 30; // px from CSS
+            const certificateCount = certificates.length;
+            
+            // Calculate the total width of all badge items (2 sets)
+            const badgeItemWidth = 180; // px from CSS
+            const badgeGap = 30; // px from CSS
+            const badgeCount = badges.length;
+            
+            // Update animation keyframes for certificates
+            const certificateStyle = document.createElement('style');
+            certificateStyle.innerHTML = `
+                @keyframes scroll-certificates {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(calc(-${certificateItemWidth}px * ${certificateCount} - ${certificateGap}px * ${certificateCount}));
+                    }
+                }
+                
+                @media (max-width: 992px) {
+                    @keyframes scroll-certificates {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(calc(-280px * ${certificateCount} - 30px * ${certificateCount}));
+                        }
+                    }
+                }
+                
+                @media (max-width: 768px) {
+                    @keyframes scroll-certificates {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(calc(-350px * ${certificateCount} - 30px * ${certificateCount}));
+                        }
+                    }
+                }
+                
+                @media (max-width: 576px) {
+                    @keyframes scroll-certificates {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(calc(-320px * ${certificateCount} - 30px * ${certificateCount}));
+                        }
+                    }
+                }
+                
+                @media (max-width: 400px) {
+                    @keyframes scroll-certificates {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(calc(-280px * ${certificateCount} - 30px * ${certificateCount}));
+                        }
+                    }
+                }
+            `;
+            
+            // Update animation keyframes for badges
+            const badgeStyle = document.createElement('style');
+            badgeStyle.innerHTML = `
+                @keyframes scroll-badges {
+                    0% {
+                        transform: translateX(0);
+                    }
+                    100% {
+                        transform: translateX(calc(-${badgeItemWidth}px * ${badgeCount} - ${badgeGap}px * ${badgeCount}));
+                    }
+                }
+                
+                @media (max-width: 992px) {
+                    @keyframes scroll-badges {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(calc(-160px * ${badgeCount} - 30px * ${badgeCount}));
+                        }
+                    }
+                }
+                
+                @media (max-width: 768px) {
+                    @keyframes scroll-badges {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(calc(-250px * ${badgeCount} - 30px * ${badgeCount}));
+                        }
+                    }
+                }
+                
+                @media (max-width: 576px) {
+                    @keyframes scroll-badges {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(calc(-200px * ${badgeCount} - 30px * ${badgeCount}));
+                        }
+                    }
+                }
+                
+                @media (max-width: 400px) {
+                    @keyframes scroll-badges {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        100% {
+                            transform: translateX(calc(-180px * ${badgeCount} - 30px * ${badgeCount}));
+                        }
+                    }
+                }
+            `;
+            
+            // Remove existing animation styles if any
+            const existingStyles = document.querySelectorAll('style[data-animation="certificates"], style[data-animation="badges"]');
+            existingStyles.forEach(style => style.remove());
+            
+            // Add new animation styles
+            certificateStyle.setAttribute('data-animation', 'certificates');
+            badgeStyle.setAttribute('data-animation', 'badges');
+            document.head.appendChild(certificateStyle);
+            document.head.appendChild(badgeStyle);
+            
+            // Restart animations
+            const certificatesTrack = document.querySelector('.certificates-track');
+            const badgesTrack = document.querySelector('.badges-track');
+            
+            // Force reflow to restart animation
+            certificatesTrack.style.animation = 'none';
+            badgesTrack.style.animation = 'none';
+            
+            setTimeout(() => {
+                certificatesTrack.style.animation = 'scroll-certificates 40s linear infinite';
+                badgesTrack.style.animation = 'scroll-badges 30s linear infinite';
+            }, 10);
+        }
+        
+        // Optimized modal handling
         const modal = document.getElementById('certModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalDetails = document.getElementById('modalDetails');
         const modalImage = document.getElementById('modalImage');
         const modalCloseBtn = document.getElementById('modalCloseBtn');
         const closeModal = document.querySelector('.modal-close');
-
+        
+        // Debounced click handler
+        let clickTimeout;
         document.addEventListener('click', function(e) {
-            const item = e.target.closest('.certificate-item, .badge-item');
-            if (item) {
-                const certId = item.getAttribute('data-cert');
-                let cert = certificates.find(c => c.id === certId);
-                
-                if (!cert) {
-                    cert = badges.find(b => b.id === certId);
-                }
-                
-                if (cert) {
-                    modalTitle.textContent = cert.title;
-                    modalDetails.innerHTML = `<p>${cert.issuer}</p><p>${cert.date}</p>`;
-                    modalImage.src = cert.image;
-                    modalImage.alt = cert.title;
+            clearTimeout(clickTimeout);
+            clickTimeout = setTimeout(() => {
+                const item = e.target.closest('.certificate-item, .badge-item');
+                if (item) {
+                    const certId = item.getAttribute('data-cert');
+                    let cert = certificates.find(c => c.id === certId);
                     
-                    modal.style.display = 'block';
-                    document.body.style.overflow = 'hidden';
+                    if (!cert) {
+                        cert = badges.find(b => b.id === certId);
+                    }
+                    
+                    if (cert) {
+                        modalTitle.textContent = cert.title;
+                        modalDetails.innerHTML = `<p><strong>Issuer:</strong> ${cert.issuer}</p><p>${cert.description}</p>`;
+                        modalImage.src = cert.image;
+                        modalImage.alt = cert.title;
+                        
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    }
                 }
-            }
+            }, 10);
         });
-
+        
         function closeCertificateModal() {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-
+        
         modalCloseBtn.addEventListener('click', closeCertificateModal);
         closeModal.addEventListener('click', closeCertificateModal);
-
+        
         window.addEventListener('click', function(event) {
             if (event.target === modal) {
                 closeCertificateModal();
             }
         });
-
+        
+        // Mobile menu
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
-
+        
         mobileMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-
+        
+        // Optimized scroll handler
+        let scrollTimeout;
         window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const header = document.getElementById('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }, 10);
         });
-
+        
+        // Smooth scrolling with optimization
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -2070,17 +2454,43 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+                    // Use requestAnimationFrame for smoother animation
+                    requestAnimationFrame(() => {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
                     });
                     
                     navLinks.classList.remove('active');
                 }
             });
         });
-
-        document.addEventListener('DOMContentLoaded', initCarousels);
+        
+        // Initialize on DOM content loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initCarousels();
+            
+            // Pause animation on hover
+            const certificatesTrack = document.querySelector('.certificates-track');
+            const badgesTrack = document.querySelector('.badges-track');
+            
+            certificatesTrack.addEventListener('mouseenter', () => {
+                certificatesTrack.style.animationPlayState = 'paused';
+            });
+            
+            certificatesTrack.addEventListener('mouseleave', () => {
+                certificatesTrack.style.animationPlayState = 'running';
+            });
+            
+            badgesTrack.addEventListener('mouseenter', () => {
+                badgesTrack.style.animationPlayState = 'paused';
+            });
+            
+            badgesTrack.addEventListener('mouseleave', () => {
+                badgesTrack.style.animationPlayState = 'running';
+            });
+        });
     </script>
 </body>
 </html>
