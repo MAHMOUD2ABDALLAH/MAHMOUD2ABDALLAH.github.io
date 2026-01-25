@@ -499,10 +499,12 @@
             border-color: var(--primary);
         }
 
+        /* PROJECTS SECTION - HORIZONTAL LAYOUT */
         .projects {
             background-color: rgba(10, 10, 10, 0.85);
             position: relative;
             backdrop-filter: blur(5px);
+            overflow: hidden;
         }
 
         .projects::before {
@@ -515,13 +517,38 @@
             background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
 
+        .projects-container {
+            width: 100%;
+            overflow-x: auto;
+            padding: 20px 0 40px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--dark);
+        }
+
+        .projects-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .projects-container::-webkit-scrollbar-track {
+            background: var(--dark);
+            border-radius: 4px;
+        }
+
+        .projects-container::-webkit-scrollbar-thumb {
+            background-color: var(--primary);
+            border-radius: 4px;
+        }
+
         .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 40px;
+            display: flex;
+            gap: 30px;
+            min-width: min-content;
+            padding: 0 10px;
         }
 
         .project-card {
+            flex: 0 0 auto;
+            width: 320px;
             background-color: rgba(18, 18, 18, 0.8);
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -533,16 +560,20 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
             will-change: transform;
+            position: relative;
         }
 
+        /* Hover effect - pop out like skills section */
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
             border-color: var(--primary);
+            z-index: 10;
         }
 
         .project-image {
-            height: 220px;
+            height: 200px;
+            width: 100%;
             background-color: rgba(10, 10, 10, 0.8);
             display: flex;
             align-items: center;
@@ -575,10 +606,17 @@
 
         .project-content h3 {
             color: var(--light);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            line-height: 1.3;
         }
 
         .project-content p {
             color: var(--gray);
+            margin-bottom: 15px;
+            flex-grow: 1;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         .project-tags {
@@ -731,31 +769,6 @@
 
         .badge-item:hover img {
             filter: brightness(1) contrast(1);
-        }
-
-        .certification-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 10, 10, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: var(--transition);
-            border-radius: var(--border-radius);
-        }
-
-        .certificate-item:hover .certification-overlay,
-        .badge-item:hover .certification-overlay {
-            opacity: 1;
-        }
-
-        .certification-overlay i {
-            font-size: 2rem;
-            color: var(--primary);
         }
 
         @keyframes scroll-certificates {
@@ -1044,9 +1057,14 @@
             perspective: 1000;
         }
 
+        /* Responsive adjustments for projects section */
         @media (max-width: 1200px) {
             .container {
                 padding: 0 30px;
+            }
+            
+            .project-card {
+                width: 300px;
             }
         }
 
@@ -1080,8 +1098,9 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            .project-card {
+                width: 280px;
+                height: 460px;
             }
             
             .profile-image {
@@ -1141,8 +1160,9 @@
                 grid-template-columns: 1fr;
             }
             
-            .projects-grid {
-                grid-template-columns: 1fr;
+            .project-card {
+                width: 260px;
+                height: 440px;
             }
             
             .certificate-item {
@@ -1158,6 +1178,10 @@
             .profile-image {
                 max-width: 250px;
                 height: 250px;
+            }
+            
+            .projects-grid {
+                gap: 25px;
             }
         }
 
@@ -1191,6 +1215,23 @@
                 padding: 0 15px;
             }
             
+            .project-card {
+                width: 240px;
+                height: 420px;
+            }
+            
+            .project-content {
+                padding: 20px;
+            }
+            
+            .project-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .project-content p {
+                font-size: 0.9rem;
+            }
+            
             .certificate-item {
                 width: 320px;
                 height: 220px;
@@ -1204,6 +1245,38 @@
             .profile-image {
                 max-width: 220px;
                 height: 220px;
+            }
+            
+            .projects-grid {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-card {
+                width: 220px;
+                height: 400px;
+            }
+            
+            .project-image {
+                height: 180px;
+                padding: 15px;
+            }
+            
+            .project-content {
+                padding: 18px;
+            }
+            
+            .project-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .project-content p {
+                font-size: 0.85rem;
+            }
+            
+            .projects-grid {
+                gap: 18px;
             }
         }
 
@@ -1225,6 +1298,28 @@
                 font-size: 0.9rem;
             }
             
+            .project-card {
+                width: 200px;
+                height: 380px;
+            }
+            
+            .project-image {
+                height: 160px;
+                padding: 12px;
+            }
+            
+            .project-content {
+                padding: 16px;
+            }
+            
+            .project-content h3 {
+                font-size: 1.1rem;
+            }
+            
+            .project-content p {
+                font-size: 0.8rem;
+            }
+            
             .profile-image {
                 max-width: 200px;
                 height: 200px;
@@ -1232,11 +1327,6 @@
             
             .skill-category {
                 padding: 20px;
-            }
-            
-            .project-card {
-                height: auto;
-                min-height: 480px;
             }
             
             .certificate-item {
@@ -1247,6 +1337,50 @@
             .badge-item {
                 width: 180px;
                 height: 180px;
+            }
+            
+            .projects-grid {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .project-card {
+                width: 180px;
+                height: 360px;
+            }
+            
+            .project-image {
+                height: 150px;
+                padding: 10px;
+            }
+            
+            .project-content {
+                padding: 14px;
+            }
+            
+            .project-content h3 {
+                font-size: 1rem;
+            }
+            
+            .project-content p {
+                font-size: 0.75rem;
+            }
+            
+            .project-tag {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+        }
+
+        /* Touch device optimization */
+        @media (hover: none) and (pointer: coarse) {
+            .project-card:hover {
+                transform: none;
+            }
+            
+            .project-card:active {
+                transform: translateY(-5px) scale(1.02);
             }
         }
     </style>
@@ -1430,181 +1564,13 @@
         </div>
     </section>
 
+    <!-- PROJECTS SECTION - HORIZONTAL LAYOUT -->
     <section id="projects" class="projects">
         <div class="container">
             <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/5414b94d-9249-4f26-8bbe-d7472baf0f00" alt="National Reading Program">
-                    </div>
-                    <div class="project-content">
-                        <h3>National Reading Program</h3>
-                        <p>A comprehensive educational initiative designed to promote literacy and reading culture through data-driven insights and program management.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Education</span>
-                            <span class="project-tag">Data Analysis</span>
-                            <span class="project-tag">Program Management</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://github.com/MAHMOUD2ABDALLAH/National-Reading-Program" class="btn btn-github" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/fe0430d6-5dcd-4c1c-aba5-286a7a22137d" alt="Mobile Ventilator GP">
-                    </div>
-                    <div class="project-content">
-                        <h3>Mobile Ventilator GP</h3>
-                        <p>Innovative mobile ventilator solution designed for emergency medical situations with portability and efficiency in mind.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Medical Technology</span>
-                            <span class="project-tag">Hardware</span>
-                            <span class="project-tag">Emergency Response</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP" class="btn btn-github" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/3976afc4-6d42-43bc-9223-9975389cb1c5" alt="MaxAB Sales Analysis">
-                    </div>
-                    <div class="project-content">
-                        <h3>MaxAB Sales Analysis</h3>
-                        <p>Comprehensive analysis of sales data for MaxAB, identifying trends, patterns, and opportunities for optimization.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Data Analysis</span>
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">Pandas</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study" class="btn btn-github" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/a2a97696-f449-4c5b-865d-a11428243c24" alt="Walmart Product Analysis">
-                    </div>
-                    <div class="project-content">
-                        <h3>Walmart Product Analysis</h3>
-                        <p>Comprehensive retail analytics dashboard analyzing Walmart's product performance, inventory optimization, and pricing strategies.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Retail Analytics</span>
-                            <span class="project-tag">Inventory Management</span>
-                            <span class="project-tag">Pricing Strategy</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study" class="btn btn-github" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/3c1aa919-3edb-41d6-8f3d-accaea3477f9" alt="Elezaby Pharmacy E-commerce Analysis">
-                    </div>
-                    <div class="project-content">
-                        <h3>Elezaby Pharmacy E-commerce Analysis</h3>
-                        <p>Digital analysis of Elezaby Pharmacy's e-commerce platform, providing insights for growth and optimization.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">E-commerce</span>
-                            <span class="project-tag">Digital Analytics</span>
-                            <span class="project-tag">Business Intelligence</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study" class="btn btn-github" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/d9ee090d-82b6-4a14-9cab-cd4e37e40b54" alt="Immigration to Canada">
-                    </div>
-                    <div class="project-content">
-                        <h3>Immigration to Canada Analysis</h3>
-                        <p>Comprehensive analysis of immigration patterns to Canada from 1980 to 2013, identifying trends and key factors.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Data Analysis</span>
-                            <span class="project-tag">Immigration</span>
-                            <span class="project-tag">Trend Analysis</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013" class="btn btn-github" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/4bc1a204-e368-4755-8bf9-12e677eaa9f6" alt="HR System">
-                    </div>
-                    <div class="project-content">
-                        <h3>HR System</h3>
-                        <p>Comprehensive HR management system built with Power Platform for employee management and workflow automation.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Power Platform</span>
-                            <span class="project-tag">HR Automation</span>
-                            <span class="project-tag">Workflow</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://github.com/MAHMOUD2ABDALLAH/HR-System" class="btn btn-github" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/316a70d5-2674-4407-92fe-b8e44ddfac9c" alt="Improvado Marketing Homework">
-                    </div>
-                    <div class="project-content">
-                        <h3>Improvado Marketing Homework</h3>
-                        <p>Marketing data analysis project focusing on campaign performance, ROI optimization, and customer segmentation.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Marketing Analytics</span>
-                            <span class="project-tag">ROI Analysis</span>
-                            <span class="project-tag">Segmentation</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework" class="btn btn-github" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://github.com/user-attachments/assets/e4c613db-bbb8-4899-8d34-dcea1539af97" alt="Animal Shelter Home">
-                    </div>
-                    <div class="project-content">
-                        <h3>Animal Shelter Home</h3>
-                        <p>Power Platform solution for managing animal shelter operations, tracking animals, and streamlining adoption processes.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Power Platform</span>
-                            <span class="project-tag">Automation</span>
-                            <span class="project-tag">Non-profit</span>
-                        </div>
-                        <div class="project-actions">
-                            <a href="https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange" class="btn btn-github" target="_blank">
-                                <i class="fab fa-github"></i> View on GitHub
-                            </a>
-                        </div>
-                    </div>
+            <div class="projects-container">
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Project cards will be generated by JavaScript -->
                 </div>
             </div>
         </div>
@@ -1900,6 +1866,82 @@
             }
         });
         
+        // Project data for horizontal layout
+        const projectsData = [
+            {
+                id: 1,
+                title: "National Reading Program",
+                description: "A comprehensive educational initiative designed to promote literacy and reading culture through data-driven insights and program management.",
+                image: "https://github.com/user-attachments/assets/5414b94d-9249-4f26-8bbe-d7472baf0f00",
+                tags: ["Education", "Data Analysis", "Program Management"],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/National-Reading-Program"
+            },
+            {
+                id: 2,
+                title: "Mobile Ventilator GP",
+                description: "Innovative mobile ventilator solution designed for emergency medical situations with portability and efficiency in mind.",
+                image: "https://github.com/user-attachments/assets/fe0430d6-5dcd-4c1c-aba5-286a7a22137d",
+                tags: ["Medical Technology", "Hardware", "Emergency Response"],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP"
+            },
+            {
+                id: 3,
+                title: "MaxAB Sales Analysis",
+                description: "Comprehensive analysis of sales data for MaxAB, identifying trends, patterns, and opportunities for optimization.",
+                image: "https://github.com/user-attachments/assets/3976afc4-6d42-43bc-9223-9975389cb1c5",
+                tags: ["Data Analysis", "Python", "Pandas"],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study"
+            },
+            {
+                id: 4,
+                title: "Walmart Product Analysis",
+                description: "Comprehensive retail analytics dashboard analyzing Walmart's product performance, inventory optimization, and pricing strategies.",
+                image: "https://github.com/user-attachments/assets/a2a97696-f449-4c5b-865d-a11428243c24",
+                tags: ["Retail Analytics", "Inventory Management", "Pricing Strategy"],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study"
+            },
+            {
+                id: 5,
+                title: "Elezaby Pharmacy E-commerce Analysis",
+                description: "Digital analysis of Elezaby Pharmacy's e-commerce platform, providing insights for growth and optimization.",
+                image: "https://github.com/user-attachments/assets/3c1aa919-3edb-41d6-8f3d-accaea3477f9",
+                tags: ["E-commerce", "Digital Analytics", "Business Intelligence"],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study"
+            },
+            {
+                id: 6,
+                title: "Immigration to Canada Analysis",
+                description: "Comprehensive analysis of immigration patterns to Canada from 1980 to 2013, identifying trends and key factors.",
+                image: "https://github.com/user-attachments/assets/d9ee090d-82b6-4a14-9cab-cd4e37e40b54",
+                tags: ["Data Analysis", "Immigration", "Trend Analysis"],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013"
+            },
+            {
+                id: 7,
+                title: "HR System",
+                description: "Comprehensive HR management system built with Power Platform for employee management and workflow automation.",
+                image: "https://github.com/user-attachments/assets/4bc1a204-e368-4755-8bf9-12e677eaa9f6",
+                tags: ["Power Platform", "HR Automation", "Workflow"],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/HR-System"
+            },
+            {
+                id: 8,
+                title: "Improvado Marketing Homework",
+                description: "Marketing data analysis project focusing on campaign performance, ROI optimization, and customer segmentation.",
+                image: "https://github.com/user-attachments/assets/316a70d5-2674-4407-92fe-b8e44ddfac9c",
+                tags: ["Marketing Analytics", "ROI Analysis", "Segmentation"],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework"
+            },
+            {
+                id: 9,
+                title: "Animal Shelter Home",
+                description: "Power Platform solution for managing animal shelter operations, tracking animals, and streamlining adoption processes.",
+                image: "https://github.com/user-attachments/assets/e4c613db-bbb8-4899-8d34-dcea1539af97",
+                tags: ["Power Platform", "Automation", "Non-profit"],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange"
+            }
+        ];
+        
         const certificates = [
             {
                 id: "intro-data-science",
@@ -2131,6 +2173,38 @@
             }
         ];
         
+        // Function to create project cards for horizontal layout
+        function createProjectCards() {
+            const projectsGrid = document.getElementById('projectsGrid');
+            projectsGrid.innerHTML = '';
+            
+            projectsData.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                projectCard.setAttribute('data-id', project.id);
+                
+                projectCard.innerHTML = `
+                    <div class="project-image">
+                        <img src="${project.image}" alt="${project.title}" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                        <div class="project-tags">
+                            ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="project-actions">
+                            <a href="${project.githubUrl}" class="btn btn-github" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                projectsGrid.appendChild(projectCard);
+            });
+        }
+        
         function initCarousels() {
             const certificatesTrack = document.querySelector('.certificates-track');
             const badgesTrack = document.querySelector('.badges-track');
@@ -2166,9 +2240,6 @@
             
             item.innerHTML = `
                 <img src="${cert.image}" alt="${cert.title}" loading="lazy">
-                <div class="certification-overlay">
-                    <i class="fas fa-search-plus"></i>
-                </div>
             `;
             
             return item;
@@ -2181,9 +2252,6 @@
             
             item.innerHTML = `
                 <img src="${badge.image}" alt="${badge.title}" loading="lazy">
-                <div class="certification-overlay">
-                    <i class="fas fa-search-plus"></i>
-                </div>
             `;
             
             return item;
@@ -2423,6 +2491,7 @@
         });
         
         document.addEventListener('DOMContentLoaded', function() {
+            createProjectCards();
             initCarousels();
             
             const certificatesTrack = document.querySelector('.certificates-track');
