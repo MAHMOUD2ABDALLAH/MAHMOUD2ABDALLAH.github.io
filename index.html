@@ -90,7 +90,6 @@
             text-align: center;
             margin-bottom: 3rem;
             position: relative;
-            color: var(--light);
         }
 
         h2::after {
@@ -107,7 +106,6 @@
 
         h3 {
             font-size: 1.5rem;
-            color: var(--light);
         }
 
         p {
@@ -263,8 +261,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
             z-index: -1;
         }
@@ -441,6 +438,7 @@
             color: var(--gray);
         }
 
+        /* SKILLS SECTION – ENHANCED 2x2 GRID, CLEAN & SUBSTANTIVE */
         .skills {
             background-color: rgba(5, 5, 5, 0.85);
             position: relative;
@@ -457,75 +455,91 @@
             background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
 
-        .skills-container {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .skill-category {
-            width: 100%;
+        .skill-card {
             background-color: rgba(18, 18, 18, 0.8);
-            padding: 24px 20px;
             border-radius: var(--border-radius);
+            padding: 28px 24px;
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
             will-change: transform;
+            display: flex;
+            flex-direction: column;
         }
 
-        .skill-category:hover {
-            transform: translateY(-5px);
+        .skill-card:hover {
+            transform: translateY(-6px);
             border-color: var(--primary);
         }
 
-        .skill-category h3 {
-            margin-bottom: 18px;
+        .skill-card h3 {
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
             color: var(--light);
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 12px;
         }
 
-        .skill-category h3 i {
+        .skill-card h3 i {
             color: var(--primary);
         }
 
-        .skill-list {
+        .skill-items {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            margin-bottom: 8px;
         }
 
-        .skill-item {
-            background-color: rgba(30, 30, 30, 0.8);
+        .skill-tag {
+            background-color: rgba(10, 10, 10, 0.7);
             padding: 6px 14px;
-            border-radius: 20px;
+            border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 500;
-            color: var(--gray);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #ccc;
+            border: 1px solid rgba(255, 255, 255, 0.04);
             transition: var(--transition);
-            will-change: transform;
-            text-align: center;
-            line-height: 1.4;
             white-space: nowrap;
         }
 
-        .skill-item:hover {
-            color: var(--light);
+        .skill-tag:hover {
+            color: white;
             border-color: var(--primary);
+            background-color: rgba(30, 30, 30, 0.9);
             transform: scale(1.02);
         }
 
-        /* PROJECTS SECTION - HORIZONTAL LAYOUT */
+        /* subtle skill note to keep it grounded */
+        .skill-note {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            border-top: 1px dashed rgba(255, 255, 255, 0.05);
+            padding-top: 12px;
+            font-style: italic;
+        }
+
+        .skill-note i {
+            color: var(--primary);
+            margin-right: 4px;
+        }
+
+        /* PROJECTS SECTION – unchanged, horizontal scroll */
         .projects {
             background-color: rgba(10, 10, 10, 0.85);
-            position: relative;
             backdrop-filter: blur(5px);
             overflow: hidden;
         }
@@ -580,7 +594,6 @@
             display: flex;
             flex-direction: column;
             height: 500px;
-            /* slightly increased to accommodate more tags */
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
             will-change: transform;
@@ -685,7 +698,6 @@
         .certifications {
             background-color: rgba(5, 5, 5, 0.85);
             overflow: hidden;
-            position: relative;
             backdrop-filter: blur(5px);
         }
 
@@ -732,52 +744,13 @@
             animation: scroll-certificates 40s linear infinite;
         }
 
-        .certificate-item {
-            flex: 0 0 auto;
-            width: 300px;
-            height: 220px;
-            background-color: rgba(18, 18, 18, 0.8);
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
-            will-change: transform;
-        }
-
-        .certificate-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-            border-color: var(--primary);
-        }
-
-        .certificate-item img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: brightness(0.85) contrast(1.1);
-            transition: var(--transition);
-            will-change: transform;
-        }
-
-        .certificate-item:hover img {
-            filter: brightness(1) contrast(1);
-        }
-
         .badges-track {
             animation: scroll-badges 30s linear infinite;
         }
 
+        .certificate-item,
         .badge-item {
             flex: 0 0 auto;
-            width: 180px;
-            height: 180px;
             background-color: rgba(18, 18, 18, 0.8);
             border-radius: var(--border-radius);
             display: flex;
@@ -787,18 +760,29 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             cursor: pointer;
-            position: relative;
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
             will-change: transform;
         }
 
+        .certificate-item {
+            width: 300px;
+            height: 220px;
+        }
+
+        .badge-item {
+            width: 180px;
+            height: 180px;
+        }
+
+        .certificate-item:hover,
         .badge-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
             border-color: var(--primary);
         }
 
+        .certificate-item img,
         .badge-item img {
             max-width: 100%;
             max-height: 100%;
@@ -808,6 +792,7 @@
             will-change: transform;
         }
 
+        .certificate-item:hover img,
         .badge-item:hover img {
             filter: brightness(1) contrast(1);
         }
@@ -818,7 +803,7 @@
             }
 
             100% {
-                transform: translateX(calc(-300px * 14 - 30px * 14));
+                transform: translateX(calc(-300px * 15 - 30px * 15));
             }
         }
 
@@ -828,7 +813,7 @@
             }
 
             100% {
-                transform: translateX(calc(-180px * 11 - 30px * 11));
+                transform: translateX(calc(-180px * 12 - 30px * 12));
             }
         }
 
@@ -909,7 +894,6 @@
 
         .contact {
             background-color: rgba(10, 10, 10, 0.85);
-            position: relative;
             backdrop-filter: blur(5px);
         }
 
@@ -964,7 +948,6 @@
             justify-content: center;
             color: var(--primary);
             font-size: 1.2rem;
-            flex-shrink: 0;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -1060,15 +1043,9 @@
             font-size: 0.9rem;
         }
 
-        .social-link i {
-            color: var(--gray);
-            font-size: 15px;
-            transition: var(--transition);
-        }
-
+        .social-link i,
         .social-link .bx-upwork {
             color: var(--gray);
-            font-size: 15px;
             transition: var(--transition);
         }
 
@@ -1094,10 +1071,9 @@
             background: var(--primary);
         }
 
-        /* Responsive adjustments */
         @media (max-width: 1200px) {
-            .skills-container {
-                grid-template-columns: 1fr;
+            .skills-grid {
+                gap: 20px;
             }
         }
 
@@ -1129,7 +1105,6 @@
             .project-card {
                 width: 280px;
                 height: 520px;
-                /* adjusted for tags */
             }
 
             .profile-image {
@@ -1150,6 +1125,13 @@
                 width: 160px;
                 height: 160px;
             }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                max-width: 700px;
+            }
+
+            /* stack on tablet */
         }
 
         @media (max-width: 768px) {
@@ -1178,10 +1160,6 @@
 
             .mobile-menu {
                 display: block;
-            }
-
-            .skills-container {
-                grid-template-columns: 1fr;
             }
 
             .about-stats {
@@ -1256,7 +1234,6 @@
 
 <body>
     <canvas id="network-bg"></canvas>
-
     <header id="header">
         <div class="container">
             <nav class="navbar">
@@ -1271,9 +1248,7 @@
                     <li><a href="#certifications">Certifications</a></li>
                     <li><a href="#contact">Contact Details</a></li>
                 </ul>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
+                <div class="mobile-menu"><i class="fas fa-bars"></i></div>
             </nav>
         </div>
     </header>
@@ -1284,36 +1259,21 @@
                 <div class="hero-text">
                     <h1>Mahmoud Abdallah</h1>
                     <p>Turning data into decisions that matter with 3+ years of experience bridging the gap between raw numbers and real strategy.</p>
-                    <div class="hero-btns">
-                        <a href="#projects" class="btn">View Projects</a>
-                        <a href="#contact" class="btn btn-outline">Contact Details</a>
-                    </div>
+                    <div class="hero-btns"><a href="#projects" class="btn">View Projects</a><a href="#contact" class="btn btn-outline">Contact Details</a></div>
                 </div>
-                <div class="hero-image">
-                    <img src="https://github.com/user-attachments/assets/195a1487-78f1-40e2-9684-8ef2fe10ba95" alt="Mahmoud Abdallah" class="profile-image">
-                </div>
+                <div class="hero-image"><img src="https://github.com/user-attachments/assets/195a1487-78f1-40e2-9684-8ef2fe10ba95" alt="Mahmoud Abdallah" class="profile-image"></div>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT ME section – streamlined, no redundant sentences -->
     <section id="about" class="about">
         <div class="container">
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="about-text">
                     <div class="story-headline">My Story</div>
-                    <p>
-                        My journey into business intelligence started with a simple frustration: too many organizations sit on valuable data but have no clear way to read it, trust it, or act on it.<br>
-                        Over the past 3+ years, I've dedicated my career to closing that gap.<br>
-                        I've collaborated across industries to design interactive dashboards, build automated reporting pipelines, and create self-service analytics tools that put insights directly into the hands of decision-makers.
-                    </p>
-                    <p>
-                        What drives me is the business impact.<br>
-                        Seeing leadership make faster, smarter decisions because of something I built is what makes this work meaningful.<br>
-                        Beyond traditional BI, I'm actively expanding into AI and machine learning—exploring predictive analytics and intelligent automation to take business intelligence to the next level.
-                    </p>
-
+                    <p>My journey into business intelligence started with a simple frustration: too many organizations sit on valuable data but have no clear way to read it, trust it, or act on it.<br>Over the past 3+ years, I've dedicated my career to closing that gap. I've collaborated across industries to design interactive dashboards, build automated reporting pipelines, and create self-service analytics tools that put insights directly into the hands of decision-makers.</p>
+                    <p>What drives me is the business impact. Seeing leadership make faster, smarter decisions because of something I built is what makes this work meaningful. Beyond traditional BI, I'm actively expanding into AI and machine learning—exploring predictive analytics and intelligent automation to take business intelligence to the next level.</p>
                     <div class="core-expertise">
                         <h3>What I Do Best</h3>
                         <ul>
@@ -1323,15 +1283,7 @@
                             <li><strong>AI and Machine Learning:</strong> Applying ML fundamentals, NLP, and deep learning (TensorFlow, PyTorch) to real business problems.</li>
                         </ul>
                     </div>
-
-                    <p>
-                        <strong>What Drives Me:</strong>
-                        Data without context is just noise.<br>
-                        My goal is to deliver clarity that helps people make better decisions, faster.<br>
-                        I bring curiosity to every dataset and a constant drive to keep learning.<br>
-                        Whether you need an analytics solution or want to explore what AI can do for your business, let's turn your data into something that works for you.
-                    </p>
-
+                    <p><strong>What Drives Me:</strong> Data without context is just noise. My goal is to deliver clarity that helps people make better decisions, faster. I bring curiosity to every dataset and a constant drive to keep learning. Whether you need an analytics solution or want to explore what AI can do for your business, let's turn your data into something that works for you.</p>
                     <div class="about-stats">
                         <div class="stat">
                             <h3>3+</h3>
@@ -1355,115 +1307,56 @@
         </div>
     </section>
 
-    <!-- SKILLS SECTION – full‑width stacked containers -->
+    <!-- SKILLS SECTION – ENHANCED 2x2 GRID, SUBSTANTIVE BUT NOT OVERRATED -->
     <section id="skills" class="skills">
         <div class="container">
             <h2>My Skills</h2>
-            <div class="skills-container">
-                <!-- Programming & Data Science Core -->
-                <div class="skill-category">
-                    <h3><i class="fab fa-python"></i> Programming & ML</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Python</span><span class="skill-item">Pandas</span><span class="skill-item">NumPy</span>
-                        <span class="skill-item">Matplotlib</span><span class="skill-item">Seaborn</span><span class="skill-item">Scikit-learn</span>
-                        <span class="skill-item">Jupyter Notebook</span><span class="skill-item">TensorFlow</span><span class="skill-item">PyTorch</span>
-                        <span class="skill-item">XGBoost</span><span class="skill-item">AdaBoost</span><span class="skill-item">Gradient Boosting</span>
-                        <span class="skill-item">Ensemble Methods</span><span class="skill-item">Regression</span><span class="skill-item">Classification</span>
-                        <span class="skill-item">Decision Trees</span><span class="skill-item">Random Forest</span><span class="skill-item">KNN</span>
-                        <span class="skill-item">SVM</span><span class="skill-item">NLP</span><span class="skill-item">Deep Learning</span>
-                        <span class="skill-item">Hyperparameter Tuning</span><span class="skill-item">Pipeline Building</span>
-                        <span class="skill-item">Feature Engineering</span><span class="skill-item">Feature Selection</span>
-                        <span class="skill-item">Feature Importance</span>
+            <div class="skills-grid">
+                <!-- Card 1: Data & Analytics Core -->
+                <div class="skill-card">
+                    <h3><i class="fas fa-chart-bar"></i> BI & Visualisation</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Power BI</span><span class="skill-tag">Tableau</span><span class="skill-tag">Looker Studio</span>
+                        <span class="skill-tag">Dashboard Design</span><span class="skill-tag">KPI tracking</span><span class="skill-tag">Data storytelling</span>
+                        <span class="skill-tag">Executive reporting</span><span class="skill-tag">Self-service analytics</span>
                     </div>
+                    <div class="skill-note"><i class="fas fa-circle-info"></i> translating metrics into clear visuals</div>
                 </div>
-                <!-- Data Management & Databases -->
-                <div class="skill-category">
-                    <h3><i class="fas fa-database"></i> Data Management</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">SQL</span><span class="skill-item">Database Design</span><span class="skill-item">Relational Databases</span>
-                        <span class="skill-item">Data Wrangling</span><span class="skill-item">Data Cleaning</span><span class="skill-item">Missing Value Treatment</span>
-                        <span class="skill-item">Data Normalization</span><span class="skill-item">Data Standardization</span><span class="skill-item">Data Transformation</span>
-                        <span class="skill-item">Data Aggregation</span><span class="skill-item">GroupBy</span><span class="skill-item">Merge & Join</span>
-                        <span class="skill-item">DataFrame Manipulation</span><span class="skill-item">Multi-Dataset Integration</span>
-                        <span class="skill-item">Data Pipelines</span><span class="skill-item">ETL</span><span class="skill-item">Microsoft Dataverse</span>
+                <!-- Card 2: Data Management & SQL -->
+                <div class="skill-card">
+                    <h3><i class="fas fa-database"></i> Data Engineering</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">SQL</span><span class="skill-tag">Data wrangling</span><span class="skill-tag">ETL pipelines</span>
+                        <span class="skill-tag">Data cleaning</span><span class="skill-tag">Database design</span><span class="skill-tag">Dataverse</span>
+                        <span class="skill-tag">Power Query</span><span class="skill-tag">Data blending</span>
                     </div>
+                    <div class="skill-note"><i class="fas fa-circle-info"></i> solid foundation for reliable analytics</div>
                 </div>
-                <!-- BI & Visualization -->
-                <div class="skill-category">
-                    <h3><i class="fas fa-chart-pie"></i> BI & Visualization</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Power BI</span><span class="skill-item">Tableau</span><span class="skill-item">Tableau Online</span>
-                        <span class="skill-item">Looker Studio</span><span class="skill-item">Dashboard Design</span><span class="skill-item">Dashboard UX</span>
-                        <span class="skill-item">Self-Service Analytics</span><span class="skill-item">Data Blending</span><span class="skill-item">Calculated Fields</span>
-                        <span class="skill-item">KPI Tracking</span><span class="skill-item">Executive Reporting</span><span class="skill-item">Data Storytelling</span>
-                        <span class="skill-item">EDA</span><span class="skill-item">Data Visualization</span><span class="skill-item">Geospatial Analysis</span>
-                        <span class="skill-item">Time Series Analysis</span><span class="skill-item">Regional Segmentation</span>
+                <!-- Card 3: Python & ML (applied, not exaggerated) -->
+                <div class="skill-card">
+                    <h3><i class="fab fa-python"></i> Python & ML</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">Regression/Classification</span><span class="skill-tag">Feature engineering</span>
+                        <span class="skill-tag">Model evaluation</span><span class="skill-tag">XGBoost</span><span class="skill-tag">TensorFlow (basic)</span>
+                        <span class="skill-tag">NLP fundamentals</span>
                     </div>
+                    <div class="skill-note"><i class="fas fa-circle-info"></i> practical ML for business predictions</div>
                 </div>
-                <!-- Machine Learning & Model Evaluation -->
-                <div class="skill-category">
-                    <h3><i class="fas fa-brain"></i> ML & Evaluation</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Predictive Modeling</span><span class="skill-item">Supervised Learning</span>
-                        <span class="skill-item">Model Evaluation</span><span class="skill-item">Cross Validation</span><span class="skill-item">Train-Test Split</span>
-                        <span class="skill-item">Confusion Matrix</span><span class="skill-item">ROC-AUC</span><span class="skill-item">F1 Score</span>
-                        <span class="skill-item">Accuracy Score</span><span class="skill-item">Algorithm Benchmarking</span><span class="skill-item">Kaggle</span>
-                        <span class="skill-item">Demand Forecasting</span><span class="skill-item">Revenue Prediction</span><span class="skill-item">Price Forecasting</span>
-                        <span class="skill-item">Market Price Prediction</span><span class="skill-item">Anomaly Detection</span><span class="skill-item">Pattern Recognition</span>
-                        <span class="skill-item">Signal Processing</span><span class="skill-item">Disease Recognition</span><span class="skill-item">Medical Data Classification</span>
+                <!-- Card 4: Automation & Domain -->
+                <div class="skill-card">
+                    <h3><i class="fas fa-robot"></i> Automation & Domain</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Power Automate</span><span class="skill-tag">Power Apps</span><span class="skill-tag">Process automation</span>
+                        <span class="skill-tag">Sales analytics</span><span class="skill-tag">Marketing ROI</span><span class="skill-tag">Customer segmentation</span>
+                        <span class="skill-tag">Healthcare / pharma</span><span class="skill-tag">HRIS prototypes</span>
                     </div>
-                </div>
-                <!-- Domain Analytics (Sales, Marketing, Healthcare) -->
-                <div class="skill-category">
-                    <h3><i class="fas fa-chart-line"></i> Domain Analytics</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Sales Analytics</span><span class="skill-item">B2B Sales Analytics</span><span class="skill-item">Field Sales Analytics</span>
-                        <span class="skill-item">Sales Agent Performance</span><span class="skill-item">Agent Productivity</span><span class="skill-item">Retailer Engagement</span>
-                        <span class="skill-item">Order Conversion Analysis</span><span class="skill-item">Conversion Rate Analysis</span><span class="skill-item">Sales Funnel</span>
-                        <span class="skill-item">Retailer Retention</span><span class="skill-item">Sales Operations Optimization</span><span class="skill-item">Visit Pattern</span>
-                        <span class="skill-item">Root Cause Analysis</span><span class="skill-item">Performance Gap</span><span class="skill-item">Customer Behavior</span>
-                        <span class="skill-item">Customer Segmentation</span><span class="skill-item">RFM Analysis</span><span class="skill-item">Cohort Analysis</span>
-                        <span class="skill-item">CLV Analysis</span><span class="skill-item">Basket Analysis</span><span class="skill-item">Order Analysis</span>
-                        <span class="skill-item">E-Commerce Analytics</span><span class="skill-item">Pharmacy Analytics</span><span class="skill-item">Healthcare Analytics</span>
-                        <span class="skill-item">Marketing Analytics</span><span class="skill-item">Campaign Analytics</span><span class="skill-item">Marketing KPI</span>
-                        <span class="skill-item">ROI Analysis</span><span class="skill-item">Channel Performance</span><span class="skill-item">Product Performance</span>
-                        <span class="skill-item">Sales Trend Analysis</span><span class="skill-item">Revenue Attribution</span><span class="skill-item">Financial Data Analysis</span>
-                        <span class="skill-item">Consumer Behavior Analytics</span>
-                    </div>
-                </div>
-                <!-- Automation & Low-Code / Business Apps -->
-                <div class="skill-category">
-                    <h3><i class="fas fa-robot"></i> Automation & Power Platform</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Power Apps</span><span class="skill-item">Power Automate</span><span class="skill-item">Microsoft Dataverse</span>
-                        <span class="skill-item">Power Platform</span><span class="skill-item">Low-Code Development</span><span class="skill-item">Model-Driven Apps</span>
-                        <span class="skill-item">Canvas Apps</span><span class="skill-item">Business Process Automation</span><span class="skill-item">Workflow Automation</span>
-                        <span class="skill-item">App Development</span><span class="skill-item">Mobile App Development</span><span class="skill-item">IoT Integration</span>
-                        <span class="skill-item">Real-Time Data Processing</span><span class="skill-item">Sensor Data Analysis</span><span class="skill-item">Biomedical Engineering</span>
-                        <span class="skill-item">HRIS</span><span class="skill-item">HR System Design</span><span class="skill-item">Internal Tool Development</span>
-                        <span class="skill-item">Rapid Prototyping</span><span class="skill-item">SharePoint</span><span class="skill-item">HR Analytics</span>
-                    </div>
-                </div>
-                <!-- Strategy, Consulting & Delivery -->
-                <div class="skill-category">
-                    <h3><i class="fas fa-bullseye"></i> Strategy & Delivery</h3>
-                    <div class="skill-list">
-                        <span class="skill-item">Automotive Analytics</span><span class="skill-item">Educational Analytics</span><span class="skill-item">Public Sector Analytics</span>
-                        <span class="skill-item">Program Evaluation</span><span class="skill-item">Non-Profit Tech</span><span class="skill-item">Freelance Project Delivery</span>
-                        <span class="skill-item">Client Requirements Analysis</span><span class="skill-item">End-to-End ML Projects</span>
-                        <span class="skill-item">Case Study Methodology</span><span class="skill-item">Business Recommendations</span>
-                        <span class="skill-item">Strategic Recommendations</span><span class="skill-item">Sales Operations Consulting</span>
-                        <span class="skill-item">Business Impact Quantification</span><span class="skill-item">Executive-Level Insights</span>
-                        <span class="skill-item">Data Validation</span><span class="skill-item">Data Modeling</span><span class="skill-item">Stakeholder Communication</span>
-                        <span class="skill-item">System Architecture</span><span class="skill-item">Technical Documentation</span><span class="skill-item">R&D</span>
-                        <span class="skill-item">Agile</span><span class="skill-item">Jira</span><span class="skill-item">Azure Boards</span>
-                    </div>
+                    <div class="skill-note"><i class="fas fa-circle-info"></i> low‑code tools + industry context</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS SECTION – updated with detailed skill tags -->
     <section id="projects" class="projects">
         <div class="container">
             <h2>Featured Projects</h2>
@@ -1490,14 +1383,10 @@
     </section>
 
     <div id="certModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
+        <div class="modal-content"><span class="modal-close">&times;</span>
             <h3 class="modal-title" id="modalTitle"></h3>
-            <div class="modal-details" id="modalDetails"></div>
-            <img class="modal-image" id="modalImage" src="" alt="Certificate">
-            <div class="modal-actions">
-                <button class="btn" id="modalCloseBtn">Close</button>
-            </div>
+            <div class="modal-details" id="modalDetails"></div><img class="modal-image" id="modalImage" src="" alt="Certificate">
+            <div class="modal-actions"><button class="btn" id="modalCloseBtn">Close</button></div>
         </div>
     </div>
 
@@ -1540,11 +1429,7 @@
                 <div class="footer-about">
                     <div class="footer-logo">BI <span>Analyst</span></div>
                     <p>Turning data into decisions that matter — dashboards, automation, and predictive analytics.</p>
-                    <div class="social-links">
-                        <a href="https://github.com/MAHMOUD2ABDALLAH" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/mahmoud-abdallah20" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.upwork.com/freelancers/~01ab95f3b6c6a783a3?mp_source=share" class="social-link" target="_blank"><i class='bx bxl-upwork'></i></a>
-                    </div>
+                    <div class="social-links"><a href="https://github.com/MAHMOUD2ABDALLAH" class="social-link" target="_blank"><i class="fab fa-github"></i></a><a href="https://www.linkedin.com/in/mahmoud-abdallah20" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="https://www.upwork.com/freelancers/~01ab95f3b6c6a783a3?mp_source=share" class="social-link" target="_blank"><i class='bx bxl-upwork'></i></a></div>
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>
@@ -1576,13 +1461,13 @@
     </footer>
 
     <script>
-        // Network animation (unchanged, functional)
-        const canvas = document.getElementById("network-bg");
-        const ctx = canvas.getContext("2d");
+        // (network animation & data unchanged – keep as is)
+        const canvas = document.getElementById("network-bg"),
+            ctx = canvas.getContext("2d");
         let animationId, lastTime = 0,
             frameRate = 60,
-            frameInterval = 1000 / frameRate;
-        let computedWidth, computedHeight;
+            frameInterval = 1000 / frameRate,
+            computedWidth, computedHeight;
 
         function resizeCanvas() {
             computedWidth = window.innerWidth;
@@ -1706,80 +1591,71 @@
             } else if (!animationId) animateNetwork(0);
         });
 
-        // Project data with detailed skill tags (updated)
+        // projects data (unchanged)
         const projectsData = [{
-                id: 1,
-                title: "National Reading Program",
-                description: "Educational initiative promoting literacy.",
-                image: "https://github.com/user-attachments/assets/5414b94d-9249-4f26-8bbe-d7472baf0f00",
-                tags: ["Power BI", "SQL", "Data Cleaning", "KPI Tracking", "Student Performance", "Dashboard UX", "Executive Reporting", "Stakeholder Communication"],
-                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/National-Reading-Program"
-            },
-            {
-                id: 2,
-                title: "Mobile Ventilator GP",
-                description: "Emergency medical ventilator.",
-                image: "https://github.com/user-attachments/assets/fe0430d6-5dcd-4c1c-aba5-286a7a22137d",
-                tags: ["IoT Integration", "Real-Time Data", "Biomedical Engineering", "Sensor Data Analysis", "Python", "Signal Processing", "Anomaly Detection"],
-                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP"
-            },
-            {
-                id: 3,
-                title: "MaxAB Sales Analysis",
-                description: "Sales trends & optimization.",
-                image: "https://github.com/user-attachments/assets/3976afc4-6d42-43bc-9223-9975389cb1c5",
-                tags: ["Python", "Pandas", "Sales Analytics", "Field Sales", "Agent Productivity", "RFM Analysis", "Segmentation", "Matplotlib", "Seaborn"],
-                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study"
-            },
-            {
-                id: 4,
-                title: "Walmart Product Analysis",
-                description: "Retail analytics dashboard.",
-                image: "https://github.com/user-attachments/assets/a2a97696-f449-4c5b-865d-a11428243c24",
-                tags: ["Tableau", "Dashboard Design", "Product Performance", "Time Series", "Geospatial Analysis", "Retail Analytics", "Data Storytelling"],
-                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study"
-            },
-            {
-                id: 5,
-                title: "Elezaby Pharmacy E-commerce",
-                description: "Digital analytics for pharma.",
-                image: "https://github.com/user-attachments/assets/3c1aa919-3edb-41d6-8f3d-accaea3477f9",
-                tags: ["Looker Studio", "E-Commerce Analytics", "Customer Behavior", "Cohort Analysis", "Marketing ROI", "Conversion Funnel", "Python"],
-                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study"
-            },
-            {
-                id: 6,
-                title: "Immigration to Canada",
-                description: "Trends 1980-2013.",
-                image: "https://github.com/user-attachments/assets/d9ee090d-82b6-4a14-9cab-cd4e37e40b54",
-                tags: ["Python", "Pandas", "Time Series", "EDA", "Matplotlib", "Data Aggregation", "Geospatial", "Public Data"],
-                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013"
-            },
-            {
-                id: 7,
-                title: "HR System",
-                description: "Power Platform HR management.",
-                image: "https://github.com/user-attachments/assets/4bc1a204-e368-4755-8bf9-12e677eaa9f6",
-                tags: ["Power Apps", "Power Automate", "Dataverse", "HRIS", "Model-Driven Apps", "Business Process Automation", "SharePoint"],
-                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/HR-System"
-            },
-            {
-                id: 8,
-                title: "Improvado Marketing Homework",
-                description: "Marketing ROI & segmentation.",
-                image: "https://github.com/user-attachments/assets/316a70d5-2674-4407-92fe-b8e44ddfac9c",
-                tags: ["Python", "Pandas", "Marketing Analytics", "ROI Analysis", "Channel Performance", "Customer Segmentation", "Scikit-learn"],
-                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework"
-            },
-            {
-                id: 9,
-                title: "Animal Shelter Home",
-                description: "Power Platform for shelter mgmt.",
-                image: "https://github.com/user-attachments/assets/e4c613db-bbb8-4899-8d34-dcea1539af97",
-                tags: ["Power Apps", "Power Automate", "Canvas Apps", "Dataverse", "Non-Profit", "Rapid Prototyping", "Data Validation"],
-                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange"
-            }
-        ];
+            id: 1,
+            title: "National Reading Program",
+            description: "Educational initiative promoting literacy.",
+            image: "https://github.com/user-attachments/assets/5414b94d-9249-4f26-8bbe-d7472baf0f00",
+            tags: ["Power BI", "SQL", "Data Cleaning", "KPI Tracking", "Student Performance", "Dashboard UX", "Executive Reporting", "Stakeholder Communication"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/National-Reading-Program"
+        }, {
+            id: 2,
+            title: "Mobile Ventilator GP",
+            description: "Emergency medical ventilator.",
+            image: "https://github.com/user-attachments/assets/fe0430d6-5dcd-4c1c-aba5-286a7a22137d",
+            tags: ["IoT Integration", "Real-Time Data", "Biomedical Engineering", "Sensor Data Analysis", "Python", "Signal Processing", "Anomaly Detection"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP"
+        }, {
+            id: 3,
+            title: "MaxAB Sales Analysis",
+            description: "Sales trends & optimization.",
+            image: "https://github.com/user-attachments/assets/3976afc4-6d42-43bc-9223-9975389cb1c5",
+            tags: ["Python", "Pandas", "Sales Analytics", "Field Sales", "Agent Productivity", "RFM Analysis", "Segmentation", "Matplotlib", "Seaborn"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study"
+        }, {
+            id: 4,
+            title: "Walmart Product Analysis",
+            description: "Retail analytics dashboard.",
+            image: "https://github.com/user-attachments/assets/a2a97696-f449-4c5b-865d-a11428243c24",
+            tags: ["Tableau", "Dashboard Design", "Product Performance", "Time Series", "Geospatial Analysis", "Retail Analytics", "Data Storytelling"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study"
+        }, {
+            id: 5,
+            title: "Elezaby Pharmacy E-commerce",
+            description: "Digital analytics for pharma.",
+            image: "https://github.com/user-attachments/assets/3c1aa919-3edb-41d6-8f3d-accaea3477f9",
+            tags: ["Looker Studio", "E-Commerce Analytics", "Customer Behavior", "Cohort Analysis", "Marketing ROI", "Conversion Funnel", "Python"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study"
+        }, {
+            id: 6,
+            title: "Immigration to Canada",
+            description: "Trends 1980-2013.",
+            image: "https://github.com/user-attachments/assets/d9ee090d-82b6-4a14-9cab-cd4e37e40b54",
+            tags: ["Python", "Pandas", "Time Series", "EDA", "Matplotlib", "Data Aggregation", "Geospatial", "Public Data"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013"
+        }, {
+            id: 7,
+            title: "HR System",
+            description: "Power Platform HR management.",
+            image: "https://github.com/user-attachments/assets/4bc1a204-e368-4755-8bf9-12e677eaa9f6",
+            tags: ["Power Apps", "Power Automate", "Dataverse", "HRIS", "Model-Driven Apps", "Business Process Automation", "SharePoint"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/HR-System"
+        }, {
+            id: 8,
+            title: "Improvado Marketing Homework",
+            description: "Marketing ROI & segmentation.",
+            image: "https://github.com/user-attachments/assets/316a70d5-2674-4407-92fe-b8e44ddfac9c",
+            tags: ["Python", "Pandas", "Marketing Analytics", "ROI Analysis", "Channel Performance", "Customer Segmentation", "Scikit-learn"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework"
+        }, {
+            id: 9,
+            title: "Animal Shelter Home",
+            description: "Power Platform for shelter mgmt.",
+            image: "https://github.com/user-attachments/assets/e4c613db-bbb8-4899-8d34-dcea1539af97",
+            tags: ["Power Apps", "Power Automate", "Canvas Apps", "Dataverse", "Non-Profit", "Rapid Prototyping", "Data Validation"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange"
+        }];
 
         function createProjectCards() {
             const grid = document.getElementById('projectsGrid');
@@ -1791,226 +1667,198 @@
                 grid.appendChild(card);
             });
         }
-
-        // Certificates and badges data (unchanged)
+        // certificates & badges (unchanged)
         const certificates = [{
-                id: "c1",
-                title: "Intro Data Science",
-                issuer: "Cisco",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/4592b5da-d701-4ea8-ac8d-f0f1db4894be"
-            },
-            {
-                id: "c2",
-                title: "IBM Data Analysis Python",
-                issuer: "IBM",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/b09cdd4d-d1f4-43ee-826d-cc45582b1b7c"
-            },
-            {
-                id: "c3",
-                title: "IBM AI Fundamentals",
-                issuer: "IBM",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/0de8da5e-cd48-4b73-b134-e43a0a38d80e"
-            },
-            {
-                id: "c4",
-                title: "Tableau",
-                issuer: "Cognitive",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/b14545e8-139a-4094-9a3d-3402a344810c"
-            },
-            {
-                id: "c5",
-                title: "Data Analytics Essentials",
-                issuer: "Cisco",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/f2df529c-377d-40b2-a3f6-02371c1f0179"
-            },
-            {
-                id: "c6",
-                title: "Data Wrangling Python",
-                issuer: "IBM",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/faae0203-0d8a-4a7f-b9ff-ec9399bba6b8"
-            },
-            {
-                id: "c7",
-                title: "Coursera Cert",
-                issuer: "Coursera",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/90984453-ee23-40ec-a2e0-32a3c0a8e547"
-            },
-            {
-                id: "c8",
-                title: "AI Fundamentals",
-                issuer: "Cisco",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/5bd0dabd-952c-47b6-99f9-4ec335ebaa67"
-            },
-            {
-                id: "c9",
-                title: "Python Essentials 2",
-                issuer: "Cisco",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/a835620e-dbf7-437f-9aac-3970e56154fd"
-            },
-            {
-                id: "c10",
-                title: "Python Essentials 1",
-                issuer: "Cisco",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/abf78bca-7bec-4fbc-880a-c6e8d1305bf0"
-            },
-            {
-                id: "c11",
-                title: "Python Data Science",
-                issuer: "IBM",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/da6afaed-e9f5-482a-9050-f4df75326949"
-            },
-            {
-                id: "c12",
-                title: "Intro Modern AI",
-                issuer: "Cisco",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/1ebbc427-4f77-4f3e-8756-682ebec877f3"
-            },
-            {
-                id: "c13",
-                title: "SQL Certificate",
-                issuer: "Coursera",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/fbe52270-eedf-4c66-bf67-f1fda5a2a54b"
-            },
-            {
-                id: "c14",
-                title: "Tableau Certificate",
-                issuer: "Coursera",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/6256996f-5d6b-4f29-8c47-4658d16087e8"
-            },
-            {
-                id: "c15",
-                title: "Data Viz Python",
-                issuer: "Coursera",
-                date: "2025",
-                description: "Data viz with Python",
-                image: "https://github.com/user-attachments/assets/c21a9dcb-0c9e-4bfe-be46-6fd43b919ee5"
-            }
-        ];
+            id: "c1",
+            title: "Intro Data Science",
+            issuer: "Cisco",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/4592b5da-d701-4ea8-ac8d-f0f1db4894be"
+        }, {
+            id: "c2",
+            title: "IBM Data Analysis Python",
+            issuer: "IBM",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/b09cdd4d-d1f4-43ee-826d-cc45582b1b7c"
+        }, {
+            id: "c3",
+            title: "IBM AI Fundamentals",
+            issuer: "IBM",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/0de8da5e-cd48-4b73-b134-e43a0a38d80e"
+        }, {
+            id: "c4",
+            title: "Tableau",
+            issuer: "Cognitive",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/b14545e8-139a-4094-9a3d-3402a344810c"
+        }, {
+            id: "c5",
+            title: "Data Analytics Essentials",
+            issuer: "Cisco",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/f2df529c-377d-40b2-a3f6-02371c1f0179"
+        }, {
+            id: "c6",
+            title: "Data Wrangling Python",
+            issuer: "IBM",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/faae0203-0d8a-4a7f-b9ff-ec9399bba6b8"
+        }, {
+            id: "c7",
+            title: "Coursera Cert",
+            issuer: "Coursera",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/90984453-ee23-40ec-a2e0-32a3c0a8e547"
+        }, {
+            id: "c8",
+            title: "AI Fundamentals",
+            issuer: "Cisco",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/5bd0dabd-952c-47b6-99f9-4ec335ebaa67"
+        }, {
+            id: "c9",
+            title: "Python Essentials 2",
+            issuer: "Cisco",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/a835620e-dbf7-437f-9aac-3970e56154fd"
+        }, {
+            id: "c10",
+            title: "Python Essentials 1",
+            issuer: "Cisco",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/abf78bca-7bec-4fbc-880a-c6e8d1305bf0"
+        }, {
+            id: "c11",
+            title: "Python Data Science",
+            issuer: "IBM",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/da6afaed-e9f5-482a-9050-f4df75326949"
+        }, {
+            id: "c12",
+            title: "Intro Modern AI",
+            issuer: "Cisco",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/1ebbc427-4f77-4f3e-8756-682ebec877f3"
+        }, {
+            id: "c13",
+            title: "SQL Certificate",
+            issuer: "Coursera",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/fbe52270-eedf-4c66-bf67-f1fda5a2a54b"
+        }, {
+            id: "c14",
+            title: "Tableau Certificate",
+            issuer: "Coursera",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/6256996f-5d6b-4f29-8c47-4658d16087e8"
+        }, {
+            id: "c15",
+            title: "Data Viz Python",
+            issuer: "Coursera",
+            date: "2025",
+            description: "Data viz with Python",
+            image: "https://github.com/user-attachments/assets/c21a9dcb-0c9e-4bfe-be46-6fd43b919ee5"
+        }];
         const badges = [{
-                id: "b1",
-                title: "MS Power Up",
-                issuer: "Microsoft",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/c5ff064b-9abe-47b3-9929-bf55999f4215"
-            },
-            {
-                id: "b2",
-                title: "Power Platform Adventure",
-                issuer: "Microsoft",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/0cb0e3f8-82ea-464a-8331-7ecf6eb4cc01"
-            },
-            {
-                id: "b3",
-                title: "Python for DS",
-                issuer: "IBM",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/4b0ba356-eab1-404c-b3a3-c8d510b9d0ba"
-            },
-            {
-                id: "b4",
-                title: "Python Essentials 2 badge",
-                issuer: "Cisco",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/0d6feac6-6a32-4b75-a19b-d92d7cb0ac8e"
-            },
-            {
-                id: "b5",
-                title: "Python Essentials 1 badge",
-                issuer: "Cisco",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/f695ac34-d5b9-4529-a722-dd5ea4b5040a"
-            },
-            {
-                id: "b6",
-                title: "Modern AI badge",
-                issuer: "Cisco",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/87364b3b-b649-4403-a199-9b4507c84585"
-            },
-            {
-                id: "b7",
-                title: "Intro DS badge",
-                issuer: "Cisco",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/c7932b15-f0dc-4c77-a3c3-cb8ef2bbcd66"
-            },
-            {
-                id: "b8",
-                title: "Data Analytics Essentials badge",
-                issuer: "Cisco",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/9d7dacc4-b1da-48a5-85c0-baa7fcb00922"
-            },
-            {
-                id: "b9",
-                title: "Data Analysis Python badge",
-                issuer: "IBM",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/ef12be0e-8c54-435c-8f1f-e6fdd8156acd"
-            },
-            {
-                id: "b10",
-                title: "AI Fundamentals badge",
-                issuer: "Cisco",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/d6fbf2b1-b4f9-4e37-85fb-c78bac98ba63"
-            },
-            {
-                id: "b11",
-                title: "AI Fundamentals IBM",
-                issuer: "IBM",
-                date: "2024",
-                description: "",
-                image: "https://github.com/user-attachments/assets/bf9d6073-488f-478f-8bf8-e264f65ac94d"
-            },
-            {
-                id: "b12",
-                title: "Data Viz Python badge",
-                issuer: "Coursera",
-                date: "2025",
-                description: "",
-                image: "https://github.com/user-attachments/assets/c3793f7b-e282-484b-b81c-3eca430cb990"
-            }
-        ];
+            id: "b1",
+            title: "MS Power Up",
+            issuer: "Microsoft",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/c5ff064b-9abe-47b3-9929-bf55999f4215"
+        }, {
+            id: "b2",
+            title: "Power Platform Adventure",
+            issuer: "Microsoft",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/0cb0e3f8-82ea-464a-8331-7ecf6eb4cc01"
+        }, {
+            id: "b3",
+            title: "Python for DS",
+            issuer: "IBM",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/4b0ba356-eab1-404c-b3a3-c8d510b9d0ba"
+        }, {
+            id: "b4",
+            title: "Python Essentials 2 badge",
+            issuer: "Cisco",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/0d6feac6-6a32-4b75-a19b-d92d7cb0ac8e"
+        }, {
+            id: "b5",
+            title: "Python Essentials 1 badge",
+            issuer: "Cisco",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/f695ac34-d5b9-4529-a722-dd5ea4b5040a"
+        }, {
+            id: "b6",
+            title: "Modern AI badge",
+            issuer: "Cisco",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/87364b3b-b649-4403-a199-9b4507c84585"
+        }, {
+            id: "b7",
+            title: "Intro DS badge",
+            issuer: "Cisco",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/c7932b15-f0dc-4c77-a3c3-cb8ef2bbcd66"
+        }, {
+            id: "b8",
+            title: "Data Analytics Essentials badge",
+            issuer: "Cisco",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/9d7dacc4-b1da-48a5-85c0-baa7fcb00922"
+        }, {
+            id: "b9",
+            title: "Data Analysis Python badge",
+            issuer: "IBM",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/ef12be0e-8c54-435c-8f1f-e6fdd8156acd"
+        }, {
+            id: "b10",
+            title: "AI Fundamentals badge",
+            issuer: "Cisco",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/d6fbf2b1-b4f9-4e37-85fb-c78bac98ba63"
+        }, {
+            id: "b11",
+            title: "AI Fundamentals IBM",
+            issuer: "IBM",
+            date: "2024",
+            description: "",
+            image: "https://github.com/user-attachments/assets/bf9d6073-488f-478f-8bf8-e264f65ac94d"
+        }, {
+            id: "b12",
+            title: "Data Viz Python badge",
+            issuer: "Coursera",
+            date: "2025",
+            description: "",
+            image: "https://github.com/user-attachments/assets/c3793f7b-e282-484b-b81c-3eca430cb990"
+        }];
 
         function initCarousels() {
             const certTrack = document.querySelector('.certificates-track'),
@@ -2032,8 +1880,6 @@
                 badgeTrack.appendChild(d);
             });
         }
-
-        // Modal logic
         const modal = document.getElementById('certModal'),
             modalTitle = document.getElementById('modalTitle'),
             modalDetails = document.getElementById('modalDetails'),
@@ -2063,12 +1909,9 @@
         window.addEventListener('click', e => {
             if (e.target === modal) closeCertModal();
         });
-
-        // mobile menu
         const mobileMenu = document.querySelector('.mobile-menu'),
             navLinks = document.querySelector('.nav-links');
         mobileMenu.addEventListener('click', () => navLinks.classList.toggle('active'));
-
         document.addEventListener('DOMContentLoaded', function() {
             createProjectCards();
             initCarousels();
