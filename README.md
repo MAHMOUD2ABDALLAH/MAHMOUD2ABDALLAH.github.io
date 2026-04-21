@@ -1,5 +1,3 @@
-<img width="60" height="80" align="right" alt="donut-chart" src="https://github.com/user-attachments/assets/b4a9ebc2-5ecd-4c39-84fb-13b83abf674e" />
-
 # The Analyst - Data Analytics & Business Intelligence Portfolio
 
 A modern, responsive portfolio website showcasing data analytics and business intelligence projects, skills, and certifications.
@@ -43,5 +41,6 @@ This project is open source and available.
 ## Live Demo 
 **[The Analyst](https://mahmoud2abdallah.github.io)**
 
-<img width="300" height="300" alt="Linkedin Profile" src="https://github.com/user-attachments/assets/195a1487-78f1-40e2-9684-8ef2fe10ba95" />
+<img width="200" height="220" alt="Linkedin Profile" src="https://github.com/user-attachments/assets/0b1c29ac-9dd9-4a62-82eb-0cf420d75f7f" />
+
 
