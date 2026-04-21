@@ -10,7 +10,6 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ... (all styles remain unchanged) ... */
         :root {
             --primary: #3b82f6;
             --primary-dark: #2563eb;
@@ -439,7 +438,6 @@
             color: var(--gray);
         }
 
-        /* SKILLS SECTION – ENHANCED 2x2 GRID, CLEAN & SUBSTANTIVE */
         .skills {
             background-color: rgba(5, 5, 5, 0.85);
             position: relative;
@@ -523,7 +521,6 @@
             transform: scale(1.02);
         }
 
-        /* subtle skill note to keep it grounded */
         .skill-note {
             margin-top: 16px;
             font-size: 0.85rem;
@@ -538,7 +535,6 @@
             margin-right: 4px;
         }
 
-        /* PROJECTS SECTION – unchanged, horizontal scroll */
         .projects {
             background-color: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(5px);
@@ -804,7 +800,7 @@
             }
 
             100% {
-                transform: translateX(calc(-300px * 15 - 30px * 15));
+                transform: translateX(calc(-300px * 16 - 30px * 16));
             }
         }
 
@@ -814,7 +810,7 @@
             }
 
             100% {
-                transform: translateX(calc(-180px * 12 - 30px * 12));
+                transform: translateX(calc(-180px * 13 - 30px * 13));
             }
         }
 
@@ -1131,8 +1127,6 @@
                 grid-template-columns: 1fr;
                 max-width: 700px;
             }
-
-            /* stack on tablet */
         }
 
         @media (max-width: 768px) {
@@ -1262,7 +1256,7 @@
                     <p>Turning data into decisions that matter with 3+ years of experience bridging the gap between raw numbers and real strategy.</p>
                     <div class="hero-btns"><a href="#projects" class="btn">View Projects</a><a href="#contact" class="btn btn-outline">Contact Details</a></div>
                 </div>
-                <div class="hero-image"><img src="https://github.com/user-attachments/assets/195a1487-78f1-40e2-9684-8ef2fe10ba95" alt="Mahmoud Abdallah" class="profile-image"></div>
+                <div class="hero-image"><img src="https://github.com/user-attachments/assets/0b1c29ac-9dd9-4a62-82eb-0cf420d75f7f" alt="Mahmoud Abdallah" class="profile-image"></div>
             </div>
         </div>
     </section>
@@ -1308,12 +1302,10 @@
         </div>
     </section>
 
-    <!-- SKILLS SECTION – ENHANCED 2x2 GRID, SUBSTANTIVE BUT NOT OVERRATED -->
     <section id="skills" class="skills">
         <div class="container">
             <h2>My Skills</h2>
             <div class="skills-grid">
-                <!-- Card 1: Data & Analytics Core -->
                 <div class="skill-card">
                     <h3><i class="fas fa-chart-bar"></i> BI & Visualisation</h3>
                     <div class="skill-items">
@@ -1323,7 +1315,6 @@
                     </div>
                     <div class="skill-note"><i class="fas fa-circle-info"></i> translating metrics into clear visuals</div>
                 </div>
-                <!-- Card 2: Data Management & SQL -->
                 <div class="skill-card">
                     <h3><i class="fas fa-database"></i> Data Engineering</h3>
                     <div class="skill-items">
@@ -1333,7 +1324,6 @@
                     </div>
                     <div class="skill-note"><i class="fas fa-circle-info"></i> solid foundation for reliable analytics</div>
                 </div>
-                <!-- Card 3: Python & ML (applied, not exaggerated) -->
                 <div class="skill-card">
                     <h3><i class="fab fa-python"></i> Python & ML</h3>
                     <div class="skill-items">
@@ -1344,7 +1334,6 @@
                     </div>
                     <div class="skill-note"><i class="fas fa-circle-info"></i> practical ML for business predictions</div>
                 </div>
-                <!-- Card 4: Automation & Domain -->
                 <div class="skill-card">
                     <h3><i class="fas fa-robot"></i> Automation & Domain</h3>
                     <div class="skill-items">
@@ -1462,7 +1451,6 @@
     </footer>
 
     <script>
-        // (network animation & data unchanged – keep as is)
         const canvas = document.getElementById("network-bg"),
             ctx = canvas.getContext("2d");
         let animationId, lastTime = 0,
@@ -1592,7 +1580,6 @@
             } else if (!animationId) animateNetwork(0);
         });
 
-        // projects data (unchanged)
         const projectsData = [{
             id: 1,
             title: "National Reading Program",
@@ -1668,7 +1655,7 @@
                 grid.appendChild(card);
             });
         }
-        // certificates & badges (with Cloud Essentials added)
+
         const certificates = [{
             id: "c1",
             title: "Intro Data Science",
@@ -1782,6 +1769,7 @@
             description: "Cloud computing fundamentals",
             image: "https://github.com/user-attachments/assets/7b6e6cb6-79c1-4e10-b9b6-34432548664e"
         }];
+
         const badges = [{
             id: "b1",
             title: "MS Power Up",
@@ -1895,12 +1883,14 @@
                 badgeTrack.appendChild(d);
             });
         }
+
         const modal = document.getElementById('certModal'),
             modalTitle = document.getElementById('modalTitle'),
             modalDetails = document.getElementById('modalDetails'),
             modalImage = document.getElementById('modalImage'),
             modalCloseBtn = document.getElementById('modalCloseBtn'),
             closeModal = document.querySelector('.modal-close');
+
         document.addEventListener('click', e => {
             const item = e.target.closest('.certificate-item, .badge-item');
             if (!item) return;
@@ -1924,9 +1914,11 @@
         window.addEventListener('click', e => {
             if (e.target === modal) closeCertModal();
         });
+
         const mobileMenu = document.querySelector('.mobile-menu'),
             navLinks = document.querySelector('.nav-links');
         mobileMenu.addEventListener('click', () => navLinks.classList.toggle('active'));
+
         document.addEventListener('DOMContentLoaded', function() {
             createProjectCards();
             initCarousels();
