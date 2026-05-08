@@ -158,10 +158,42 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 0.85rem;
+            padding: 10px 16px;
+            white-space: nowrap;
         }
 
         .btn-github:hover {
             background-color: #000;
+        }
+
+        .btn-website {
+            background-color: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            padding: 10px 16px;
+            white-space: nowrap;
+        }
+
+        .btn-website:hover {
+            border-color: var(--primary);
+            color: white;
+            background-color: rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-link {
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            color: var(--primary);
         }
 
         .logo-container {
@@ -279,16 +311,6 @@
             margin-bottom: 20px;
             color: var(--light);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-text h2 {
-            color: var(--primary);
-            text-align: left;
-        }
-
-        .hero-text h2::after {
-            left: 0;
-            transform: none;
         }
 
         .hero-text p {
@@ -438,6 +460,7 @@
             color: var(--gray);
         }
 
+        /* ---------- redesigned skills section ---------- */
         .skills {
             background-color: rgba(5, 5, 5, 0.85);
             position: relative;
@@ -454,86 +477,44 @@
             background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 28px;
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
-        .skill-card {
-            background-color: rgba(18, 18, 18, 0.8);
-            border-radius: var(--border-radius);
-            padding: 28px 24px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
-            will-change: transform;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--primary);
-        }
-
-        .skill-card h3 {
-            margin-bottom: 20px;
+        .skill-badge {
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: var(--light);
-            font-size: 1.4rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 12px;
-        }
-
-        .skill-card h3 i {
-            color: var(--primary);
-        }
-
-        .skill-items {
-            display: flex;
-            flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .skill-tag {
-            background-color: rgba(10, 10, 10, 0.7);
-            padding: 6px 14px;
+            padding: 10px 18px;
+            background-color: rgba(18, 18, 18, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 30px;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 500;
             color: #ccc;
-            border: 1px solid rgba(255, 255, 255, 0.04);
             transition: var(--transition);
-            white-space: nowrap;
+            cursor: default;
+            backdrop-filter: blur(5px);
         }
 
-        .skill-tag:hover {
-            color: white;
-            border-color: var(--primary);
-            background-color: rgba(30, 30, 30, 0.9);
-            transform: scale(1.02);
-        }
-
-        .skill-note {
-            margin-top: 16px;
-            font-size: 0.85rem;
-            color: var(--secondary);
-            border-top: 1px dashed rgba(255, 255, 255, 0.05);
-            padding-top: 12px;
-            font-style: italic;
-        }
-
-        .skill-note i {
+        .skill-badge i {
             color: var(--primary);
-            margin-right: 4px;
+            font-size: 1.1rem;
         }
+
+        .skill-badge:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            color: white;
+            background-color: rgba(20, 20, 20, 0.9);
+        }
+
+        /* -------------------------------------------- */
 
         .projects {
             background-color: rgba(10, 10, 10, 0.85);
@@ -551,90 +532,70 @@
             background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
 
-        .projects-container {
-            width: 100%;
-            overflow-x: auto;
-            padding: 20px 0 40px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary) var(--dark);
-        }
-
-        .projects-container::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .projects-container::-webkit-scrollbar-track {
-            background: var(--dark);
-            border-radius: 4px;
-        }
-
-        .projects-container::-webkit-scrollbar-thumb {
-            background-color: var(--primary);
-            border-radius: 4px;
-        }
-
         .projects-grid {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            min-width: min-content;
-            padding: 0 10px;
+            padding: 10px 0 30px;
         }
 
         .project-card {
-            flex: 0 0 auto;
-            width: 320px;
-            background-color: rgba(18, 18, 18, 0.8);
+            position: relative;
+            background-color: transparent;
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
-            height: 500px;
+            min-height: 480px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
             will-change: transform;
-            position: relative;
         }
 
         .project-card:hover {
-            transform: translateY(-10px) scale(1.03);
+            transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
             border-color: var(--primary);
             z-index: 10;
         }
 
+        /* Full‑card background image with 80% opacity, covering the container */
         .project-image {
-            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            background-color: rgba(10, 10, 10, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 20px;
+            height: 100%;
+            opacity: 0.8;
+            z-index: 0;
+            transition: opacity 0.3s ease;
         }
 
         .project-image img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            transition: var(--transition);
-            filter: brightness(0.9) contrast(1.1);
-            will-change: transform;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* fills container without stretching */
+            display: block;
         }
 
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
-            filter: brightness(1) contrast(1);
+        .project-card:hover .project-image {
+            opacity: 1;
         }
 
+        /* Semi‑transparent overlay to keep text legible */
         .project-content {
+            position: relative;
+            z-index: 1;
             padding: 25px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            background-color: rgba(10, 10, 10, 0.55);
+            backdrop-filter: blur(1px);
+            color: var(--light);
         }
 
         .project-content h3 {
@@ -642,6 +603,7 @@
             margin-bottom: 10px;
             font-size: 1.4rem;
             line-height: 1.3;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .project-content p {
@@ -650,6 +612,7 @@
             flex-grow: 1;
             font-size: 0.95rem;
             line-height: 1.5;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
 
         .project-tags {
@@ -677,19 +640,21 @@
         }
 
         .project-tag {
-            background-color: rgba(10, 10, 10, 0.8);
+            background-color: rgba(10, 10, 10, 0.9);
             padding: 4px 8px;
             border-radius: 20px;
             font-size: 0.7rem;
             color: var(--gray);
             border: 1px solid rgba(255, 255, 255, 0.05);
             white-space: nowrap;
+            backdrop-filter: blur(2px);
         }
 
         .project-actions {
             margin-top: auto;
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .certifications {
@@ -714,13 +679,6 @@
 
         .certifications-section:last-child {
             margin-bottom: 0;
-        }
-
-        .certifications-section h3 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2rem;
-            color: var(--primary);
         }
 
         .certifications-carousel {
@@ -910,12 +868,13 @@
 
         .contact-row {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             gap: 30px;
+            flex-wrap: wrap;
         }
 
         .contact-row .contact-item {
-            flex: 1;
+            flex: 1 1 280px;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -1099,9 +1058,13 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
             .project-card {
-                width: 280px;
-                height: 520px;
+                min-height: 460px;
             }
 
             .profile-image {
@@ -1110,7 +1073,7 @@
             }
 
             .contact-row {
-                flex-direction: column;
+                justify-content: center;
             }
 
             .certificate-item {
@@ -1121,11 +1084,6 @@
             .badge-item {
                 width: 160px;
                 height: 160px;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-                max-width: 700px;
             }
         }
 
@@ -1161,9 +1119,13 @@
                 grid-template-columns: 1fr;
             }
 
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
             .project-card {
-                width: 260px;
-                height: 500px;
+                min-height: 440px;
             }
 
             .certificate-item {
@@ -1204,9 +1166,22 @@
                 grid-template-columns: 1fr;
             }
 
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
             .project-card {
-                width: 240px;
-                height: 520px;
+                min-height: 420px;
+            }
+
+            .project-actions {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .project-actions .btn {
+                width: 100%;
+                justify-content: center;
             }
 
             .certificate-item {
@@ -1304,45 +1279,45 @@
 
     <section id="skills" class="skills">
         <div class="container">
-            <h2>My Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3><i class="fas fa-chart-bar"></i> BI & Visualisation</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Power BI</span><span class="skill-tag">Tableau</span><span class="skill-tag">Looker Studio</span>
-                        <span class="skill-tag">Dashboard Design</span><span class="skill-tag">KPI tracking</span><span class="skill-tag">Data storytelling</span>
-                        <span class="skill-tag">Executive reporting</span><span class="skill-tag">Self-service analytics</span>
-                    </div>
-                    <div class="skill-note"><i class="fas fa-circle-info"></i> translating metrics into clear visuals</div>
-                </div>
-                <div class="skill-card">
-                    <h3><i class="fas fa-database"></i> Data Engineering</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">SQL</span><span class="skill-tag">Data wrangling</span><span class="skill-tag">ETL pipelines</span>
-                        <span class="skill-tag">Data cleaning</span><span class="skill-tag">Database design</span><span class="skill-tag">Dataverse</span>
-                        <span class="skill-tag">Power Query</span><span class="skill-tag">Data blending</span>
-                    </div>
-                    <div class="skill-note"><i class="fas fa-circle-info"></i> solid foundation for reliable analytics</div>
-                </div>
-                <div class="skill-card">
-                    <h3><i class="fab fa-python"></i> Python & ML</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Scikit-learn</span>
-                        <span class="skill-tag">Regression/Classification</span><span class="skill-tag">Feature engineering</span>
-                        <span class="skill-tag">Model evaluation</span><span class="skill-tag">XGBoost</span><span class="skill-tag">TensorFlow (basic)</span>
-                        <span class="skill-tag">NLP fundamentals</span>
-                    </div>
-                    <div class="skill-note"><i class="fas fa-circle-info"></i> practical ML for business predictions</div>
-                </div>
-                <div class="skill-card">
-                    <h3><i class="fas fa-robot"></i> Automation & Domain</h3>
-                    <div class="skill-items">
-                        <span class="skill-tag">Power Automate</span><span class="skill-tag">Power Apps</span><span class="skill-tag">Process automation</span>
-                        <span class="skill-tag">Sales analytics</span><span class="skill-tag">Marketing ROI</span><span class="skill-tag">Customer segmentation</span>
-                        <span class="skill-tag">Healthcare / pharma</span><span class="skill-tag">HRIS prototypes</span>
-                    </div>
-                    <div class="skill-note"><i class="fas fa-circle-info"></i> low‑code tools + industry context</div>
-                </div>
+            <h2>Tools & Technologies</h2>
+            <div class="skills-container">
+                <!-- BI & Visualisation -->
+                <span class="skill-badge"><i class="fas fa-chart-bar"></i> Power BI</span>
+                <span class="skill-badge"><i class="fas fa-chart-pie"></i> Tableau</span>
+                <span class="skill-badge"><i class="fas fa-eye"></i> Looker Studio</span>
+                <span class="skill-badge"><i class="fas fa-paint-brush"></i> Dashboard Design</span>
+                <span class="skill-badge"><i class="fas fa-bullseye"></i> KPI tracking</span>
+                <span class="skill-badge"><i class="fas fa-book-open"></i> Data storytelling</span>
+                <span class="skill-badge"><i class="fas fa-file-alt"></i> Executive reporting</span>
+                <span class="skill-badge"><i class="fas fa-users"></i> Self-service analytics</span>
+                <!-- Data Engineering -->
+                <span class="skill-badge"><i class="fas fa-database"></i> SQL</span>
+                <span class="skill-badge"><i class="fas fa-broom"></i> Data wrangling</span>
+                <span class="skill-badge"><i class="fas fa-random"></i> ETL pipelines</span>
+                <span class="skill-badge"><i class="fas fa-magic"></i> Data cleaning</span>
+                <span class="skill-badge"><i class="fas fa-project-diagram"></i> Database design</span>
+                <span class="skill-badge"><i class="fas fa-cloud"></i> Dataverse</span>
+                <span class="skill-badge"><i class="fas fa-code-branch"></i> Power Query</span>
+                <span class="skill-badge"><i class="fas fa-blender"></i> Data blending</span>
+                <!-- Python & ML -->
+                <span class="skill-badge"><i class="fab fa-python"></i> Pandas</span>
+                <span class="skill-badge"><i class="fas fa-calculator"></i> NumPy</span>
+                <span class="skill-badge"><i class="fas fa-brain"></i> Scikit-learn</span>
+                <span class="skill-badge"><i class="fas fa-chart-line"></i> Regression/Classification</span>
+                <span class="skill-badge"><i class="fas fa-wrench"></i> Feature engineering</span>
+                <span class="skill-badge"><i class="fas fa-check-circle"></i> Model evaluation</span>
+                <span class="skill-badge"><i class="fas fa-rocket"></i> XGBoost</span>
+                <span class="skill-badge"><i class="fas fa-network-wired"></i> TensorFlow (basic)</span>
+                <span class="skill-badge"><i class="fas fa-language"></i> NLP fundamentals</span>
+                <!-- Automation & Domain -->
+                <span class="skill-badge"><i class="fas fa-robot"></i> Power Automate</span>
+                <span class="skill-badge"><i class="fas fa-mobile-alt"></i> Power Apps</span>
+                <span class="skill-badge"><i class="fas fa-cogs"></i> Process automation</span>
+                <span class="skill-badge"><i class="fas fa-chart-simple"></i> Sales analytics</span>
+                <span class="skill-badge"><i class="fas fa-ad"></i> Marketing ROI</span>
+                <span class="skill-badge"><i class="fas fa-user-friends"></i> Customer segmentation</span>
+                <span class="skill-badge"><i class="fas fa-hospital"></i> Healthcare / pharma</span>
+                <span class="skill-badge"><i class="fas fa-id-card"></i> HRIS prototypes</span>
             </div>
         </div>
     </section>
@@ -1350,9 +1325,7 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2>Featured Projects</h2>
-            <div class="projects-container">
-                <div class="projects-grid" id="projectsGrid"></div>
-            </div>
+            <div class="projects-grid" id="projectsGrid"></div>
         </div>
     </section>
 
@@ -1390,21 +1363,14 @@
                             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <h3>Email</h3>
-                                <p>Mahmoud_abdallah20@outlook.com</p>
+                                <p><a href="mailto:Mahmoud_abdallah20@outlook.com" class="contact-link">Mahmoud_abdallah20@outlook.com</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fas fa-phone"></i></div>
                             <div>
                                 <h3>Phone</h3>
-                                <p>+201021654059</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div>
-                                <h3>Location</h3>
-                                <p>Cairo, Egypt, 13612</p>
+                                <p><a href="tel:+201021654059" class="contact-link">+201021654059</a></p>
                             </div>
                         </div>
                     </div>
@@ -1580,56 +1546,55 @@
             } else if (!animationId) animateNetwork(0);
         });
 
-        // Updated projects data with "National Reading Program" (id 1) and "HR System" (id 7) removed
+        // Updated projects with company logos
         const projectsData = [{
+            id: 1,
+            title: "MaxAB Sales Analysis",
+            description: "Sales trends & optimization for MaxAB.",
+            image: "https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f",
+            tags: ["Python", "Pandas", "Sales Analytics", "Field Sales", "Agent Productivity", "RFM Analysis", "Segmentation", "Matplotlib", "Seaborn"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study",
+            websiteUrl: "https://www.maxab.io/"
+        }, {
             id: 2,
-            title: "Mobile Ventilator GP",
-            description: "Emergency medical ventilator.",
-            image: "https://github.com/user-attachments/assets/fe0430d6-5dcd-4c1c-aba5-286a7a22137d",
-            tags: ["IoT Integration", "Real-Time Data", "Biomedical Engineering", "Sensor Data Analysis", "Python", "Signal Processing", "Anomaly Detection"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP"
+            title: "Immigration to Canada",
+            description: "Trends 1980–2013 — Canada immigration insights.",
+            image: "https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67",
+            tags: ["Python", "Pandas", "Time Series", "EDA", "Matplotlib", "Data Aggregation", "Geospatial", "Public Data"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013",
+            websiteUrl: "https://www.canada.ca/"
         }, {
             id: 3,
-            title: "MaxAB Sales Analysis",
-            description: "Sales trends & optimization.",
-            image: "https://github.com/user-attachments/assets/3976afc4-6d42-43bc-9223-9975389cb1c5",
-            tags: ["Python", "Pandas", "Sales Analytics", "Field Sales", "Agent Productivity", "RFM Analysis", "Segmentation", "Matplotlib", "Seaborn"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study"
+            title: "Walmart Product Analysis",
+            description: "Retail analytics dashboard for Walmart.",
+            image: "https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526",
+            tags: ["Tableau", "Dashboard Design", "Product Performance", "Time Series", "Geospatial Analysis", "Retail Analytics", "Data Storytelling"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study",
+            websiteUrl: "https://www.walmart.com/"
         }, {
             id: 4,
-            title: "Walmart Product Analysis",
-            description: "Retail analytics dashboard.",
-            image: "https://github.com/user-attachments/assets/a2a97696-f449-4c5b-865d-a11428243c24",
-            tags: ["Tableau", "Dashboard Design", "Product Performance", "Time Series", "Geospatial Analysis", "Retail Analytics", "Data Storytelling"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study"
+            title: "ElEzaby Pharmacy E-commerce",
+            description: "Digital analytics for Elezaby Pharmacy.",
+            image: "https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa",
+            tags: ["Looker Studio", "E-Commerce Analytics", "Customer Behavior", "Cohort Analysis", "Marketing ROI", "Conversion Funnel", "Python"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study",
+            websiteUrl: "https://elezabypharmacy.com/"
         }, {
             id: 5,
-            title: "Elezaby Pharmacy E-commerce",
-            description: "Digital analytics for pharma.",
-            image: "https://github.com/user-attachments/assets/3c1aa919-3edb-41d6-8f3d-accaea3477f9",
-            tags: ["Looker Studio", "E-Commerce Analytics", "Customer Behavior", "Cohort Analysis", "Marketing ROI", "Conversion Funnel", "Python"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study"
+            title: "Animal Shelter Home",
+            description: "Power Platform solution for shelter management.",
+            image: "https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8",
+            tags: ["Power Apps", "Power Automate", "Canvas Apps", "Dataverse", "Non-Profit", "Rapid Prototyping", "Data Validation"],
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange",
+            websiteUrl: "https://powerup.microsoft.com/"
         }, {
             id: 6,
-            title: "Immigration to Canada",
-            description: "Trends 1980-2013.",
-            image: "https://github.com/user-attachments/assets/d9ee090d-82b6-4a14-9cab-cd4e37e40b54",
-            tags: ["Python", "Pandas", "Time Series", "EDA", "Matplotlib", "Data Aggregation", "Geospatial", "Public Data"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013"
-        }, {
-            id: 8,
             title: "Improvado Marketing Homework",
-            description: "Marketing ROI & segmentation.",
-            image: "https://github.com/user-attachments/assets/316a70d5-2674-4407-92fe-b8e44ddfac9c",
+            description: "Marketing ROI & segmentation for Improvado.",
+            image: "https://github.com/user-attachments/assets/7c601c73-38b4-483c-affa-c6832ec26356",
             tags: ["Python", "Pandas", "Marketing Analytics", "ROI Analysis", "Channel Performance", "Customer Segmentation", "Scikit-learn"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework"
-        }, {
-            id: 9,
-            title: "Animal Shelter Home",
-            description: "Power Platform for shelter mgmt.",
-            image: "https://github.com/user-attachments/assets/e4c613db-bbb8-4899-8d34-dcea1539af97",
-            tags: ["Power Apps", "Power Automate", "Canvas Apps", "Dataverse", "Non-Profit", "Rapid Prototyping", "Data Validation"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange"
+            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework",
+            websiteUrl: "https://improvado.io/"
         }];
 
         function createProjectCards() {
@@ -1638,7 +1603,23 @@
             projectsData.forEach(p => {
                 const card = document.createElement('div');
                 card.className = 'project-card';
-                card.innerHTML = `<div class="project-image"><img src="${p.image}" alt="${p.title}" loading="lazy"></div><div class="project-content"><h3>${p.title}</h3><p>${p.description}</p><div class="project-tags">${p.tags.map(t=>`<span class="project-tag">${t}</span>`).join('')}</div><div class="project-actions"><a href="${p.githubUrl}" class="btn btn-github" target="_blank"><i class="fab fa-github"></i> View on GitHub</a></div></div>`;
+                card.innerHTML = `
+                    <div class="project-image">
+                        <img src="${p.image}" alt="${p.title} logo" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <h3>${p.title}</h3>
+                        <p>${p.description}</p>
+                        <div class="project-tags">${p.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}</div>
+                        <div class="project-actions">
+                            <a href="${p.githubUrl}" class="btn btn-github" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="${p.websiteUrl}" class="btn btn-website" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i> Website
+                            </a>
+                        </div>
+                    </div>`;
                 grid.appendChild(card);
             });
         }
@@ -1885,7 +1866,8 @@
             let cert = certificates.find(c => c.id === id) || badges.find(b => b.id === id);
             if (cert) {
                 modalTitle.textContent = cert.title;
-                modalDetails.innerHTML = `<p><strong>Issuer:</strong> ${cert.issuer}</p><p><strong>Date:</strong> ${cert.date}</p><p>${cert.description || ''}</p>`;
+                modalDetails.innerHTML =
+                    `<p><strong>Issuer:</strong> ${cert.issuer}</p><p><strong>Date:</strong> ${cert.date}</p><p>${cert.description || ''}</p>`;
                 modalImage.src = cert.image;
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
