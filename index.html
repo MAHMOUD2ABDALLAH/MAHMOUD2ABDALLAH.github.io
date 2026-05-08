@@ -650,91 +650,6 @@
             flex-wrap: wrap;
         }
 
-        .badges-section {
-            background-color: rgba(5, 5, 5, 0.85);
-            overflow: hidden;
-            backdrop-filter: blur(5px);
-            position: relative;
-            padding: 80px 0;
-        }
-
-        .badges-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            z-index: 1;
-        }
-
-        .badges-carousel {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            padding: 40px 0;
-        }
-
-        .badges-track {
-            display: flex;
-            gap: 40px;
-            width: max-content;
-            will-change: transform;
-            animation: scroll-badges 90s linear infinite;
-        }
-
-        .badge-item {
-            flex: 0 0 auto;
-            background-color: transparent;
-            border: none;
-            box-shadow: none;
-            padding: 0;
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            cursor: pointer;
-            backdrop-filter: none;
-            will-change: transform;
-            width: 200px;
-            height: 200px;
-        }
-
-        .badge-item:hover {
-            transform: translateY(-5px);
-            box-shadow: none;
-            border: none;
-        }
-
-        .badge-item img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: brightness(0.85) contrast(1.1);
-            transition: var(--transition);
-            will-change: transform;
-        }
-
-        .badge-item:hover img {
-            filter: brightness(1) contrast(1);
-        }
-
-        @keyframes scroll-badges {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(calc(-200px * 14 - 40px * 14));
-            }
-        }
-
-        .badges-track:hover {
-            animation-play-state: paused;
-        }
-
         .contact {
             background-color: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(5px);
@@ -951,15 +866,6 @@
                 max-width: 280px;
                 height: 280px;
             }
-
-            .contact-row {
-                justify-content: center;
-            }
-
-            .badge-item {
-                width: 170px;
-                height: 170px;
-            }
         }
 
         @media (max-width: 768px) {
@@ -1001,11 +907,6 @@
 
             .project-card {
                 min-height: 440px;
-            }
-
-            .badge-item {
-                width: 200px;
-                height: 200px;
             }
 
             .profile-image {
@@ -1054,11 +955,6 @@
                 justify-content: center;
             }
 
-            .badge-item {
-                width: 160px;
-                height: 160px;
-            }
-
             .profile-image {
                 max-width: 220px;
                 height: 220px;
@@ -1080,7 +976,6 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#badges">Badges</a></li>
                     <li><a href="#contact">Contact Details</a></li>
                 </ul>
                 <div class="mobile-menu"><i class="fas fa-bars"></i></div>
@@ -1205,12 +1100,6 @@
         </div>
     </section>
 
-    <section id="badges" class="badges-section">
-        <div class="badges-carousel">
-            <div class="badges-track" id="badgesTrack"></div>
-        </div>
-    </section>
-
     <section id="contact" class="contact">
         <div class="container">
             <h2>Contact Details</h2>
@@ -1255,7 +1144,6 @@
                         <li><a href="#about">About</a></li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
-                        <li><a href="#badges">Badges</a></li>
                         <li><a href="#contact">Contact Details</a></li>
                     </ul>
                 </div>
@@ -1497,129 +1385,12 @@
                 });
             }
 
-            const badges = [{
-                id: "b1",
-                title: "IBM Data Analysis Python",
-                issuer: "IBM",
-                date: "2024",
-                credlyUrl: "https://www.credly.com/badges/3d5a4d65-e636-438d-b2e1-c19ed3acc664/public_url",
-                image: "https://github.com/user-attachments/assets/ef12be0e-8c54-435c-8f1f-e6fdd8156acd"
-            }, {
-                id: "b2",
-                title: "IBM AI Fundamentals",
-                issuer: "IBM",
-                date: "2024",
-                credlyUrl: "https://www.credly.com/badges/8e85d1ea-43a5-4a20-9ae7-b8897845e31c/public_url",
-                image: "https://github.com/user-attachments/assets/bf9d6073-488f-478f-8bf8-e264f65ac94d"
-            }, {
-                id: "b3",
-                title: "Data Analytics Essentials",
-                issuer: "Cisco",
-                date: "2024",
-                credlyUrl: "https://www.credly.com/badges/f011ab63-95c7-45c0-8afd-97af6c11745d/public_url",
-                image: "https://github.com/user-attachments/assets/9d7dacc4-b1da-48a5-85c0-baa7fcb00922"
-            }, {
-                id: "b4",
-                title: "Python Essentials 1",
-                issuer: "Cisco",
-                date: "2024",
-                credlyUrl: "https://www.credly.com/badges/8720980a-1d46-43bf-86b2-2664c6ecf607/public_url",
-                image: "https://github.com/user-attachments/assets/f695ac34-d5b9-4529-a722-dd5ea4b5040a"
-            }, {
-                id: "b5",
-                title: "Python Essentials 2",
-                issuer: "Cisco",
-                date: "2024",
-                credlyUrl: "https://www.credly.com/badges/f5fd7945-0e61-4820-9d84-64c35f83acb7/public_url",
-                image: "https://github.com/user-attachments/assets/0d6feac6-6a32-4b75-a19b-d92d7cb0ac8e"
-            }, {
-                id: "b6",
-                title: "Intro to Data Science",
-                issuer: "Cisco",
-                date: "2024",
-                credlyUrl: "https://www.credly.com/badges/5a3e33ed-8f14-478d-9a76-6954243fe68d/public_url",
-                image: "https://github.com/user-attachments/assets/c7932b15-f0dc-4c77-a3c3-cb8ef2bbcd66"
-            }, {
-                id: "b7",
-                title: "Intro to Modern AI",
-                issuer: "Cisco",
-                date: "2024",
-                credlyUrl: "https://www.credly.com/badges/85de56a0-25a3-41c9-8b72-450a44bb3533/public_url",
-                image: "https://github.com/user-attachments/assets/87364b3b-b649-4403-a199-9b4507c84585"
-            }, {
-                id: "b8",
-                title: "Python for Data Science",
-                issuer: "IBM",
-                date: "2024",
-                credlyUrl: "https://www.credly.com/badges/218f5b26-fc37-4eff-8b0f-ab3c408e3c81/public_url",
-                image: "https://github.com/user-attachments/assets/4b0ba356-eab1-404c-b3a3-c8d510b9d0ba"
-            }, {
-                id: "b9",
-                title: "Microsoft Power Up Program",
-                issuer: "Microsoft",
-                date: "2024",
-                credlyUrl: "https://www.credly.com/badges/47318648-0b8d-45aa-b16d-9c862d8d9259/public_url",
-                image: "https://github.com/user-attachments/assets/c5ff064b-9abe-47b3-9929-bf55999f4215"
-            }, {
-                id: "b10",
-                title: "Power Platform Adventurer",
-                issuer: "Microsoft",
-                date: "2024",
-                credlyUrl: "https://www.credly.com/badges/f698baa6-3839-4648-998f-646f19515587/public_url",
-                image: "https://github.com/user-attachments/assets/0cb0e3f8-82ea-464a-8331-7ecf6eb4cc01"
-            }, {
-                id: "b11",
-                title: "Data Visualization Python",
-                issuer: "Coursera",
-                date: "2025",
-                credlyUrl: "https://www.credly.com/badges/e0313313-a8d6-43e7-bab3-c0df82272bb5/public_url",
-                image: "https://github.com/user-attachments/assets/c3793f7b-e282-484b-b81c-3eca430cb990"
-            }, {
-                id: "b13",
-                title: "Cloud Essentials",
-                issuer: "AWS",
-                date: "2024",
-                credlyUrl: "https://www.credly.com/badges/61d5a87a-3d98-4005-95b2-55eb9e7e0dbf/public_url",
-                image: "https://github.com/user-attachments/assets/b1a0864c-fc99-4db7-bdf1-fd1d8fdcf818"
-            }, {
-                id: "b14",
-                title: "AI Fundamentals",
-                issuer: "Cisco",
-                date: "2024",
-                credlyUrl: "https://www.credly.com/badges/555ca854-8544-4a3b-bca9-10415d3e607c/public_url",
-                image: "https://github.com/user-attachments/assets/d6fbf2b1-b4f9-4e37-85fb-c78bac98ba63"
-            }];
-
-            function initBadgesCarousel() {
-                const badgesTrack = document.getElementById('badgesTrack');
-                badgesTrack.innerHTML = '';
-                for (let set = 0; set < 2; set++) {
-                    badges.forEach(b => {
-                        const div = document.createElement('div');
-                        div.className = 'badge-item';
-                        div.setAttribute('data-credly', b.credlyUrl);
-                        div.setAttribute('title', `${b.title} — ${b.issuer} (${b.date})`);
-                        div.innerHTML = `<img src="${b.image}" alt="${b.title}" loading="lazy">`;
-                        div.addEventListener('click', () => {
-                            window.open(b.credlyUrl, '_blank', 'noopener');
-                        });
-                        badgesTrack.appendChild(div);
-                    });
-                }
-            }
-
             const mobileMenu = document.querySelector('.mobile-menu'),
                 navLinks = document.querySelector('.nav-links');
             mobileMenu.addEventListener('click', () => navLinks.classList.toggle('active'));
 
             document.addEventListener('DOMContentLoaded', function() {
                 createProjectCards();
-                initBadgesCarousel();
-                const bt = document.getElementById('badgesTrack');
-                if (bt) {
-                    bt.addEventListener('mouseenter', () => bt.style.animationPlayState = 'paused');
-                    bt.addEventListener('mouseleave', () => bt.style.animationPlayState = 'running');
-                }
             });
         })();
     </script>
