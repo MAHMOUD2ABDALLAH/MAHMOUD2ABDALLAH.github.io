@@ -7,7 +7,6 @@
     <title>Data Analytics | Mahmoud Abdallah</title>
     <link rel="icon" type="image/x-icon" href="https://github.com/user-attachments/assets/b4a9ebc2-5ecd-4c39-84fb-13b83abf674e">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -460,7 +459,6 @@
             color: var(--gray);
         }
 
-        /* ---------- redesigned skills section ---------- */
         .skills {
             background-color: rgba(5, 5, 5, 0.85);
             position: relative;
@@ -514,8 +512,6 @@
             background-color: rgba(20, 20, 20, 0.9);
         }
 
-        /* -------------------------------------------- */
-
         .projects {
             background-color: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(5px);
@@ -534,7 +530,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             padding: 10px 0 30px;
         }
@@ -548,7 +544,7 @@
             transition: var(--transition);
             display: flex;
             flex-direction: column;
-            min-height: 480px;
+            min-height: 420px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(5px);
             will-change: transform;
@@ -561,7 +557,6 @@
             z-index: 10;
         }
 
-        /* Full‑card background image with 80% opacity, covering the container */
         .project-image {
             position: absolute;
             top: 0;
@@ -577,7 +572,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* fills container without stretching */
             display: block;
         }
 
@@ -585,7 +579,6 @@
             opacity: 1;
         }
 
-        /* Semi‑transparent overlay to keep text legible */
         .project-content {
             position: relative;
             z-index: 1;
@@ -657,13 +650,15 @@
             flex-wrap: wrap;
         }
 
-        .certifications {
+        .badges-section {
             background-color: rgba(5, 5, 5, 0.85);
             overflow: hidden;
             backdrop-filter: blur(5px);
+            position: relative;
+            padding: 80px 0;
         }
 
-        .certifications::before {
+        .badges-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -671,73 +666,48 @@
             right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            z-index: 1;
         }
 
-        .certifications-section {
-            margin-bottom: 60px;
-        }
-
-        .certifications-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .certifications-carousel {
+        .badges-carousel {
             position: relative;
             width: 100%;
             overflow: hidden;
             padding: 40px 0;
         }
 
-        .certifications-track {
+        .badges-track {
             display: flex;
-            gap: 30px;
+            gap: 40px;
             width: max-content;
             will-change: transform;
+            animation: scroll-badges 90s linear infinite;
         }
 
-        .certificates-track {
-            animation: scroll-certificates 40s linear infinite;
-        }
-
-        .badges-track {
-            animation: scroll-badges 30s linear infinite;
-        }
-
-        .certificate-item,
         .badge-item {
             flex: 0 0 auto;
-            background-color: rgba(18, 18, 18, 0.8);
-            border-radius: var(--border-radius);
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            box-shadow: var(--shadow);
             transition: var(--transition);
             cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
+            backdrop-filter: none;
             will-change: transform;
+            width: 200px;
+            height: 200px;
         }
 
-        .certificate-item {
-            width: 300px;
-            height: 220px;
-        }
-
-        .badge-item {
-            width: 180px;
-            height: 180px;
-        }
-
-        .certificate-item:hover,
         .badge-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-            border-color: var(--primary);
+            box-shadow: none;
+            border: none;
         }
 
-        .certificate-item img,
         .badge-item img {
             max-width: 100%;
             max-height: 100%;
@@ -747,19 +717,8 @@
             will-change: transform;
         }
 
-        .certificate-item:hover img,
         .badge-item:hover img {
             filter: brightness(1) contrast(1);
-        }
-
-        @keyframes scroll-certificates {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(calc(-300px * 16 - 30px * 16));
-            }
         }
 
         @keyframes scroll-badges {
@@ -768,83 +727,12 @@
             }
 
             100% {
-                transform: translateX(calc(-180px * 13 - 30px * 13));
+                transform: translateX(calc(-200px * 14 - 40px * 14));
             }
         }
 
-        .certificates-track:hover,
         .badges-track:hover {
             animation-play-state: paused;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            z-index: 2000;
-            overflow: auto;
-            backdrop-filter: blur(10px);
-        }
-
-        .modal-content {
-            position: relative;
-            background-color: rgba(18, 18, 18, 0.95);
-            margin: 5% auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 800px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .modal-image {
-            max-width: 100%;
-            max-height: 70vh;
-            object-fit: contain;
-            margin-bottom: 20px;
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 2rem;
-            color: var(--gray);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .modal-close:hover {
-            color: var(--primary);
-        }
-
-        .modal-title {
-            text-align: center;
-            margin-bottom: 10px;
-            color: var(--light);
-        }
-
-        .modal-details {
-            text-align: center;
-            margin-bottom: 20px;
-            color: var(--gray);
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
         }
 
         .contact {
@@ -970,6 +858,15 @@
             border-color: var(--primary);
         }
 
+        .social-link i {
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .social-link:hover i {
+            color: white;
+        }
+
         .footer-links h3 {
             color: white;
             margin-bottom: 20px;
@@ -999,17 +896,6 @@
             font-size: 0.9rem;
         }
 
-        .social-link i,
-        .social-link .bx-upwork {
-            color: var(--gray);
-            transition: var(--transition);
-        }
-
-        .social-link:hover i,
-        .social-link:hover .bx-upwork {
-            color: white;
-        }
-
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -1025,12 +911,6 @@
 
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary);
-        }
-
-        @media (max-width: 1200px) {
-            .skills-grid {
-                gap: 20px;
-            }
         }
 
         @media (max-width: 992px) {
@@ -1076,14 +956,9 @@
                 justify-content: center;
             }
 
-            .certificate-item {
-                width: 280px;
-                height: 200px;
-            }
-
             .badge-item {
-                width: 160px;
-                height: 160px;
+                width: 170px;
+                height: 170px;
             }
         }
 
@@ -1128,14 +1003,9 @@
                 min-height: 440px;
             }
 
-            .certificate-item {
-                width: 350px;
-                height: 250px;
-            }
-
             .badge-item {
-                width: 250px;
-                height: 250px;
+                width: 200px;
+                height: 200px;
             }
 
             .profile-image {
@@ -1184,14 +1054,9 @@
                 justify-content: center;
             }
 
-            .certificate-item {
-                width: 320px;
-                height: 220px;
-            }
-
             .badge-item {
-                width: 200px;
-                height: 200px;
+                width: 160px;
+                height: 160px;
             }
 
             .profile-image {
@@ -1215,7 +1080,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#badges">Badges</a></li>
                     <li><a href="#contact">Contact Details</a></li>
                 </ul>
                 <div class="mobile-menu"><i class="fas fa-bars"></i></div>
@@ -1228,7 +1093,8 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Mahmoud Abdallah</h1>
-                    <p>Turning data into decisions that matter with 3+ years of experience bridging the gap between raw numbers and real strategy.</p>
+                    <p>Turning data into decisions that matter with 3+ years of experience bridging the gap between raw
+                        numbers and real strategy.</p>
                     <div class="hero-btns"><a href="#projects" class="btn">View Projects</a><a href="#contact" class="btn btn-outline">Contact Details</a></div>
                 </div>
                 <div class="hero-image"><img src="https://github.com/user-attachments/assets/0b1c29ac-9dd9-4a62-82eb-0cf420d75f7f" alt="Mahmoud Abdallah" class="profile-image"></div>
@@ -1242,18 +1108,32 @@
             <div class="about-content">
                 <div class="about-text">
                     <div class="story-headline">My Story</div>
-                    <p>My journey into data analytics started with a simple frustration: too many organizations sit on valuable data but have no clear way to read it, trust it, or act on it.<br>Over the past 3+ years, I've dedicated my career to closing that gap. I've collaborated across industries to design interactive dashboards, build automated reporting pipelines, and create self-service analytics tools that put insights directly into the hands of decision-makers.</p>
-                    <p>What drives me is the business impact. Seeing leadership make faster, smarter decisions because of something I built is what makes this work meaningful. Beyond traditional analytics, I'm actively expanding into AI and machine learning—exploring predictive analytics and intelligent automation to take data analytics to the next level.</p>
+                    <p>My journey into data analytics started with a simple frustration: too many organizations sit on
+                        valuable data but have no clear way to read it, trust it, or act on it.<br>Over the past 3+ years,
+                        I've dedicated my career to closing that gap. I've collaborated across industries to design
+                        interactive dashboards, build automated reporting pipelines, and create self-service analytics
+                        tools that put insights directly into the hands of decision-makers.</p>
+                    <p>What drives me is the business impact. Seeing leadership make faster, smarter decisions because of
+                        something I built is what makes this work meaningful. Beyond traditional analytics, I'm actively
+                        expanding into AI and machine learning—exploring predictive analytics and intelligent automation to
+                        take data analytics to the next level.</p>
                     <div class="core-expertise">
                         <h3>What I Do Best</h3>
                         <ul>
-                            <li><strong>Data Analytics and Dashboards:</strong> Designing executive-ready dashboards (Power BI, Tableau, Looker Studio) focused on clarity and storytelling.</li>
-                            <li><strong>Advanced Analytics and Python:</strong> Using Python, Pandas, Scikit-learn for statistical modeling and predictive solutions beyond standard reporting.</li>
-                            <li><strong>Process Automation:</strong> Building low-code automation with Microsoft Power Platform (Power Automate, Power Apps) to eliminate manual work.</li>
-                            <li><strong>AI and Machine Learning:</strong> Applying ML fundamentals, NLP, and deep learning (TensorFlow, PyTorch) to real business problems.</li>
+                            <li><strong>Data Analytics and Dashboards:</strong> Designing executive-ready dashboards
+                                (Power BI, Tableau, Looker Studio) focused on clarity and storytelling.</li>
+                            <li><strong>Advanced Analytics and Python:</strong> Using Python, Pandas, Scikit-learn for
+                                statistical modeling and predictive solutions beyond standard reporting.</li>
+                            <li><strong>Process Automation:</strong> Building low-code automation with Microsoft Power
+                                Platform (Power Automate, Power Apps) to eliminate manual work.</li>
+                            <li><strong>AI and Machine Learning:</strong> Applying ML fundamentals, NLP, and deep learning
+                                (TensorFlow, PyTorch) to real business problems.</li>
                         </ul>
                     </div>
-                    <p><strong>What Drives Me:</strong> Data without context is just noise. My goal is to deliver clarity that helps people make better decisions, faster. I bring curiosity to every dataset and a constant drive to keep learning. Whether you need an analytics solution or want to explore what AI can do for your business, let's turn your data into something that works for you.</p>
+                    <p><strong>What Drives Me:</strong> Data without context is just noise. My goal is to deliver clarity
+                        that helps people make better decisions, faster. I bring curiosity to every dataset and a constant
+                        drive to keep learning. Whether you need an analytics solution or want to explore what AI can do
+                        for your business, let's turn your data into something that works for you.</p>
                     <div class="about-stats">
                         <div class="stat">
                             <h3>3+</h3>
@@ -1281,7 +1161,6 @@
         <div class="container">
             <h2>Tools & Technologies</h2>
             <div class="skills-container">
-                <!-- BI & Visualisation -->
                 <span class="skill-badge"><i class="fas fa-chart-bar"></i> Power BI</span>
                 <span class="skill-badge"><i class="fas fa-chart-pie"></i> Tableau</span>
                 <span class="skill-badge"><i class="fas fa-eye"></i> Looker Studio</span>
@@ -1290,7 +1169,6 @@
                 <span class="skill-badge"><i class="fas fa-book-open"></i> Data storytelling</span>
                 <span class="skill-badge"><i class="fas fa-file-alt"></i> Executive reporting</span>
                 <span class="skill-badge"><i class="fas fa-users"></i> Self-service analytics</span>
-                <!-- Data Engineering -->
                 <span class="skill-badge"><i class="fas fa-database"></i> SQL</span>
                 <span class="skill-badge"><i class="fas fa-broom"></i> Data wrangling</span>
                 <span class="skill-badge"><i class="fas fa-random"></i> ETL pipelines</span>
@@ -1299,7 +1177,6 @@
                 <span class="skill-badge"><i class="fas fa-cloud"></i> Dataverse</span>
                 <span class="skill-badge"><i class="fas fa-code-branch"></i> Power Query</span>
                 <span class="skill-badge"><i class="fas fa-blender"></i> Data blending</span>
-                <!-- Python & ML -->
                 <span class="skill-badge"><i class="fab fa-python"></i> Pandas</span>
                 <span class="skill-badge"><i class="fas fa-calculator"></i> NumPy</span>
                 <span class="skill-badge"><i class="fas fa-brain"></i> Scikit-learn</span>
@@ -1309,7 +1186,6 @@
                 <span class="skill-badge"><i class="fas fa-rocket"></i> XGBoost</span>
                 <span class="skill-badge"><i class="fas fa-network-wired"></i> TensorFlow (basic)</span>
                 <span class="skill-badge"><i class="fas fa-language"></i> NLP fundamentals</span>
-                <!-- Automation & Domain -->
                 <span class="skill-badge"><i class="fas fa-robot"></i> Power Automate</span>
                 <span class="skill-badge"><i class="fas fa-mobile-alt"></i> Power Apps</span>
                 <span class="skill-badge"><i class="fas fa-cogs"></i> Process automation</span>
@@ -1329,29 +1205,11 @@
         </div>
     </section>
 
-    <section id="certifications" class="certifications">
-        <div class="container">
-            <h2>Certifications and Badges</h2>
-            <div class="certifications-section">
-                <div class="certifications-carousel">
-                    <div class="certifications-track certificates-track"></div>
-                </div>
-            </div>
-            <div class="certifications-section">
-                <div class="certifications-carousel">
-                    <div class="certifications-track badges-track"></div>
-                </div>
-            </div>
+    <section id="badges" class="badges-section">
+        <div class="badges-carousel">
+            <div class="badges-track" id="badgesTrack"></div>
         </div>
     </section>
-
-    <div id="certModal" class="modal">
-        <div class="modal-content"><span class="modal-close">&times;</span>
-            <h3 class="modal-title" id="modalTitle"></h3>
-            <div class="modal-details" id="modalDetails"></div><img class="modal-image" id="modalImage" src="" alt="Certificate">
-            <div class="modal-actions"><button class="btn" id="modalCloseBtn">Close</button></div>
-        </div>
-    </div>
 
     <section id="contact" class="contact">
         <div class="container">
@@ -1385,7 +1243,10 @@
                 <div class="footer-about">
                     <div class="footer-logo">Data <span>Analytics</span></div>
                     <p>Turning data into decisions that matter — dashboards, automation, and predictive analytics.</p>
-                    <div class="social-links"><a href="https://github.com/MAHMOUD2ABDALLAH" class="social-link" target="_blank"><i class="fab fa-github"></i></a><a href="https://www.linkedin.com/in/mahmoud-abdallah20" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="https://www.upwork.com/freelancers/~01ab95f3b6c6a783a3?mp_source=share" class="social-link" target="_blank"><i class='bx bxl-upwork'></i></a></div>
+                    <div class="social-links">
+                        <a href="https://github.com/MAHMOUD2ABDALLAH" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/mahmoud-abdallah20" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>
@@ -1394,7 +1255,7 @@
                         <li><a href="#about">About</a></li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
-                        <li><a href="#certifications">Certifications</a></li>
+                        <li><a href="#badges">Badges</a></li>
                         <li><a href="#contact">Contact Details</a></li>
                     </ul>
                 </div>
@@ -1417,193 +1278,205 @@
     </footer>
 
     <script>
-        const canvas = document.getElementById("network-bg"),
-            ctx = canvas.getContext("2d");
-        let animationId, lastTime = 0,
-            frameRate = 60,
-            frameInterval = 1000 / frameRate,
-            computedWidth, computedHeight;
+        (function() {
+            const canvas = document.getElementById("network-bg"),
+                ctx = canvas.getContext("2d");
+            let animationId, lastTime = 0,
+                frameRate = 60,
+                frameInterval = 1000 / frameRate,
+                computedWidth, computedHeight;
 
-        function resizeCanvas() {
-            computedWidth = window.innerWidth;
-            computedHeight = window.innerHeight;
-            canvas.width = computedWidth;
-            canvas.height = computedHeight;
-        }
-        resizeCanvas();
-        window.addEventListener("resize", () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(resizeCanvas, 100);
-        });
-        let resizeTimeout;
-        const particlesArray = [],
-            numberOfParticles = Math.min(180, Math.floor((computedWidth * computedHeight) / 10000)),
-            maxDistance = 140;
-        const mouse = {
-                x: null,
-                y: null,
-                radius: 150
-            },
-            particleSpeed = 0.5;
-        window.addEventListener("mousemove", e => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-        });
-        window.addEventListener("mouseleave", () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
-        class Particle {
-            constructor() {
-                this.x = Math.random() * computedWidth;
-                this.y = Math.random() * computedHeight;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = (Math.random() - 0.5) * particleSpeed;
-                this.speedY = (Math.random() - 0.5) * particleSpeed;
-                this.waveOffsetX = Math.random() * Math.PI * 2;
-                this.waveOffsetY = Math.random() * Math.PI * 2;
-                this.waveSpeed = 0.02 + Math.random() * 0.02;
+            function resizeCanvas() {
+                computedWidth = window.innerWidth;
+                computedHeight = window.innerHeight;
+                canvas.width = computedWidth;
+                canvas.height = computedHeight;
             }
-            update(time) {
-                const waveX = Math.sin(time * this.waveSpeed + this.waveOffsetX) * 0.1,
-                    waveY = Math.cos(time * this.waveSpeed + this.waveOffsetY) * 0.1;
-                this.x += this.speedX + waveX;
-                this.y += this.speedY + waveY;
-                const buffer = 20;
-                if (this.x <= buffer || this.x >= computedWidth - buffer) {
-                    this.speedX *= -0.95;
-                    this.x = Math.max(buffer, Math.min(computedWidth - buffer, this.x));
-                }
-                if (this.y <= buffer || this.y >= computedHeight - buffer) {
-                    this.speedY *= -0.95;
-                    this.y = Math.max(buffer, Math.min(computedHeight - buffer, this.y));
-                }
-                if (mouse.x && mouse.y) {
-                    const dx = this.x - mouse.x,
-                        dy = this.y - mouse.y,
-                        distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < mouse.radius) {
-                        const force = (mouse.radius - distance) / mouse.radius,
-                            influence = force * force * 2;
-                        this.x += (dx / distance) * influence;
-                        this.y += (dy / distance) * influence;
-                    }
-                }
-            }
-            draw() {
-                ctx.fillStyle = "#ffffff";
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function initNetwork() {
-            particlesArray.length = 0;
-            for (let i = 0; i < numberOfParticles; i++) particlesArray.push(new Particle());
-        }
-
-        function connectParticles() {
-            for (let a = 0; a < particlesArray.length; a++)
-                for (let b = a + 1; b < particlesArray.length; b++) {
-                    const dx = particlesArray[a].x - particlesArray[b].x,
-                        dy = particlesArray[a].y - particlesArray[b].y,
-                        distanceSq = dx * dx + dy * dy;
-                    if (distanceSq < maxDistance * maxDistance) {
-                        const distance = Math.sqrt(distanceSq),
-                            opacity = 0.3 * (1 - distance / maxDistance);
-                        ctx.strokeStyle = `rgba(0, 119, 255, ${opacity})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-        }
-
-        function animateNetwork(currentTime) {
-            const delta = currentTime - lastTime;
-            if (delta < frameInterval) {
-                animationId = requestAnimationFrame(animateNetwork);
-                return;
-            }
-            lastTime = currentTime - (delta % frameInterval);
-            ctx.clearRect(0, 0, computedWidth, computedHeight);
-            particlesArray.forEach(p => {
-                p.update(currentTime * 0.001);
-                p.draw();
+            resizeCanvas();
+            window.addEventListener("resize", () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(resizeCanvas, 100);
             });
-            connectParticles();
-            animationId = requestAnimationFrame(animateNetwork);
-        }
-        initNetwork();
-        animateNetwork(0);
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden && animationId) {
-                cancelAnimationFrame(animationId);
-                animationId = null;
-            } else if (!animationId) animateNetwork(0);
-        });
+            let resizeTimeout;
+            const particlesArray = [],
+                numberOfParticles = Math.min(180, Math.floor((computedWidth * computedHeight) / 10000)),
+                maxDistance = 140;
+            const mouse = {
+                    x: null,
+                    y: null,
+                    radius: 150
+                },
+                particleSpeed = 0.5;
+            window.addEventListener("mousemove", e => {
+                mouse.x = e.x;
+                mouse.y = e.y;
+            });
+            window.addEventListener("mouseleave", () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * computedWidth;
+                    this.y = Math.random() * computedHeight;
+                    this.size = Math.random() * 2 + 0.5;
+                    this.speedX = (Math.random() - 0.5) * particleSpeed;
+                    this.speedY = (Math.random() - 0.5) * particleSpeed;
+                    this.waveOffsetX = Math.random() * Math.PI * 2;
+                    this.waveOffsetY = Math.random() * Math.PI * 2;
+                    this.waveSpeed = 0.02 + Math.random() * 0.02;
+                }
+                update(time) {
+                    const waveX = Math.sin(time * this.waveSpeed + this.waveOffsetX) * 0.1,
+                        waveY = Math.cos(time * this.waveSpeed + this.waveOffsetY) * 0.1;
+                    this.x += this.speedX + waveX;
+                    this.y += this.speedY + waveY;
+                    const buffer = 20;
+                    if (this.x <= buffer || this.x >= computedWidth - buffer) {
+                        this.speedX *= -0.95;
+                        this.x = Math.max(buffer, Math.min(computedWidth - buffer, this.x));
+                    }
+                    if (this.y <= buffer || this.y >= computedHeight - buffer) {
+                        this.speedY *= -0.95;
+                        this.y = Math.max(buffer, Math.min(computedHeight - buffer, this.y));
+                    }
+                    if (mouse.x && mouse.y) {
+                        const dx = this.x - mouse.x,
+                            dy = this.y - mouse.y,
+                            distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < mouse.radius) {
+                            const force = (mouse.radius - distance) / mouse.radius,
+                                influence = force * force * 2;
+                            this.x += (dx / distance) * influence;
+                            this.y += (dy / distance) * influence;
+                        }
+                    }
+                }
+                draw() {
+                    ctx.fillStyle = "#ffffff";
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
 
-        // Updated projects with company logos
-        const projectsData = [{
-            id: 1,
-            title: "MaxAB Sales Analysis",
-            description: "Sales trends & optimization for MaxAB.",
-            image: "https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f",
-            tags: ["Python", "Pandas", "Sales Analytics", "Field Sales", "Agent Productivity", "RFM Analysis", "Segmentation", "Matplotlib", "Seaborn"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study",
-            websiteUrl: "https://www.maxab.io/"
-        }, {
-            id: 2,
-            title: "Immigration to Canada",
-            description: "Trends 1980–2013 — Canada immigration insights.",
-            image: "https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67",
-            tags: ["Python", "Pandas", "Time Series", "EDA", "Matplotlib", "Data Aggregation", "Geospatial", "Public Data"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013",
-            websiteUrl: "https://www.canada.ca/"
-        }, {
-            id: 3,
-            title: "Walmart Product Analysis",
-            description: "Retail analytics dashboard for Walmart.",
-            image: "https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526",
-            tags: ["Tableau", "Dashboard Design", "Product Performance", "Time Series", "Geospatial Analysis", "Retail Analytics", "Data Storytelling"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study",
-            websiteUrl: "https://www.walmart.com/"
-        }, {
-            id: 4,
-            title: "ElEzaby Pharmacy E-commerce",
-            description: "Digital analytics for Elezaby Pharmacy.",
-            image: "https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa",
-            tags: ["Looker Studio", "E-Commerce Analytics", "Customer Behavior", "Cohort Analysis", "Marketing ROI", "Conversion Funnel", "Python"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study",
-            websiteUrl: "https://elezabypharmacy.com/"
-        }, {
-            id: 5,
-            title: "Animal Shelter Home",
-            description: "Power Platform solution for shelter management.",
-            image: "https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8",
-            tags: ["Power Apps", "Power Automate", "Canvas Apps", "Dataverse", "Non-Profit", "Rapid Prototyping", "Data Validation"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange",
-            websiteUrl: "https://powerup.microsoft.com/"
-        }, {
-            id: 6,
-            title: "Improvado Marketing Homework",
-            description: "Marketing ROI & segmentation for Improvado.",
-            image: "https://github.com/user-attachments/assets/7c601c73-38b4-483c-affa-c6832ec26356",
-            tags: ["Python", "Pandas", "Marketing Analytics", "ROI Analysis", "Channel Performance", "Customer Segmentation", "Scikit-learn"],
-            githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework",
-            websiteUrl: "https://improvado.io/"
-        }];
+            function initNetwork() {
+                particlesArray.length = 0;
+                for (let i = 0; i < numberOfParticles; i++) particlesArray.push(new Particle());
+            }
 
-        function createProjectCards() {
-            const grid = document.getElementById('projectsGrid');
-            grid.innerHTML = '';
-            projectsData.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'project-card';
-                card.innerHTML = `
+            function connectParticles() {
+                for (let a = 0; a < particlesArray.length; a++)
+                    for (let b = a + 1; b < particlesArray.length; b++) {
+                        const dx = particlesArray[a].x - particlesArray[b].x,
+                            dy = particlesArray[a].y - particlesArray[b].y,
+                            distanceSq = dx * dx + dy * dy;
+                        if (distanceSq < maxDistance * maxDistance) {
+                            const distance = Math.sqrt(distanceSq),
+                                opacity = 0.3 * (1 - distance / maxDistance);
+                            ctx.strokeStyle = `rgba(0, 119, 255, ${opacity})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                            ctx.stroke();
+                        }
+                    }
+            }
+
+            function animateNetwork(currentTime) {
+                const delta = currentTime - lastTime;
+                if (delta < frameInterval) {
+                    animationId = requestAnimationFrame(animateNetwork);
+                    return;
+                }
+                lastTime = currentTime - (delta % frameInterval);
+                ctx.clearRect(0, 0, computedWidth, computedHeight);
+                particlesArray.forEach(p => {
+                    p.update(currentTime * 0.001);
+                    p.draw();
+                });
+                connectParticles();
+                animationId = requestAnimationFrame(animateNetwork);
+            }
+            initNetwork();
+            animateNetwork(0);
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden && animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                } else if (!animationId) animateNetwork(0);
+            });
+
+            const projectsData = [{
+                id: 1,
+                title: "MaxAB Sales Analysis",
+                description: "Sales trends & optimization for MaxAB.",
+                image: "https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f",
+                tags: ["Python", "Pandas", "Sales Analytics", "Field Sales", "Agent Productivity", "RFM Analysis",
+                    "Segmentation", "Matplotlib", "Seaborn"
+                ],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study",
+                websiteUrl: "https://www.maxab.io/"
+            }, {
+                id: 2,
+                title: "Immigration to Canada",
+                description: "Trends 1980–2013 — Canada immigration insights.",
+                image: "https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67",
+                tags: ["Python", "Pandas", "Time Series", "EDA", "Matplotlib", "Data Aggregation", "Geospatial",
+                    "Public Data"
+                ],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013",
+                websiteUrl: "https://www.canada.ca/"
+            }, {
+                id: 3,
+                title: "Walmart Product Analysis",
+                description: "Retail analytics dashboard for Walmart.",
+                image: "https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526",
+                tags: ["Tableau", "Dashboard Design", "Product Performance", "Time Series", "Geospatial Analysis",
+                    "Retail Analytics", "Data Storytelling"
+                ],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study",
+                websiteUrl: "https://www.walmart.com/"
+            }, {
+                id: 4,
+                title: "ElEzaby Pharmacy E-commerce",
+                description: "Digital analytics for Elezaby Pharmacy.",
+                image: "https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa",
+                tags: ["Looker Studio", "E-Commerce Analytics", "Customer Behavior", "Cohort Analysis", "Marketing ROI",
+                    "Conversion Funnel", "Python"
+                ],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study",
+                websiteUrl: "https://elezabypharmacy.com/"
+            }, {
+                id: 5,
+                title: "Animal Shelter Home",
+                description: "Power Platform solution for shelter management.",
+                image: "https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8",
+                tags: ["Power Apps", "Power Automate", "Canvas Apps", "Dataverse", "Non-Profit", "Rapid Prototyping",
+                    "Data Validation"
+                ],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange",
+                websiteUrl: "https://powerup.microsoft.com/"
+            }, {
+                id: 6,
+                title: "Improvado Marketing Homework",
+                description: "Marketing ROI & segmentation for Improvado.",
+                image: "https://github.com/user-attachments/assets/7c601c73-38b4-483c-affa-c6832ec26356",
+                tags: ["Python", "Pandas", "Marketing Analytics", "ROI Analysis", "Channel Performance",
+                    "Customer Segmentation", "Scikit-learn"
+                ],
+                githubUrl: "https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework",
+                websiteUrl: "https://improvado.io/"
+            }];
+
+            function createProjectCards() {
+                const grid = document.getElementById('projectsGrid');
+                grid.innerHTML = '';
+                projectsData.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    card.innerHTML = `
                     <div class="project-image">
                         <img src="${p.image}" alt="${p.title} logo" loading="lazy">
                     </div>
@@ -1620,284 +1493,135 @@
                             </a>
                         </div>
                     </div>`;
-                grid.appendChild(card);
-            });
-        }
-
-        const certificates = [{
-            id: "c1",
-            title: "Intro Data Science",
-            issuer: "Cisco",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/4592b5da-d701-4ea8-ac8d-f0f1db4894be"
-        }, {
-            id: "c2",
-            title: "IBM Data Analysis Python",
-            issuer: "IBM",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/b09cdd4d-d1f4-43ee-826d-cc45582b1b7c"
-        }, {
-            id: "c3",
-            title: "IBM AI Fundamentals",
-            issuer: "IBM",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/0de8da5e-cd48-4b73-b134-e43a0a38d80e"
-        }, {
-            id: "c4",
-            title: "Tableau",
-            issuer: "Cognitive",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/b14545e8-139a-4094-9a3d-3402a344810c"
-        }, {
-            id: "c5",
-            title: "Data Analytics Essentials",
-            issuer: "Cisco",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/f2df529c-377d-40b2-a3f6-02371c1f0179"
-        }, {
-            id: "c6",
-            title: "Data Wrangling Python",
-            issuer: "IBM",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/faae0203-0d8a-4a7f-b9ff-ec9399bba6b8"
-        }, {
-            id: "c7",
-            title: "Coursera Cert",
-            issuer: "Coursera",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/90984453-ee23-40ec-a2e0-32a3c0a8e547"
-        }, {
-            id: "c8",
-            title: "AI Fundamentals",
-            issuer: "Cisco",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/5bd0dabd-952c-47b6-99f9-4ec335ebaa67"
-        }, {
-            id: "c9",
-            title: "Python Essentials 2",
-            issuer: "Cisco",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/a835620e-dbf7-437f-9aac-3970e56154fd"
-        }, {
-            id: "c10",
-            title: "Python Essentials 1",
-            issuer: "Cisco",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/abf78bca-7bec-4fbc-880a-c6e8d1305bf0"
-        }, {
-            id: "c11",
-            title: "Python Data Science",
-            issuer: "IBM",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/da6afaed-e9f5-482a-9050-f4df75326949"
-        }, {
-            id: "c12",
-            title: "Intro Modern AI",
-            issuer: "Cisco",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/1ebbc427-4f77-4f3e-8756-682ebec877f3"
-        }, {
-            id: "c13",
-            title: "SQL Certificate",
-            issuer: "Coursera",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/fbe52270-eedf-4c66-bf67-f1fda5a2a54b"
-        }, {
-            id: "c14",
-            title: "Tableau Certificate",
-            issuer: "Coursera",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/6256996f-5d6b-4f29-8c47-4658d16087e8"
-        }, {
-            id: "c15",
-            title: "Data Viz Python",
-            issuer: "Coursera",
-            date: "2025",
-            description: "Data viz with Python",
-            image: "https://github.com/user-attachments/assets/c21a9dcb-0c9e-4bfe-be46-6fd43b919ee5"
-        }, {
-            id: "c16",
-            title: "Cloud Essentials",
-            issuer: "AWS",
-            date: "2024",
-            description: "Cloud computing fundamentals",
-            image: "https://github.com/user-attachments/assets/7b6e6cb6-79c1-4e10-b9b6-34432548664e"
-        }];
-
-        const badges = [{
-            id: "b1",
-            title: "MS Power Up",
-            issuer: "Microsoft",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/c5ff064b-9abe-47b3-9929-bf55999f4215"
-        }, {
-            id: "b2",
-            title: "Power Platform Adventure",
-            issuer: "Microsoft",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/0cb0e3f8-82ea-464a-8331-7ecf6eb4cc01"
-        }, {
-            id: "b3",
-            title: "Python for DS",
-            issuer: "IBM",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/4b0ba356-eab1-404c-b3a3-c8d510b9d0ba"
-        }, {
-            id: "b4",
-            title: "Python Essentials 2 badge",
-            issuer: "Cisco",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/0d6feac6-6a32-4b75-a19b-d92d7cb0ac8e"
-        }, {
-            id: "b5",
-            title: "Python Essentials 1 badge",
-            issuer: "Cisco",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/f695ac34-d5b9-4529-a722-dd5ea4b5040a"
-        }, {
-            id: "b6",
-            title: "Modern AI badge",
-            issuer: "Cisco",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/87364b3b-b649-4403-a199-9b4507c84585"
-        }, {
-            id: "b7",
-            title: "Intro DS badge",
-            issuer: "Cisco",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/c7932b15-f0dc-4c77-a3c3-cb8ef2bbcd66"
-        }, {
-            id: "b8",
-            title: "Data Analytics Essentials badge",
-            issuer: "Cisco",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/9d7dacc4-b1da-48a5-85c0-baa7fcb00922"
-        }, {
-            id: "b9",
-            title: "Data Analysis Python badge",
-            issuer: "IBM",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/ef12be0e-8c54-435c-8f1f-e6fdd8156acd"
-        }, {
-            id: "b10",
-            title: "AI Fundamentals badge",
-            issuer: "Cisco",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/d6fbf2b1-b4f9-4e37-85fb-c78bac98ba63"
-        }, {
-            id: "b11",
-            title: "AI Fundamentals IBM",
-            issuer: "IBM",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/bf9d6073-488f-478f-8bf8-e264f65ac94d"
-        }, {
-            id: "b12",
-            title: "Data Viz Python badge",
-            issuer: "Coursera",
-            date: "2025",
-            description: "",
-            image: "https://github.com/user-attachments/assets/c3793f7b-e282-484b-b81c-3eca430cb990"
-        }, {
-            id: "b13",
-            title: "Cloud Essentials badge",
-            issuer: "AWS",
-            date: "2024",
-            description: "",
-            image: "https://github.com/user-attachments/assets/b1a0864c-fc99-4db7-bdf1-fd1d8fdcf818"
-        }];
-
-        function initCarousels() {
-            const certTrack = document.querySelector('.certificates-track'),
-                badgeTrack = document.querySelector('.badges-track');
-            certTrack.innerHTML = '';
-            badgeTrack.innerHTML = '';
-            for (let set = 0; set < 2; set++) certificates.forEach(c => {
-                let d = document.createElement('div');
-                d.className = 'certificate-item';
-                d.setAttribute('data-cert', c.id);
-                d.innerHTML = `<img src="${c.image}" alt="${c.title}" loading="lazy">`;
-                certTrack.appendChild(d);
-            });
-            for (let set = 0; set < 2; set++) badges.forEach(b => {
-                let d = document.createElement('div');
-                d.className = 'badge-item';
-                d.setAttribute('data-cert', b.id);
-                d.innerHTML = `<img src="${b.image}" alt="${b.title}" loading="lazy">`;
-                badgeTrack.appendChild(d);
-            });
-        }
-
-        const modal = document.getElementById('certModal'),
-            modalTitle = document.getElementById('modalTitle'),
-            modalDetails = document.getElementById('modalDetails'),
-            modalImage = document.getElementById('modalImage'),
-            modalCloseBtn = document.getElementById('modalCloseBtn'),
-            closeModal = document.querySelector('.modal-close');
-
-        document.addEventListener('click', e => {
-            const item = e.target.closest('.certificate-item, .badge-item');
-            if (!item) return;
-            const id = item.getAttribute('data-cert');
-            let cert = certificates.find(c => c.id === id) || badges.find(b => b.id === id);
-            if (cert) {
-                modalTitle.textContent = cert.title;
-                modalDetails.innerHTML =
-                    `<p><strong>Issuer:</strong> ${cert.issuer}</p><p><strong>Date:</strong> ${cert.date}</p><p>${cert.description || ''}</p>`;
-                modalImage.src = cert.image;
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
+                    grid.appendChild(card);
+                });
             }
-        });
 
-        function closeCertModal() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        modalCloseBtn.addEventListener('click', closeCertModal);
-        closeModal.addEventListener('click', closeCertModal);
-        window.addEventListener('click', e => {
-            if (e.target === modal) closeCertModal();
-        });
+            const badges = [{
+                id: "b1",
+                title: "IBM Data Analysis Python",
+                issuer: "IBM",
+                date: "2024",
+                credlyUrl: "https://www.credly.com/badges/3d5a4d65-e636-438d-b2e1-c19ed3acc664/public_url",
+                image: "https://github.com/user-attachments/assets/ef12be0e-8c54-435c-8f1f-e6fdd8156acd"
+            }, {
+                id: "b2",
+                title: "IBM AI Fundamentals",
+                issuer: "IBM",
+                date: "2024",
+                credlyUrl: "https://www.credly.com/badges/8e85d1ea-43a5-4a20-9ae7-b8897845e31c/public_url",
+                image: "https://github.com/user-attachments/assets/bf9d6073-488f-478f-8bf8-e264f65ac94d"
+            }, {
+                id: "b3",
+                title: "Data Analytics Essentials",
+                issuer: "Cisco",
+                date: "2024",
+                credlyUrl: "https://www.credly.com/badges/f011ab63-95c7-45c0-8afd-97af6c11745d/public_url",
+                image: "https://github.com/user-attachments/assets/9d7dacc4-b1da-48a5-85c0-baa7fcb00922"
+            }, {
+                id: "b4",
+                title: "Python Essentials 1",
+                issuer: "Cisco",
+                date: "2024",
+                credlyUrl: "https://www.credly.com/badges/8720980a-1d46-43bf-86b2-2664c6ecf607/public_url",
+                image: "https://github.com/user-attachments/assets/f695ac34-d5b9-4529-a722-dd5ea4b5040a"
+            }, {
+                id: "b5",
+                title: "Python Essentials 2",
+                issuer: "Cisco",
+                date: "2024",
+                credlyUrl: "https://www.credly.com/badges/f5fd7945-0e61-4820-9d84-64c35f83acb7/public_url",
+                image: "https://github.com/user-attachments/assets/0d6feac6-6a32-4b75-a19b-d92d7cb0ac8e"
+            }, {
+                id: "b6",
+                title: "Intro to Data Science",
+                issuer: "Cisco",
+                date: "2024",
+                credlyUrl: "https://www.credly.com/badges/5a3e33ed-8f14-478d-9a76-6954243fe68d/public_url",
+                image: "https://github.com/user-attachments/assets/c7932b15-f0dc-4c77-a3c3-cb8ef2bbcd66"
+            }, {
+                id: "b7",
+                title: "Intro to Modern AI",
+                issuer: "Cisco",
+                date: "2024",
+                credlyUrl: "https://www.credly.com/badges/85de56a0-25a3-41c9-8b72-450a44bb3533/public_url",
+                image: "https://github.com/user-attachments/assets/87364b3b-b649-4403-a199-9b4507c84585"
+            }, {
+                id: "b8",
+                title: "Python for Data Science",
+                issuer: "IBM",
+                date: "2024",
+                credlyUrl: "https://www.credly.com/badges/218f5b26-fc37-4eff-8b0f-ab3c408e3c81/public_url",
+                image: "https://github.com/user-attachments/assets/4b0ba356-eab1-404c-b3a3-c8d510b9d0ba"
+            }, {
+                id: "b9",
+                title: "Microsoft Power Up Program",
+                issuer: "Microsoft",
+                date: "2024",
+                credlyUrl: "https://www.credly.com/badges/47318648-0b8d-45aa-b16d-9c862d8d9259/public_url",
+                image: "https://github.com/user-attachments/assets/c5ff064b-9abe-47b3-9929-bf55999f4215"
+            }, {
+                id: "b10",
+                title: "Power Platform Adventurer",
+                issuer: "Microsoft",
+                date: "2024",
+                credlyUrl: "https://www.credly.com/badges/f698baa6-3839-4648-998f-646f19515587/public_url",
+                image: "https://github.com/user-attachments/assets/0cb0e3f8-82ea-464a-8331-7ecf6eb4cc01"
+            }, {
+                id: "b11",
+                title: "Data Visualization Python",
+                issuer: "Coursera",
+                date: "2025",
+                credlyUrl: "https://www.credly.com/badges/e0313313-a8d6-43e7-bab3-c0df82272bb5/public_url",
+                image: "https://github.com/user-attachments/assets/c3793f7b-e282-484b-b81c-3eca430cb990"
+            }, {
+                id: "b13",
+                title: "Cloud Essentials",
+                issuer: "AWS",
+                date: "2024",
+                credlyUrl: "https://www.credly.com/badges/61d5a87a-3d98-4005-95b2-55eb9e7e0dbf/public_url",
+                image: "https://github.com/user-attachments/assets/b1a0864c-fc99-4db7-bdf1-fd1d8fdcf818"
+            }, {
+                id: "b14",
+                title: "AI Fundamentals",
+                issuer: "Cisco",
+                date: "2024",
+                credlyUrl: "https://www.credly.com/badges/555ca854-8544-4a3b-bca9-10415d3e607c/public_url",
+                image: "https://github.com/user-attachments/assets/d6fbf2b1-b4f9-4e37-85fb-c78bac98ba63"
+            }];
 
-        const mobileMenu = document.querySelector('.mobile-menu'),
-            navLinks = document.querySelector('.nav-links');
-        mobileMenu.addEventListener('click', () => navLinks.classList.toggle('active'));
+            function initBadgesCarousel() {
+                const badgesTrack = document.getElementById('badgesTrack');
+                badgesTrack.innerHTML = '';
+                for (let set = 0; set < 2; set++) {
+                    badges.forEach(b => {
+                        const div = document.createElement('div');
+                        div.className = 'badge-item';
+                        div.setAttribute('data-credly', b.credlyUrl);
+                        div.setAttribute('title', `${b.title} — ${b.issuer} (${b.date})`);
+                        div.innerHTML = `<img src="${b.image}" alt="${b.title}" loading="lazy">`;
+                        div.addEventListener('click', () => {
+                            window.open(b.credlyUrl, '_blank', 'noopener');
+                        });
+                        badgesTrack.appendChild(div);
+                    });
+                }
+            }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            createProjectCards();
-            initCarousels();
-            const ct = document.querySelector('.certificates-track'),
-                bt = document.querySelector('.badges-track');
-            ct.addEventListener('mouseenter', () => ct.style.animationPlayState = 'paused');
-            ct.addEventListener('mouseleave', () => ct.style.animationPlayState = 'running');
-            bt.addEventListener('mouseenter', () => bt.style.animationPlayState = 'paused');
-            bt.addEventListener('mouseleave', () => bt.style.animationPlayState = 'running');
-        });
+            const mobileMenu = document.querySelector('.mobile-menu'),
+                navLinks = document.querySelector('.nav-links');
+            mobileMenu.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+            document.addEventListener('DOMContentLoaded', function() {
+                createProjectCards();
+                initBadgesCarousel();
+                const bt = document.getElementById('badgesTrack');
+                if (bt) {
+                    bt.addEventListener('mouseenter', () => bt.style.animationPlayState = 'paused');
+                    bt.addEventListener('mouseleave', () => bt.style.animationPlayState = 'running');
+                }
+            });
+        })();
     </script>
 </body>
 
