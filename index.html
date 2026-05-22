@@ -297,10 +297,6 @@
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        .hero::before {
-            display: none;
-        }
-
         .hero .background-blobs {
             position: absolute;
             inset: 0;
@@ -907,6 +903,7 @@
             font-size: 0.92rem;
             flex-grow: 1;
             margin-bottom: 14px;
+            line-height: 1.4;
         }
 
         .project-tags {
@@ -1212,6 +1209,16 @@
                 gap: 15px;
             }
         }
+
+        /* Anti-inspection: disable text selection, right-click, dev tools shortcuts */
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
     </style>
 </head>
 
@@ -1483,6 +1490,31 @@
 
     <script>
         (function() {
+            // Anti-inspection: disable right-click, F12, Ctrl+Shift+I/C/J, Ctrl+U
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'F12') {
+                    e.preventDefault();
+                    return false;
+                }
+                if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) {
+                    e.preventDefault();
+                    return false;
+                }
+                if (e.ctrlKey && e.key === 'u') {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            if (window.console && window.console.clear) {
+                console.clear = function() {};
+            }
+        })();
+
+        (function() {
             const canvas = document.getElementById('network-bg');
             const ctx = canvas.getContext('2d');
             let width, height;
@@ -1494,6 +1526,7 @@
                 y: null,
                 radius: 160
             };
+            let resizeTimeout;
 
             function resize() {
                 width = window.innerWidth;
@@ -1685,6 +1718,15 @@
                 tags: ['powerbidashboard', 'finance', 'python', 'pandas', 'financial-analysis'],
                 githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200/tree/BI-TRX-200',
                 websiteUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200'
+            },
+            {
+                id: 9,
+                title: 'Innovative RTM Analysis Case Study',
+                description: 'Route-to-Market analytics for call center & workforce optimization.',
+                image: 'https://github.com/user-attachments/assets/c7b6037f-603f-407d-b42b-87824f7f2f75',
+                tags: ['database', 'excel', 'power-bi', 'data-analysis', 'rtm', 't-sql', 'call-center-analytics', 'workforce-analytics'],
+                githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Innovative-rtm-analysis-case-study',
+                websiteUrl: 'https://innovative-bpo.com/'
             }
         ];
 
