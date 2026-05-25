@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Mahmoud Abdallah | Data Analytics Portfolio</title>
     <link rel="icon" type="image/x-icon" href="https://github.com/user-attachments/assets/b4a9ebc2-5ecd-4c39-84fb-13b83abf674e" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         /* ===== RESET & BASE ===== */
         *,
@@ -54,6 +53,108 @@
             color: var(--text-primary);
             line-height: 1.7;
             overflow-x: hidden;
+        }
+
+        /* ===== DRIFTING BUOYS KEYFRAMES ===== */
+        @keyframes drift-buoy {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            20% {
+                transform: translateY(-7px);
+            }
+            40% {
+                transform: translateY(-2px);
+            }
+            60% {
+                transform: translateY(-9px);
+            }
+            80% {
+                transform: translateY(-3px);
+            }
+        }
+
+        @keyframes drift-buoy-subtle {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            25% {
+                transform: translateY(-5px);
+            }
+            50% {
+                transform: translateY(-1px);
+            }
+            75% {
+                transform: translateY(-6px);
+            }
+        }
+
+        @keyframes drift-buoy-wide {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            15% {
+                transform: translateY(-10px);
+            }
+            35% {
+                transform: translateY(-3px);
+            }
+            55% {
+                transform: translateY(-11px);
+            }
+            75% {
+                transform: translateY(-4px);
+            }
+            90% {
+                transform: translateY(-7px);
+            }
+        }
+
+        /* ===== ANIMATION CLASSES ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .reveal-left.active,
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Delay classes for staggered movement */
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+        .delay-4 {
+            transition-delay: 0.4s;
         }
 
         #network-bg {
@@ -343,7 +444,6 @@
             0% {
                 transform: translate(0, 0) rotate(0deg);
             }
-
             100% {
                 transform: translate(100px, 50px) rotate(90deg);
             }
@@ -395,7 +495,6 @@
                 transform: scale(1);
                 opacity: 0.4;
             }
-
             100% {
                 transform: scale(2.5);
                 opacity: 0;
@@ -518,7 +617,7 @@
             transform: translateY(-5px);
         }
 
-        /* Hero image – circular frame */
+        /* Hero image – circular frame with Drifting Buoy */
         .hero-image-wrapper {
             position: relative;
             padding: 10px;
@@ -533,6 +632,16 @@
             max-width: 340px;
             margin-left: auto;
             margin-right: auto;
+            animation: drift-buoy-subtle 5.5s ease-in-out 0.6s infinite;
+            will-change: transform;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.5s ease;
+        }
+
+        .image-frame:hover {
+            animation-play-state: paused;
+            transform: translateY(-6px);
+            filter: drop-shadow(0 0 35px rgba(59, 130, 246, 0.5));
         }
 
         .image-inner {
@@ -545,6 +654,13 @@
             position: relative;
             z-index: 3;
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+            transition: box-shadow 0.5s ease, border-color 0.5s ease;
+        }
+
+        .image-frame:hover .image-inner {
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5),
+                0 0 50px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.4);
         }
 
         .image-inner img {
@@ -568,6 +684,11 @@
             background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
             z-index: 1;
             pointer-events: none;
+            transition: background 0.5s ease;
+        }
+
+        .image-frame:hover .blue-glow-sphere {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
         }
 
         .stat-card {
@@ -637,12 +758,10 @@
         }
 
         @keyframes float-y {
-
             0%,
             100% {
                 transform: translateY(0);
             }
-
             50% {
                 transform: translateY(-12px);
             }
@@ -823,7 +942,7 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
-        /* ===== PROJECTS ===== */
+        /* ===== PROJECTS WITH DRIFTING BUOYS ===== */
         .projects {
             background: var(--bg-secondary);
             position: relative;
@@ -850,16 +969,61 @@
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-color);
             overflow: hidden;
-            transition: var(--transition);
             display: flex;
             flex-direction: column;
             min-height: 440px;
+            will-change: transform, box-shadow;
+            animation: drift-buoy 7s ease-in-out 1s infinite;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.5s ease,
+                border-color 0.35s ease,
+                background 0.35s ease;
+        }
+
+        /* Staggered animation delays for natural buoy effect */
+        .project-card:nth-child(1) {
+            animation-delay: 0.3s;
+            animation-duration: 6.8s;
+        }
+        .project-card:nth-child(2) {
+            animation-delay: 1.2s;
+            animation-duration: 7.3s;
+        }
+        .project-card:nth-child(3) {
+            animation-delay: 2.0s;
+            animation-duration: 6.5s;
+        }
+        .project-card:nth-child(4) {
+            animation-delay: 0.6s;
+            animation-duration: 7.6s;
+        }
+        .project-card:nth-child(5) {
+            animation-delay: 1.5s;
+            animation-duration: 6.9s;
+        }
+        .project-card:nth-child(6) {
+            animation-delay: 2.3s;
+            animation-duration: 7.1s;
+        }
+        .project-card:nth-child(7) {
+            animation-delay: 0.9s;
+            animation-duration: 7.5s;
+        }
+        .project-card:nth-child(8) {
+            animation-delay: 1.8s;
+            animation-duration: 6.6s;
+        }
+        .project-card:nth-child(9) {
+            animation-delay: 2.6s;
+            animation-duration: 7.0s;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
+            animation-play-state: paused;
+            transform: translateY(-8px);
             border-color: var(--border-hover);
-            box-shadow: var(--shadow-hover);
+            box-shadow: 0 0 50px rgba(59, 130, 246, 0.22),
+                0 20px 50px rgba(0, 0, 0, 0.7);
             background: var(--bg-card-hover);
         }
 
@@ -877,7 +1041,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
+            transition: transform 0.5s ease;
         }
 
         .project-card:hover .project-image img {
@@ -1095,6 +1259,18 @@
             font-size: 0.85rem;
         }
 
+        /* ===== REDUCED MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            .image-frame,
+            .project-card {
+                animation: none !important;
+            }
+            .stat-card,
+            .floating-badge {
+                animation: none !important;
+            }
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .hero-content {
@@ -1102,29 +1278,24 @@
                 text-align: center;
                 gap: 40px;
             }
-
             .hero-text {
                 text-align: center;
             }
-
             .hero-image-wrapper {
                 order: -1;
                 max-width: 400px;
                 margin: 0 auto;
             }
-
             .image-frame {
                 max-width: 280px;
+                animation-duration: 6s;
             }
-
             .projects-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .core-expertise ul {
                 grid-template-columns: 1fr;
             }
-
             .about-stats {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1144,40 +1315,36 @@
                 gap: 16px;
                 border-bottom: 1px solid var(--border-color);
             }
-
             .nav-links.active {
                 display: flex;
             }
-
             .mobile-menu {
                 display: block;
             }
-
             .hero {
                 padding-top: 120px;
                 min-height: auto;
             }
-
             .hero-text h1 {
                 font-size: 2.6rem;
             }
-
             .image-frame {
                 max-width: 250px;
+                animation-duration: 6.5s;
             }
-
             h2 {
                 font-size: 2.2rem;
             }
-
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-
+            .project-card {
+                animation-duration: 6s;
+                min-height: auto;
+            }
             .about-stats {
                 grid-template-columns: 1fr 1fr;
             }
-
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 32px;
@@ -1189,24 +1356,24 @@
             .hero-text h1 {
                 font-size: 2rem;
             }
-
             .image-frame {
                 max-width: 220px;
+                animation-duration: 7s;
             }
-
             .hero-btns {
                 flex-direction: column;
                 width: 100%;
             }
-
             .hero-btns .btn {
                 width: 100%;
                 justify-content: center;
             }
-
             .tech-stack {
                 flex-direction: column;
                 gap: 15px;
+            }
+            .project-card {
+                animation-duration: 5.5s;
             }
         }
 
@@ -1253,13 +1420,17 @@
         </div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
+                <div class="hero-text reveal-left">
                     <div class="badge-container">
                         <span class="pulse-dot"></span>
                         <span class="badge">Open for new opportunities</span>
                     </div>
                     <h1>Mahmoud <span class="gradient-text">Abdallah</span></h1>
-                    <p class="hero-sub">Turning data into decisions that matter with 3+ years of end‑to‑end analytics experience, bridging raw numbers and real strategy.</p>
+                    <p class="hero-sub">
+                        Turning data into decisions that matter with 3+ years of
+                        end‑to‑end analytics experience, bridging raw numbers and real
+                        strategy.
+                    </p>
                     <div class="hero-btns">
                         <a href="#projects" class="btn btn-primary">View Projects
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1284,11 +1455,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="hero-image-wrapper">
+                <div class="hero-image-wrapper reveal-right">
                     <div class="image-frame">
                         <div class="blue-glow-sphere"></div>
                         <div class="image-inner">
-                            <img id="profile-img" src="https://github.com/user-attachments/assets/0b1c29ac-9dd9-4a62-82eb-0cf420d75f7f" alt="Mahmoud Abdallah">
+                            <img id="profile-img" src="https://github.com/user-attachments/assets/0b1c29ac-9dd9-4a62-82eb-0cf420d75f7f" alt="Mahmoud Abdallah" />
                         </div>
                         <div class="stat-card">
                             <div class="stat-icon">
@@ -1318,53 +1489,85 @@
 
     <section id="about" class="about">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <span class="section-label">About</span>
                 <h2>Who I Am</h2>
-                <p class="section-subtitle">A data analyst dedicated to turning complexity into clarity.</p>
+                <p class="section-subtitle">
+                    A data analyst dedicated to turning complexity into clarity.
+                </p>
             </div>
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text reveal">
                     <div class="story-headline">My Story</div>
                     <p>
-                        My journey into data analytics started with a simple frustration: too many organizations sit on valuable data but have no clear way to read it, trust it, or act on it.<br>
-                        Over the past 3+ years, I've dedicated my career to closing that gap.<br>
-                        I've collaborated across industries to design interactive dashboards, build automated reporting pipelines, and create self-service analytics tools that put insights directly into the hands of decision-makers.
+                        My journey into data analytics started with a simple frustration:
+                        too many organizations sit on valuable data but have no clear way
+                        to read it, trust it, or act on it.<br />
+                        Over the past 3+ years, I've dedicated my career to closing that
+                        gap.<br />
+                        I've collaborated across industries to design interactive
+                        dashboards, build automated reporting pipelines, and create
+                        self-service analytics tools that put insights directly into the
+                        hands of decision-makers.
                     </p>
                     <p>
-                        What drives me is the business impact.<br>
-                        Seeing leadership make faster, smarter decisions because of something I built is what makes this work meaningful.<br>
-                        Beyond traditional analytics, I'm actively expanding into AI and machine learning, exploring predictive analytics and intelligent automation.
+                        What drives me is the business impact.<br />
+                        Seeing leadership make faster, smarter decisions because of
+                        something I built is what makes this work meaningful.<br />
+                        Beyond traditional analytics, I'm actively expanding into AI and
+                        machine learning, exploring predictive analytics and intelligent
+                        automation.
                     </p>
-                    <div class="core-expertise">
-                        <h3><i class="fas fa-bolt" style="color:var(--primary);margin-right:8px;"></i> What I Do Best</h3>
+                    <div class="core-expertise reveal delay-1">
+                        <h3>
+                            <i class="fas fa-bolt" style="color:var(--primary);margin-right:8px;"></i>
+                            What I Do Best
+                        </h3>
                         <ul>
-                            <li><strong>Data Analytics and Dashboards:</strong> Designing executive-ready dashboards (Power BI, Tableau, Looker Studio) focused on clarity and storytelling.</li>
-                            <li><strong>Advanced Analytics and Python:</strong> Using Python, Pandas, Scikit-learn for statistical modeling and predictive solutions.</li>
-                            <li><strong>Process Automation:</strong> Building low-code automation with Microsoft Power Platform (Power Automate, Power Apps) to eliminate manual work.</li>
-                            <li><strong>AI and Machine Learning:</strong> Applying ML fundamentals, NLP, and deep learning (TensorFlow) to real business problems.</li>
+                            <li>
+                                <strong>Data Analytics and Dashboards:</strong> Designing
+                                executive-ready dashboards (Power BI, Tableau, Looker Studio)
+                                focused on clarity and storytelling.
+                            </li>
+                            <li>
+                                <strong>Advanced Analytics and Python:</strong> Using Python,
+                                Pandas, Scikit-learn for statistical modeling and predictive
+                                solutions.
+                            </li>
+                            <li>
+                                <strong>Process Automation:</strong> Building low-code
+                                automation with Microsoft Power Platform (Power Automate,
+                                Power Apps) to eliminate manual work.
+                            </li>
+                            <li>
+                                <strong>AI and Machine Learning:</strong> Applying ML
+                                fundamentals, NLP, and deep learning (TensorFlow) to real
+                                business problems.
+                            </li>
                         </ul>
                     </div>
-                    <p>
-                        <strong>What Drives Me:</strong> Data without context is just noise.<br>
-                        My goal is to deliver clarity that helps people make better decisions, faster.<br>
+                    <p class="reveal delay-2">
+                        <strong>What Drives Me:</strong> Data without context is just
+                        noise.<br />
+                        My goal is to deliver clarity that helps people make better
+                        decisions, faster.<br />
                         Let's turn your data into something that works for you.
                     </p>
                 </div>
                 <div class="about-stats">
-                    <div class="stat">
+                    <div class="stat reveal delay-1">
                         <h3>3+</h3>
                         <p>Years Experience</p>
                     </div>
-                    <div class="stat">
+                    <div class="stat reveal delay-2">
                         <h3>50+</h3>
                         <p>Projects Completed</p>
                     </div>
-                    <div class="stat">
+                    <div class="stat reveal delay-3">
                         <h3>15+</h3>
                         <p>GitHub Repos</p>
                     </div>
-                    <div class="stat">
+                    <div class="stat reveal delay-4">
                         <h3>100%</h3>
                         <p>On-Time Delivery</p>
                     </div>
@@ -1375,50 +1578,55 @@
 
     <section id="skills" class="skills">
         <div class="container">
-            <div class="section-header centered">
+            <div class="section-header centered reveal">
                 <span class="section-label">Expertise</span>
                 <h2>Tools &amp; Technologies</h2>
-                <p class="section-subtitle">The stack I work with every day to turn raw data into actionable insights.</p>
+                <p class="section-subtitle">
+                    The stack I work with every day to turn raw data into actionable
+                    insights.
+                </p>
             </div>
-            <div class="skills-container">
-                <span class="skill-badge"><i class="fas fa-chart-bar"></i> Power BI</span>
-                <span class="skill-badge"><i class="fas fa-chart-pie"></i> Tableau</span>
-                <span class="skill-badge"><i class="fas fa-eye"></i> Looker Studio</span>
-                <span class="skill-badge"><i class="fas fa-file-excel"></i> Microsoft Excel</span>
-                <span class="skill-badge"><i class="fas fa-chart-line"></i> DAX &amp; Power Query</span>
-                <span class="skill-badge"><i class="fas fa-database"></i> SQL (Advanced)</span>
-                <span class="skill-badge"><i class="fab fa-python"></i> Python (Pandas, NumPy)</span>
-                <span class="skill-badge"><i class="fas fa-chart-scatter"></i> Matplotlib/Seaborn</span>
-                <span class="skill-badge"><i class="fas fa-map-marked-alt"></i> Folium</span>
-                <span class="skill-badge"><i class="fas fa-brain"></i> Scikit-learn</span>
-                <span class="skill-badge"><i class="fas fa-waveform"></i> Time Series Analysis</span>
-                <span class="skill-badge"><i class="fas fa-robot"></i> Power Automate</span>
-                <span class="skill-badge"><i class="fas fa-mobile-alt"></i> Power Apps (Canvas/Model)</span>
-                <span class="skill-badge"><i class="fas fa-file-powerpoint"></i> Power Pages</span>
-                <span class="skill-badge"><i class="fas fa-cloud-upload-alt"></i> Microsoft Dataverse</span>
-                <span class="skill-badge"><i class="fab fa-microsoft"></i> Azure</span>
-                <span class="skill-badge"><i class="fas fa-server"></i> SQL Server / MySQL</span>
-                <span class="skill-badge"><i class="fas fa-database"></i> PostgreSQL</span>
-                <span class="skill-badge"><i class="fas fa-chart-simple"></i> Customer Segmentation</span>
-                <span class="skill-badge"><i class="fas fa-chart-line"></i> Demand Forecasting</span>
-                <span class="skill-badge"><i class="fas fa-chart-pie"></i> Cohort &amp; RFM Analysis</span>
-                <span class="skill-badge"><i class="fas fa-ad"></i> Marketing ROI Analysis</span>
-                <span class="skill-badge"><i class="fas fa-chart-line"></i> Sales Performance</span>
-                <span class="skill-badge"><i class="fas fa-chart-line"></i> ETL Pipelines</span>
-                <span class="skill-badge"><i class="fas fa-clipboard-list"></i> Business Requirements</span>
-                <span class="skill-badge"><i class="fas fa-project-diagram"></i> Agile/Scrum</span>
-                <span class="skill-badge"><i class="fas fa-chalkboard-user"></i> Data Storytelling</span>
-                <span class="skill-badge"><i class="fas fa-chart-line"></i> KPI Design &amp; Executive Reporting</span>
+            <div class="skills-container" id="skillsReveal">
+                <span class="skill-badge reveal"><i class="fas fa-chart-bar"></i> Power BI</span>
+                <span class="skill-badge reveal"><i class="fas fa-chart-pie"></i> Tableau</span>
+                <span class="skill-badge reveal"><i class="fas fa-eye"></i> Looker Studio</span>
+                <span class="skill-badge reveal"><i class="fas fa-file-excel"></i> Microsoft Excel</span>
+                <span class="skill-badge reveal"><i class="fas fa-chart-line"></i> DAX &amp; Power Query</span>
+                <span class="skill-badge reveal"><i class="fas fa-database"></i> SQL (Advanced)</span>
+                <span class="skill-badge reveal"><i class="fab fa-python"></i> Python (Pandas, NumPy)</span>
+                <span class="skill-badge reveal"><i class="fas fa-chart-scatter"></i> Matplotlib/Seaborn</span>
+                <span class="skill-badge reveal"><i class="fas fa-map-marked-alt"></i> Folium</span>
+                <span class="skill-badge reveal"><i class="fas fa-brain"></i> Scikit-learn</span>
+                <span class="skill-badge reveal"><i class="fas fa-waveform"></i> Time Series Analysis</span>
+                <span class="skill-badge reveal"><i class="fas fa-robot"></i> Power Automate</span>
+                <span class="skill-badge reveal"><i class="fas fa-mobile-alt"></i> Power Apps (Canvas/Model)</span>
+                <span class="skill-badge reveal"><i class="fas fa-file-powerpoint"></i> Power Pages</span>
+                <span class="skill-badge reveal"><i class="fas fa-cloud-upload-alt"></i> Microsoft Dataverse</span>
+                <span class="skill-badge reveal"><i class="fab fa-microsoft"></i> Azure</span>
+                <span class="skill-badge reveal"><i class="fas fa-server"></i> SQL Server / MySQL</span>
+                <span class="skill-badge reveal"><i class="fas fa-database"></i> PostgreSQL</span>
+                <span class="skill-badge reveal"><i class="fas fa-chart-simple"></i> Customer Segmentation</span>
+                <span class="skill-badge reveal"><i class="fas fa-chart-line"></i> Demand Forecasting</span>
+                <span class="skill-badge reveal"><i class="fas fa-chart-pie"></i> Cohort &amp; RFM Analysis</span>
+                <span class="skill-badge reveal"><i class="fas fa-ad"></i> Marketing ROI Analysis</span>
+                <span class="skill-badge reveal"><i class="fas fa-chart-line"></i> Sales Performance</span>
+                <span class="skill-badge reveal"><i class="fas fa-chart-line"></i> ETL Pipelines</span>
+                <span class="skill-badge reveal"><i class="fas fa-clipboard-list"></i> Business Requirements</span>
+                <span class="skill-badge reveal"><i class="fas fa-project-diagram"></i> Agile/Scrum</span>
+                <span class="skill-badge reveal"><i class="fas fa-chalkboard-user"></i> Data Storytelling</span>
+                <span class="skill-badge reveal"><i class="fas fa-chart-line"></i> KPI Design &amp; Executive Reporting</span>
             </div>
         </div>
     </section>
 
     <section id="projects" class="projects">
         <div class="container">
-            <div class="section-header centered">
+            <div class="section-header centered reveal">
                 <span class="section-label">Portfolio</span>
                 <h2>Featured Projects</h2>
-                <p class="section-subtitle">A selection of real-world analytics and data science work.</p>
+                <p class="section-subtitle">
+                    A selection of real-world analytics and data science work.
+                </p>
             </div>
             <div class="projects-grid" id="projectsGrid"></div>
         </div>
@@ -1426,20 +1634,24 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <div class="section-header centered">
+            <div class="section-header centered reveal">
                 <span class="section-label">Contact</span>
                 <h2>Let's Connect</h2>
-                <p class="section-subtitle">Have a project or idea? Reach out and let's make data work for you.</p>
+                <p class="section-subtitle">
+                    Have a project or idea? Reach out and let's make data work for you.
+                </p>
             </div>
             <div class="contact-row">
-                <div class="contact-item">
+                <div class="contact-item reveal-left">
                     <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                     <div>
                         <h3>Email</h3>
-                        <p><a href="mailto:Mahmoud_abdallah20@outlook.com">Mahmoud_abdallah20@outlook.com</a></p>
+                        <p>
+                            <a href="mailto:Mahmoud_abdallah20@outlook.com">Mahmoud_abdallah20@outlook.com</a>
+                        </p>
                     </div>
                 </div>
-                <div class="contact-item">
+                <div class="contact-item reveal-right">
                     <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
                     <div>
                         <h3>Phone</h3>
@@ -1452,10 +1664,13 @@
 
     <footer>
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-content reveal">
                 <div class="footer-about">
                     <div class="footer-logo">Data <span>Analytics</span></div>
-                    <p>Turning data into decisions, dashboards, automation, and predictive analytics.</p>
+                    <p>
+                        Turning data into decisions, dashboards, automation, and
+                        predictive analytics.
+                    </p>
                     <div class="social-links">
                         <a href="https://github.com/MAHMOUD2ABDALLAH" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://www.linkedin.com/in/mahmoud-abdallah20" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -1489,8 +1704,27 @@
     </footer>
 
     <script>
+        // --- REVEAL ANIMATION OBSERVER ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            revealElements.forEach(el => observer.observe(el));
+        });
+
         (function() {
-            // Anti-inspection: disable right-click, F12, Ctrl+Shift+I/C/J, Ctrl+U
+            // Anti-inspection
             document.addEventListener('contextmenu', function(e) {
                 e.preventDefault();
                 return false;
@@ -1648,93 +1882,86 @@
         })();
 
         const projectsData = [{
-                id: 1,
-                title: 'Mobile Ventilator GP',
-                description: 'Machine learning & bioinformatics for medical ventilator monitoring.',
-                image: 'https://github.com/user-attachments/assets/1b5cd5a0-0782-4e1d-9283-2da3451f1359',
-                tags: ['machine-learning', 'bioinformatics', 'medical', 'sklearn', 'java'],
-                githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP/tree/master',
-                websiteUrl: 'https://cis.asu.edu.eg/' // Updated website URL
-            },
-            {
-                id: 2,
-                title: 'Animal Shelter Home',
-                description: 'Power Platform solution for shelter management.',
-                image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8',
-                tags: ['powerbi', 'powerapps', 'powerautomate', 'powerpages'],
-                githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange',
-                websiteUrl: 'https://powerup.microsoft.com/'
-            },
-            {
-                id: 3,
-                title: 'MaxAB Sales Analysis',
-                description: 'Sales trends & optimization for MaxAB field sales.',
-                image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f',
-                tags: ['powerbi', 'sales-analysis', 'dax-expression', 'powerquery', 'trend-analysis'],
-                githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study',
-                websiteUrl: 'https://www.maxab.io/'
-            },
-            {
-                id: 4,
-                title: 'Walmart Product Analysis',
-                description: 'Retail analytics dashboard for Walmart.',
-                image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526',
-                tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression', 'insights'],
-                githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study',
-                websiteUrl: 'https://www.walmart.com/'
-            },
-            {
-                id: 5,
-                title: 'ElEzaby Pharmacy E-commerce',
-                description: 'Digital analytics for Elezaby Pharmacy.',
-                image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa',
-                tags: ['rfm-analysis', 'apriori-algorithm', 'data-visualization', 'powerquery', 'dax-expression'],
-                githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study',
-                websiteUrl: 'https://elezabypharmacy.com/'
-            },
-            {
-                id: 6,
-                title: 'Immigration to Canada',
-                description: 'Trends 1980–2013 Canada immigration insights.',
-                image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67',
-                tags: ['python', 'pandas', 'data-visualization', 'matplotlib', 'seaborn'],
-                githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013',
-                websiteUrl: 'https://www.canada.ca/'
-            },
-            {
-                id: 7,
-                title: 'Improvado Marketing Homework',
-                description: 'Marketing ROI & segmentation for Improvado.',
-                image: 'https://github.com/user-attachments/assets/7c601c73-38b4-483c-affa-c6832ec26356',
-                tags: ['bigquery', 'marketing', 'business-intelligence', 'data-analysis', 'looker-studio'],
-                githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework',
-                websiteUrl: 'https://improvado.io/'
-            },
-            {
-                id: 8,
-                title: 'Abawb.ai Financial TRX 200',
-                description: 'Financial transaction analysis & BI dashboard.',
-                image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a',
-                tags: ['powerbidashboard', 'finance', 'python', 'pandas', 'financial-analysis'],
-                githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200/tree/BI-TRX-200',
-                websiteUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200'
-            },
-            {
-                id: 9,
-                title: 'Innovative RTM Analysis Case Study',
-                description: 'Route-to-Market analytics for call center & workforce optimization.',
-                image: 'https://github.com/user-attachments/assets/c7b6037f-603f-407d-b42b-87824f7f2f75',
-                tags: ['database', 'excel', 'power-bi', 'data-analysis', 'rtm', 't-sql', 'call-center-analytics', 'workforce-analytics'],
-                githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Innovative-rtm-analysis-case-study',
-                websiteUrl: 'https://innovative-bpo.com/'
-            }
-        ];
+            id: 1,
+            title: 'Mobile Ventilator GP',
+            description: 'Machine learning & bioinformatics for medical ventilator monitoring.',
+            image: 'https://github.com/user-attachments/assets/1b5cd5a0-0782-4e1d-9283-2da3451f1359',
+            tags: ['machine-learning', 'bioinformatics', 'medical', 'sklearn', 'java'],
+            githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP/tree/master',
+            websiteUrl: 'https://cis.asu.edu.eg/'
+        }, {
+            id: 2,
+            title: 'Animal Shelter Home',
+            description: 'Power Platform solution for shelter management.',
+            image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8',
+            tags: ['powerbi', 'powerapps', 'powerautomate', 'powerpages'],
+            githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange',
+            websiteUrl: 'https://powerup.microsoft.com/'
+        }, {
+            id: 3,
+            title: 'MaxAB Sales Analysis',
+            description: 'Sales trends & optimization for MaxAB field sales.',
+            image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f',
+            tags: ['powerbi', 'sales-analysis', 'dax-expression', 'powerquery', 'trend-analysis'],
+            githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study',
+            websiteUrl: 'https://www.maxab.io/'
+        }, {
+            id: 4,
+            title: 'Walmart Product Analysis',
+            description: 'Retail analytics dashboard for Walmart.',
+            image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526',
+            tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression', 'insights'],
+            githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study',
+            websiteUrl: 'https://www.walmart.com/'
+        }, {
+            id: 5,
+            title: 'ElEzaby Pharmacy E-commerce',
+            description: 'Digital analytics for Elezaby Pharmacy.',
+            image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa',
+            tags: ['rfm-analysis', 'apriori-algorithm', 'data-visualization', 'powerquery', 'dax-expression'],
+            githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study',
+            websiteUrl: 'https://elezabypharmacy.com/'
+        }, {
+            id: 6,
+            title: 'Immigration to Canada',
+            description: 'Trends 1980–2013 Canada immigration insights.',
+            image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67',
+            tags: ['python', 'pandas', 'data-visualization', 'matplotlib', 'seaborn'],
+            githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013',
+            websiteUrl: 'https://www.canada.ca/'
+        }, {
+            id: 7,
+            title: 'Improvado Marketing Homework',
+            description: 'Marketing ROI & segmentation for Improvado.',
+            image: 'https://github.com/user-attachments/assets/7c601c73-38b4-483c-affa-c6832ec26356',
+            tags: ['bigquery', 'marketing', 'business-intelligence', 'data-analysis', 'looker-studio'],
+            githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework',
+            websiteUrl: 'https://improvado.io/'
+        }, {
+            id: 8,
+            title: 'Abawb.ai Financial TRX 200',
+            description: 'Financial transaction analysis & BI dashboard.',
+            image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a',
+            tags: ['powerbidashboard', 'finance', 'python', 'pandas', 'financial-analysis'],
+            githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200/tree/BI-TRX-200',
+            websiteUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200'
+        }, {
+            id: 9,
+            title: 'Innovative RTM Analysis Case Study',
+            description: 'Route-to-Market analytics for call center & workforce optimization.',
+            image: 'https://github.com/user-attachments/assets/c7b6037f-603f-407d-b42b-87824f7f2f75',
+            tags: ['database', 'excel', 'power-bi', 'data-analysis', 'rtm', 't-sql', 'call-center-analytics',
+                'workforce-analytics'
+            ],
+            githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Innovative-rtm-analysis-case-study',
+            websiteUrl: 'https://innovative-bpo.com/'
+        }];
 
         function renderProjects() {
             const grid = document.getElementById('projectsGrid');
             if (!grid) return;
             grid.innerHTML = projectsData.map(p => `
-                <div class="project-card">
+                <div class="project-card reveal">
                     <div class="project-image"><img src="${p.image}" alt="${p.title}" loading="lazy"></div>
                     <div class="project-content">
                         <h3>${p.title}</h3>
@@ -1747,13 +1974,25 @@
                     </div>
                 </div>
             `).join('');
+
+            // Observe newly created project cards
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             const menuBtn = document.getElementById('mobileMenu');
             const navLinks = document.getElementById('navLinks');
             menuBtn?.addEventListener('click', () => navLinks.classList.toggle('active'));
-            navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+            navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList
+                .remove('active')));
 
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.pageYOffset > 20));
@@ -1762,5 +2001,4 @@
         });
     </script>
 </body>
-
 </html>
