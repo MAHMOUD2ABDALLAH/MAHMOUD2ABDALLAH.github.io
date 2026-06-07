@@ -870,7 +870,7 @@
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       }
 
-      /* ===== PROJECTS: REDESIGNED CARD STYLE (logo rectangle + website/github) ===== */
+      /* ===== PROJECTS: REDESIGNED CARD STYLE ===== */
       .projects {
           background: var(--bg-secondary);
           position: relative;
@@ -928,7 +928,6 @@
           background: var(--bg-card-hover);
       }
 
-      /* logo rectangle (small, placed at bottom-right) */
       .card-logo-rect {
           position: absolute;
           bottom: -12px;
@@ -967,7 +966,6 @@
           transform: scale(1.05);
       }
 
-      /* main content area (large block with text, tags, buttons) */
       .card-content {
           display: flex;
           flex-direction: column;
@@ -1018,7 +1016,6 @@
           border-color: var(--primary);
       }
 
-      /* action row: GitHub icon + Website button */
       .card-actions {
           display: flex;
           align-items: center;
@@ -1704,15 +1701,15 @@
       })();
 
       const projectsData = [
-        { id: 1, title: 'Mobile Ventilator GP', description: 'Developed ML models & bioinformatic analysis for real-time monitoring of mobile ventilators, enhancing patient safety and clinical decision‑making using scikit‑learn and Java.', image: 'https://github.com/user-attachments/assets/1b5cd5a0-0782-4e1d-9283-2da3451f1359', tags: ['machine-learning', 'bioinformatics', 'medical', 'sklearn', 'java'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP/tree/master', websiteUrl: 'https://cis.asu.edu.eg/' },
+        { id: 1, title: 'Mobile Ventilator GP', description: 'Developed ML models & bioinformatic analysis for real-time monitoring of mobile ventilators, enhancing patient safety and clinical decision‑making using scikit‑learn and Java.', image: 'https://github.com/user-attachments/assets/1b5cd5a0-0782-4e1d-9283-2da3451f1359', tags: ['machine-learning', 'bioinformatics', 'medical', 'java'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP/tree/master', websiteUrl: 'https://cis.asu.edu.eg/' },
         { id: 2, title: 'Animal Shelter Home', description: 'Full‑cycle Power Platform solution (Power BI, Power Apps, Power Automate) streamlining animal intake, medical records, and adoption processes, improving shelter efficiency.', image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8', tags: ['powerbi', 'powerapps', 'powerautomate', 'powerpages'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange', websiteUrl: 'https://powerup.microsoft.com/' },
-        { id: 3, title: 'MaxAB Sales Analysis', description: 'Comprehensive Power BI sales analytics dashboard analyzing regional performance, product trends, and sales rep effectiveness to drive data‑informed field strategies.', image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f', tags: ['powerbi', 'sales-analysis', 'dax-expression', 'powerquery', 'trend-analysis'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study', websiteUrl: 'https://www.maxab.io/' },
-        { id: 4, title: 'Walmart Product Analysis', description: 'Interactive retail analytics dashboard using Power BI, delivering insights on product performance, category profitability, and inventory optimization for Walmart’s e‑commerce operations.', image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526', tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression', 'insights'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study', websiteUrl: 'https://www.walmart.com/' },
-        { id: 5, title: 'ElEzaby Pharmacy E-commerce', description: 'E‑commerce analytics leveraging RFM segmentation and Apriori algorithm to analyze customer behavior, cross‑selling opportunities, and promotional effectiveness for Elezaby Pharmacy.', image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa', tags: ['rfm-analysis', 'apriori-algorithm', 'data-visualization', 'powerquery', 'dax-expression'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study', websiteUrl: 'https://elezabypharmacy.com/' },
-        { id: 6, title: 'Immigration to Canada', description: 'Exploratory data analysis on Canadian immigration data (1980‑2013) using Python, Pandas, and Matplotlib to uncover source country trends, seasonal patterns, and demographic insights.', image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67', tags: ['python', 'pandas', 'data-visualization', 'matplotlib', 'seaborn'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013', websiteUrl: 'https://www.canada.ca/' },
-        { id: 7, title: 'Improvado Marketing Homework', description: 'Marketing analytics project using BigQuery and Looker Studio that uncovers ROI, customer segmentation, and channel attribution, enabling data‑driven marketing budget allocation.', image: 'https://github.com/user-attachments/assets/7c601c73-38b4-483c-affa-c6832ec26356', tags: ['bigquery', 'marketing', 'business-intelligence', 'data-analysis', 'looker-studio'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework', websiteUrl: 'https://improvado.io/' },
-        { id: 8, title: 'Abawb.ai Financial TRX 200', description: 'Financial transaction intelligence dashboard using Power BI and Python, detecting anomalies, cash flow patterns, and key performance indicators for strategic financial oversight.', image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a', tags: ['powerbidashboard', 'finance', 'python', 'pandas', 'financial-analysis'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200/tree/BI-TRX-200', websiteUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200' },
-        { id: 9, title: 'Innovative RTM Analysis Case Study', description: 'Route‑to‑Market analytics case study with Power BI and T‑SQL, delivering workforce optimization, call center efficiency KPIs, and geographic sales coverage analysis.', image: 'https://github.com/user-attachments/assets/c7b6037f-603f-407d-b42b-87824f7f2f75', tags: ['database', 'excel', 'power-bi', 'data-analysis', 'rtm', 't-sql', 'call-center-analytics', 'workforce-analytics'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Innovative-rtm-analysis-case-study', websiteUrl: 'https://innovative-bpo.com/' }
+        { id: 3, title: 'MaxAB Sales Analysis', description: 'Comprehensive Power BI sales analytics dashboard analyzing regional performance, product trends, and sales rep effectiveness to drive data‑informed field strategies.', image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f', tags: ['powerbi', 'sales-analysis', 'dax-expression', 'powerquery'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study', websiteUrl: 'https://www.maxab.io/' },
+        { id: 4, title: 'Walmart Product Analysis', description: 'Interactive retail analytics dashboard using Power BI, delivering insights on product performance, category profitability, and inventory optimization for Walmart’s e‑commerce operations.', image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526', tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study', websiteUrl: 'https://www.walmart.com/' },
+        { id: 5, title: 'ElEzaby Pharmacy E-commerce', description: 'E‑commerce analytics leveraging RFM segmentation and Apriori algorithm to analyze customer behavior, cross‑selling opportunities, and promotional effectiveness for Elezaby Pharmacy.', image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa', tags: ['rfm-analysis', 'apriori-algorithm', 'data-visualization', 'dax-expression'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study', websiteUrl: 'https://elezabypharmacy.com/' },
+        { id: 6, title: 'Immigration to Canada', description: 'Exploratory data analysis on Canadian immigration data (1980‑2013) using Python, Pandas, and Matplotlib to uncover source country trends, seasonal patterns, and demographic insights.', image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67', tags: ['python', 'pandas', 'data-visualization', 'matplotlib'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013', websiteUrl: 'https://www.canada.ca/' },
+        { id: 7, title: 'Improvado Marketing Homework', description: 'Marketing analytics project using BigQuery and Looker Studio that uncovers ROI, customer segmentation, and channel attribution, enabling data‑driven marketing budget allocation.', image: 'https://github.com/user-attachments/assets/7c601c73-38b4-483c-affa-c6832ec26356', tags: ['bigquery', 'marketing', 'looker-studio', 'roi-analysis'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework', websiteUrl: 'https://improvado.io/' },
+        { id: 8, title: 'Abawb.ai Financial TRX 200', description: 'Financial transaction intelligence dashboard using Power BI and Python, detecting anomalies, cash flow patterns, and key performance indicators for strategic financial oversight.', image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a', tags: ['powerbidashboard', 'finance', 'python', 'financial-analysis'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200/tree/BI-TRX-200', websiteUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200' },
+        { id: 9, title: 'Innovative RTM Analysis Case Study', description: 'Route‑to‑Market analytics case study with Power BI and T‑SQL, delivering workforce optimization, call center efficiency KPIs, and geographic sales coverage analysis.', image: 'https://github.com/user-attachments/assets/62d259fd-349c-4a82-bb23-005fbef7de3d', tags: ['t-sql', 'relational-database', 'excel', 'workforce-analytics'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Innovative-rtm-analysis-case-study', websiteUrl: 'https://innovative-bpo.com/' }
       ];
 
       function renderProjects() {
