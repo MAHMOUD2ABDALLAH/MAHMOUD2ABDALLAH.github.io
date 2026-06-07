@@ -870,7 +870,7 @@
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       }
 
-      /* ===== PROJECTS WITH DRIFTING BUOYS ===== */
+      /* ===== PROJECTS: REDESIGNED CARD STYLE (logo rectangle + website/github) ===== */
       .projects {
           background: var(--bg-secondary);
           position: relative;
@@ -889,23 +889,24 @@
       .projects-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 28px;
+          gap: 32px;
       }
 
       .project-card {
+          position: relative;
           background: var(--bg-card);
           border-radius: var(--radius-lg);
           border: 1px solid var(--border-color);
-          overflow: hidden;
+          padding: 1.5rem;
           display: flex;
           flex-direction: column;
-          min-height: 440px;
-          will-change: transform, box-shadow;
+          justify-content: flex-start;
+          gap: 0.75rem;
+          transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          overflow: visible;
           animation: drift-buoy 7s ease-in-out 1s infinite;
-          transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 0.5s ease,
-              border-color 0.35s ease,
-              background 0.35s ease;
+          will-change: transform;
+          min-height: 320px;
       }
 
       .project-card:nth-child(1) { animation-delay: 0.3s; animation-duration: 6.8s; }
@@ -923,78 +924,158 @@
           transform: translateY(-8px);
           border-color: var(--border-hover);
           box-shadow: 0 0 50px rgba(var(--primary-rgb), 0.22),
-              0 20px 50px rgba(0, 0, 0, 0.7);
+              0 20px 40px rgba(0, 0, 0, 0.7);
           background: var(--bg-card-hover);
       }
 
-      .project-image {
-          width: 100%;
-          height: 200px;
+      /* logo rectangle (small, placed at bottom-right) */
+      .card-logo-rect {
+          position: absolute;
+          bottom: -12px;
+          right: -12px;
+          width: 42%;
+          height: 42%;
+          max-width: 130px;
+          max-height: 130px;
+          min-width: 85px;
+          min-height: 85px;
+          border-radius: 18px;
+          background: rgba(var(--primary-rgb), 0.1);
+          backdrop-filter: blur(2px);
+          border: 1px solid rgba(var(--primary-rgb), 0.3);
+          box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.5);
           overflow: hidden;
-          background: var(--bg-secondary);
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          transition: transform 0.3s ease, box-shadow 0.3s;
+          z-index: 1;
       }
 
-      .project-image img {
+      .project-card:hover .card-logo-rect {
+          transform: translate(-4px, -4px) scale(1.02);
+          box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.6);
+          border-color: var(--primary);
+      }
+
+      .card-logo-rect img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 0.5s ease;
+          display: block;
+          transition: transform 0.4s ease;
       }
 
-      .project-card:hover .project-image img {
-          transform: scale(1.04);
+      .project-card:hover .card-logo-rect img {
+          transform: scale(1.05);
       }
 
-      .project-content {
-          padding: 24px 26px 26px;
-          flex-grow: 1;
+      /* main content area (large block with text, tags, buttons) */
+      .card-content {
           display: flex;
           flex-direction: column;
+          gap: 8px;
+          z-index: 2;
+          position: relative;
       }
 
-      .project-content h3 {
-          font-size: 1.2rem;
+      .card-content h3 {
+          font-size: 1.35rem;
           font-weight: 700;
           color: var(--text-primary);
-          margin-bottom: 8px;
+          margin-bottom: 4px;
+          letter-spacing: -0.3px;
       }
 
-      .project-content p {
+      .card-content p {
           color: var(--text-secondary);
-          font-size: 0.92rem;
-          flex-grow: 1;
-          margin-bottom: 14px;
-          line-height: 1.4;
+          font-size: 0.9rem;
+          line-height: 1.5;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          margin-bottom: 6px;
       }
 
       .project-tags {
           display: flex;
           flex-wrap: wrap;
-          gap: 6px;
-          margin-bottom: 16px;
+          gap: 8px;
+          margin: 8px 0 6px;
       }
 
       .project-tag {
           background: rgba(var(--primary-rgb), 0.08);
           color: var(--primary-light);
-          padding: 2px 12px;
+          padding: 4px 12px;
           border-radius: 40px;
-          font-size: 0.65rem;
+          font-size: 0.7rem;
           font-weight: 500;
-          border: 1px solid rgba(var(--primary-rgb), 0.08);
+          border: 1px solid rgba(var(--primary-rgb), 0.15);
+          transition: all 0.2s ease;
       }
 
-      .project-actions {
+      .project-tag:hover {
+          background: rgba(var(--primary-rgb), 0.2);
+          border-color: var(--primary);
+      }
+
+      /* action row: GitHub icon + Website button */
+      .card-actions {
           display: flex;
-          gap: 8px;
+          align-items: center;
+          gap: 16px;
+          margin-top: 12px;
           flex-wrap: wrap;
-          margin-top: auto;
       }
 
-      /* ===== CONTACT WITH DRIFTING BUOYS ===== */
+      .github-icon-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background: rgba(255, 255, 255, 0.06);
+          border-radius: 50%;
+          border: 1px solid var(--border-color);
+          color: var(--text-secondary);
+          transition: all 0.25s ease;
+          font-size: 1.3rem;
+          text-decoration: none;
+      }
+
+      .github-icon-link:hover {
+          background: rgba(var(--primary-rgb), 0.2);
+          color: var(--primary-light);
+          border-color: var(--primary);
+          transform: translateY(-3px);
+      }
+
+      .btn-website-card {
+          background: transparent;
+          color: var(--text-secondary);
+          border: 1px solid var(--border-color);
+          padding: 8px 22px;
+          border-radius: 40px;
+          font-size: 0.85rem;
+          font-weight: 500;
+          transition: var(--transition);
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+      }
+
+      .btn-website-card i {
+          font-size: 0.8rem;
+      }
+
+      .btn-website-card:hover {
+          border-color: var(--primary);
+          color: #fff;
+          background: rgba(var(--primary-rgb), 0.1);
+          transform: translateY(-3px);
+      }
+
+      /* ===== CONTACT ===== */
       .contact {
           background: var(--bg-primary);
           position: relative;
@@ -1166,74 +1247,46 @@
           font-size: 0.85rem;
       }
 
-      /* ===== REDUCED MOTION ===== */
       @media (prefers-reduced-motion: reduce) {
-          .image-frame,
-          .project-card,
-          .stat,
-          .contact-item {
-              animation: none !important;
-          }
-          .floating-badge {
-              animation: none !important;
-          }
+          .image-frame, .project-card, .stat, .contact-item { animation: none !important; }
+          .floating-badge { animation: none !important; }
       }
 
-      /* ===== RESPONSIVE ===== */
       @media (max-width: 1024px) {
-          .hero-content {
-              grid-template-columns: 1fr;
-              text-align: center;
-              gap: 40px;
-          }
+          .hero-content { grid-template-columns: 1fr; text-align: center; gap: 40px; }
           .hero-text { text-align: center; }
-          .hero-image-wrapper {
-              order: -1;
-              max-width: 400px;
-              margin: 0 auto;
-          }
-          .image-frame { max-width: 280px; animation-duration: 6s; }
+          .hero-image-wrapper { order: -1; max-width: 400px; margin: 0 auto; }
+          .image-frame { max-width: 280px; }
           .projects-grid { grid-template-columns: repeat(2, 1fr); }
           .core-expertise ul { grid-template-columns: 1fr; }
           .about-stats { grid-template-columns: repeat(2, 1fr); }
       }
 
       @media (max-width: 768px) {
-          .nav-links {
-              display: none;
-              position: absolute;
-              top: 66px;
-              left: 0;
-              width: 100%;
-              background: rgba(10, 10, 10, 0.98);
-              backdrop-filter: blur(20px);
-              flex-direction: column;
-              padding: 24px 28px;
-              gap: 16px;
-              border-bottom: 1px solid var(--border-color);
-          }
+          .nav-links { display: none; position: absolute; top: 66px; left: 0; width: 100%; background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(20px); flex-direction: column; padding: 24px 28px; gap: 16px; border-bottom: 1px solid var(--border-color); }
           .nav-links.active { display: flex; }
           .mobile-menu { display: block; }
           .hero { padding-top: 120px; min-height: auto; }
           .hero-text h1 { font-size: 2.6rem; }
-          .image-frame { max-width: 250px; animation-duration: 6.5s; }
+          .image-frame { max-width: 250px; }
           h2 { font-size: 2.2rem; }
           .projects-grid { grid-template-columns: 1fr; }
-          .project-card { animation-duration: 6s; min-height: auto; }
+          .project-card { min-height: auto; }
           .about-stats { grid-template-columns: 1fr 1fr; }
           .footer-content { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+          .card-logo-rect { width: 35%; height: 35%; min-width: 70px; min-height: 70px; bottom: -8px; right: -8px; }
       }
 
       @media (max-width: 480px) {
           .hero-text h1 { font-size: 2rem; }
-          .image-frame { max-width: 220px; animation-duration: 7s; }
+          .image-frame { max-width: 220px; }
           .hero-btns { flex-direction: column; width: 100%; }
           .hero-btns .btn { width: 100%; justify-content: center; }
           .tech-stack { flex-direction: column; gap: 15px; }
-          .project-card { animation-duration: 5.5s; }
+          .card-logo-rect { width: 32%; height: 32%; bottom: -6px; right: -6px; }
+          .card-content h3 { font-size: 1.2rem; }
       }
 
-      /* Anti-inspection */
       body {
           -webkit-touch-callout: none;
           -webkit-user-select: none;
@@ -1244,16 +1297,15 @@
       }
     </style>
   </head>
-
   <body>
     <canvas id="network-bg"></canvas>
 
     <header id="header">
       <div class="container">
         <nav class="navbar">
-          <a href="#home" class="logo-container">
-            <div class="logo">BI <span>Developer</span></div>
-          </a>
+          <a href="#home" class="logo-container"
+            ><div class="logo">BI <span>Developer</span></div></a
+          >
           <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -1282,8 +1334,8 @@
         <div class="hero-content">
           <div class="hero-text reveal-left">
             <div class="badge-container">
-              <span class="pulse-dot"></span>
-              <span class="badge">Open for new opportunities</span>
+              <span class="pulse-dot"></span
+              ><span class="badge">Open for new opportunities</span>
             </div>
             <h1>Mahmoud <span class="gradient-text">Abdallah</span></h1>
             <p class="hero-sub">
@@ -1303,10 +1355,8 @@
                   stroke-width="2.5"
                 >
                   <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </a>
-              <a href="#contact" class="btn btn-outline"
+                  <polyline points="12 5 19 12 12 19" /></svg></a
+              ><a href="#contact" class="btn btn-outline"
                 >Contact Me
                 <svg
                   width="20"
@@ -1317,9 +1367,8 @@
                   stroke-width="2"
                 >
                   <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-              </a>
+                  <circle cx="12" cy="12" r="3" /></svg
+              ></a>
             </div>
             <div class="tech-stack">
               <span class="stack-label">Trusted tech:</span>
@@ -1378,21 +1427,19 @@
             <p>
               My journey into data analytics started with a simple frustration:
               too many organizations sit on valuable data but have no clear way
-              to read it, trust it, or act on it.<br />
-              Over the past 3+ years, I've dedicated my career to closing that
-              gap.<br />
-              I've collaborated across industries to design interactive
-              dashboards, build automated reporting pipelines, and create
-              self-service analytics tools that put insights directly into the
-              hands of decision-makers.
+              to read it, trust it, or act on it.<br />Over the past 3+ years,
+              I've dedicated my career to closing that gap.<br />I've
+              collaborated across industries to design interactive dashboards,
+              build automated reporting pipelines, and create self-service
+              analytics tools that put insights directly into the hands of
+              decision-makers.
             </p>
             <p>
-              What drives me is the business impact.<br />
-              Seeing leadership make faster, smarter decisions because of
-              something I built is what makes this work meaningful.<br />
-              Beyond traditional analytics, I'm actively expanding into AI and
-              machine learning, exploring predictive analytics and intelligent
-              automation.
+              What drives me is the business impact.<br />Seeing leadership make
+              faster, smarter decisions because of something I built is what
+              makes this work meaningful.<br />Beyond traditional analytics, I'm
+              actively expanding into AI and machine learning, exploring
+              predictive analytics and intelligent automation.
             </p>
             <div class="core-expertise reveal delay-1">
               <h3>
@@ -1427,10 +1474,9 @@
             </div>
             <p class="reveal delay-2">
               <strong>What Drives Me:</strong> Data without context is just
-              noise.<br />
-              My goal is to deliver clarity that helps people make better
-              decisions, faster.<br />
-              Let's turn your data into something that works for you.
+              noise.<br />My goal is to deliver clarity that helps people make
+              better decisions, faster.<br />Let's turn your data into something
+              that works for you.
             </p>
           </div>
           <div class="about-stats">
@@ -1468,86 +1514,59 @@
         <div class="skills-container" id="skillsReveal">
           <span class="skill-badge reveal"
             ><i class="fas fa-chart-bar"></i> Power BI</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-chart-pie"></i> Tableau</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-eye"></i> Looker Studio</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-file-excel"></i> Microsoft Excel</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-chart-line"></i> DAX &amp; Power Query</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-database"></i> SQL (Advanced)</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fab fa-python"></i> Python (Pandas, NumPy)</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-chart-scatter"></i> Matplotlib/Seaborn</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-map-marked-alt"></i> Folium</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-brain"></i> Scikit-learn</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-waveform"></i> Time Series Analysis</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-robot"></i> Power Automate</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-mobile-alt"></i> Power Apps (Canvas/Model)</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-file-powerpoint"></i> Power Pages</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-cloud-upload-alt"></i> Microsoft Dataverse</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fab fa-microsoft"></i> Azure</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-server"></i> SQL Server / MySQL</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-database"></i> PostgreSQL</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-chart-simple"></i> Customer Segmentation</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-chart-line"></i> Demand Forecasting</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-chart-pie"></i> Cohort &amp; RFM Analysis</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-ad"></i> Marketing ROI Analysis</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-chart-line"></i> Sales Performance</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-chart-line"></i> ETL Pipelines</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-clipboard-list"></i> Business Requirements</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-project-diagram"></i> Agile/Scrum</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-chalkboard-user"></i> Data Storytelling</span
-          >
-          <span class="skill-badge reveal"
+          ><span class="skill-badge reveal"
             ><i class="fas fa-chart-line"></i> KPI Design &amp; Executive
             Reporting</span
           >
@@ -1614,9 +1633,8 @@
                 href="https://github.com/MAHMOUD2ABDALLAH"
                 class="social-link"
                 target="_blank"
-                ><i class="fab fa-github"></i
-              ></a>
-              <a
+                ><i class="fab fa-github"></i></a
+              ><a
                 href="https://www.linkedin.com/in/mahmoud-abdallah20"
                 class="social-link"
                 target="_blank"
@@ -1654,144 +1672,47 @@
     </footer>
 
     <script>
-      // --- REVEAL ANIMATION OBSERVER ---
-      document.addEventListener('DOMContentLoaded', () => {
-          const observerOptions = {
-              threshold: 0.1,
-              rootMargin: '0px 0px -50px 0px'
-          };
-          const observer = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                  if (entry.isIntersecting) {
-                      entry.target.classList.add('active');
-                  }
-              });
-          }, observerOptions);
-          const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-          revealElements.forEach(el => observer.observe(el));
-      });
-
       (function() {
           document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
           document.addEventListener('keydown', function(e) {
               if (e.key === 'F12') { e.preventDefault(); return false; }
-              if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) {
-                  e.preventDefault(); return false;
-              }
+              if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) { e.preventDefault(); return false; }
               if (e.ctrlKey && e.key === 'u') { e.preventDefault(); return false; }
           });
-          if (window.console && window.console.clear) {
-              console.clear = function() {};
-          }
       })();
 
       (function() {
           const canvas = document.getElementById('network-bg');
           const ctx = canvas.getContext('2d');
-          let width, height;
-          let particles = [];
+          let width, height, particles = [];
           const NUM_PARTICLES = Math.min(140, Math.floor((window.innerWidth * window.innerHeight) / 14000));
           const MAX_DIST = 140;
           const mouse = { x: null, y: null, radius: 160 };
           let resizeTimeout;
-
-          function resize() {
-              width = window.innerWidth;
-              height = window.innerHeight;
-              canvas.width = width;
-              canvas.height = height;
-          }
+          function resize() { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; }
           resize();
-          window.addEventListener('resize', () => {
-              clearTimeout(resizeTimeout);
-              resizeTimeout = setTimeout(resize, 120);
-          });
-
-          class Particle {
-              constructor() {
-                  this.x = Math.random() * width;
-                  this.y = Math.random() * height;
-                  this.size = Math.random() * 1.8 + 0.5;
-                  this.speedX = (Math.random() - 0.5) * 0.35;
-                  this.speedY = (Math.random() - 0.5) * 0.35;
-                  this.offX = Math.random() * Math.PI * 2;
-                  this.offY = Math.random() * Math.PI * 2;
-                  this.waveSpeed = 0.015 + Math.random() * 0.02;
-              }
-              update(time) {
-                  const wx = Math.sin(time * this.waveSpeed + this.offX) * 0.06;
-                  const wy = Math.cos(time * this.waveSpeed + this.offY) * 0.06;
-                  this.x += this.speedX + wx;
-                  this.y += this.speedY + wy;
-                  if (this.x < 0 || this.x > width) { this.speedX *= -0.98; this.x = Math.min(width - 4, Math.max(4, this.x)); }
-                  if (this.y < 0 || this.y > height) { this.speedY *= -0.98; this.y = Math.min(height - 4, Math.max(4, this.y)); }
-                  if (mouse.x !== null && mouse.y !== null) {
-                      const dx = this.x - mouse.x, dy = this.y - mouse.y, dist = Math.hypot(dx, dy);
-                      if (dist < mouse.radius) {
-                          const force = (mouse.radius - dist) / mouse.radius;
-                          this.x += (dx / dist) * force * 1.0;
-                          this.y += (dy / dist) * force * 1.0;
-                      }
-                  }
-              }
-              draw() {
-                  ctx.fillStyle = '#ffffff';
-                  ctx.beginPath();
-                  ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                  ctx.fill();
-              }
-          }
-
+          window.addEventListener('resize', () => { clearTimeout(resizeTimeout); resizeTimeout = setTimeout(resize, 120); });
+          class Particle { constructor() { this.x = Math.random() * width; this.y = Math.random() * height; this.size = Math.random() * 1.8 + 0.5; this.speedX = (Math.random() - 0.5) * 0.35; this.speedY = (Math.random() - 0.5) * 0.35; this.offX = Math.random() * Math.PI * 2; this.offY = Math.random() * Math.PI * 2; this.waveSpeed = 0.015 + Math.random() * 0.02; } update(time) { const wx = Math.sin(time * this.waveSpeed + this.offX) * 0.06; const wy = Math.cos(time * this.waveSpeed + this.offY) * 0.06; this.x += this.speedX + wx; this.y += this.speedY + wy; if (this.x < 0 || this.x > width) { this.speedX *= -0.98; this.x = Math.min(width - 4, Math.max(4, this.x)); } if (this.y < 0 || this.y > height) { this.speedY *= -0.98; this.y = Math.min(height - 4, Math.max(4, this.y)); } if (mouse.x !== null && mouse.y !== null) { const dx = this.x - mouse.x, dy = this.y - mouse.y, dist = Math.hypot(dx, dy); if (dist < mouse.radius) { const force = (mouse.radius - dist) / mouse.radius; this.x += (dx / dist) * force * 1.0; this.y += (dy / dist) * force * 1.0; } } } draw() { ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); } }
           for (let i = 0; i < NUM_PARTICLES; i++) particles.push(new Particle());
-
-          function connect() {
-              for (let a = 0; a < particles.length; a++) {
-                  for (let b = a + 1; b < particles.length; b++) {
-                      const dx = particles[a].x - particles[b].x, dy = particles[a].y - particles[b].y;
-                      if (dx * dx + dy * dy < MAX_DIST * MAX_DIST) {
-                          const dist = Math.sqrt(dx * dx + dy * dy), opacity = 0.35 * (1 - dist / MAX_DIST);
-                          ctx.strokeStyle = `rgba(33,133,254,${opacity})`;
-                          ctx.lineWidth = 0.5;
-                          ctx.beginPath();
-                          ctx.moveTo(particles[a].x, particles[a].y);
-                          ctx.lineTo(particles[b].x, particles[b].y);
-                          ctx.stroke();
-                      }
-                  }
-              }
-          }
-
+          function connect() { for (let a = 0; a < particles.length; a++) { for (let b = a + 1; b < particles.length; b++) { const dx = particles[a].x - particles[b].x, dy = particles[a].y - particles[b].y; if (dx * dx + dy * dy < MAX_DIST * MAX_DIST) { const dist = Math.sqrt(dx * dx + dy * dy), opacity = 0.35 * (1 - dist / MAX_DIST); ctx.strokeStyle = `rgba(33,133,254,${opacity})`; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(particles[a].x, particles[a].y); ctx.lineTo(particles[b].x, particles[b].y); ctx.stroke(); } } } }
           let animId, lastTime = 0;
-          function animate(timestamp) {
-              if (timestamp - lastTime >= 1000 / 60) {
-                  lastTime = timestamp;
-                  ctx.clearRect(0, 0, width, height);
-                  const time = timestamp * 0.001;
-                  particles.forEach(p => { p.update(time); p.draw(); });
-                  connect();
-              }
-              animId = requestAnimationFrame(animate);
-          }
+          function animate(timestamp) { if (timestamp - lastTime >= 1000 / 60) { lastTime = timestamp; ctx.clearRect(0, 0, width, height); const time = timestamp * 0.001; particles.forEach(p => { p.update(time); p.draw(); }); connect(); } animId = requestAnimationFrame(animate); }
           animate(0);
-
           window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
           window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
-          document.addEventListener('visibilitychange', () => {
-              if (document.hidden && animId) { cancelAnimationFrame(animId); animId = null; }
-              else if (!animId) animate(0);
-          });
+          document.addEventListener('visibilitychange', () => { if (document.hidden && animId) { cancelAnimationFrame(animId); animId = null; } else if (!animId) animate(0); });
       })();
 
       const projectsData = [
-          { id: 1, title: 'Mobile Ventilator GP', description: 'Machine learning & bioinformatics for medical ventilator monitoring.', image: 'https://github.com/user-attachments/assets/1b5cd5a0-0782-4e1d-9283-2da3451f1359', tags: ['machine-learning', 'bioinformatics', 'medical', 'sklearn', 'java'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP/tree/master', websiteUrl: 'https://cis.asu.edu.eg/' },
-          { id: 2, title: 'Animal Shelter Home', description: 'Power Platform solution for shelter management.', image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8', tags: ['powerbi', 'powerapps', 'powerautomate', 'powerpages'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange', websiteUrl: 'https://powerup.microsoft.com/' },
-          { id: 3, title: 'MaxAB Sales Analysis', description: 'Sales trends & optimization for MaxAB field sales.', image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f', tags: ['powerbi', 'sales-analysis', 'dax-expression', 'powerquery', 'trend-analysis'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study', websiteUrl: 'https://www.maxab.io/' },
-          { id: 4, title: 'Walmart Product Analysis', description: 'Retail analytics dashboard for Walmart.', image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526', tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression', 'insights'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study', websiteUrl: 'https://www.walmart.com/' },
-          { id: 5, title: 'ElEzaby Pharmacy E-commerce', description: 'Digital analytics for Elezaby Pharmacy.', image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa', tags: ['rfm-analysis', 'apriori-algorithm', 'data-visualization', 'powerquery', 'dax-expression'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study', websiteUrl: 'https://elezabypharmacy.com/' },
-          { id: 6, title: 'Immigration to Canada', description: 'Trends 1980–2013 Canada immigration insights.', image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67', tags: ['python', 'pandas', 'data-visualization', 'matplotlib', 'seaborn'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013', websiteUrl: 'https://www.canada.ca/' },
-          { id: 7, title: 'Improvado Marketing Homework', description: 'Marketing ROI & segmentation for Improvado.', image: 'https://github.com/user-attachments/assets/7c601c73-38b4-483c-affa-c6832ec26356', tags: ['bigquery', 'marketing', 'business-intelligence', 'data-analysis', 'looker-studio'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework', websiteUrl: 'https://improvado.io/' },
-          { id: 8, title: 'Abawb.ai Financial TRX 200', description: 'Financial transaction analysis & BI dashboard.', image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a', tags: ['powerbidashboard', 'finance', 'python', 'pandas', 'financial-analysis'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200/tree/BI-TRX-200', websiteUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200' },
-          { id: 9, title: 'Innovative RTM Analysis Case Study', description: 'Route-to-Market analytics for call center & workforce optimization.', image: 'https://github.com/user-attachments/assets/c7b6037f-603f-407d-b42b-87824f7f2f75', tags: ['database', 'excel', 'power-bi', 'data-analysis', 'rtm', 't-sql', 'call-center-analytics', 'workforce-analytics'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Innovative-rtm-analysis-case-study', websiteUrl: 'https://innovative-bpo.com/' }
+        { id: 1, title: 'Mobile Ventilator GP', description: 'Developed ML models & bioinformatic analysis for real-time monitoring of mobile ventilators, enhancing patient safety and clinical decision‑making using scikit‑learn and Java.', image: 'https://github.com/user-attachments/assets/1b5cd5a0-0782-4e1d-9283-2da3451f1359', tags: ['machine-learning', 'bioinformatics', 'medical', 'sklearn', 'java'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP/tree/master', websiteUrl: 'https://cis.asu.edu.eg/' },
+        { id: 2, title: 'Animal Shelter Home', description: 'Full‑cycle Power Platform solution (Power BI, Power Apps, Power Automate) streamlining animal intake, medical records, and adoption processes, improving shelter efficiency.', image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8', tags: ['powerbi', 'powerapps', 'powerautomate', 'powerpages'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange', websiteUrl: 'https://powerup.microsoft.com/' },
+        { id: 3, title: 'MaxAB Sales Analysis', description: 'Comprehensive Power BI sales analytics dashboard analyzing regional performance, product trends, and sales rep effectiveness to drive data‑informed field strategies.', image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f', tags: ['powerbi', 'sales-analysis', 'dax-expression', 'powerquery', 'trend-analysis'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study', websiteUrl: 'https://www.maxab.io/' },
+        { id: 4, title: 'Walmart Product Analysis', description: 'Interactive retail analytics dashboard using Power BI, delivering insights on product performance, category profitability, and inventory optimization for Walmart’s e‑commerce operations.', image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526', tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression', 'insights'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study', websiteUrl: 'https://www.walmart.com/' },
+        { id: 5, title: 'ElEzaby Pharmacy E-commerce', description: 'E‑commerce analytics leveraging RFM segmentation and Apriori algorithm to analyze customer behavior, cross‑selling opportunities, and promotional effectiveness for Elezaby Pharmacy.', image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa', tags: ['rfm-analysis', 'apriori-algorithm', 'data-visualization', 'powerquery', 'dax-expression'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study', websiteUrl: 'https://elezabypharmacy.com/' },
+        { id: 6, title: 'Immigration to Canada', description: 'Exploratory data analysis on Canadian immigration data (1980‑2013) using Python, Pandas, and Matplotlib to uncover source country trends, seasonal patterns, and demographic insights.', image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67', tags: ['python', 'pandas', 'data-visualization', 'matplotlib', 'seaborn'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013', websiteUrl: 'https://www.canada.ca/' },
+        { id: 7, title: 'Improvado Marketing Homework', description: 'Marketing analytics project using BigQuery and Looker Studio that uncovers ROI, customer segmentation, and channel attribution, enabling data‑driven marketing budget allocation.', image: 'https://github.com/user-attachments/assets/7c601c73-38b4-483c-affa-c6832ec26356', tags: ['bigquery', 'marketing', 'business-intelligence', 'data-analysis', 'looker-studio'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework', websiteUrl: 'https://improvado.io/' },
+        { id: 8, title: 'Abawb.ai Financial TRX 200', description: 'Financial transaction intelligence dashboard using Power BI and Python, detecting anomalies, cash flow patterns, and key performance indicators for strategic financial oversight.', image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a', tags: ['powerbidashboard', 'finance', 'python', 'pandas', 'financial-analysis'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200/tree/BI-TRX-200', websiteUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200' },
+        { id: 9, title: 'Innovative RTM Analysis Case Study', description: 'Route‑to‑Market analytics case study with Power BI and T‑SQL, delivering workforce optimization, call center efficiency KPIs, and geographic sales coverage analysis.', image: 'https://github.com/user-attachments/assets/c7b6037f-603f-407d-b42b-87824f7f2f75', tags: ['database', 'excel', 'power-bi', 'data-analysis', 'rtm', 't-sql', 'call-center-analytics', 'workforce-analytics'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Innovative-rtm-analysis-case-study', websiteUrl: 'https://innovative-bpo.com/' }
       ];
 
       function renderProjects() {
@@ -1799,37 +1720,33 @@
           if (!grid) return;
           grid.innerHTML = projectsData.map(p => `
               <div class="project-card reveal">
-                  <div class="project-image"><img src="${p.image}" alt="${p.title}" loading="lazy"></div>
-                  <div class="project-content">
+                  <div class="card-logo-rect"><img src="${p.image}" alt="${p.title} logo" loading="lazy"></div>
+                  <div class="card-content">
                       <h3>${p.title}</h3>
                       <p>${p.description}</p>
                       <div class="project-tags">${p.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}</div>
-                      <div class="project-actions">
-                          <a href="${p.githubUrl}" class="btn btn-github" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                          <a href="${p.websiteUrl}" class="btn btn-website" target="_blank"><i class="fas fa-external-link-alt"></i> Website</a>
+                      <div class="card-actions">
+                          <a href="${p.githubUrl}" target="_blank" class="github-icon-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                          <a href="${p.websiteUrl}" target="_blank" class="btn-website-card"><i class="fas fa-external-link-alt"></i> Website</a>
                       </div>
                   </div>
               </div>
           `).join('');
-
-          const observer = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                  if (entry.isIntersecting) entry.target.classList.add('active');
-              });
-          }, { threshold: 0.1 });
+          const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
           document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
       }
 
       document.addEventListener('DOMContentLoaded', () => {
           const menuBtn = document.getElementById('mobileMenu');
           const navLinks = document.getElementById('navLinks');
-          menuBtn?.addEventListener('click', () => navLinks.classList.toggle('active'));
-          navLinks?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-
+          if (menuBtn) menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+          if (navLinks) navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
           const header = document.getElementById('header');
           window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.pageYOffset > 20));
-
           renderProjects();
+
+          const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+          document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
       });
     </script>
   </body>
