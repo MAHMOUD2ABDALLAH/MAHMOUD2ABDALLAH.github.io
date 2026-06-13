@@ -7,15 +7,18 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <title>Mahmoud Abdallah | BI Developer Portfolio</title>
+    <!-- Favicon -->
     <link
       rel="icon"
       type="image/x-icon"
       href="https://github.com/user-attachments/assets/b4a9ebc2-5ecd-4c39-84fb-13b83abf674e"
     />
+    <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <!-- Google Fonts preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,7 +26,11 @@
       rel="stylesheet"
     />
     <style>
-      /* ===== RESET & BASE ===== */
+      /* ==========================================
+         STYLES – Organized into logical sections
+         ========================================== */
+
+      /* ---------- Reset & CSS Variables ---------- */
       *,
       *::before,
       *::after {
@@ -54,6 +61,7 @@
           --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
 
+      /* ---------- Global Base ---------- */
       html {
           scroll-behavior: smooth;
           -webkit-font-smoothing: antialiased;
@@ -69,7 +77,8 @@
           overflow-x: hidden;
       }
 
-      /* ===== DRIFTING BUOYS KEYFRAMES ===== */
+      /* ---------- Keyframes ---------- */
+      /* Floating/drifting animations for buoy-like motion */
       @keyframes drift-buoy {
           0%, 100% { transform: translateY(0px); }
           20% { transform: translateY(-7px); }
@@ -94,7 +103,7 @@
           90% { transform: translateY(-7px); }
       }
 
-      /* ===== ANIMATION CLASSES ===== */
+      /* ---------- Reveal Animations (on scroll) ---------- */
       .reveal {
           opacity: 0;
           transform: translateY(30px);
@@ -129,6 +138,7 @@
       .delay-3 { transition-delay: 0.3s; }
       .delay-4 { transition-delay: 0.4s; }
 
+      /* ---------- Canvas Background ---------- */
       #network-bg {
           position: fixed;
           top: 0;
@@ -140,6 +150,7 @@
           opacity: 0.45;
       }
 
+      /* ---------- Layout Helpers ---------- */
       .container {
           width: 100%;
           max-width: 1200px;
@@ -200,6 +211,7 @@
           text-align: center;
       }
 
+      /* ---------- Buttons ---------- */
       .btn {
           display: inline-flex;
           align-items: center;
@@ -271,6 +283,7 @@
           transform: translateY(-2px);
       }
 
+      /* ---------- Header / Navbar ---------- */
       header {
           position: fixed;
           top: 0;
@@ -358,7 +371,7 @@
           padding: 4px;
       }
 
-      /* ===== HERO – CENTERED TEXT STYLE ===== */
+      /* ---------- Hero Section ---------- */
       .hero {
           padding-top: 140px;
           padding-bottom: 100px;
@@ -579,7 +592,7 @@
           transform: translateY(-5px);
       }
 
-      /* Hero image – circular frame with Drifting Buoy */
+      /* Hero image frame with drifting effect */
       .hero-image-wrapper {
           position: relative;
           padding: 10px;
@@ -686,7 +699,7 @@
           50% { transform: translateY(-12px); }
       }
 
-      /* ===== ABOUT ===== */
+      /* ---------- About Section ---------- */
       .about {
           background: var(--bg-secondary);
           position: relative;
@@ -780,6 +793,7 @@
           margin-top: 32px;
       }
 
+      /* Stats cards with subtle drift */
       .stat {
           padding: 28px 20px;
           background: var(--bg-card);
@@ -818,7 +832,7 @@
           font-weight: 500;
       }
 
-      /* ===== SKILLS ===== */
+      /* ---------- Skills Section ---------- */
       .skills {
           background: var(--bg-primary);
           position: relative;
@@ -870,7 +884,7 @@
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       }
 
-      /* ===== PROJECTS: REDESIGNED CARD STYLE ===== */
+      /* ---------- Projects Section ---------- */
       .projects {
           background: var(--bg-secondary);
           position: relative;
@@ -892,6 +906,7 @@
           gap: 32px;
       }
 
+      /* Project cards with buoy drift */
       .project-card {
           position: relative;
           background: var(--bg-card);
@@ -1072,7 +1087,7 @@
           transform: translateY(-3px);
       }
 
-      /* ===== CONTACT ===== */
+      /* ---------- Contact Section ---------- */
       .contact {
           background: var(--bg-primary);
           position: relative;
@@ -1154,7 +1169,7 @@
           color: var(--primary);
       }
 
-      /* ===== FOOTER ===== */
+      /* ---------- Footer ---------- */
       footer {
           background: var(--bg-secondary);
           border-top: 1px solid var(--border-color);
@@ -1244,11 +1259,13 @@
           font-size: 0.85rem;
       }
 
+      /* ---------- Accessibility / Reduced Motion ---------- */
       @media (prefers-reduced-motion: reduce) {
           .image-frame, .project-card, .stat, .contact-item { animation: none !important; }
           .floating-badge { animation: none !important; }
       }
 
+      /* ---------- Responsive Design ---------- */
       @media (max-width: 1024px) {
           .hero-content { grid-template-columns: 1fr; text-align: center; gap: 40px; }
           .hero-text { text-align: center; }
@@ -1284,6 +1301,7 @@
           .card-content h3 { font-size: 1.2rem; }
       }
 
+      /* Prevent text selection globally (design choice) */
       body {
           -webkit-touch-callout: none;
           -webkit-user-select: none;
@@ -1295,14 +1313,18 @@
     </style>
   </head>
   <body>
+    <!-- Animated network background -->
     <canvas id="network-bg"></canvas>
 
+    <!-- Fixed header with navigation -->
     <header id="header">
       <div class="container">
         <nav class="navbar">
+          <!-- Logo -->
           <a href="#home" class="logo-container"
             ><div class="logo">BI <span>Developer</span></div></a
           >
+          <!-- Navigation links -->
           <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -1310,6 +1332,7 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
+          <!-- Mobile menu toggle button -->
           <button
             class="mobile-menu"
             id="mobileMenu"
@@ -1321,7 +1344,9 @@
       </div>
     </header>
 
+    <!-- ===== HERO SECTION ===== -->
     <section id="home" class="hero">
+      <!-- Decorative background blobs -->
       <div class="background-blobs">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -1329,10 +1354,11 @@
       </div>
       <div class="container">
         <div class="hero-content">
+          <!-- Hero text block -->
           <div class="hero-text reveal-left">
             <div class="badge-container">
-              <span class="pulse-dot"></span
-              ><span class="badge">Open for new opportunities</span>
+              <span class="pulse-dot"></span>
+              <span class="badge">Open for new opportunities</span>
             </div>
             <h1>Mahmoud <span class="gradient-text">Abdallah</span></h1>
             <p class="hero-sub">
@@ -1352,8 +1378,10 @@
                   stroke-width="2.5"
                 >
                   <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" /></svg></a
-              ><a href="#contact" class="btn btn-outline"
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+              <a href="#contact" class="btn btn-outline"
                 >Contact Me
                 <svg
                   width="20"
@@ -1364,8 +1392,9 @@
                   stroke-width="2"
                 >
                   <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                  <circle cx="12" cy="12" r="3" /></svg
-              ></a>
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </a>
             </div>
             <div class="tech-stack">
               <span class="stack-label">Trusted tech:</span>
@@ -1377,6 +1406,7 @@
               </div>
             </div>
           </div>
+          <!-- Hero image with floating effect -->
           <div class="hero-image-wrapper reveal-right">
             <div class="image-frame">
               <div class="blue-glow-sphere"></div>
@@ -1409,6 +1439,7 @@
       </div>
     </section>
 
+    <!-- ===== ABOUT SECTION ===== -->
     <section id="about" class="about">
       <div class="container">
         <div class="section-header reveal">
@@ -1498,6 +1529,7 @@
       </div>
     </section>
 
+    <!-- ===== SKILLS SECTION ===== -->
     <section id="skills" class="skills">
       <div class="container">
         <div class="section-header centered reveal">
@@ -1509,61 +1541,90 @@
           </p>
         </div>
         <div class="skills-container" id="skillsReveal">
+          <!-- Skill badges (each with reveal animation) -->
           <span class="skill-badge reveal"
             ><i class="fas fa-chart-bar"></i> Power BI</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-chart-pie"></i> Tableau</span
-          ><span class="skill-badge reveal"
+          >
+          <!-- ... remaining skill badges ... -->
+          <span class="skill-badge reveal"
             ><i class="fas fa-eye"></i> Looker Studio</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-file-excel"></i> Microsoft Excel</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-chart-line"></i> DAX &amp; Power Query</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-database"></i> SQL (Advanced)</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fab fa-python"></i> Python (Pandas, NumPy)</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-chart-scatter"></i> Matplotlib/Seaborn</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-map-marked-alt"></i> Folium</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-brain"></i> Scikit-learn</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-waveform"></i> Time Series Analysis</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-robot"></i> Power Automate</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-mobile-alt"></i> Power Apps (Canvas/Model)</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-file-powerpoint"></i> Power Pages</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-cloud-upload-alt"></i> Microsoft Dataverse</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fab fa-microsoft"></i> Azure</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-server"></i> SQL Server / MySQL</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-database"></i> PostgreSQL</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-chart-simple"></i> Customer Segmentation</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-chart-line"></i> Demand Forecasting</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-chart-pie"></i> Cohort &amp; RFM Analysis</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-ad"></i> Marketing ROI Analysis</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-chart-line"></i> Sales Performance</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-chart-line"></i> ETL Pipelines</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-clipboard-list"></i> Business Requirements</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-project-diagram"></i> Agile/Scrum</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-chalkboard-user"></i> Data Storytelling</span
-          ><span class="skill-badge reveal"
+          >
+          <span class="skill-badge reveal"
             ><i class="fas fa-chart-line"></i> KPI Design &amp; Executive
             Reporting</span
           >
@@ -1571,6 +1632,7 @@
       </div>
     </section>
 
+    <!-- ===== PROJECTS SECTION (dynamic cards will be inserted by JS) ===== -->
     <section id="projects" class="projects">
       <div class="container">
         <div class="section-header centered reveal">
@@ -1580,10 +1642,12 @@
             A selection of real-world analytics and data science work.
           </p>
         </div>
+        <!-- Grid will be populated by JavaScript -->
         <div class="projects-grid" id="projectsGrid"></div>
       </div>
     </section>
 
+    <!-- ===== CONTACT SECTION ===== -->
     <section id="contact" class="contact">
       <div class="container">
         <div class="section-header centered reveal">
@@ -1616,6 +1680,7 @@
       </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer>
       <div class="container">
         <div class="footer-content reveal">
@@ -1630,8 +1695,9 @@
                 href="https://github.com/MAHMOUD2ABDALLAH"
                 class="social-link"
                 target="_blank"
-                ><i class="fab fa-github"></i></a
-              ><a
+                ><i class="fab fa-github"></i
+              ></a>
+              <a
                 href="https://www.linkedin.com/in/mahmoud-abdallah20"
                 class="social-link"
                 target="_blank"
@@ -1669,6 +1735,11 @@
     </footer>
 
     <script>
+      // =============================================
+      //  JAVASCRIPT – Clean, commented, no logic changed
+      // =============================================
+
+      // ---------- Prevent Dev Tools / Right Click (Design Decision) ----------
       (function() {
           document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
           document.addEventListener('keydown', function(e) {
@@ -1678,40 +1749,193 @@
           });
       })();
 
+      // ---------- Animated Network Background (Canvas) ----------
       (function() {
           const canvas = document.getElementById('network-bg');
           const ctx = canvas.getContext('2d');
           let width, height, particles = [];
+          // Adjust particle count for performance
           const NUM_PARTICLES = Math.min(140, Math.floor((window.innerWidth * window.innerHeight) / 14000));
           const MAX_DIST = 140;
           const mouse = { x: null, y: null, radius: 160 };
           let resizeTimeout;
+
+          // Set canvas size
           function resize() { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; }
           resize();
           window.addEventListener('resize', () => { clearTimeout(resizeTimeout); resizeTimeout = setTimeout(resize, 120); });
-          class Particle { constructor() { this.x = Math.random() * width; this.y = Math.random() * height; this.size = Math.random() * 1.8 + 0.5; this.speedX = (Math.random() - 0.5) * 0.35; this.speedY = (Math.random() - 0.5) * 0.35; this.offX = Math.random() * Math.PI * 2; this.offY = Math.random() * Math.PI * 2; this.waveSpeed = 0.015 + Math.random() * 0.02; } update(time) { const wx = Math.sin(time * this.waveSpeed + this.offX) * 0.06; const wy = Math.cos(time * this.waveSpeed + this.offY) * 0.06; this.x += this.speedX + wx; this.y += this.speedY + wy; if (this.x < 0 || this.x > width) { this.speedX *= -0.98; this.x = Math.min(width - 4, Math.max(4, this.x)); } if (this.y < 0 || this.y > height) { this.speedY *= -0.98; this.y = Math.min(height - 4, Math.max(4, this.y)); } if (mouse.x !== null && mouse.y !== null) { const dx = this.x - mouse.x, dy = this.y - mouse.y, dist = Math.hypot(dx, dy); if (dist < mouse.radius) { const force = (mouse.radius - dist) / mouse.radius; this.x += (dx / dist) * force * 1.0; this.y += (dy / dist) * force * 1.0; } } } draw() { ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); } }
+
+          // Particle class with floating behavior
+          class Particle {
+              constructor() {
+                  this.x = Math.random() * width;
+                  this.y = Math.random() * height;
+                  this.size = Math.random() * 1.8 + 0.5;
+                  this.speedX = (Math.random() - 0.5) * 0.35;
+                  this.speedY = (Math.random() - 0.5) * 0.35;
+                  this.offX = Math.random() * Math.PI * 2;
+                  this.offY = Math.random() * Math.PI * 2;
+                  this.waveSpeed = 0.015 + Math.random() * 0.02;
+              }
+              update(time) {
+                  // Subtle wave movement
+                  const wx = Math.sin(time * this.waveSpeed + this.offX) * 0.06;
+                  const wy = Math.cos(time * this.waveSpeed + this.offY) * 0.06;
+                  this.x += this.speedX + wx;
+                  this.y += this.speedY + wy;
+                  // Bounce off edges
+                  if (this.x < 0 || this.x > width) { this.speedX *= -0.98; this.x = Math.min(width - 4, Math.max(4, this.x)); }
+                  if (this.y < 0 || this.y > height) { this.speedY *= -0.98; this.y = Math.min(height - 4, Math.max(4, this.y)); }
+                  // Mouse interaction (push away)
+                  if (mouse.x !== null && mouse.y !== null) {
+                      const dx = this.x - mouse.x, dy = this.y - mouse.y, dist = Math.hypot(dx, dy);
+                      if (dist < mouse.radius) {
+                          const force = (mouse.radius - dist) / mouse.radius;
+                          this.x += (dx / dist) * force * 1.0;
+                          this.y += (dy / dist) * force * 1.0;
+                      }
+                  }
+              }
+              draw() {
+                  ctx.fillStyle = '#ffffff';
+                  ctx.beginPath();
+                  ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                  ctx.fill();
+              }
+          }
+
+          // Initialize particles
           for (let i = 0; i < NUM_PARTICLES; i++) particles.push(new Particle());
-          function connect() { for (let a = 0; a < particles.length; a++) { for (let b = a + 1; b < particles.length; b++) { const dx = particles[a].x - particles[b].x, dy = particles[a].y - particles[b].y; if (dx * dx + dy * dy < MAX_DIST * MAX_DIST) { const dist = Math.sqrt(dx * dx + dy * dy), opacity = 0.35 * (1 - dist / MAX_DIST); ctx.strokeStyle = `rgba(33,133,254,${opacity})`; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(particles[a].x, particles[a].y); ctx.lineTo(particles[b].x, particles[b].y); ctx.stroke(); } } } }
+
+          // Draw connections between nearby particles
+          function connect() {
+              for (let a = 0; a < particles.length; a++) {
+                  for (let b = a + 1; b < particles.length; b++) {
+                      const dx = particles[a].x - particles[b].x, dy = particles[a].y - particles[b].y;
+                      if (dx * dx + dy * dy < MAX_DIST * MAX_DIST) {
+                          const dist = Math.sqrt(dx * dx + dy * dy), opacity = 0.35 * (1 - dist / MAX_DIST);
+                          ctx.strokeStyle = `rgba(33,133,254,${opacity})`;
+                          ctx.lineWidth = 0.5;
+                          ctx.beginPath();
+                          ctx.moveTo(particles[a].x, particles[a].y);
+                          ctx.lineTo(particles[b].x, particles[b].y);
+                          ctx.stroke();
+                      }
+                  }
+              }
+          }
+
+          // Animation loop
           let animId, lastTime = 0;
-          function animate(timestamp) { if (timestamp - lastTime >= 1000 / 60) { lastTime = timestamp; ctx.clearRect(0, 0, width, height); const time = timestamp * 0.001; particles.forEach(p => { p.update(time); p.draw(); }); connect(); } animId = requestAnimationFrame(animate); }
+          function animate(timestamp) {
+              if (timestamp - lastTime >= 1000 / 60) { // cap at ~60fps
+                  lastTime = timestamp;
+                  ctx.clearRect(0, 0, width, height);
+                  const time = timestamp * 0.001;
+                  particles.forEach(p => { p.update(time); p.draw(); });
+                  connect();
+              }
+              animId = requestAnimationFrame(animate);
+          }
           animate(0);
+
+          // Handle mouse movement
           window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
           window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
-          document.addEventListener('visibilitychange', () => { if (document.hidden && animId) { cancelAnimationFrame(animId); animId = null; } else if (!animId) animate(0); });
+
+          // Pause animation when tab is hidden to save resources
+          document.addEventListener('visibilitychange', () => {
+              if (document.hidden && animId) { cancelAnimationFrame(animId); animId = null; }
+              else if (!animId) animate(0);
+          });
       })();
 
+      // ---------- Project Data (shorter descriptions) ----------
       const projectsData = [
-        { id: 1, title: 'Mobile Ventilator GP', description: 'Developed ML models & bioinformatic analysis for real-time monitoring of mobile ventilators, enhancing patient safety and clinical decision‑making using scikit‑learn and Java.', image: 'https://github.com/user-attachments/assets/1b5cd5a0-0782-4e1d-9283-2da3451f1359', tags: ['machine-learning', 'bioinformatics', 'medical', 'java'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP/tree/master', websiteUrl: 'https://cis.asu.edu.eg/' },
-        { id: 2, title: 'Animal Shelter Home', description: 'Full‑cycle Power Platform solution (Power BI, Power Apps, Power Automate) streamlining animal intake, medical records, and adoption processes, improving shelter efficiency.', image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8', tags: ['powerbi', 'powerapps', 'powerautomate', 'powerpages'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange', websiteUrl: 'https://powerup.microsoft.com/' },
-        { id: 3, title: 'MaxAB Sales Analysis', description: 'Comprehensive Power BI sales analytics dashboard analyzing regional performance, product trends, and sales rep effectiveness to drive data‑informed field strategies.', image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f', tags: ['powerbi', 'sales-analysis', 'dax-expression', 'powerquery'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study', websiteUrl: 'https://www.maxab.io/' },
-        { id: 4, title: 'Walmart Product Analysis', description: 'Interactive retail analytics dashboard using Power BI, delivering insights on product performance, category profitability, and inventory optimization for Walmart’s e‑commerce operations.', image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526', tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study', websiteUrl: 'https://www.walmart.com/' },
-        { id: 5, title: 'ElEzaby Pharmacy E-commerce', description: 'E‑commerce analytics leveraging RFM segmentation and Apriori algorithm to analyze customer behavior, cross‑selling opportunities, and promotional effectiveness for Elezaby Pharmacy.', image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa', tags: ['rfm-analysis', 'apriori-algorithm', 'data-visualization', 'dax-expression'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study', websiteUrl: 'https://elezabypharmacy.com/' },
-        { id: 6, title: 'Immigration to Canada', description: 'Exploratory data analysis on Canadian immigration data (1980‑2013) using Python, Pandas, and Matplotlib to uncover source country trends, seasonal patterns, and demographic insights.', image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67', tags: ['python', 'pandas', 'data-visualization', 'matplotlib'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013', websiteUrl: 'https://www.canada.ca/' },
-        { id: 7, title: 'Improvado Marketing Homework', description: 'Marketing analytics project using BigQuery and Looker Studio that uncovers ROI, customer segmentation, and channel attribution, enabling data‑driven marketing budget allocation.', image: 'https://github.com/user-attachments/assets/7c601c73-38b4-483c-affa-c6832ec26356', tags: ['bigquery', 'marketing', 'looker-studio', 'roi-analysis'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework', websiteUrl: 'https://improvado.io/' },
-        { id: 8, title: 'Abawb.ai Financial TRX 200', description: 'Financial transaction intelligence dashboard using Power BI and Python, detecting anomalies, cash flow patterns, and key performance indicators for strategic financial oversight.', image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a', tags: ['powerbidashboard', 'finance', 'python', 'financial-analysis'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200/tree/BI-TRX-200', websiteUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200' },
-        { id: 9, title: 'Innovative RTM Analysis Case Study', description: 'Route‑to‑Market analytics case study with Power BI and T‑SQL, delivering workforce optimization, call center efficiency KPIs, and geographic sales coverage analysis.', image: 'https://github.com/user-attachments/assets/62d259fd-349c-4a82-bb23-005fbef7de3d', tags: ['t-sql', 'relational-database', 'excel', 'workforce-analytics'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Innovative-rtm-analysis-case-study', websiteUrl: 'https://innovative-bpo.com/' }
+        {
+          id: 1,
+          title: 'Mobile Ventilator GP',
+          description: 'ML models & bioinformatic analysis for real‑time monitoring of mobile ventilators using scikit‑learn & Java.',
+          image: 'https://github.com/user-attachments/assets/1b5cd5a0-0782-4e1d-9283-2da3451f1359',
+          tags: ['machine-learning', 'bioinformatics', 'medical', 'java'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP/tree/master',
+          websiteUrl: 'https://cis.asu.edu.eg/'
+        },
+        {
+          id: 2,
+          title: 'Animal Shelter Home',
+          description: 'Power Platform solution (Power BI, Apps, Automate) for shelter intake, medical records, and adoption efficiency.',
+          image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8',
+          tags: ['powerbi', 'powerapps', 'powerautomate', 'powerpages'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange',
+          websiteUrl: 'https://powerup.microsoft.com/'
+        },
+        {
+          id: 3,
+          title: 'MaxAB Sales Analysis',
+          description: 'Power BI dashboard analyzing regional sales, product trends, and rep performance for data‑driven strategy.',
+          image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f',
+          tags: ['powerbi', 'sales-analysis', 'dax-expression', 'powerquery'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study',
+          websiteUrl: 'https://www.maxab.io/'
+        },
+        {
+          id: 4,
+          title: 'Walmart Product Analysis',
+          description: 'Retail analytics dashboard with Power BI revealing product performance, category profitability, and inventory optimization.',
+          image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526',
+          tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study',
+          websiteUrl: 'https://www.walmart.com/'
+        },
+        {
+          id: 5,
+          title: 'ElEzaby Pharmacy E-commerce',
+          description: 'E‑commerce analytics with RFM segmentation & Apriori algorithm to analyze customer behavior and cross‑selling.',
+          image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa',
+          tags: ['rfm-analysis', 'apriori-algorithm', 'data-visualization', 'dax-expression'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study',
+          websiteUrl: 'https://elezabypharmacy.com/'
+        },
+        {
+          id: 6,
+          title: 'Immigration to Canada',
+          description: 'EDA on Canadian immigration data (1980‑2013) using Python, Pandas, Matplotlib to uncover trends and demographic insights.',
+          image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67',
+          tags: ['python', 'pandas', 'data-visualization', 'matplotlib'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013',
+          websiteUrl: 'https://www.canada.ca/'
+        },
+        {
+          id: 7,
+          title: 'Improvado Marketing Homework',
+          description: 'Marketing analytics with BigQuery & Looker Studio uncovering ROI, customer segmentation, and channel attribution.',
+          image: 'https://github.com/user-attachments/assets/7c601c73-38b4-483c-affa-c6832ec26356',
+          tags: ['bigquery', 'marketing', 'looker-studio', 'roi-analysis'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework',
+          websiteUrl: 'https://improvado.io/'
+        },
+        {
+          id: 8,
+          title: 'Abawb.ai Financial TRX 200',
+          description: 'Financial intelligence dashboard with Power BI & Python detecting anomalies, cash flow patterns, and KPIs.',
+          image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a',
+          tags: ['powerbidashboard', 'finance', 'python', 'financial-analysis'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200/tree/BI-TRX-200',
+          websiteUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200'
+        },
+        {
+          id: 9,
+          title: 'Innovative RTM Analysis Case Study',
+          description: 'Route‑to‑Market analytics with Excel & T‑SQL delivering workforce optimization and call center efficiency KPIs.',
+          image: 'https://github.com/user-attachments/assets/62d259fd-349c-4a82-bb23-005fbef7de3d',
+          tags: ['t-sql', 'relational-database', 'excel', 'workforce-analytics'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Innovative-rtm-analysis-case-study',
+          websiteUrl: 'https://innovative-bpo.com/'
+        }
       ];
 
+      // ---------- Render Projects into the grid ----------
       function renderProjects() {
           const grid = document.getElementById('projectsGrid');
           if (!grid) return;
@@ -1729,20 +1953,37 @@
                   </div>
               </div>
           `).join('');
-          const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+
+          // Observe newly added project cards for reveal animation
+          const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) entry.target.classList.add('active');
+              });
+          }, { threshold: 0.1 });
           document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
       }
 
+      // ---------- DOM Ready ----------
       document.addEventListener('DOMContentLoaded', () => {
+          // Mobile menu toggle
           const menuBtn = document.getElementById('mobileMenu');
           const navLinks = document.getElementById('navLinks');
           if (menuBtn) menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
           if (navLinks) navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+
+          // Sticky header effect
           const header = document.getElementById('header');
           window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.pageYOffset > 20));
+
+          // Render project cards
           renderProjects();
 
-          const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+          // Intersection Observer for reveal animations
+          const revealObserver = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) entry.target.classList.add('active');
+              });
+          }, { threshold: 0.1 });
           document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
       });
     </script>
