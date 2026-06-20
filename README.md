@@ -41,6 +41,4 @@ This project is open source and available.
 ## Live Demo 
 **[The Analyst](https://mahmoud2abdallah.github.io)**
 
-<img width="200" height="220" alt="Linkedin Profile" src="https://github.com/user-attachments/assets/0b1c29ac-9dd9-4a62-82eb-0cf420d75f7f" />
-
-
+![Profile](https://img.shields.io/badge/-Profile-000000?style=for-the-badge&logo=github&logoColor=white)
