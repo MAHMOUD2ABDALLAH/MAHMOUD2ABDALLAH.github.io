@@ -7,18 +7,15 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <title>Mahmoud Abdallah | BI Developer Portfolio</title>
-    <!-- Favicon -->
     <link
       rel="icon"
       type="image/x-icon"
       href="https://github.com/user-attachments/assets/b4a9ebc2-5ecd-4c39-84fb-13b83abf674e"
     />
-    <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <!-- Google Fonts preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,11 +23,6 @@
       rel="stylesheet"
     />
     <style>
-      /* ==========================================
-         STYLES – Organized into logical sections
-         ========================================== */
-
-      /* ---------- Reset & CSS Variables ---------- */
       *,
       *::before,
       *::after {
@@ -61,7 +53,6 @@
           --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
 
-      /* ---------- Global Base ---------- */
       html {
           scroll-behavior: smooth;
           -webkit-font-smoothing: antialiased;
@@ -77,33 +68,50 @@
           overflow-x: hidden;
       }
 
-      /* ---------- Keyframes ---------- */
-      /* Floating/drifting animations for buoy-like motion */
+      /* ---------- Gradient Text Class for Hero ---------- */
+      .gradient-text {
+          background: linear-gradient(to right, var(--primary), #ffffff);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          display: inline-block;
+      }
+
       @keyframes drift-buoy {
-          0%, 100% { transform: translateY(0px); }
-          20% { transform: translateY(-7px); }
-          40% { transform: translateY(-2px); }
-          60% { transform: translateY(-9px); }
-          80% { transform: translateY(-3px); }
+          0%,
+          100% {
+              transform: translateY(0px);
+          }
+          20% {
+              transform: translateY(-7px);
+          }
+          40% {
+              transform: translateY(-2px);
+          }
+          60% {
+              transform: translateY(-9px);
+          }
+          80% {
+              transform: translateY(-3px);
+          }
       }
 
       @keyframes drift-buoy-subtle {
-          0%, 100% { transform: translateY(0px); }
-          25% { transform: translateY(-5px); }
-          50% { transform: translateY(-1px); }
-          75% { transform: translateY(-6px); }
+          0%,
+          100% {
+              transform: translateY(0px);
+          }
+          25% {
+              transform: translateY(-5px);
+          }
+          50% {
+              transform: translateY(-1px);
+          }
+          75% {
+              transform: translateY(-6px);
+          }
       }
 
-      @keyframes drift-buoy-wide {
-          0%, 100% { transform: translateY(0px); }
-          15% { transform: translateY(-10px); }
-          35% { transform: translateY(-3px); }
-          55% { transform: translateY(-11px); }
-          75% { transform: translateY(-4px); }
-          90% { transform: translateY(-7px); }
-      }
-
-      /* ---------- Reveal Animations (on scroll) ---------- */
       .reveal {
           opacity: 0;
           transform: translateY(30px);
@@ -133,12 +141,19 @@
           transform: translateX(0);
       }
 
-      .delay-1 { transition-delay: 0.1s; }
-      .delay-2 { transition-delay: 0.2s; }
-      .delay-3 { transition-delay: 0.3s; }
-      .delay-4 { transition-delay: 0.4s; }
+      .delay-1 {
+          transition-delay: 0.1s;
+      }
+      .delay-2 {
+          transition-delay: 0.2s;
+      }
+      .delay-3 {
+          transition-delay: 0.3s;
+      }
+      .delay-4 {
+          transition-delay: 0.4s;
+      }
 
-      /* ---------- Canvas Background ---------- */
       #network-bg {
           position: fixed;
           top: 0;
@@ -150,7 +165,6 @@
           opacity: 0.45;
       }
 
-      /* ---------- Layout Helpers ---------- */
       .container {
           width: 100%;
           max-width: 1200px;
@@ -211,7 +225,6 @@
           text-align: center;
       }
 
-      /* ---------- Buttons ---------- */
       .btn {
           display: inline-flex;
           align-items: center;
@@ -226,6 +239,7 @@
           text-decoration: none;
           background: transparent;
           color: var(--text-primary);
+          font-family: inherit;
       }
 
       .btn-primary {
@@ -252,38 +266,6 @@
           transform: translateY(-3px);
       }
 
-      .btn-github {
-          background: rgba(255, 255, 255, 0.06);
-          color: var(--text-primary);
-          border: 1px solid var(--border-color);
-          font-size: 0.8rem;
-          padding: 8px 16px;
-          border-radius: 40px;
-      }
-
-      .btn-github:hover {
-          background: rgba(var(--primary-rgb), 0.15);
-          border-color: var(--primary);
-          transform: translateY(-2px);
-      }
-
-      .btn-website {
-          background: transparent;
-          color: var(--text-secondary);
-          border: 1px solid var(--border-color);
-          font-size: 0.8rem;
-          padding: 8px 16px;
-          border-radius: 40px;
-      }
-
-      .btn-website:hover {
-          border-color: var(--primary);
-          color: #fff;
-          background: rgba(var(--primary-rgb), 0.06);
-          transform: translateY(-2px);
-      }
-
-      /* ---------- Header / Navbar ---------- */
       header {
           position: fixed;
           top: 0;
@@ -319,12 +301,8 @@
       .logo {
           font-size: 1.4rem;
           font-weight: 800;
-          color: var(--text-primary);
           letter-spacing: -0.02em;
-      }
-
-      .logo span {
-          color: var(--primary);
+          white-space: nowrap;
       }
 
       .nav-links {
@@ -369,9 +347,9 @@
           background: none;
           border: none;
           padding: 4px;
+          font-family: inherit;
       }
 
-      /* ---------- Hero Section ---------- */
       .hero {
           padding-top: 140px;
           padding-bottom: 100px;
@@ -406,7 +384,6 @@
           top: -100px;
           left: -100px;
       }
-
       .hero .blob-2 {
           width: 400px;
           height: 400px;
@@ -415,7 +392,6 @@
           right: 10%;
           animation-delay: -7s;
       }
-
       .hero .blob-3 {
           width: 300px;
           height: 300px;
@@ -426,8 +402,12 @@
       }
 
       @keyframes moveBlob {
-          0% { transform: translate(0, 0) rotate(0deg); }
-          100% { transform: translate(100px, 50px) rotate(90deg); }
+          0% {
+              transform: translate(0, 0) rotate(0deg);
+          }
+          100% {
+              transform: translate(100px, 50px) rotate(90deg);
+          }
       }
 
       .hero .container {
@@ -472,8 +452,14 @@
       }
 
       @keyframes pulse {
-          0% { transform: scale(1); opacity: 0.4; }
-          100% { transform: scale(2.5); opacity: 0; }
+          0% {
+              transform: scale(1);
+              opacity: 0.4;
+          }
+          100% {
+              transform: scale(2.5);
+              opacity: 0;
+          }
       }
 
       .badge {
@@ -496,9 +482,7 @@
       }
 
       .hero-text h1 .gradient-text {
-          background: linear-gradient(to right, var(--primary-light), #80baff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          display: inline;
       }
 
       .hero-text .hero-sub {
@@ -592,7 +576,6 @@
           transform: translateY(-5px);
       }
 
-      /* Hero image frame with drifting effect */
       .hero-image-wrapper {
           position: relative;
           padding: 10px;
@@ -609,8 +592,7 @@
           margin-right: auto;
           animation: drift-buoy-subtle 5.5s ease-in-out 0.6s infinite;
           will-change: transform;
-          transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.5s ease;
+          transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
       }
 
       .image-frame:hover {
@@ -633,8 +615,7 @@
       }
 
       .image-frame:hover .image-inner {
-          box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5),
-              0 0 50px rgba(var(--primary-rgb), 0.3);
+          box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5), 0 0 50px rgba(var(--primary-rgb), 0.3);
           border-color: rgba(var(--primary-rgb), 0.4);
       }
 
@@ -695,11 +676,15 @@
       }
 
       @keyframes float-y {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-12px); }
+          0%,
+          100% {
+              transform: translateY(0);
+          }
+          50% {
+              transform: translateY(-12px);
+          }
       }
 
-      /* ---------- About Section ---------- */
       .about {
           background: var(--bg-secondary);
           position: relative;
@@ -793,7 +778,6 @@
           margin-top: 32px;
       }
 
-      /* Stats cards with subtle drift */
       .stat {
           padding: 28px 20px;
           background: var(--bg-card);
@@ -805,10 +789,22 @@
           will-change: transform;
       }
 
-      .stat:nth-child(1) { animation-delay: 0.2s; animation-duration: 6.4s; }
-      .stat:nth-child(2) { animation-delay: 0.8s; animation-duration: 5.8s; }
-      .stat:nth-child(3) { animation-delay: 1.4s; animation-duration: 6.6s; }
-      .stat:nth-child(4) { animation-delay: 2.0s; animation-duration: 5.9s; }
+      .stat:nth-child(1) {
+          animation-delay: 0.2s;
+          animation-duration: 6.4s;
+      }
+      .stat:nth-child(2) {
+          animation-delay: 0.8s;
+          animation-duration: 5.8s;
+      }
+      .stat:nth-child(3) {
+          animation-delay: 1.4s;
+          animation-duration: 6.6s;
+      }
+      .stat:nth-child(4) {
+          animation-delay: 2.0s;
+          animation-duration: 5.9s;
+      }
 
       .stat:hover {
           animation-play-state: paused;
@@ -824,7 +820,6 @@
           color: var(--primary);
           margin-bottom: 4px;
       }
-
       .stat p {
           color: var(--text-muted);
           font-size: 0.85rem;
@@ -832,7 +827,6 @@
           font-weight: 500;
       }
 
-      /* ---------- Skills Section ---------- */
       .skills {
           background: var(--bg-primary);
           position: relative;
@@ -884,7 +878,6 @@
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       }
 
-      /* ---------- Projects Section ---------- */
       .projects {
           background: var(--bg-secondary);
           position: relative;
@@ -906,7 +899,6 @@
           gap: 32px;
       }
 
-      /* Project cards with buoy drift */
       .project-card {
           position: relative;
           background: var(--bg-card);
@@ -924,22 +916,24 @@
           min-height: 320px;
       }
 
-      .project-card:nth-child(1) { animation-delay: 0.3s; animation-duration: 6.8s; }
-      .project-card:nth-child(2) { animation-delay: 1.2s; animation-duration: 7.3s; }
-      .project-card:nth-child(3) { animation-delay: 2.0s; animation-duration: 6.5s; }
-      .project-card:nth-child(4) { animation-delay: 0.6s; animation-duration: 7.6s; }
-      .project-card:nth-child(5) { animation-delay: 1.5s; animation-duration: 6.9s; }
-      .project-card:nth-child(6) { animation-delay: 2.3s; animation-duration: 7.1s; }
-      .project-card:nth-child(7) { animation-delay: 0.9s; animation-duration: 7.5s; }
-      .project-card:nth-child(8) { animation-delay: 1.8s; animation-duration: 6.6s; }
-      .project-card:nth-child(9) { animation-delay: 2.6s; animation-duration: 7.0s; }
+      .project-card:nth-child(1) {
+          animation-delay: 0.3s;
+          animation-duration: 6.8s;
+      }
+      .project-card:nth-child(2) {
+          animation-delay: 1.2s;
+          animation-duration: 7.3s;
+      }
+      .project-card:nth-child(3) {
+          animation-delay: 2.0s;
+          animation-duration: 6.5s;
+      }
 
       .project-card:hover {
           animation-play-state: paused;
           transform: translateY(-8px);
           border-color: var(--border-hover);
-          box-shadow: 0 0 50px rgba(var(--primary-rgb), 0.22),
-              0 20px 40px rgba(0, 0, 0, 0.7);
+          box-shadow: 0 0 50px rgba(var(--primary-rgb), 0.22), 0 20px 40px rgba(0, 0, 0, 0.7);
           background: var(--bg-card-hover);
       }
 
@@ -1074,6 +1068,7 @@
           display: inline-flex;
           align-items: center;
           gap: 8px;
+          font-family: inherit;
       }
 
       .btn-website-card i {
@@ -1087,7 +1082,6 @@
           transform: translateY(-3px);
       }
 
-      /* ---------- Contact Section ---------- */
       .contact {
           background: var(--bg-primary);
           position: relative;
@@ -1126,8 +1120,14 @@
           will-change: transform;
       }
 
-      .contact-item:nth-child(1) { animation-delay: 0.3s; animation-duration: 6.5s; }
-      .contact-item:nth-child(2) { animation-delay: 1.2s; animation-duration: 7.2s; }
+      .contact-item:nth-child(1) {
+          animation-delay: 0.3s;
+          animation-duration: 6.5s;
+      }
+      .contact-item:nth-child(2) {
+          animation-delay: 1.2s;
+          animation-duration: 7.2s;
+      }
 
       .contact-item:hover {
           animation-play-state: paused;
@@ -1169,7 +1169,6 @@
           color: var(--primary);
       }
 
-      /* ---------- Footer ---------- */
       footer {
           background: var(--bg-secondary);
           border-top: 1px solid var(--border-color);
@@ -1186,12 +1185,9 @@
       .footer-logo {
           font-size: 1.6rem;
           font-weight: 800;
-          color: var(--text-primary);
           margin-bottom: 12px;
-      }
-
-      .footer-logo span {
-          color: var(--primary);
+          letter-spacing: -0.02em;
+          white-space: nowrap;
       }
 
       .footer-about p {
@@ -1204,6 +1200,7 @@
           display: flex;
           gap: 12px;
           margin-top: 20px;
+          align-items: center;
       }
 
       .social-link {
@@ -1233,20 +1230,17 @@
           color: var(--text-primary);
           margin-bottom: 16px;
       }
-
       .footer-links ul {
           display: flex;
           flex-direction: column;
           gap: 8px;
       }
-
       .footer-links a {
           color: var(--text-secondary);
           text-decoration: none;
           font-size: 0.9rem;
           transition: var(--transition);
       }
-
       .footer-links a:hover {
           color: var(--primary);
       }
@@ -1259,49 +1253,133 @@
           font-size: 0.85rem;
       }
 
-      /* ---------- Accessibility / Reduced Motion ---------- */
       @media (prefers-reduced-motion: reduce) {
-          .image-frame, .project-card, .stat, .contact-item { animation: none !important; }
-          .floating-badge { animation: none !important; }
+          .image-frame,
+          .project-card,
+          .stat,
+          .contact-item {
+              animation: none !important;
+          }
+          .floating-badge {
+              animation: none !important;
+          }
       }
 
-      /* ---------- Responsive Design ---------- */
       @media (max-width: 1024px) {
-          .hero-content { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-          .hero-text { text-align: center; }
-          .hero-image-wrapper { order: -1; max-width: 400px; margin: 0 auto; }
-          .image-frame { max-width: 280px; }
-          .projects-grid { grid-template-columns: repeat(2, 1fr); }
-          .core-expertise ul { grid-template-columns: 1fr; }
-          .about-stats { grid-template-columns: repeat(2, 1fr); }
+          .hero-content {
+              grid-template-columns: 1fr;
+              text-align: center;
+              gap: 40px;
+          }
+          .hero-text {
+              text-align: center;
+          }
+          .hero-image-wrapper {
+              order: -1;
+              max-width: 400px;
+              margin: 0 auto;
+          }
+          .image-frame {
+              max-width: 280px;
+          }
+          .projects-grid {
+              grid-template-columns: repeat(2, 1fr);
+          }
+          .core-expertise ul {
+              grid-template-columns: 1fr;
+          }
+          .about-stats {
+              grid-template-columns: repeat(2, 1fr);
+          }
       }
 
       @media (max-width: 768px) {
-          .nav-links { display: none; position: absolute; top: 66px; left: 0; width: 100%; background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(20px); flex-direction: column; padding: 24px 28px; gap: 16px; border-bottom: 1px solid var(--border-color); }
-          .nav-links.active { display: flex; }
-          .mobile-menu { display: block; }
-          .hero { padding-top: 120px; min-height: auto; }
-          .hero-text h1 { font-size: 2.6rem; }
-          .image-frame { max-width: 250px; }
-          h2 { font-size: 2.2rem; }
-          .projects-grid { grid-template-columns: 1fr; }
-          .project-card { min-height: auto; }
-          .about-stats { grid-template-columns: 1fr 1fr; }
-          .footer-content { grid-template-columns: 1fr; gap: 32px; text-align: center; }
-          .card-logo-rect { width: 35%; height: 35%; min-width: 70px; min-height: 70px; bottom: -8px; right: -8px; }
+          .nav-links {
+              display: none;
+              position: absolute;
+              top: 66px;
+              left: 0;
+              width: 100%;
+              background: rgba(10, 10, 10, 0.98);
+              backdrop-filter: blur(20px);
+              flex-direction: column;
+              padding: 24px 28px;
+              gap: 16px;
+              border-bottom: 1px solid var(--border-color);
+          }
+          .nav-links.active {
+              display: flex;
+          }
+          .mobile-menu {
+              display: block;
+          }
+          .hero {
+              padding-top: 120px;
+              min-height: auto;
+          }
+          .hero-text h1 {
+              font-size: 2.6rem;
+          }
+          .image-frame {
+              max-width: 250px;
+          }
+          h2 {
+              font-size: 2.2rem;
+          }
+          .projects-grid {
+              grid-template-columns: 1fr;
+          }
+          .project-card {
+              min-height: auto;
+          }
+          .about-stats {
+              grid-template-columns: 1fr 1fr;
+          }
+          .footer-content {
+              grid-template-columns: 1fr;
+              gap: 32px;
+              text-align: center;
+          }
+          .card-logo-rect {
+              width: 35%;
+              height: 35%;
+              min-width: 70px;
+              min-height: 70px;
+              bottom: -8px;
+              right: -8px;
+          }
       }
 
       @media (max-width: 480px) {
-          .hero-text h1 { font-size: 2rem; }
-          .image-frame { max-width: 220px; }
-          .hero-btns { flex-direction: column; width: 100%; }
-          .hero-btns .btn { width: 100%; justify-content: center; }
-          .tech-stack { flex-direction: column; gap: 15px; }
-          .card-logo-rect { width: 32%; height: 32%; bottom: -6px; right: -6px; }
-          .card-content h3 { font-size: 1.2rem; }
+          .hero-text h1 {
+              font-size: 2rem;
+          }
+          .image-frame {
+              max-width: 220px;
+          }
+          .hero-btns {
+              flex-direction: column;
+              width: 100%;
+          }
+          .hero-btns .btn {
+              width: 100%;
+              justify-content: center;
+          }
+          .tech-stack {
+              flex-direction: column;
+              gap: 15px;
+          }
+          .card-logo-rect {
+              width: 32%;
+              height: 32%;
+              bottom: -6px;
+              right: -6px;
+          }
+          .card-content h3 {
+              font-size: 1.2rem;
+          }
       }
 
-      /* Prevent text selection globally (design choice) */
       body {
           -webkit-touch-callout: none;
           -webkit-user-select: none;
@@ -1313,18 +1391,17 @@
     </style>
   </head>
   <body>
-    <!-- Animated network background -->
     <canvas id="network-bg"></canvas>
 
-    <!-- Fixed header with navigation -->
     <header id="header">
       <div class="container">
         <nav class="navbar">
-          <!-- Logo -->
-          <a href="#home" class="logo-container"
-            ><div class="logo">BI <span>Developer</span></div></a
-          >
-          <!-- Navigation links -->
+          <a href="#home" class="logo-container">
+            <div class="logo">
+              <span style="color: var(--primary);">BI</span>
+              <span style="color: #fff;">Developer</span>
+            </div>
+          </a>
           <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -1332,7 +1409,6 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          <!-- Mobile menu toggle button -->
           <button
             class="mobile-menu"
             id="mobileMenu"
@@ -1344,9 +1420,7 @@
       </div>
     </header>
 
-    <!-- ===== HERO SECTION ===== -->
     <section id="home" class="hero">
-      <!-- Decorative background blobs -->
       <div class="background-blobs">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -1354,13 +1428,12 @@
       </div>
       <div class="container">
         <div class="hero-content">
-          <!-- Hero text block -->
           <div class="hero-text reveal-left">
             <div class="badge-container">
-              <span class="pulse-dot"></span>
-              <span class="badge">Open for new opportunities</span>
+              <span class="pulse-dot"></span
+              ><span class="badge">Open for new opportunities</span>
             </div>
-            <h1>Mahmoud <span class="gradient-text">Abdallah</span></h1>
+            <h1><span class="gradient-text">Mahmoud Abdallah</span></h1>
             <p class="hero-sub">
               Turning data into decisions that matter with 3+ years of
               end‑to‑end analytics experience, bridging raw numbers and real
@@ -1378,9 +1451,8 @@
                   stroke-width="2.5"
                 >
                   <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </a>
+                  <polyline points="12 5 19 12 12 19" /></svg
+              ></a>
               <a href="#contact" class="btn btn-outline"
                 >Contact Me
                 <svg
@@ -1392,9 +1464,8 @@
                   stroke-width="2"
                 >
                   <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-              </a>
+                  <circle cx="12" cy="12" r="3" /></svg
+              ></a>
             </div>
             <div class="tech-stack">
               <span class="stack-label">Trusted tech:</span>
@@ -1406,7 +1477,6 @@
               </div>
             </div>
           </div>
-          <!-- Hero image with floating effect -->
           <div class="hero-image-wrapper reveal-right">
             <div class="image-frame">
               <div class="blue-glow-sphere"></div>
@@ -1439,7 +1509,6 @@
       </div>
     </section>
 
-    <!-- ===== ABOUT SECTION ===== -->
     <section id="about" class="about">
       <div class="container">
         <div class="section-header reveal">
@@ -1474,8 +1543,8 @@
                 <i
                   class="fas fa-bolt"
                   style="color:var(--primary);margin-right:8px;"
-                ></i>
-                What I Do Best
+                ></i
+                >What I Do Best
               </h3>
               <ul>
                 <li>
@@ -1513,7 +1582,7 @@
               <p>Years Experience</p>
             </div>
             <div class="stat reveal delay-2">
-              <h3>50+</h3>
+              <h3>25+</h3>
               <p>Projects Completed</p>
             </div>
             <div class="stat reveal delay-3">
@@ -1529,7 +1598,6 @@
       </div>
     </section>
 
-    <!-- ===== SKILLS SECTION ===== -->
     <section id="skills" class="skills">
       <div class="container">
         <div class="section-header centered reveal">
@@ -1541,14 +1609,12 @@
           </p>
         </div>
         <div class="skills-container" id="skillsReveal">
-          <!-- Skill badges (each with reveal animation) -->
           <span class="skill-badge reveal"
             ><i class="fas fa-chart-bar"></i> Power BI</span
           >
           <span class="skill-badge reveal"
             ><i class="fas fa-chart-pie"></i> Tableau</span
           >
-          <!-- ... remaining skill badges ... -->
           <span class="skill-badge reveal"
             ><i class="fas fa-eye"></i> Looker Studio</span
           >
@@ -1632,22 +1698,20 @@
       </div>
     </section>
 
-    <!-- ===== PROJECTS SECTION (dynamic cards will be inserted by JS) ===== -->
     <section id="projects" class="projects">
       <div class="container">
         <div class="section-header centered reveal">
           <span class="section-label">Portfolio</span>
           <h2>Featured Projects</h2>
           <p class="section-subtitle">
-            A selection of real-world analytics and data science work.
+            A Selection of real-world analytics, Visualization and Data
+            Solutions Work
           </p>
         </div>
-        <!-- Grid will be populated by JavaScript -->
         <div class="projects-grid" id="projectsGrid"></div>
       </div>
     </section>
 
-    <!-- ===== CONTACT SECTION ===== -->
     <section id="contact" class="contact">
       <div class="container">
         <div class="section-header centered reveal">
@@ -1680,12 +1744,14 @@
       </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
     <footer>
       <div class="container">
         <div class="footer-content reveal">
           <div class="footer-about">
-            <div class="footer-logo">BI <span>Developer</span></div>
+            <div class="footer-logo">
+              <span style="color: #fff;">BI</span>
+              <span style="color: var(--primary);">Developer</span>
+            </div>
             <p>
               Turning data into decisions, dashboards, automation, and
               predictive analytics.
@@ -1735,37 +1801,32 @@
     </footer>
 
     <script>
-      // =============================================
-      //  JAVASCRIPT – Clean, commented, no logic changed
-      // =============================================
-
-      // ---------- Prevent Dev Tools / Right Click (Design Decision) ----------
       (function() {
           document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
           document.addEventListener('keydown', function(e) {
               if (e.key === 'F12') { e.preventDefault(); return false; }
-              if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) { e.preventDefault(); return false; }
+              if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) { e.preventDefault();
+                  return false; }
               if (e.ctrlKey && e.key === 'u') { e.preventDefault(); return false; }
           });
       })();
 
-      // ---------- Animated Network Background (Canvas) ----------
       (function() {
           const canvas = document.getElementById('network-bg');
           const ctx = canvas.getContext('2d');
           let width, height, particles = [];
-          // Adjust particle count for performance
           const NUM_PARTICLES = Math.min(140, Math.floor((window.innerWidth * window.innerHeight) / 14000));
           const MAX_DIST = 140;
           const mouse = { x: null, y: null, radius: 160 };
           let resizeTimeout;
 
-          // Set canvas size
-          function resize() { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; }
+          function resize() { width = window.innerWidth;
+              height = window.innerHeight;
+              canvas.width = width;
+              canvas.height = height; }
           resize();
-          window.addEventListener('resize', () => { clearTimeout(resizeTimeout); resizeTimeout = setTimeout(resize, 120); });
-
-          // Particle class with floating behavior
+          window.addEventListener('resize', () => { clearTimeout(resizeTimeout);
+              resizeTimeout = setTimeout(resize, 120); });
           class Particle {
               constructor() {
                   this.x = Math.random() * width;
@@ -1778,17 +1839,18 @@
                   this.waveSpeed = 0.015 + Math.random() * 0.02;
               }
               update(time) {
-                  // Subtle wave movement
                   const wx = Math.sin(time * this.waveSpeed + this.offX) * 0.06;
                   const wy = Math.cos(time * this.waveSpeed + this.offY) * 0.06;
                   this.x += this.speedX + wx;
                   this.y += this.speedY + wy;
-                  // Bounce off edges
-                  if (this.x < 0 || this.x > width) { this.speedX *= -0.98; this.x = Math.min(width - 4, Math.max(4, this.x)); }
-                  if (this.y < 0 || this.y > height) { this.speedY *= -0.98; this.y = Math.min(height - 4, Math.max(4, this.y)); }
-                  // Mouse interaction (push away)
+                  if (this.x < 0 || this.x > width) { this.speedX *= -0.98;
+                      this.x = Math.min(width - 4, Math.max(4, this.x)); }
+                  if (this.y < 0 || this.y > height) { this.speedY *= -0.98;
+                      this.y = Math.min(height - 4, Math.max(4, this.y)); }
                   if (mouse.x !== null && mouse.y !== null) {
-                      const dx = this.x - mouse.x, dy = this.y - mouse.y, dist = Math.hypot(dx, dy);
+                      const dx = this.x - mouse.x,
+                          dy = this.y - mouse.y,
+                          dist = Math.hypot(dx, dy);
                       if (dist < mouse.radius) {
                           const force = (mouse.radius - dist) / mouse.radius;
                           this.x += (dx / dist) * force * 1.0;
@@ -1796,24 +1858,21 @@
                       }
                   }
               }
-              draw() {
-                  ctx.fillStyle = '#ffffff';
+              draw() { ctx.fillStyle = '#ffffff';
                   ctx.beginPath();
                   ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                  ctx.fill();
-              }
+                  ctx.fill(); }
           }
-
-          // Initialize particles
           for (let i = 0; i < NUM_PARTICLES; i++) particles.push(new Particle());
 
-          // Draw connections between nearby particles
           function connect() {
               for (let a = 0; a < particles.length; a++) {
                   for (let b = a + 1; b < particles.length; b++) {
-                      const dx = particles[a].x - particles[b].x, dy = particles[a].y - particles[b].y;
+                      const dx = particles[a].x - particles[b].x,
+                          dy = particles[a].y - particles[b].y;
                       if (dx * dx + dy * dy < MAX_DIST * MAX_DIST) {
-                          const dist = Math.sqrt(dx * dx + dy * dy), opacity = 0.35 * (1 - dist / MAX_DIST);
+                          const dist = Math.sqrt(dx * dx + dy * dy),
+                              opacity = 0.35 * (1 - dist / MAX_DIST);
                           ctx.strokeStyle = `rgba(33,133,254,${opacity})`;
                           ctx.lineWidth = 0.5;
                           ctx.beginPath();
@@ -1824,118 +1883,46 @@
                   }
               }
           }
-
-          // Animation loop
           let animId, lastTime = 0;
+
           function animate(timestamp) {
-              if (timestamp - lastTime >= 1000 / 60) { // cap at ~60fps
+              if (timestamp - lastTime >= 1000 / 60) {
                   lastTime = timestamp;
                   ctx.clearRect(0, 0, width, height);
                   const time = timestamp * 0.001;
-                  particles.forEach(p => { p.update(time); p.draw(); });
+                  particles.forEach(p => { p.update(time);
+                      p.draw(); });
                   connect();
               }
               animId = requestAnimationFrame(animate);
           }
           animate(0);
-
-          // Handle mouse movement
-          window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-          window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
-
-          // Pause animation when tab is hidden to save resources
+          window.addEventListener('mousemove', e => { mouse.x = e.clientX;
+              mouse.y = e.clientY; });
+          window.addEventListener('mouseleave', () => { mouse.x = null;
+              mouse.y = null; });
           document.addEventListener('visibilitychange', () => {
-              if (document.hidden && animId) { cancelAnimationFrame(animId); animId = null; }
-              else if (!animId) animate(0);
+              if (document.hidden && animId) { cancelAnimationFrame(animId);
+                  animId = null; } else if (!animId) animate(0);
           });
       })();
 
-      // ---------- Project Data (shorter descriptions) ----------
       const projectsData = [
-        {
-          id: 1,
-          title: 'Mobile Ventilator GP',
-          description: 'ML models & bioinformatic analysis for real‑time monitoring of mobile ventilators using scikit‑learn & Java.',
-          image: 'https://github.com/user-attachments/assets/1b5cd5a0-0782-4e1d-9283-2da3451f1359',
-          tags: ['machine-learning', 'bioinformatics', 'medical', 'java'],
-          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Mobile-Ventilator-GP/tree/master',
-          websiteUrl: 'https://cis.asu.edu.eg/'
-        },
-        {
-          id: 2,
-          title: 'Animal Shelter Home',
-          description: 'Power Platform solution (Power BI, Apps, Automate) for shelter intake, medical records, and adoption efficiency.',
-          image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8',
-          tags: ['powerbi', 'powerapps', 'powerautomate', 'powerpages'],
-          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange',
-          websiteUrl: 'https://powerup.microsoft.com/'
-        },
-        {
-          id: 3,
-          title: 'MaxAB Sales Analysis',
-          description: 'Power BI dashboard analyzing regional sales, product trends, and rep performance for data‑driven strategy.',
-          image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f',
-          tags: ['powerbi', 'sales-analysis', 'dax-expression', 'powerquery'],
-          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study',
-          websiteUrl: 'https://www.maxab.io/'
-        },
-        {
-          id: 4,
-          title: 'Walmart Product Analysis',
-          description: 'Retail analytics dashboard with Power BI revealing product performance, category profitability, and inventory optimization.',
-          image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526',
-          tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression'],
-          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study',
-          websiteUrl: 'https://www.walmart.com/'
-        },
-        {
-          id: 5,
-          title: 'ElEzaby Pharmacy E-commerce',
-          description: 'E‑commerce analytics with RFM segmentation & Apriori algorithm to analyze customer behavior and cross‑selling.',
-          image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa',
-          tags: ['rfm-analysis', 'apriori-algorithm', 'data-visualization', 'dax-expression'],
-          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study',
-          websiteUrl: 'https://elezabypharmacy.com/'
-        },
-        {
-          id: 6,
-          title: 'Immigration to Canada',
-          description: 'EDA on Canadian immigration data (1980‑2013) using Python, Pandas, Matplotlib to uncover trends and demographic insights.',
-          image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67',
-          tags: ['python', 'pandas', 'data-visualization', 'matplotlib'],
-          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013',
-          websiteUrl: 'https://www.canada.ca/'
-        },
-        {
-          id: 7,
-          title: 'Improvado Marketing Homework',
-          description: 'Marketing analytics with BigQuery & Looker Studio uncovering ROI, customer segmentation, and channel attribution.',
-          image: 'https://github.com/user-attachments/assets/7c601c73-38b4-483c-affa-c6832ec26356',
-          tags: ['bigquery', 'marketing', 'looker-studio', 'roi-analysis'],
-          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework',
-          websiteUrl: 'https://improvado.io/'
-        },
-        {
-          id: 8,
-          title: 'Abawb.ai Financial TRX 200',
-          description: 'Financial intelligence dashboard with Power BI & Python detecting anomalies, cash flow patterns, and KPIs.',
-          image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a',
-          tags: ['powerbidashboard', 'finance', 'python', 'financial-analysis'],
-          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200/tree/BI-TRX-200',
-          websiteUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200'
-        },
-        {
-          id: 9,
-          title: 'Innovative RTM Analysis Case Study',
-          description: 'Route‑to‑Market analytics with Excel & T‑SQL delivering workforce optimization and call center efficiency KPIs.',
-          image: 'https://github.com/user-attachments/assets/62d259fd-349c-4a82-bb23-005fbef7de3d',
-          tags: ['t-sql', 'relational-database', 'excel', 'workforce-analytics'],
-          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Innovative-rtm-analysis-case-study',
-          websiteUrl: 'https://innovative-bpo.com/'
-        }
+          { id: 6, title: 'Immigration to Canada', description: 'EDA on Canadian immigration data (1980‑2013) using Python, Pandas, Matplotlib to uncover trends and demographic insights.', image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67',
+              tags: ['python', 'pandas', 'data-visualization', 'matplotlib'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013',
+              websiteUrl: 'https://www.canada.ca/' },
+          { id: 2, title: 'Animal Shelter Home', description: 'Power Platform solution (Power BI, Apps, Automate) for shelter intake, medical records, and adoption efficiency.',
+              image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8', tags: ['powerbi',
+                  'powerapps', 'powerautomate', 'powerpages'
+              ], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange',
+              websiteUrl: 'https://powerup.microsoft.com/' },
+          { id: 4, title: 'Walmart Product Analysis', description: 'Retail analytics dashboard with Power BI revealing product performance, category profitability, and inventory optimization.',
+              image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526', tags: ['power-bi',
+                  'sales-analysis', 'e-commerce', 'dax-expression'
+              ], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study',
+              websiteUrl: 'https://www.walmart.com/' }
       ];
 
-      // ---------- Render Projects into the grid ----------
       function renderProjects() {
           const grid = document.getElementById('projectsGrid');
           if (!grid) return;
@@ -1953,36 +1940,23 @@
                   </div>
               </div>
           `).join('');
-
-          // Observe newly added project cards for reveal animation
           const observer = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                  if (entry.isIntersecting) entry.target.classList.add('active');
-              });
+              entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
           }, { threshold: 0.1 });
           document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
       }
 
-      // ---------- DOM Ready ----------
       document.addEventListener('DOMContentLoaded', () => {
-          // Mobile menu toggle
           const menuBtn = document.getElementById('mobileMenu');
           const navLinks = document.getElementById('navLinks');
           if (menuBtn) menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-          if (navLinks) navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-
-          // Sticky header effect
+          if (navLinks) navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks
+              .classList.remove('active')));
           const header = document.getElementById('header');
           window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.pageYOffset > 20));
-
-          // Render project cards
           renderProjects();
-
-          // Intersection Observer for reveal animations
           const revealObserver = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                  if (entry.isIntersecting) entry.target.classList.add('active');
-              });
+              entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
           }, { threshold: 0.1 });
           document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
       });
