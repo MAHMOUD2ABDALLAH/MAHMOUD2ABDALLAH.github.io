@@ -68,7 +68,6 @@
           overflow-x: hidden;
       }
 
-      /* ---------- Gradient Text Class for Hero ---------- */
       .gradient-text {
           background: linear-gradient(to right, var(--primary), #ffffff);
           -webkit-background-clip: text;
@@ -928,6 +927,18 @@
           animation-delay: 2.0s;
           animation-duration: 6.5s;
       }
+      .project-card:nth-child(4) {
+          animation-delay: 0.7s;
+          animation-duration: 7.0s;
+      }
+      .project-card:nth-child(5) {
+          animation-delay: 1.6s;
+          animation-duration: 6.9s;
+      }
+      .project-card:nth-child(6) {
+          animation-delay: 2.4s;
+          animation-duration: 7.1s;
+      }
 
       .project-card:hover {
           animation-play-state: paused;
@@ -1440,8 +1451,8 @@
               strategy.
             </p>
             <div class="hero-btns">
-              <a href="#projects" class="btn btn-primary"
-                >View Projects
+              <a href="#projects" class="btn btn-primary">
+                View Projects
                 <svg
                   width="20"
                   height="20"
@@ -1451,10 +1462,11 @@
                   stroke-width="2.5"
                 >
                   <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" /></svg
-              ></a>
-              <a href="#contact" class="btn btn-outline"
-                >Contact Me
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+              <a href="#contact" class="btn btn-outline">
+                Contact Me
                 <svg
                   width="20"
                   height="20"
@@ -1464,8 +1476,9 @@
                   stroke-width="2"
                 >
                   <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                  <circle cx="12" cy="12" r="3" /></svg
-              ></a>
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </a>
             </div>
             <div class="tech-stack">
               <span class="stack-label">Trusted tech:</span>
@@ -1543,8 +1556,8 @@
                 <i
                   class="fas fa-bolt"
                   style="color:var(--primary);margin-right:8px;"
-                ></i
-                >What I Do Best
+                ></i>
+                What I Do Best
               </h3>
               <ul>
                 <li>
@@ -1802,12 +1815,15 @@
 
     <script>
       (function() {
-          document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
+          document.addEventListener('contextmenu', function(e) { e.preventDefault();
+              return false; });
           document.addEventListener('keydown', function(e) {
-              if (e.key === 'F12') { e.preventDefault(); return false; }
+              if (e.key === 'F12') { e.preventDefault();
+                  return false; }
               if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) { e.preventDefault();
                   return false; }
-              if (e.ctrlKey && e.key === 'u') { e.preventDefault(); return false; }
+              if (e.ctrlKey && e.key === 'u') { e.preventDefault();
+                  return false; }
           });
       })();
 
@@ -1908,38 +1924,78 @@
       })();
 
       const projectsData = [
-          { id: 6, title: 'Immigration to Canada', description: 'EDA on Canadian immigration data (1980‑2013) using Python, Pandas, Matplotlib to uncover trends and demographic insights.', image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67',
-              tags: ['python', 'pandas', 'data-visualization', 'matplotlib'], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013',
-              websiteUrl: 'https://www.canada.ca/' },
-          { id: 2, title: 'Animal Shelter Home', description: 'Power Platform solution (Power BI, Apps, Automate) for shelter intake, medical records, and adoption efficiency.',
-              image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8', tags: ['powerbi',
-                  'powerapps', 'powerautomate', 'powerpages'
-              ], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange',
-              websiteUrl: 'https://powerup.microsoft.com/' },
-          { id: 4, title: 'Walmart Product Analysis', description: 'Retail analytics dashboard with Power BI revealing product performance, category profitability, and inventory optimization.',
-              image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526', tags: ['power-bi',
-                  'sales-analysis', 'e-commerce', 'dax-expression'
-              ], githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study',
-              websiteUrl: 'https://www.walmart.com/' }
+          // --- Existing Projects ---
+          {
+              id: 6,
+              title: 'Immigration to Canada',
+              description: 'EDA on Canadian immigration data (1980‑2013) using Python, Pandas, Matplotlib to uncover trends and demographic insights.',
+              image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67',
+              tags: ['python', 'pandas', 'data-visualization', 'matplotlib'],
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013',
+              websiteUrl: 'https://www.canada.ca/'
+          }, {
+              id: 2,
+              title: 'Animal Shelter Home',
+              description: 'Power Platform solution (Power BI, Apps, Automate) for shelter intake, medical records, and adoption efficiency.',
+              image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8',
+              tags: ['powerbi', 'powerapps', 'powerautomate', 'powerpages'],
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange',
+              websiteUrl: 'https://powerup.microsoft.com/'
+          }, {
+              id: 4,
+              title: 'Walmart Product Analysis',
+              description: 'Retail analytics dashboard with Power BI revealing product performance, category profitability, and inventory optimization.',
+              image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526',
+              tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression'],
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study',
+              websiteUrl: 'https://www.walmart.com/'
+          },
+
+          // --- NEW Projects (MaxAB, El Ezaby, Abwab.AI) ---
+          {
+              id: 7,
+              title: 'MaxAB Sales Analysis',
+              description: 'Comprehensive sales analytics dashboard for MaxAB, Egypt\'s leading B2B e-commerce platform, analyzing sales performance, product trends, and customer behavior patterns.',
+              image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f',
+              tags: ['power-bi', 'sales-analysis', 'b2b', 'dax-expression'],
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study',
+              websiteUrl: 'https://www.maxab.io/'
+          }, {
+              id: 8,
+              title: 'El Ezaby Pharmacy Digital Analytics',
+              description: 'Digital analytics solution for El Ezaby Pharmacy, Egypt\'s largest pharmacy chain, focusing on e-commerce performance, customer journey analysis, and operational efficiency metrics.',
+              image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa',
+              tags: ['power-bi', 'e-commerce', 'pharmacy', 'digital-analytics'],
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study',
+              websiteUrl: 'https://elezabypharmacy.com/'
+          }, {
+              id: 9,
+              title: 'Abwab.AI Financial TRX 200',
+              description: 'Financial transaction analysis and monitoring dashboard for Abwab.AI, providing insights into transaction patterns, fraud detection indicators, and financial performance metrics.',
+              image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a',
+              tags: ['power-bi', 'financial-analytics', 'fraud-detection', 'transaction-monitoring'],
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200',
+              websiteUrl: 'https://abwab.ai/'
+          }
       ];
 
       function renderProjects() {
           const grid = document.getElementById('projectsGrid');
           if (!grid) return;
           grid.innerHTML = projectsData.map(p => `
-              <div class="project-card reveal">
-                  <div class="card-logo-rect"><img src="${p.image}" alt="${p.title} logo" loading="lazy"></div>
-                  <div class="card-content">
-                      <h3>${p.title}</h3>
-                      <p>${p.description}</p>
-                      <div class="project-tags">${p.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}</div>
-                      <div class="card-actions">
-                          <a href="${p.githubUrl}" target="_blank" class="github-icon-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                          <a href="${p.websiteUrl}" target="_blank" class="btn-website-card"><i class="fas fa-external-link-alt"></i> Website</a>
+                  <div class="project-card reveal">
+                      <div class="card-logo-rect"><img src="${p.image}" alt="${p.title} logo" loading="lazy"></div>
+                      <div class="card-content">
+                          <h3>${p.title}</h3>
+                          <p>${p.description}</p>
+                          <div class="project-tags">${p.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}</div>
+                          <div class="card-actions">
+                              <a href="${p.githubUrl}" target="_blank" class="github-icon-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                              <a href="${p.websiteUrl}" target="_blank" class="btn-website-card"><i class="fas fa-external-link-alt"></i> Website</a>
+                          </div>
                       </div>
                   </div>
-              </div>
-          `).join('');
+              `).join('');
           const observer = new IntersectionObserver((entries) => {
               entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
           }, { threshold: 0.1 });
