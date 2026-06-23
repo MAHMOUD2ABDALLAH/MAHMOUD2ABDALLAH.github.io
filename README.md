@@ -1,44 +1,14 @@
-# Data Analytics Portfolio
+# Mahmoud Abdallah  
+### Data Analytics
 
-A modern, responsive portfolio website showcasing data analytics and business intelligence projects, skills, and certifications.
+Turning data into decisions that matter.  
+I'm a Data Analytics professional with 3+ years of experience building interactive dashboards, automated reporting pipelines, and self‑service analytics tools that help organizations move from raw numbers to real strategy.
 
-## Features
+**What I do:**  
+- 📊 Executive‑ready dashboards (Power BI, Tableau, Looker Studio)  
+- 🐍 Advanced analytics with Python (Pandas, Scikit‑learn)  
+- ⚙️ Process automation (Power Automate, Power Apps)  
+- 🤖 AI & ML fundamentals (TensorFlow, NLP)
 
-- Responsive design optimized for all devices
-- Clean, professional design with smooth animations
-- Project showcase with GitHub links
-- Skills section categorized by expertise
-- Animated certifications carousel
-- Contact information section
-- Smooth navigation and scrolling
-
-## Technologies Used
-
-- HTML5, CSS3, JavaScript
-- Custom CSS with CSS Variables
-- Font Awesome icons
-- Google Fonts (Inter)
-- CSS animations and transitions
-
-## Sections
-
-- Hero: Introduction with profile image
-- About: Professional summary and statistics
-- Skills: Technical and professional skills
-- Projects: Featured projects with GitHub links
-- Certifications: Certificates and badges carousels
-- Contact: Contact information
-- Footer: Additional links and social media
-
-## License
-
-This project is open source and available.
-
-## Contact
-
-**[Mahmoud Abdallah](Mahmoud_abdallah20@outlook.com)**
-
-## Live Demo 
-**[The Analyst](https://mahmoud2abdallah.github.io)**
-
-![Profile](https://img.shields.io/badge/-Profile-000000?style=for-the-badge&logo=github&logoColor=white)
+**Always focused on:**  
+Clarity, business impact, and making data work for people – not the other way around.
