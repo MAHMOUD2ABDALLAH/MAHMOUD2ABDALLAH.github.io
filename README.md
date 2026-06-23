@@ -1,4 +1,4 @@
-# The Analyst - Data Analytics & Business Intelligence Portfolio
+# Data Analytics Portfolio
 
 A modern, responsive portfolio website showcasing data analytics and business intelligence projects, skills, and certifications.
 
