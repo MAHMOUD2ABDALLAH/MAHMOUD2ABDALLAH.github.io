@@ -1379,6 +1379,7 @@
           color: #ffffff;
       }
 
+      /* ========== UPDATED FOOTER STYLES (centered) ========== */
       footer {
           background: var(--bg-secondary);
           border-top: 1px solid var(--border-color);
@@ -1387,10 +1388,12 @@
           z-index: 1;
       }
       .footer-content {
-          display: grid;
-          grid-template-columns: 2fr 1fr 1fr;
-          gap: 48px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 32px;
           margin-bottom: 40px;
+          text-align: center;
       }
       .footer-logo {
           font-size: 1.6rem;
@@ -1401,14 +1404,16 @@
       }
       .footer-about p {
           color: var(--text-secondary);
-          max-width: 320px;
+          max-width: 400px;
           font-size: 0.95rem;
+          margin: 0 auto;
       }
       .social-links {
           display: flex;
           gap: 12px;
           margin-top: 20px;
           align-items: center;
+          justify-content: center;
       }
       .social-link {
           width: 42px;
@@ -1429,34 +1434,44 @@
           border-color: var(--primary);
           transform: translateY(-4px);
       }
-      .footer-links h3 {
-          font-size: 0.9rem;
-          font-weight: 700;
-          color: var(--text-primary);
-          margin-bottom: 16px;
-      }
-      .footer-links ul {
+
+      /* Logos centered, no heading */
+      .cert-logos {
           display: flex;
-          flex-direction: column;
-          gap: 8px;
+          flex-wrap: wrap;
+          gap: 18px;
+          align-items: center;
+          justify-content: center;
+          margin-top: 16px;
       }
-      .footer-links a {
-          color: var(--text-secondary);
-          text-decoration: none;
-          font-size: 0.9rem;
-          transition: var(--transition);
+      .cert-logos img {
+          max-width: 100%;
+          height: auto;
+          object-fit: contain;
+          filter: grayscale(0.3) brightness(0.85);
+          transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          cursor: default;
       }
-      .footer-links a:hover {
-          color: var(--primary);
+      .cert-logos img:hover {
+          filter: grayscale(0) brightness(1);
+          transform: translateY(-3px);
       }
+
       .copyright {
           text-align: center;
           padding-top: 24px;
           border-top: 1px solid var(--border-color);
           color: var(--text-muted);
           font-size: 0.85rem;
+          line-height: 1.6;
       }
 
+      /* Remove the footer-certifications h3 since it's gone */
+      .footer-certifications h3 {
+          display: none;
+      }
+
+      /* ========== RESPONSIVE ========== */
       @media (prefers-reduced-motion: reduce) {
           .image-frame,
           .project-card,
@@ -1586,11 +1601,6 @@
           .about-stats {
               grid-template-columns: 1fr 1fr;
           }
-          .footer-content {
-              grid-template-columns: 1fr;
-              gap: 32px;
-              text-align: center;
-          }
           .card-logo-rect {
               width: 35%;
               height: 35%;
@@ -1630,6 +1640,12 @@
           }
           .freelance-card:hover {
               scale: 1.03;
+          }
+          .footer-content {
+              gap: 24px;
+          }
+          .cert-logos {
+              gap: 14px;
           }
       }
 
@@ -2081,9 +2097,11 @@
       </div>
     </section>
 
+    <!-- ========== UPDATED FOOTER – CENTERED ========== -->
     <footer>
       <div class="container">
         <div class="footer-content reveal">
+          <!-- Branding + Social -->
           <div class="footer-about">
             <div class="footer-logo">
               <span style="color: #fff;">Data</span
@@ -2115,30 +2133,49 @@
               ></a>
             </div>
           </div>
-          <div class="footer-links">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-          <div class="footer-links">
-            <h3>Expertise</h3>
-            <ul>
-              <li><a href="#">Data Analytics</a></li>
-              <li><a href="#">Business Intelligence</a></li>
-              <li><a href="#">Dashboard Dev</a></li>
-              <li><a href="#">ETL &amp; Automation</a></li>
-              <li><a href="#">ML &amp; Predictive</a></li>
-            </ul>
+
+          <!-- Logos only, no heading -->
+          <div class="cert-logos">
+            <img
+              src="https://github.com/user-attachments/assets/de5db8c8-0378-4ff9-9fe8-6217941cd3fa"
+              alt="FCIS Ain Shams"
+              width="80"
+              height="70"
+              loading="lazy"
+            />
+            <img
+              src="https://github.com/user-attachments/assets/57c4ce5e-a943-4e18-bf2c-0999d3fb68ea"
+              alt="Cisco"
+              width="80"
+              height="40"
+              loading="lazy"
+            />
+            <img
+              src="https://github.com/user-attachments/assets/5506718e-9671-474a-8b30-98635c761480"
+              alt="Coursera"
+              width="280"
+              height="40"
+              loading="lazy"
+            />
+            <img
+              src="https://github.com/user-attachments/assets/17708e78-aaf8-42ae-9a44-fe72acdb77ec"
+              alt="IBM"
+              width="100"
+              height="40"
+              loading="lazy"
+            />
+            <img
+              src="https://github.com/user-attachments/assets/12035e70-7265-42f0-ab74-84659d652148"
+              alt="Microsoft"
+              width="200"
+              height="40"
+              loading="lazy"
+            />
           </div>
         </div>
         <div class="copyright">
           <p>
-            &copy; 2025 Mahmoud Abdallah — Data Analytics. All rights reserved.
+            2024 Mahmoud Abdallah - DataAnalytics.<br />All Rights Reserved.
           </p>
         </div>
       </div>
@@ -2148,7 +2185,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
 
     <script>
-      // Three.js animated background — full‑page, blurred, no pointer interaction
+      // Three.js animated background
       (function() {
           const canvas = document.getElementById('hero-bg');
           const conf = {
@@ -2278,15 +2315,11 @@
 
       // Disable devtools shortcuts
       (function() {
-          document.addEventListener('contextmenu', function(e) { e.preventDefault();
-              return false; });
+          document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
           document.addEventListener('keydown', function(e) {
-              if (e.key === 'F12') { e.preventDefault();
-                  return false; }
-              if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) { e.preventDefault();
-                  return false; }
-              if (e.ctrlKey && e.key === 'u') { e.preventDefault();
-                  return false; }
+              if (e.key === 'F12') { e.preventDefault(); return false; }
+              if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) { e.preventDefault(); return false; }
+              if (e.ctrlKey && e.key === 'u') { e.preventDefault(); return false; }
           });
       })();
 
@@ -2391,8 +2424,7 @@
 
       function observeElements(selector) {
           const observer = new IntersectionObserver((entries) => {
-              entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add(
-                      'active'); });
+              entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
           }, { threshold: 0.1 });
           document.querySelectorAll(selector).forEach(el => observer.observe(el));
       }
@@ -2401,8 +2433,7 @@
           const menuBtn = document.getElementById('mobileMenu');
           const navLinks = document.getElementById('navLinks');
           if (menuBtn) menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-          if (navLinks) navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks
-              .classList.remove('active')));
+          if (navLinks) navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
           const header = document.getElementById('header');
           window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.pageYOffset > 20));
 
@@ -2412,8 +2443,7 @@
           const revealObserver = new IntersectionObserver((entries) => {
               entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
           }, { threshold: 0.1 });
-          document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .freelance-divider').forEach(el =>
-              revealObserver.observe(el));
+          document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .freelance-divider').forEach(el => revealObserver.observe(el));
       });
     </script>
   </body>
