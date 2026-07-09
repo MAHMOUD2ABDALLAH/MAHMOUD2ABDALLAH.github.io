@@ -32,7 +32,7 @@
       }
 
       :root {
-          --primary: #2185FE;
+          --primary: #2185fe;
           --primary-rgb: 33, 133, 254;
           --primary-light: #50a0fe;
           --primary-dark: #1a6cd4;
@@ -76,39 +76,64 @@
           display: inline-block;
       }
 
+      .blue-fill-effect {
+          position: relative;
+          overflow: hidden;
+      }
+      .blue-fill-effect::before {
+          content: '';
+          position: absolute;
+          right: -5.2rem;
+          top: -5.2rem;
+          width: 10.4rem;
+          height: 10.4rem;
+          background: var(--primary);
+          z-index: 0;
+          opacity: 0;
+          border-radius: 50%;
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .blue-fill-effect::after {
+          content: '';
+          position: absolute;
+          left: -5.2rem;
+          bottom: -5.2rem;
+          width: 10.4rem;
+          height: 10.4rem;
+          background: var(--primary);
+          z-index: 0;
+          opacity: 0;
+          border-radius: 50%;
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .blue-fill-effect:hover::before {
+          scale: 7;
+          opacity: 1;
+      }
+      .blue-fill-effect:hover::after {
+          scale: 7;
+          opacity: 1;
+      }
+      .blue-fill-effect>* {
+          position: relative;
+          z-index: 2;
+      }
+
       @keyframes drift-buoy {
           0%,
-          100% {
-              transform: translateY(0px);
-          }
-          20% {
-              transform: translateY(-7px);
-          }
-          40% {
-              transform: translateY(-2px);
-          }
-          60% {
-              transform: translateY(-9px);
-          }
-          80% {
-              transform: translateY(-3px);
-          }
+          100% { transform: translateY(0px); }
+          20% { transform: translateY(-7px); }
+          40% { transform: translateY(-2px); }
+          60% { transform: translateY(-9px); }
+          80% { transform: translateY(-3px); }
       }
 
       @keyframes drift-buoy-subtle {
           0%,
-          100% {
-              transform: translateY(0px);
-          }
-          25% {
-              transform: translateY(-5px);
-          }
-          50% {
-              transform: translateY(-1px);
-          }
-          75% {
-              transform: translateY(-6px);
-          }
+          100% { transform: translateY(0px); }
+          25% { transform: translateY(-5px); }
+          50% { transform: translateY(-1px); }
+          75% { transform: translateY(-6px); }
       }
 
       .reveal {
@@ -135,21 +160,11 @@
           opacity: 1;
           transform: translateX(0);
       }
-      .delay-1 {
-          transition-delay: 0.1s;
-      }
-      .delay-2 {
-          transition-delay: 0.2s;
-      }
-      .delay-3 {
-          transition-delay: 0.3s;
-      }
-      .delay-4 {
-          transition-delay: 0.4s;
-      }
-      .delay-5 {
-          transition-delay: 0.5s;
-      }
+      .delay-1 { transition-delay: 0.1s; }
+      .delay-2 { transition-delay: 0.2s; }
+      .delay-3 { transition-delay: 0.3s; }
+      .delay-4 { transition-delay: 0.4s; }
+      .delay-5 { transition-delay: 0.5s; }
 
       #hero-bg {
           position: fixed;
@@ -221,6 +236,7 @@
           text-align: center;
       }
 
+      /* ========== HERO BUTTONS – no blue fill, just color change ========== */
       .btn {
           display: inline-flex;
           align-items: center;
@@ -236,26 +252,27 @@
           background: transparent;
           color: var(--text-primary);
           font-family: inherit;
-      }
-      .btn-primary {
-          background: var(--primary);
-          color: #fff;
-          box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.3);
-      }
-      .btn-primary:hover {
-          background: var(--primary-dark);
-          transform: translateY(-3px);
-          box-shadow: 0 8px 32px rgba(var(--primary-rgb), 0.4);
+          position: relative;
+          overflow: hidden;
       }
       .btn-outline {
           border: 2px solid rgba(255, 255, 255, 0.15);
-          color: var(--text-secondary);
+          color: #ffffff;
       }
       .btn-outline:hover {
           border-color: var(--primary);
           color: #fff;
           background: rgba(var(--primary-rgb), 0.08);
           transform: translateY(-3px);
+      }
+
+      /* Hover text/icon white (without blue fill) */
+      .btn:hover,
+      .btn:hover *,
+      .btn:hover svg {
+          color: #ffffff;
+          stroke: #ffffff;
+          -webkit-text-fill-color: #ffffff;
       }
 
       header {
@@ -380,14 +397,8 @@
           animation: pulse 2s infinite;
       }
       @keyframes pulse {
-          0% {
-              transform: scale(1);
-              opacity: 0.4;
-          }
-          100% {
-              transform: scale(2.5);
-              opacity: 0;
-          }
+          0% { transform: scale(1); opacity: 0.4; }
+          100% { transform: scale(2.5); opacity: 0; }
       }
       .badge {
           font-size: 14px;
@@ -431,16 +442,6 @@
           font-size: 16px;
           transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
       }
-      .hero-btns .btn-primary {
-          background: var(--primary);
-          color: white;
-          box-shadow: 0 10px 30px -10px rgba(var(--primary-rgb), 0.6);
-      }
-      .hero-btns .btn-primary:hover {
-          background: var(--primary);
-          transform: translateY(-4px) scale(1.02);
-          box-shadow: 0 20px 40px -10px rgba(var(--primary-rgb), 0.7);
-      }
       .hero-btns .btn-outline {
           background: rgba(255, 255, 255, 0.03);
           color: white;
@@ -450,6 +451,7 @@
           background: rgba(255, 255, 255, 0.08);
           border-color: var(--primary);
       }
+
       .tech-stack {
           display: flex;
           align-items: center;
@@ -460,7 +462,7 @@
           font-size: 13px;
           text-transform: uppercase;
           letter-spacing: 2px;
-          color: var(--text-muted);
+          color: #ffffff;
           font-weight: 700;
       }
       .stack-icons {
@@ -480,13 +482,48 @@
           font-weight: 700;
           color: var(--text-secondary);
           transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          cursor: default;
+      }
+      .tech-item::before,
+      .tech-item::after {
+          content: '';
+          position: absolute;
+          right: -3rem;
+          top: -3rem;
+          width: 6rem;
+          height: 6rem;
+          background: var(--primary);
+          z-index: 0;
+          opacity: 0;
+          border-radius: 50%;
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .tech-item::after {
+          left: -3rem;
+          bottom: -3rem;
+          right: auto;
+          top: auto;
+      }
+      .tech-item:hover::before {
+          scale: 4;
+          opacity: 1;
+      }
+      .tech-item:hover::after {
+          scale: 4;
+          opacity: 1;
       }
       .tech-item:hover {
-          background: var(--bg-card-hover);
           border-color: var(--primary);
-          color: var(--primary-light);
+          color: #fff;
           transform: translateY(-5px);
       }
+      .tech-item>* {
+          position: relative;
+          z-index: 2;
+      }
+
       .hero-image-wrapper {
           position: relative;
           padding: 10px;
@@ -565,6 +602,45 @@
           z-index: 5;
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
           animation: float-y 6s infinite ease-in-out reverse;
+          overflow: hidden;
+          cursor: default;
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .floating-badge::before,
+      .floating-badge::after {
+          content: '';
+          position: absolute;
+          right: -3rem;
+          top: -3rem;
+          width: 6rem;
+          height: 6rem;
+          background: var(--primary);
+          z-index: 0;
+          opacity: 0;
+          border-radius: 50%;
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .floating-badge::after {
+          left: -3rem;
+          bottom: -3rem;
+          right: auto;
+          top: auto;
+      }
+      .floating-badge:hover::before {
+          scale: 4;
+          opacity: 1;
+      }
+      .floating-badge:hover::after {
+          scale: 4;
+          opacity: 1;
+      }
+      .floating-badge:hover {
+          color: #fff;
+          border-color: var(--primary);
+      }
+      .floating-badge>* {
+          position: relative;
+          z-index: 2;
       }
       .badge-icon {
           width: 28px;
@@ -577,12 +653,8 @@
       }
       @keyframes float-y {
           0%,
-          100% {
-              transform: translateY(0);
-          }
-          50% {
-              transform: translateY(-12px);
-          }
+          100% { transform: translateY(0); }
+          50% { transform: translateY(-12px); }
       }
 
       .about {
@@ -678,22 +750,10 @@
           animation: drift-buoy-subtle 6s ease-in-out infinite;
           will-change: transform;
       }
-      .stat:nth-child(1) {
-          animation-delay: 0.2s;
-          animation-duration: 6.4s;
-      }
-      .stat:nth-child(2) {
-          animation-delay: 0.8s;
-          animation-duration: 5.8s;
-      }
-      .stat:nth-child(3) {
-          animation-delay: 1.4s;
-          animation-duration: 6.6s;
-      }
-      .stat:nth-child(4) {
-          animation-delay: 2.0s;
-          animation-duration: 5.9s;
-      }
+      .stat:nth-child(1) { animation-delay: 0.2s; animation-duration: 6.4s; }
+      .stat:nth-child(2) { animation-delay: 0.8s; animation-duration: 5.8s; }
+      .stat:nth-child(3) { animation-delay: 1.4s; animation-duration: 6.6s; }
+      .stat:nth-child(4) { animation-delay: 2.0s; animation-duration: 5.9s; }
       .stat:hover {
           animation-play-state: paused;
           transform: translateY(-8px);
@@ -719,8 +779,9 @@
           z-index: 2;
           transition: color 0.48s cubic-bezier(0.23, 1, 0.32, 1);
       }
-      .stat::before {
-          content: "";
+      .stat::before,
+      .stat::after {
+          content: '';
           position: absolute;
           right: -5.2rem;
           top: -5.2rem;
@@ -733,17 +794,10 @@
           transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
       }
       .stat::after {
-          content: "";
-          position: absolute;
           left: -5.2rem;
           bottom: -5.2rem;
-          width: 10.4rem;
-          height: 10.4rem;
-          background: var(--primary);
-          z-index: 0;
-          opacity: 0;
-          border-radius: 50%;
-          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+          right: auto;
+          top: auto;
       }
       .stat:hover::before {
           scale: 7;
@@ -779,6 +833,8 @@
           max-width: 1000px;
           margin: 0 auto;
       }
+
+      /* ========== SKILL BADGES – keep blue fill ========== */
       .skill-badge {
           display: inline-flex;
           align-items: center;
@@ -791,17 +847,58 @@
           font-weight: 500;
           color: var(--text-secondary);
           transition: var(--transition);
+          position: relative;
+          overflow: hidden;
+          cursor: default;
       }
       .skill-badge i {
           color: var(--primary);
           font-size: 0.9rem;
+          position: relative;
+          z-index: 2;
+          transition: color 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .skill-badge::before,
+      .skill-badge::after {
+          content: '';
+          position: absolute;
+          right: -5.2rem;
+          top: -5.2rem;
+          width: 10.4rem;
+          height: 10.4rem;
+          background: var(--primary);
+          z-index: 0;
+          opacity: 0;
+          border-radius: 50%;
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .skill-badge::after {
+          left: -5.2rem;
+          bottom: -5.2rem;
+          right: auto;
+          top: auto;
+      }
+      .skill-badge:hover::before {
+          scale: 7;
+          opacity: 1;
+      }
+      .skill-badge:hover::after {
+          scale: 7;
+          opacity: 1;
       }
       .skill-badge:hover {
           border-color: var(--primary);
-          color: var(--text-primary);
+          color: #fff;
           transform: translateY(-4px);
           background: var(--bg-card-hover);
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      }
+      .skill-badge:hover i {
+          color: #ffffff;
+      }
+      .skill-badge span {
+          position: relative;
+          z-index: 2;
       }
 
       .projects {
@@ -838,63 +935,45 @@
           animation: drift-buoy 7s ease-in-out 1s infinite;
           will-change: transform;
           min-height: 320px;
+          cursor: pointer;
+          text-decoration: none;
+          color: inherit;
       }
-      .project-card:nth-child(1) {
-          animation-delay: 0.3s;
-          animation-duration: 6.8s;
-      }
-      .project-card:nth-child(2) {
-          animation-delay: 1.2s;
-          animation-duration: 7.3s;
-      }
-      .project-card:nth-child(3) {
-          animation-delay: 2.0s;
-          animation-duration: 6.5s;
-      }
-      .project-card:nth-child(4) {
-          animation-delay: 0.7s;
-          animation-duration: 7.0s;
-      }
-      .project-card:nth-child(5) {
-          animation-delay: 1.6s;
-          animation-duration: 6.9s;
-      }
-      .project-card:nth-child(6) {
-          animation-delay: 2.4s;
-          animation-duration: 7.1s;
-      }
+      .project-card:nth-child(1) { animation-delay: 0.3s; animation-duration: 6.8s; }
+      .project-card:nth-child(2) { animation-delay: 1.2s; animation-duration: 7.3s; }
+      .project-card:nth-child(3) { animation-delay: 2.0s; animation-duration: 6.5s; }
+      .project-card:nth-child(4) { animation-delay: 0.7s; animation-duration: 7.0s; }
+      .project-card:nth-child(5) { animation-delay: 1.6s; animation-duration: 6.9s; }
+      .project-card:nth-child(6) { animation-delay: 2.4s; animation-duration: 7.1s; }
+
       .project-card:hover {
           animation-play-state: paused;
-          transform: translateY(-8px);
+          scale: 1.05;
           border-color: var(--primary);
-          box-shadow: 0 0 50px rgba(var(--primary-rgb), 0.22), 0 20px 40px rgba(0, 0, 0, 0.7);
-          background: var(--bg-card-hover);
+          box-shadow: 0rem 6px 13px rgba(0, 0, 0, 0.4), 0rem 24px 24px rgba(0, 0, 0, 0.3), 0rem 55px 33px rgba(0, 0, 0, 0.15), 0rem 97px 39px rgba(0, 0, 0, 0.05), 0rem 152px 43px rgba(0, 0, 0, 0);
+          z-index: 10;
       }
-      .project-card::before {
-          content: "";
+
+      /* ========== BLUE FILL EFFECT FOR FEATURE PROJECTS (same as freelance) ========== */
+      .project-card::before,
+      .project-card::after {
+          content: '';
           position: absolute;
           right: -5.2rem;
           top: -5.2rem;
           width: 10.4rem;
           height: 10.4rem;
           background: var(--primary);
-          z-index: 0;
+          z-index: 1; /* above blur, below content */
           opacity: 0;
           border-radius: 50%;
           transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
       }
       .project-card::after {
-          content: "";
-          position: absolute;
           left: -5.2rem;
           bottom: -5.2rem;
-          width: 10.4rem;
-          height: 10.4rem;
-          background: var(--primary);
-          z-index: 0;
-          opacity: 0;
-          border-radius: 50%;
-          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+          right: auto;
+          top: auto;
       }
       .project-card:hover::before {
           scale: 7;
@@ -904,67 +983,47 @@
           scale: 7;
           opacity: 1;
       }
-      .project-card:hover .card-content h3,
-      .project-card:hover .card-content p {
+      .project-card:hover h3,
+      .project-card:hover p,
+      .project-card:hover .project-tag,
+      .project-card:hover .btn-website-card {
           color: #ffffff;
       }
       .project-card:hover .project-tag {
-          color: rgba(255, 255, 255, 0.9);
           background: rgba(255, 255, 255, 0.15);
           border-color: rgba(255, 255, 255, 0.3);
       }
-      .project-card:hover .github-icon-link {
-          background: rgba(255, 255, 255, 0.2);
-          border-color: rgba(255, 255, 255, 0.4);
-          color: #ffffff;
-      }
       .project-card:hover .btn-website-card {
           border-color: rgba(255, 255, 255, 0.4);
-          color: #ffffff;
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.08);
+      }
+      /* ============================================================== */
+
+      .card-bg-blur {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          filter: blur(3px);
+          opacity: 0.22;
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+          border-radius: var(--radius-lg);
+          pointer-events: none;
+      }
+      .project-card:hover .card-bg-blur {
+          opacity: 0.06;
+          filter: blur(5px);
       }
 
-      .card-logo-rect {
-          position: absolute;
-          bottom: 6px;
-          right: 6px;
-          width: 42%;
-          height: 42%;
-          max-width: 130px;
-          max-height: 130px;
-          min-width: 85px;
-          min-height: 85px;
-          border-radius: 18px;
-          background: rgba(var(--primary-rgb), 0.1);
-          backdrop-filter: blur(2px);
-          border: 1px solid rgba(var(--primary-rgb), 0.3);
-          box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.5);
-          overflow: hidden;
-          transition: transform 0.3s ease, box-shadow 0.3s, background 0.48s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-          z-index: 1;
-      }
-      .project-card:hover .card-logo-rect {
-          transform: translate(-4px, -4px) scale(1.02);
-          box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.6);
-          border-color: rgba(255, 255, 255, 0.4);
-          background: rgba(255, 255, 255, 0.12);
-      }
-      .card-logo-rect img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-          transition: transform 0.4s ease;
-      }
-      .project-card:hover .card-logo-rect img {
-          transform: scale(1.05);
-      }
       .card-content {
           display: flex;
           flex-direction: column;
           gap: 8px;
           z-index: 2;
           position: relative;
+          padding-right: 10px;
       }
       .card-content h3 {
           font-size: 1.35rem;
@@ -1008,20 +1067,8 @@
           margin-top: 12px;
           flex-wrap: wrap;
       }
-      .github-icon-link {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 40px;
-          height: 40px;
-          background: rgba(255, 255, 255, 0.06);
-          border-radius: 50%;
-          border: 1px solid var(--border-color);
-          color: var(--text-secondary);
-          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-          font-size: 1.3rem;
-          text-decoration: none;
-      }
+
+      /* ========== WEBSITE BUTTON – no blue fill, just text/icon white on hover ========== */
       .btn-website-card {
           background: transparent;
           color: var(--text-secondary);
@@ -1036,6 +1083,17 @@
           align-items: center;
           gap: 8px;
           font-family: inherit;
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+      }
+      .btn-website-card:hover {
+          color: #ffffff;
+          border-color: var(--primary);
+          background: rgba(var(--primary-rgb), 0.1);
+      }
+      .btn-website-card:hover i {
+          color: #ffffff;
       }
 
       .freelance-divider {
@@ -1101,27 +1159,14 @@
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
           animation: drift-buoy-subtle 7s ease-in-out infinite;
           will-change: transform;
+          text-decoration: none;
+          color: inherit;
       }
-      .freelance-card-wrapper:nth-child(1) .freelance-card {
-          animation-delay: 0.3s;
-          animation-duration: 6.8s;
-      }
-      .freelance-card-wrapper:nth-child(2) .freelance-card {
-          animation-delay: 1.2s;
-          animation-duration: 7.3s;
-      }
-      .freelance-card-wrapper:nth-child(3) .freelance-card {
-          animation-delay: 2.0s;
-          animation-duration: 6.5s;
-      }
-      .freelance-card-wrapper:nth-child(4) .freelance-card {
-          animation-delay: 0.7s;
-          animation-duration: 7.0s;
-      }
-      .freelance-card-wrapper:nth-child(5) .freelance-card {
-          animation-delay: 1.6s;
-          animation-duration: 6.9s;
-      }
+      .freelance-card-wrapper:nth-child(1) .freelance-card { animation-delay: 0.3s; animation-duration: 6.8s; }
+      .freelance-card-wrapper:nth-child(2) .freelance-card { animation-delay: 1.2s; animation-duration: 7.3s; }
+      .freelance-card-wrapper:nth-child(3) .freelance-card { animation-delay: 2.0s; animation-duration: 6.5s; }
+      .freelance-card-wrapper:nth-child(4) .freelance-card { animation-delay: 0.7s; animation-duration: 7.0s; }
+      .freelance-card-wrapper:nth-child(5) .freelance-card { animation-delay: 1.6s; animation-duration: 6.9s; }
 
       .freelance-card .card-inner-content {
           display: flex;
@@ -1132,6 +1177,7 @@
           z-index: 2;
           position: relative;
           transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+          padding-right: 50px;
       }
       .freelance-card .card-heading {
           font-weight: 700;
@@ -1150,8 +1196,9 @@
           transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
           line-height: 1.5;
       }
-      .freelance-card::before {
-          content: "";
+      .freelance-card::before,
+      .freelance-card::after {
+          content: '';
           position: absolute;
           right: -5.2rem;
           top: -5.2rem;
@@ -1164,17 +1211,10 @@
           transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
       }
       .freelance-card::after {
-          content: "";
-          position: absolute;
           left: -5.2rem;
           bottom: -5.2rem;
-          width: 10.4rem;
-          height: 10.4rem;
-          background: var(--primary);
-          z-index: 0;
-          opacity: 0;
-          border-radius: 50%;
-          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+          right: auto;
+          top: auto;
       }
       .freelance-card:hover::before {
           scale: 7;
@@ -1191,19 +1231,16 @@
           color: rgba(255, 255, 255, 0.95);
       }
       .freelance-card:hover {
-          box-shadow: 0rem 6px 13px rgba(0, 0, 0, 0.4),
-              0rem 24px 24px rgba(0, 0, 0, 0.3),
-              0rem 55px 33px rgba(0, 0, 0, 0.15),
-              0rem 97px 39px rgba(0, 0, 0, 0.05),
-              0rem 152px 43px rgba(0, 0, 0, 0);
+          box-shadow: 0rem 6px 13px rgba(0, 0, 0, 0.4), 0rem 24px 24px rgba(0, 0, 0, 0.3), 0rem 55px 33px rgba(0, 0, 0, 0.15), 0rem 97px 39px rgba(0, 0, 0, 0.05), 0rem 152px 43px rgba(0, 0, 0, 0);
           border-color: var(--primary);
           scale: 1.05;
           z-index: 10;
       }
-      .freelance-card .upwork-badge {
+
+      .freelance-card .upwork-badge-bottom {
           position: absolute;
-          top: 16px;
-          left: 18px;
+          bottom: 16px;
+          right: 18px;
           z-index: 3;
           display: flex;
           align-items: center;
@@ -1211,175 +1248,17 @@
           transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
           pointer-events: none;
       }
-      .freelance-card .upwork-badge img {
+      .freelance-card .upwork-badge-bottom img {
           width: 28px;
           height: 28px;
           object-fit: contain;
           filter: hue-rotate(200deg) saturate(2);
           transition: filter 0.48s cubic-bezier(0.23, 1, 0.32, 1);
       }
-      .freelance-card:hover .upwork-badge img {
-          filter: hue-rotate(200deg) saturate(2);
-      }
-      .freelance-card .github-corner {
-          position: absolute;
-          bottom: 16px;
-          right: 18px;
-          z-index: 3;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 38px;
-          height: 38px;
-          border-radius: 50%;
-          background: rgba(255, 255, 255, 0.06);
-          border: 1px solid var(--border-color);
-          color: var(--text-secondary);
-          font-size: 1.1rem;
-          text-decoration: none;
-          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .freelance-card:hover .github-corner {
-          background: rgba(255, 255, 255, 0.2);
-          border-color: rgba(255, 255, 255, 0.4);
-          color: #ffffff;
-          transform: translateY(-3px);
-          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+      .freelance-card:hover .upwork-badge-bottom img {
+          filter: hue-rotate(200deg) saturate(2) brightness(1.3);
       }
 
-      .contact {
-          background: var(--bg-primary);
-          position: relative;
-      }
-      .contact::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, var(--primary), transparent);
-      }
-      .contact-row {
-          display: flex;
-          justify-content: center;
-          gap: 30px;
-          flex-wrap: wrap;
-          max-width: 900px;
-          margin: 0 auto;
-      }
-      .contact-item {
-          position: relative;
-          overflow: hidden;
-          flex: 1 1 280px;
-          display: flex;
-          align-items: center;
-          gap: 20px;
-          padding: 28px 32px;
-          background: var(--bg-card);
-          border-radius: var(--radius-lg);
-          border: 1px solid var(--border-color);
-          transition: transform 0.5s, box-shadow 0.5s, border-color 0.3s;
-          animation: drift-buoy 7s ease-in-out infinite;
-          will-change: transform;
-      }
-      .contact-item:nth-child(1) {
-          animation-delay: 0.3s;
-          animation-duration: 6.5s;
-      }
-      .contact-item:nth-child(2) {
-          animation-delay: 1.2s;
-          animation-duration: 7.2s;
-      }
-      .contact-item:hover {
-          animation-play-state: paused;
-          transform: translateY(-8px);
-          border-color: var(--primary);
-          box-shadow: 0 0 40px rgba(var(--primary-rgb), 0.22);
-          background: var(--bg-card-hover);
-      }
-      .contact-item::before {
-          content: "";
-          position: absolute;
-          right: -5.2rem;
-          top: -5.2rem;
-          width: 10.4rem;
-          height: 10.4rem;
-          background: var(--primary);
-          z-index: 0;
-          opacity: 0;
-          border-radius: 50%;
-          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .contact-item::after {
-          content: "";
-          position: absolute;
-          left: -5.2rem;
-          bottom: -5.2rem;
-          width: 10.4rem;
-          height: 10.4rem;
-          background: var(--primary);
-          z-index: 0;
-          opacity: 0;
-          border-radius: 50%;
-          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .contact-item:hover::before {
-          scale: 7;
-          opacity: 1;
-      }
-      .contact-item:hover::after {
-          scale: 7;
-          opacity: 1;
-      }
-      .contact-icon {
-          width: 52px;
-          height: 52px;
-          background: rgba(var(--primary-rgb), 0.08);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--primary);
-          font-size: 1.2rem;
-          flex-shrink: 0;
-          border: 1px solid rgba(var(--primary-rgb), 0.1);
-          position: relative;
-          z-index: 2;
-          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .contact-item:hover .contact-icon {
-          background: rgba(255, 255, 255, 0.2);
-          border-color: rgba(255, 255, 255, 0.4);
-          color: #ffffff;
-      }
-      .contact-item h3 {
-          font-size: 0.9rem;
-          font-weight: 600;
-          color: var(--text-muted);
-          margin-bottom: 2px;
-          position: relative;
-          z-index: 2;
-          transition: color 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .contact-item:hover h3 {
-          color: rgba(255, 255, 255, 0.85);
-      }
-      .contact-item p {
-          position: relative;
-          z-index: 2;
-      }
-      .contact-item p a {
-          color: var(--text-primary);
-          text-decoration: none;
-          font-weight: 500;
-          transition: color 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .contact-item:hover p a {
-          color: #ffffff;
-      }
-
-      /* ========== UPDATED FOOTER STYLES (centered) ========== */
       footer {
           background: var(--bg-secondary);
           border-top: 1px solid var(--border-color);
@@ -1387,33 +1266,43 @@
           position: relative;
           z-index: 1;
       }
-      .footer-content {
+
+      .footer-main {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          gap: 40px;
+          margin-bottom: 40px;
+      }
+
+      .footer-left {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          gap: 32px;
-          margin-bottom: 40px;
-          text-align: center;
+          align-items: flex-start;
+          gap: 20px;
+          flex: 1 1 300px;
       }
+
       .footer-logo {
           font-size: 1.6rem;
           font-weight: 800;
-          margin-bottom: 12px;
           letter-spacing: -0.02em;
           white-space: nowrap;
       }
+
       .footer-about p {
           color: var(--text-secondary);
           max-width: 400px;
           font-size: 0.95rem;
-          margin: 0 auto;
+          margin: 0;
+          text-align: left;
       }
+
       .social-links {
           display: flex;
           gap: 12px;
-          margin-top: 20px;
           align-items: center;
-          justify-content: center;
       }
       .social-link {
           width: 42px;
@@ -1427,34 +1316,172 @@
           transition: var(--transition);
           border: 1px solid var(--border-color);
           text-decoration: none;
+          position: relative;
+          overflow: hidden;
+      }
+      .social-link::before,
+      .social-link::after {
+          content: '';
+          position: absolute;
+          right: -3rem;
+          top: -3rem;
+          width: 6rem;
+          height: 6rem;
+          background: var(--primary);
+          z-index: 0;
+          opacity: 0;
+          border-radius: 50%;
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .social-link::after {
+          left: -3rem;
+          bottom: -3rem;
+          right: auto;
+          top: auto;
+      }
+      .social-link:hover::before {
+          scale: 4;
+          opacity: 1;
+      }
+      .social-link:hover::after {
+          scale: 4;
+          opacity: 1;
       }
       .social-link:hover {
-          background: var(--primary);
           color: #fff;
           border-color: var(--primary);
           transform: translateY(-4px);
       }
+      .social-link i {
+          position: relative;
+          z-index: 2;
+      }
 
-      /* Logos centered, no heading */
+      .footer-right {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+          flex: 0 1 280px;
+      }
+
+      .footer-right h4 {
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: var(--text-muted);
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          margin-bottom: 4px;
+      }
+
+      .footer-contact-item {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 10px 16px;
+          background: var(--bg-card);
+          border-radius: var(--radius);
+          border: 1px solid var(--border-color);
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+          width: 100%;
+          text-decoration: none;
+          color: inherit;
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+      }
+      .footer-contact-item::before,
+      .footer-contact-item::after {
+          content: '';
+          position: absolute;
+          right: -5.2rem;
+          top: -5.2rem;
+          width: 10.4rem;
+          height: 10.4rem;
+          background: var(--primary);
+          z-index: 0;
+          opacity: 0;
+          border-radius: 50%;
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .footer-contact-item::after {
+          left: -5.2rem;
+          bottom: -5.2rem;
+          right: auto;
+          top: auto;
+      }
+      .footer-contact-item:hover::before {
+          scale: 7;
+          opacity: 1;
+      }
+      .footer-contact-item:hover::after {
+          scale: 7;
+          opacity: 1;
+      }
+      .footer-contact-item:hover {
+          border-color: var(--primary);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      }
+      .footer-contact-item .fc-icon {
+          width: 36px;
+          height: 36px;
+          background: rgba(var(--primary-rgb), 0.08);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--primary);
+          font-size: 0.9rem;
+          flex-shrink: 0;
+          border: 1px solid rgba(var(--primary-rgb), 0.1);
+          position: relative;
+          z-index: 2;
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .footer-contact-item:hover .fc-icon {
+          background: rgba(255, 255, 255, 0.2);
+          border-color: rgba(255, 255, 255, 0.4);
+          color: #ffffff;
+      }
+      .footer-contact-item .fc-text {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          z-index: 2;
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .footer-contact-item .fc-text small {
+          font-size: 0.7rem;
+          color: var(--text-muted);
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          transition: color 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .footer-contact-item .fc-text span {
+          color: var(--text-primary);
+          font-weight: 500;
+          font-size: 0.9rem;
+          transition: color 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .footer-contact-item:hover .fc-text small {
+          color: rgba(255, 255, 255, 0.8);
+      }
+      .footer-contact-item:hover .fc-text span {
+          color: #ffffff;
+      }
+
       .cert-logos {
           display: flex;
           flex-wrap: wrap;
-          gap: 18px;
+          gap: 14px;
           align-items: center;
-          justify-content: center;
-          margin-top: 16px;
+          margin-top: 8px;
       }
       .cert-logos img {
-          max-width: 100%;
-          height: auto;
+          height: 22px;
+          width: auto;
           object-fit: contain;
-          filter: grayscale(0.3) brightness(0.85);
-          transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          cursor: default;
-      }
-      .cert-logos img:hover {
-          filter: grayscale(0) brightness(1);
-          transform: translateY(-3px);
+          display: block;
       }
 
       .copyright {
@@ -1466,43 +1493,47 @@
           line-height: 1.6;
       }
 
-      /* Remove the footer-certifications h3 since it's gone */
-      .footer-certifications h3 {
-          display: none;
-      }
-
-      /* ========== RESPONSIVE ========== */
       @media (prefers-reduced-motion: reduce) {
           .image-frame,
           .project-card,
           .stat,
-          .contact-item,
-          .freelance-card {
-              animation: none !important;
-          }
+          .freelance-card,
           .floating-badge {
               animation: none !important;
           }
-          .freelance-card::before,
-          .freelance-card::after,
-          .project-card::before,
-          .project-card::after,
-          .stat::before,
-          .stat::after,
-          .contact-item::before,
-          .contact-item::after {
+          .floating-badge,
+          .stat,
+          .project-card,
+          .freelance-card,
+          .btn,
+          .tech-item,
+          .skill-badge,
+          .social-link,
+          .btn-website-card,
+          .footer-contact-item {
               transition: none !important;
           }
-          .freelance-card:hover::before,
-          .freelance-card:hover::after,
-          .project-card:hover::before,
-          .project-card:hover::after,
-          .stat:hover::before,
-          .stat:hover::after,
-          .contact-item:hover::before,
-          .contact-item:hover::after {
-              scale: 1;
-              opacity: 0;
+          .floating-badge::before,
+          .floating-badge::after,
+          .stat::before,
+          .stat::after,
+          .project-card::before,
+          .project-card::after,
+          .freelance-card::before,
+          .freelance-card::after,
+          .btn::before,
+          .btn::after,
+          .tech-item::before,
+          .tech-item::after,
+          .skill-badge::before,
+          .skill-badge::after,
+          .social-link::before,
+          .social-link::after,
+          .footer-contact-item::before,
+          .footer-contact-item::after {
+              transition: none !important;
+              scale: 1 !important;
+              opacity: 0 !important;
           }
       }
 
@@ -1546,16 +1577,17 @@
           .freelance-card .card-para {
               font-size: 0.82rem;
           }
-          .freelance-card .upwork-badge {
-              top: 12px;
-              left: 14px;
-          }
-          .freelance-card .github-corner {
+          .freelance-card .upwork-badge-bottom {
               bottom: 12px;
               right: 14px;
-              width: 34px;
-              height: 34px;
-              font-size: 1rem;
+          }
+          .freelance-card .upwork-badge-bottom img {
+              width: 24px;
+              height: 24px;
+          }
+          .card-bg-blur {
+              filter: blur(3px);
+              opacity: 0.22;
           }
       }
 
@@ -1601,13 +1633,9 @@
           .about-stats {
               grid-template-columns: 1fr 1fr;
           }
-          .card-logo-rect {
-              width: 35%;
-              height: 35%;
-              min-width: 70px;
-              min-height: 70px;
-              bottom: 4px;
-              right: 4px;
+          .card-bg-blur {
+              filter: blur(3px);
+              opacity: 0.2;
           }
           .freelance-cards-grid {
               gap: 20px;
@@ -1627,25 +1655,40 @@
           .freelance-card .card-para {
               font-size: 0.78rem;
           }
-          .freelance-card .upwork-badge img {
+          .freelance-card .upwork-badge-bottom img {
               width: 24px;
               height: 24px;
           }
-          .freelance-card .github-corner {
+          .freelance-card .upwork-badge-bottom {
               bottom: 12px;
               right: 14px;
-              width: 30px;
-              height: 30px;
-              font-size: 0.9rem;
           }
           .freelance-card:hover {
               scale: 1.03;
           }
-          .footer-content {
-              gap: 24px;
+          .project-card:hover {
+              scale: 1.03;
           }
-          .cert-logos {
-              gap: 14px;
+          .footer-main {
+              flex-direction: column;
+              gap: 32px;
+          }
+          .footer-left,
+          .footer-right {
+              flex: 1 1 100%;
+              width: 100%;
+          }
+          .footer-right {
+              align-items: flex-start;
+          }
+          .footer-contact-item {
+              width: 100%;
+          }
+          .copyright {
+              text-align: center;
+          }
+          .cert-logos img {
+              height: 18px;
           }
       }
 
@@ -1664,10 +1707,27 @@
           }
           .freelance-card .card-para {
               font-size: 0.75rem;
-              display: -webkit-box;
-              -webkit-line-clamp: 2;
-              -webkit-box-orient: vertical;
-              overflow: hidden;
+          }
+          .freelance-card .card-inner-content {
+              padding-right: 44px;
+          }
+          .freelance-card .upwork-badge-bottom {
+              bottom: 10px;
+              right: 10px;
+          }
+          .freelance-card .upwork-badge-bottom img {
+              width: 22px;
+              height: 22px;
+          }
+          .card-bg-blur {
+              filter: blur(2px);
+              opacity: 0.18;
+          }
+          .cert-logos img {
+              height: 16px;
+          }
+          .cert-logos {
+              gap: 10px;
           }
       }
 
@@ -1690,12 +1750,6 @@
               flex-direction: column;
               gap: 15px;
           }
-          .card-logo-rect {
-              width: 32%;
-              height: 32%;
-              bottom: 3px;
-              right: 3px;
-          }
           .card-content h3 {
               font-size: 1.2rem;
           }
@@ -1707,16 +1761,23 @@
               padding: 18px 16px;
               min-height: 130px;
           }
-          .freelance-card .upwork-badge {
-              top: 10px;
-              left: 10px;
-          }
-          .freelance-card .github-corner {
+          .freelance-card .upwork-badge-bottom {
               bottom: 10px;
               right: 10px;
-              width: 28px;
-              height: 28px;
-              font-size: 0.8rem;
+          }
+          .freelance-card .upwork-badge-bottom img {
+              width: 20px;
+              height: 20px;
+          }
+          .card-bg-blur {
+              filter: blur(2px);
+              opacity: 0.16;
+          }
+          .cert-logos img {
+              height: 14px;
+          }
+          .cert-logos {
+              gap: 8px;
           }
       }
 
@@ -1738,8 +1799,8 @@
         <nav class="navbar">
           <a href="#home" class="logo-container">
             <div class="logo">
-              <span style="color: var(--primary);">Data</span
-              ><span style="color: #fff;">Analytics</span>
+              <span style="color: var(--primary)">Data</span
+              ><span style="color: #fff">Analytics</span>
             </div>
           </a>
           <ul class="nav-links" id="navLinks">
@@ -1747,7 +1808,6 @@
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
           </ul>
           <button
             class="mobile-menu"
@@ -1775,8 +1835,8 @@
               strategy.
             </p>
             <div class="hero-btns">
-              <a href="#projects" class="btn btn-primary"
-                >View Projects
+              <a href="#projects" class="btn btn-outline">
+                View Projects
                 <svg
                   width="20"
                   height="20"
@@ -1789,8 +1849,8 @@
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </a>
-              <a href="#contact" class="btn btn-outline"
-                >Contact Me
+              <a href="#contact" class="btn btn-outline">
+                Contact Info
                 <svg
                   width="20"
                   height="20"
@@ -1807,10 +1867,10 @@
             <div class="tech-stack">
               <span class="stack-label">Trusted tech:</span>
               <div class="stack-icons">
-                <div class="tech-item">PY</div>
-                <div class="tech-item">SQL</div>
-                <div class="tech-item">BI</div>
-                <div class="tech-item">Cloud</div>
+                <div class="tech-item"><span>PY</span></div>
+                <div class="tech-item"><span>SQL</span></div>
+                <div class="tech-item"><span>BI</span></div>
+                <div class="tech-item"><span>Cloud</span></div>
               </div>
             </div>
           </div>
@@ -1880,7 +1940,7 @@
               <h3>
                 <i
                   class="fas fa-bolt"
-                  style="color:var(--primary);margin-right:8px;"
+                  style="color: var(--primary); margin-right: 8px"
                 ></i>
                 What I Do Best
               </h3>
@@ -1948,89 +2008,104 @@
         </div>
         <div class="skills-container" id="skillsReveal">
           <span class="skill-badge reveal"
-            ><i class="fas fa-chart-bar"></i> Power BI</span
+            ><i class="fas fa-chart-bar"></i> <span>Power BI</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-chart-pie"></i> Tableau</span
+            ><i class="fas fa-chart-pie"></i> <span>Tableau</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-eye"></i> Looker Studio</span
+            ><i class="fas fa-eye"></i> <span>Looker Studio</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-file-excel"></i> Microsoft Excel</span
+            ><i class="fas fa-file-excel"></i>
+            <span>Microsoft Excel</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-chart-line"></i> DAX &amp; Power Query</span
+            ><i class="fas fa-chart-line"></i>
+            <span>DAX &amp; Power Query</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-database"></i> SQL (Advanced)</span
+            ><i class="fas fa-database"></i> <span>SQL (Advanced)</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fab fa-python"></i> Python (Pandas, NumPy)</span
+            ><i class="fab fa-python"></i>
+            <span>Python (Pandas, NumPy)</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-chart-scatter"></i> Matplotlib/Seaborn</span
+            ><i class="fas fa-chart-scatter"></i>
+            <span>Matplotlib/Seaborn</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-map-marked-alt"></i> Folium</span
+            ><i class="fas fa-map-marked-alt"></i> <span>Folium</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-brain"></i> Scikit-learn</span
+            ><i class="fas fa-brain"></i> <span>Scikit-learn</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-waveform"></i> Time Series Analysis</span
+            ><i class="fas fa-waveform"></i>
+            <span>Time Series Analysis</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-robot"></i> Power Automate</span
+            ><i class="fas fa-robot"></i> <span>Power Automate</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-mobile-alt"></i> Power Apps (Canvas/Model)</span
+            ><i class="fas fa-mobile-alt"></i>
+            <span>Power Apps (Canvas/Model)</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-file-powerpoint"></i> Power Pages</span
+            ><i class="fas fa-file-powerpoint"></i>
+            <span>Power Pages</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-cloud-upload-alt"></i> Microsoft Dataverse</span
+            ><i class="fas fa-cloud-upload-alt"></i>
+            <span>Microsoft Dataverse</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fab fa-microsoft"></i> Azure</span
+            ><i class="fab fa-microsoft"></i> <span>Azure</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-server"></i> SQL Server / MySQL</span
+            ><i class="fas fa-server"></i> <span>SQL Server / MySQL</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-database"></i> PostgreSQL</span
+            ><i class="fas fa-database"></i> <span>PostgreSQL</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-chart-simple"></i> Customer Segmentation</span
+            ><i class="fas fa-chart-simple"></i>
+            <span>Customer Segmentation</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-chart-line"></i> Demand Forecasting</span
+            ><i class="fas fa-chart-line"></i>
+            <span>Demand Forecasting</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-chart-pie"></i> Cohort &amp; RFM Analysis</span
+            ><i class="fas fa-chart-pie"></i>
+            <span>Cohort &amp; RFM Analysis</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-ad"></i> Marketing ROI Analysis</span
+            ><i class="fas fa-ad"></i> <span>Marketing ROI Analysis</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-chart-line"></i> Sales Performance</span
+            ><i class="fas fa-chart-line"></i>
+            <span>Sales Performance</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-chart-line"></i> ETL Pipelines</span
+            ><i class="fas fa-chart-line"></i> <span>ETL Pipelines</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-clipboard-list"></i> Business Requirements</span
+            ><i class="fas fa-clipboard-list"></i>
+            <span>Business Requirements</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-project-diagram"></i> Agile/Scrum</span
+            ><i class="fas fa-project-diagram"></i>
+            <span>Agile/Scrum</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-chalkboard-user"></i> Data Storytelling</span
+            ><i class="fas fa-chalkboard-user"></i>
+            <span>Data Storytelling</span></span
           >
           <span class="skill-badge reveal"
-            ><i class="fas fa-chart-line"></i> KPI Design &amp; Executive
-            Reporting</span
+            ><i class="fas fa-chart-line"></i>
+            <span>KPI Design &amp; Executive Reporting</span></span
           >
         </div>
       </div>
@@ -2052,9 +2127,9 @@
           <div class="divider-icon"><i class="fas fa-briefcase"></i></div>
         </div>
 
-        <div class="section-header centered reveal" style="margin-bottom:36px;">
+        <div class="section-header centered reveal" style="margin-bottom: 36px">
           <span class="section-label">Freelance</span>
-          <h2 style="font-size:2.2rem;">Paid Projects</h2>
+          <h2 style="font-size: 2.2rem">Paid Projects</h2>
           <p class="section-subtitle">
             Delivered freelance data analytics solutions on Upwork — real client
             work, real impact.
@@ -2065,52 +2140,20 @@
       </div>
     </section>
 
-    <section id="contact" class="contact">
+    <footer id="contact">
       <div class="container">
-        <div class="section-header centered reveal">
-          <span class="section-label">Contact</span>
-          <h2>Let's Connect</h2>
-          <p class="section-subtitle">
-            Have a project or idea? Reach out and let's make data work for you.
-          </p>
-        </div>
-        <div class="contact-row">
-          <div class="contact-item reveal-left">
-            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-            <div>
-              <h3>Email</h3>
+        <div class="footer-main reveal">
+          <div class="footer-left">
+            <div class="footer-logo">
+              <span style="color: #fff">Data</span
+              ><span style="color: var(--primary)">Analytics</span>
+            </div>
+            <div class="footer-about">
               <p>
-                <a href="mailto:Mahmoud_abdallah20@outlook.com"
-                  >Mahmoud_abdallah20@outlook.com</a
-                >
+                Turning data into decisions, dashboards, automation, and
+                predictive analytics.
               </p>
             </div>
-          </div>
-          <div class="contact-item reveal-right">
-            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-            <div>
-              <h3>Phone</h3>
-              <p><a href="tel:+201021654059">+20 102 165 4059</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== UPDATED FOOTER – CENTERED ========== -->
-    <footer>
-      <div class="container">
-        <div class="footer-content reveal">
-          <!-- Branding + Social -->
-          <div class="footer-about">
-            <div class="footer-logo">
-              <span style="color: #fff;">Data</span
-              ><span style="color: var(--primary);">Analytics</span>
-            </div>
-            <p>
-              Turning data into decisions, dashboards, automation, and
-              predictive analytics.
-            </p>
             <div class="social-links">
               <a
                 href="https://github.com/MAHMOUD2ABDALLAH"
@@ -2132,50 +2175,66 @@
                 ><i class="fas fa-certificate"></i
               ></a>
             </div>
+            <div class="cert-logos">
+              <img
+                src="https://github.com/user-attachments/assets/de5db8c8-0378-4ff9-9fe8-6217941cd3fa"
+                alt="FCIS Ain Shams"
+                height="22"
+                loading="lazy"
+              />
+              <img
+                src="https://github.com/user-attachments/assets/57c4ce5e-a943-4e18-bf2c-0999d3fb68ea"
+                alt="Cisco"
+                height="22"
+                loading="lazy"
+              />
+              <img
+                src="https://github.com/user-attachments/assets/5506718e-9671-474a-8b30-98635c761480"
+                alt="Coursera"
+                height="22"
+                loading="lazy"
+              />
+              <img
+                src="https://github.com/user-attachments/assets/17708e78-aaf8-42ae-9a44-fe72acdb77ec"
+                alt="IBM"
+                height="22"
+                loading="lazy"
+              />
+              <img
+                src="https://github.com/user-attachments/assets/12035e70-7265-42f0-ab74-84659d652148"
+                alt="Microsoft"
+                height="22"
+                loading="lazy"
+              />
+            </div>
           </div>
 
-          <!-- Logos only, no heading -->
-          <div class="cert-logos">
-            <img
-              src="https://github.com/user-attachments/assets/de5db8c8-0378-4ff9-9fe8-6217941cd3fa"
-              alt="FCIS Ain Shams"
-              width="80"
-              height="70"
-              loading="lazy"
-            />
-            <img
-              src="https://github.com/user-attachments/assets/57c4ce5e-a943-4e18-bf2c-0999d3fb68ea"
-              alt="Cisco"
-              width="80"
-              height="40"
-              loading="lazy"
-            />
-            <img
-              src="https://github.com/user-attachments/assets/5506718e-9671-474a-8b30-98635c761480"
-              alt="Coursera"
-              width="280"
-              height="40"
-              loading="lazy"
-            />
-            <img
-              src="https://github.com/user-attachments/assets/17708e78-aaf8-42ae-9a44-fe72acdb77ec"
-              alt="IBM"
-              width="100"
-              height="40"
-              loading="lazy"
-            />
-            <img
-              src="https://github.com/user-attachments/assets/12035e70-7265-42f0-ab74-84659d652148"
-              alt="Microsoft"
-              width="200"
-              height="40"
-              loading="lazy"
-            />
+          <div class="footer-right">
+            <h4>Contact</h4>
+            <a
+              href="mailto:Mahmoud_abdallah20@outlook.com"
+              class="footer-contact-item"
+            >
+              <div class="fc-icon"><i class="fas fa-envelope"></i></div>
+              <div class="fc-text">
+                <small>Email</small>
+                <span>Mahmoud_abdallah20@outlook.com</span>
+              </div>
+            </a>
+            <a href="tel:+201021654059" class="footer-contact-item">
+              <div class="fc-icon"><i class="fas fa-phone-alt"></i></div>
+              <div class="fc-text">
+                <small>Phone</small>
+                <span>+20 102 165 4059</span>
+              </div>
+            </a>
           </div>
         </div>
+
         <div class="copyright">
           <p>
-            2024 Mahmoud Abdallah - DataAnalytics.<br />All Rights Reserved.
+            Mahmoud Abdallah - DataAnalytics<br />All Rights Reserved &copy;
+            2024
           </p>
         </div>
       </div>
@@ -2185,85 +2244,104 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
 
     <script>
-      // Three.js animated background
+      ;
       (function() {
-          const canvas = document.getElementById('hero-bg');
+          const canvas = document.getElementById('hero-bg')
           const conf = {
               fov: 75,
               cameraZ: 75,
               xyCoef: 50,
               zCoef: 10,
               lightIntensity: 0.9,
-              light1Color: 0x0E09DC,
-              light2Color: 0x1CD1E1,
-              light3Color: 0x4A90E2,
-              light4Color: 0x7B68EE,
-          };
+              light1Color: 0x0e09dc,
+              light2Color: 0x1cd1e1,
+              light3Color: 0x4a90e2,
+              light4Color: 0x7b68ee,
+          }
 
-          let renderer, scene, camera;
-          let width, height, wWidth, wHeight;
-          let plane, simplex;
-
-          let light1, light2, light3, light4;
+          let renderer, scene, camera
+          let width, height, wWidth, wHeight
+          let plane, simplex
+          let light1, light2, light3, light4
 
           function init() {
-              simplex = new SimplexNoise();
-              renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-              camera = new THREE.PerspectiveCamera(conf.fov);
-
-              updateSize();
-              window.addEventListener('resize', updateSize, false);
-
-              initScene();
-              animate();
+              simplex = new SimplexNoise()
+              renderer = new THREE.WebGLRenderer({
+                  canvas,
+                  antialias: true,
+                  alpha: true,
+              })
+              camera = new THREE.PerspectiveCamera(conf.fov)
+              updateSize()
+              window.addEventListener('resize', updateSize, false)
+              initScene()
+              animate()
           }
 
           function initScene() {
-              scene = new THREE.Scene();
-              initLights();
-
-              const mat = new THREE.MeshLambertMaterial({ color: 0xffffff, side: THREE.DoubleSide });
-              const geo = new THREE.PlaneBufferGeometry(wWidth, wHeight, wWidth / 2, wHeight / 2);
-              plane = new THREE.Mesh(geo, mat);
-              scene.add(plane);
-
-              plane.rotation.x = -Math.PI / 2 - 0.2;
-              plane.position.y = -25;
-              camera.position.z = 60;
+              scene = new THREE.Scene()
+              initLights()
+              const mat = new THREE.MeshLambertMaterial({
+                  color: 0xffffff,
+                  side: THREE.DoubleSide,
+              })
+              const geo = new THREE.PlaneBufferGeometry(
+                  wWidth,
+                  wHeight,
+                  wWidth / 2,
+                  wHeight / 2
+              )
+              plane = new THREE.Mesh(geo, mat)
+              scene.add(plane)
+              plane.rotation.x = -Math.PI / 2 - 0.2
+              plane.position.y = -25
+              camera.position.z = 60
           }
 
           function initLights() {
-              const r = 30;
-              const y = 10;
-              const distance = 500;
-
-              light1 = new THREE.PointLight(conf.light1Color, conf.lightIntensity, distance);
-              light1.position.set(0, y, r);
-              scene.add(light1);
-
-              light2 = new THREE.PointLight(conf.light2Color, conf.lightIntensity, distance);
-              light2.position.set(0, -y, -r);
-              scene.add(light2);
-
-              light3 = new THREE.PointLight(conf.light3Color, conf.lightIntensity, distance);
-              light3.position.set(r, y, 0);
-              scene.add(light3);
-
-              light4 = new THREE.PointLight(conf.light4Color, conf.lightIntensity, distance);
-              light4.position.set(-r, y, 0);
-              scene.add(light4);
+              const r = 30
+              const y = 10
+              const distance = 500
+              light1 = new THREE.PointLight(
+                  conf.light1Color,
+                  conf.lightIntensity,
+                  distance
+              )
+              light1.position.set(0, y, r)
+              scene.add(light1)
+              light2 = new THREE.PointLight(
+                  conf.light2Color,
+                  conf.lightIntensity,
+                  distance
+              )
+              light2.position.set(0, -y, -r)
+              scene.add(light2)
+              light3 = new THREE.PointLight(
+                  conf.light3Color,
+                  conf.lightIntensity,
+                  distance
+              )
+              light3.position.set(r, y, 0)
+              scene.add(light3)
+              light4 = new THREE.PointLight(
+                  conf.light4Color,
+                  conf.lightIntensity,
+                  distance
+              )
+              light4.position.set(-r, y, 0)
+              scene.add(light4)
           }
 
           function animate() {
-              requestAnimationFrame(animate);
-              updatePlane();
-              animateLights();
-              renderer.render(scene, camera);
+              requestAnimationFrame(animate)
+              updatePlane()
+              animateLights()
+              renderer.render(scene, camera)
           }
 
           function updatePlane() {
-              const gArray = plane.geometry.attributes.position.array;
-              const time = Date.now() * 0.0002;
+              const gArray = plane.geometry.attributes.position.array
+              const time = Date.now() * 0.0002
               for (let i = 0; i < gArray.length; i += 3) {
                   gArray[i + 2] =
                       simplex.noise4D(
@@ -2271,180 +2349,254 @@
                           gArray[i + 1] / conf.xyCoef,
                           time,
                           time * 1.7
-                      ) * conf.zCoef;
+                      ) * conf.zCoef
               }
-              plane.geometry.attributes.position.needsUpdate = true;
+              plane.geometry.attributes.position.needsUpdate = true
           }
 
           function animateLights() {
-              const time = Date.now() * 0.001;
-              const d = 50;
-              light1.position.x = Math.sin(time * 0.1) * d;
-              light1.position.z = Math.cos(time * 0.2) * d;
-              light2.position.x = Math.cos(time * 0.3) * d;
-              light2.position.z = Math.sin(time * 0.4) * d;
-              light3.position.x = Math.sin(time * 0.5) * d;
-              light3.position.z = Math.sin(time * 0.6) * d;
-              light4.position.x = Math.sin(time * 0.7) * d;
-              light4.position.z = Math.cos(time * 0.8) * d;
+              const time = Date.now() * 0.001
+              const d = 50
+              light1.position.x = Math.sin(time * 0.1) * d
+              light1.position.z = Math.cos(time * 0.2) * d
+              light2.position.x = Math.cos(time * 0.3) * d
+              light2.position.z = Math.sin(time * 0.4) * d
+              light3.position.x = Math.sin(time * 0.5) * d
+              light3.position.z = Math.sin(time * 0.6) * d
+              light4.position.x = Math.sin(time * 0.7) * d
+              light4.position.z = Math.cos(time * 0.8) * d
           }
 
           function updateSize() {
-              width = window.innerWidth;
-              height = window.innerHeight;
+              width = window.innerWidth
+              height = window.innerHeight
               if (renderer && camera) {
-                  renderer.setSize(width, height);
-                  camera.aspect = width / height;
-                  camera.updateProjectionMatrix();
-                  const wsize = getRendererSize();
-                  wWidth = wsize[0];
-                  wHeight = wsize[1];
+                  renderer.setSize(width, height)
+                  camera.aspect = width / height
+                  camera.updateProjectionMatrix()
+                  const wsize = getRendererSize()
+                  wWidth = wsize[0]
+                  wHeight = wsize[1]
               }
           }
 
           function getRendererSize() {
-              const cam = new THREE.PerspectiveCamera(conf.fov, camera.aspect);
-              const vFOV = cam.fov * Math.PI / 180;
-              const h = 2 * Math.tan(vFOV / 2) * Math.abs(conf.cameraZ);
-              const w = h * cam.aspect;
-              return [w, h];
+              const cam = new THREE.PerspectiveCamera(conf.fov, camera.aspect)
+              const vFOV = (cam.fov * Math.PI) / 180
+              const h = 2 * Math.tan(vFOV / 2) * Math.abs(conf.cameraZ)
+              const w = h * cam.aspect
+              return [w, h]
           }
 
-          init();
+          init()
       })();
-
-      // Disable devtools shortcuts
       (function() {
-          document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
+          document.addEventListener('contextmenu', function(e) {
+              e.preventDefault()
+              return false
+          })
           document.addEventListener('keydown', function(e) {
-              if (e.key === 'F12') { e.preventDefault(); return false; }
-              if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) { e.preventDefault(); return false; }
-              if (e.ctrlKey && e.key === 'u') { e.preventDefault(); return false; }
-          });
-      })();
+              if (e.key === 'F12') {
+                  e.preventDefault()
+                  return false
+              }
+              if (
+                  e.ctrlKey &&
+                  e.shiftKey &&
+                  (e.key === 'I' || e.key === 'J' || e.key === 'C')
+              ) {
+                  e.preventDefault()
+                  return false
+              }
+              if (e.ctrlKey && e.key === 'u') {
+                  e.preventDefault()
+                  return false
+              }
+          })
+      })()
 
-      const projectsData = [
-          { id: 6, title: 'Immigration to Canada',
-              description: 'EDA on Canadian immigration data (1980‑2013) using Python, Pandas, Matplotlib to uncover trends and demographic insights.',
-              image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67',
-              tags: ['python', 'pandas', 'data-visualization', 'matplotlib'],
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013',
-              websiteUrl: 'https://www.canada.ca/' },
-          { id: 2, title: 'Animal Shelter Home',
-              description: 'Power Platform solution (Power BI, Apps, Automate) for shelter intake, medical records, and adoption efficiency.',
-              image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8',
-              tags: ['powerbi', 'powerapps', 'powerautomate', 'powerpages'],
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange',
-              websiteUrl: 'https://powerup.microsoft.com/' },
-          { id: 4, title: 'Walmart Product Analysis',
-              description: 'Retail analytics dashboard with Power BI revealing product performance, category profitability, and inventory optimization.',
-              image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526',
-              tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression'],
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study',
-              websiteUrl: 'https://www.walmart.com/' },
-          { id: 7, title: 'MaxAB Sales Analysis',
-              description: 'Comprehensive sales analytics dashboard for MaxAB, Egypt\'s leading B2B e-commerce platform.',
-              image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f',
-              tags: ['power-bi', 'sales-analysis', 'b2b', 'dax-expression'],
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study',
-              websiteUrl: 'https://www.maxab.io/' },
-          { id: 8, title: 'El Ezaby Pharmacy Digital Analytics',
-              description: 'Digital analytics solution for El Ezaby Pharmacy, focusing on e-commerce performance and customer journey.',
-              image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa',
-              tags: ['power-bi', 'e-commerce', 'pharmacy', 'digital-analytics'],
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study',
-              websiteUrl: 'https://elezabypharmacy.com/' },
-          { id: 9, title: 'Abwab.AI Financial TRX 200',
-              description: 'Financial transaction analysis and monitoring dashboard for Abwab.AI, providing fraud detection indicators.',
-              image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a',
-              tags: ['power-bi', 'financial-analytics', 'fraud-detection'],
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200',
-              websiteUrl: 'https://abwab.ai/' }
-      ];
+      const projectsData = [{
+          id: 6,
+          title: 'Immigration to Canada',
+          description: 'EDA on Canadian immigration data (1980‑2013) using Python, Pandas, Matplotlib to uncover trends and demographic insights.',
+          image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67',
+          tags: ['python', 'pandas', 'data-visualization', 'matplotlib'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013',
+          websiteUrl: 'https://www.canada.ca/',
+      }, {
+          id: 2,
+          title: 'Animal Shelter Home',
+          description: 'Power Platform solution (Power BI, Apps, Automate) for shelter intake, medical records, and adoption efficiency.',
+          image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8',
+          tags: ['powerbi', 'powerapps', 'powerautomate', 'powerpages'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange',
+          websiteUrl: 'https://powerup.microsoft.com/',
+      }, {
+          id: 4,
+          title: 'Walmart Product Analysis',
+          description: 'Retail analytics dashboard with Power BI revealing product performance, category profitability, and inventory optimization.',
+          image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526',
+          tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study',
+          websiteUrl: 'https://www.walmart.com/',
+      }, {
+          id: 7,
+          title: 'MaxAB Sales Analysis',
+          description: "Comprehensive sales analytics dashboard for MaxAB, Egypt's leading B2B e-commerce platform.",
+          image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f',
+          tags: ['power-bi', 'sales-analysis', 'b2b', 'dax-expression'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study',
+          websiteUrl: 'https://www.maxab.io/',
+      }, {
+          id: 8,
+          title: 'El Ezaby Pharmacy Digital Analytics',
+          description: 'Digital analytics solution for El Ezaby Pharmacy, focusing on e-commerce performance and customer journey.',
+          image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa',
+          tags: ['power-bi', 'e-commerce', 'pharmacy', 'digital-analytics'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study',
+          websiteUrl: 'https://elezabypharmacy.com/',
+      }, {
+          id: 9,
+          title: 'Abwab.AI Financial TRX 200',
+          description: 'Financial transaction analysis and monitoring dashboard for Abwab.AI, providing fraud detection indicators.',
+          image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a',
+          tags: ['power-bi', 'financial-analytics', 'fraud-detection'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200',
+          websiteUrl: 'https://abwab.ai/',
+      }, ]
 
-      const freelanceProjectsData = [
-          { id: 'f1', title: 'Furniture Sales Analytics',
-              description: 'Sales performance dashboard & data analysis for a furniture business.',
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/furniture-Sales' },
-          { id: 'f2', title: 'Market Share Prices',
-              description: 'Market share price tracking, trend analysis & competitor benchmarking.',
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Market-share-prices' },
-          { id: 'f3', title: 'Bike Sales Analytics',
-              description: 'Comprehensive bike sales performance & revenue analysis.',
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Bike-Sales' },
-          { id: 'f4', title: 'HR Database Solution',
-              description: 'HR database analytics, employee insights & workforce reporting.',
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/HR-Database' },
-          { id: 'f5', title: 'Family Members Segmentation',
-              description: 'Customer segmentation analysis for family-based membership programs.',
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/family-members-segmentation' }
-      ];
+      const freelanceProjectsData = [{
+          id: 'f1',
+          title: 'Furniture Sales Analytics',
+          description: 'Sales performance dashboard & data analysis for a furniture business.',
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/furniture-Sales',
+      }, {
+          id: 'f2',
+          title: 'Market Share Prices',
+          description: 'Market share price tracking, trend analysis & competitor benchmarking.',
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Market-share-prices',
+      }, {
+          id: 'f3',
+          title: 'Bike Sales Analytics',
+          description: 'Comprehensive bike sales performance & revenue analysis.',
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Bike-Sales',
+      }, {
+          id: 'f4',
+          title: 'HR Database Solution',
+          description: 'HR database analytics, employee insights & workforce reporting.',
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/HR-Database',
+      }, {
+          id: 'f5',
+          title: 'Family Members Segmentation',
+          description: 'Customer segmentation analysis for family-based membership programs.',
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/family-members-segmentation',
+      }, ]
 
       function renderProjects() {
-          const grid = document.getElementById('projectsGrid');
-          if (!grid) return;
-          grid.innerHTML = projectsData.map(p => `
-              <div class="project-card reveal">
-                  <div class="card-logo-rect"><img src="${p.image}" alt="${p.title} logo" loading="lazy"></div>
-                  <div class="card-content">
-                      <h3>${p.title}</h3>
-                      <p>${p.description}</p>
-                      <div class="project-tags">${p.tags.map(t => `<span class="project-tag">${t}</span>`).join('')}</div>
-                      <div class="card-actions">
-                          <a href="${p.githubUrl}" target="_blank" class="github-icon-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                          <a href="${p.websiteUrl}" target="_blank" class="btn-website-card"><i class="fas fa-external-link-alt"></i> Website</a>
-                      </div>
-                  </div>
-              </div>
-          `).join('');
-          observeElements('.project-card');
+          const grid = document.getElementById('projectsGrid')
+          if (!grid) return
+          grid.innerHTML = projectsData
+              .map(
+                  (p) => `
+            <div class="project-card reveal" onclick="window.open('${p.githubUrl}', '_blank')" role="button" tabindex="0" title="View project on GitHub">
+                <div class="card-bg-blur" style="background-image: url('${p.image}');"></div>
+                <div class="card-content">
+                    <h3>${p.title}</h3>
+                    <p>${p.description}</p>
+                    <div class="project-tags">${p.tags
+                      .map((t) => `<span class="project-tag">${t}</span>`)
+                      .join('')}</div>
+                    <div class="card-actions">
+                        <a href="${p.websiteUrl}" target="_blank" class="btn-website-card" onclick="event.stopPropagation();">
+                            <i class="fas fa-external-link-alt"></i> Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `
+              )
+              .join('')
+          observeElements('.project-card')
       }
 
       function renderFreelanceCards() {
-          const grid = document.getElementById('freelanceCardsGrid');
-          if (!grid) return;
-          grid.innerHTML = freelanceProjectsData.map((p, index) => `
-              <div class="freelance-card-wrapper reveal delay-${index + 1}">
-                  <div class="freelance-card">
-                      <div class="upwork-badge" aria-label="Upwork">
-                          <img src="https://github.com/user-attachments/assets/3bee725e-f9a7-47a5-83c9-321516bb12c9" alt="Upwork logo" />
-                      </div>
-                      <div class="card-inner-content">
-                          <span class="card-heading">${p.title}</span>
-                          <span class="card-para">${p.description}</span>
-                      </div>
-                      <a href="${p.githubUrl}" target="_blank" class="github-corner" aria-label="View on GitHub" title="View on GitHub">
-                          <i class="fab fa-github"></i>
-                      </a>
-                  </div>
-              </div>
-          `).join('');
-          observeElements('.freelance-card-wrapper');
+          const grid = document.getElementById('freelanceCardsGrid')
+          if (!grid) return
+          grid.innerHTML = freelanceProjectsData
+              .map(
+                  (p, index) => `
+            <div class="freelance-card-wrapper reveal delay-${index + 1}">
+                <div class="freelance-card" onclick="window.open('${p.githubUrl}', '_blank')" role="button" tabindex="0" title="View project on GitHub">
+                    <div class="card-inner-content">
+                        <span class="card-heading">${p.title}</span>
+                        <span class="card-para">${p.description}</span>
+                    </div>
+                    <div class="upwork-badge-bottom" aria-label="Upwork">
+                        <img src="https://github.com/user-attachments/assets/3bee725e-f9a7-47a5-83c9-321516bb12c9" alt="Upwork logo" />
+                    </div>
+                </div>
+            </div>
+        `
+              )
+              .join('')
+          observeElements('.freelance-card-wrapper')
       }
 
       function observeElements(selector) {
-          const observer = new IntersectionObserver((entries) => {
-              entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-          }, { threshold: 0.1 });
-          document.querySelectorAll(selector).forEach(el => observer.observe(el));
+          const observer = new IntersectionObserver(
+              (entries) => {
+                  entries.forEach((entry) => {
+                      if (entry.isIntersecting) entry.target.classList.add('active')
+                  })
+              }, { threshold: 0.1 }
+          )
+          document.querySelectorAll(selector).forEach((el) => observer.observe(el))
       }
 
       document.addEventListener('DOMContentLoaded', () => {
-          const menuBtn = document.getElementById('mobileMenu');
-          const navLinks = document.getElementById('navLinks');
-          if (menuBtn) menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-          if (navLinks) navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
-          const header = document.getElementById('header');
-          window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.pageYOffset > 20));
+          const menuBtn = document.getElementById('mobileMenu')
+          const navLinks = document.getElementById('navLinks')
+          if (menuBtn)
+              menuBtn.addEventListener('click', () =>
+                  navLinks.classList.toggle('active')
+              )
+          if (navLinks)
+              navLinks.querySelectorAll('a').forEach((link) =>
+                  link.addEventListener('click', () =>
+                      navLinks.classList.remove('active')
+                  )
+              )
+          const header = document.getElementById('header')
+          window.addEventListener('scroll', () =>
+              header.classList.toggle('scrolled', window.pageYOffset > 20)
+          )
 
-          renderProjects();
-          renderFreelanceCards();
+          renderProjects()
+          renderFreelanceCards()
 
-          const revealObserver = new IntersectionObserver((entries) => {
-              entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-          }, { threshold: 0.1 });
-          document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .freelance-divider').forEach(el => revealObserver.observe(el));
-      });
+          const revealObserver = new IntersectionObserver(
+              (entries) => {
+                  entries.forEach((entry) => {
+                      if (entry.isIntersecting) entry.target.classList.add('active')
+                  })
+              }, { threshold: 0.1 }
+          )
+          document
+              .querySelectorAll(
+                  '.reveal, .reveal-left, .reveal-right, .freelance-divider'
+              )
+              .forEach((el) => revealObserver.observe(el))
+
+          document.addEventListener('keydown', function(e) {
+              if (e.key === 'Enter' || e.key === ' ') {
+                  const target = e.target.closest('.project-card, .freelance-card')
+                  if (target && document.activeElement === target) {
+                      e.preventDefault()
+                      target.click()
+                  }
+              }
+          })
+      })
     </script>
   </body>
 </html>
