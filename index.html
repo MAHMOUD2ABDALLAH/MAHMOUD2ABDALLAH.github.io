@@ -1470,6 +1470,7 @@
           color: #ffffff;
       }
 
+      /* ===== UPDATED CERT LOGOS – fixed height, white/inverted ===== */
       .cert-logos {
           display: flex;
           flex-wrap: wrap;
@@ -1478,10 +1479,17 @@
           margin-top: 8px;
       }
       .cert-logos img {
-          height: 22px;
+          height: 40px;
           width: auto;
           object-fit: contain;
           display: block;
+          filter: invert(1) brightness(1.4);
+          transition: filter 0.3s ease, transform 0.3s ease;
+          border-radius: 4px;
+      }
+      .cert-logos img:hover {
+          filter: invert(1) brightness(1.6);
+          transform: scale(1.08);
       }
 
       .copyright {
@@ -1688,7 +1696,7 @@
               text-align: center;
           }
           .cert-logos img {
-              height: 18px;
+              height: 36px;
           }
       }
 
@@ -1724,7 +1732,7 @@
               opacity: 0.18;
           }
           .cert-logos img {
-              height: 16px;
+              height: 32px;
           }
           .cert-logos {
               gap: 10px;
@@ -1774,7 +1782,7 @@
               opacity: 0.16;
           }
           .cert-logos img {
-              height: 14px;
+              height: 28px;
           }
           .cert-logos {
               gap: 8px;
@@ -2175,35 +2183,66 @@
                 ><i class="fas fa-certificate"></i
               ></a>
             </div>
+            <!-- ===== UPDATED CERT LOGOS – Ain Shams added first, all with uniform height ===== -->
             <div class="cert-logos">
               <img
                 src="https://github.com/user-attachments/assets/de5db8c8-0378-4ff9-9fe8-6217941cd3fa"
                 alt="FCIS Ain Shams"
-                height="22"
+                height="40"
                 loading="lazy"
               />
               <img
-                src="https://github.com/user-attachments/assets/57c4ce5e-a943-4e18-bf2c-0999d3fb68ea"
+                src="https://github.com/user-attachments/assets/2abf9149-ee53-4877-9623-89b5e35395f0"
                 alt="Cisco"
-                height="22"
+                height="40"
                 loading="lazy"
               />
               <img
-                src="https://github.com/user-attachments/assets/5506718e-9671-474a-8b30-98635c761480"
-                alt="Coursera"
-                height="22"
-                loading="lazy"
-              />
-              <img
-                src="https://github.com/user-attachments/assets/17708e78-aaf8-42ae-9a44-fe72acdb77ec"
+                src="https://github.com/user-attachments/assets/bbcbe052-365c-4949-97c5-fcd11fe284c0"
                 alt="IBM"
-                height="22"
+                height="40"
                 loading="lazy"
               />
               <img
-                src="https://github.com/user-attachments/assets/12035e70-7265-42f0-ab74-84659d652148"
+                src="https://github.com/user-attachments/assets/21408149-cc3d-4efd-976c-f2077ae64879"
+                alt="Coursera"
+                height="40"
+                loading="lazy"
+              />
+              <img
+                src="https://github.com/user-attachments/assets/db6e18b9-3383-4bb6-8049-6249973144a4"
                 alt="Microsoft"
-                height="22"
+                height="40"
+                loading="lazy"
+              />
+              <img
+                src="https://github.com/user-attachments/assets/edd8853b-947b-45e2-8d69-9101209bef37"
+                alt="Databricks"
+                height="40"
+                loading="lazy"
+              />
+              <img
+                src="https://github.com/user-attachments/assets/747e5bd9-e743-4ad3-bf9c-b43e4bf62ba4"
+                alt="MongoDB"
+                height="40"
+                loading="lazy"
+              />
+              <img
+                src="https://github.com/user-attachments/assets/109646b2-3585-43b4-beb5-2011e7f1b838"
+                alt="Azure"
+                height="40"
+                loading="lazy"
+              />
+              <img
+                src="https://github.com/user-attachments/assets/2d3ccac9-fd7b-4c00-ac5a-01b44a54c798"
+                alt="Intel"
+                height="40"
+                loading="lazy"
+              />
+              <img
+                src="https://github.com/user-attachments/assets/d1d82873-b090-431a-a779-7a16a6e26122"
+                alt="Udacity"
+                height="40"
                 loading="lazy"
               />
             </div>
