@@ -23,7 +23,6 @@
       rel="stylesheet"
     />
     <style>
-      /* --- reset & base --- */
       *,
       *::before,
       *::after {
@@ -77,7 +76,6 @@
           background-clip: text;
           display: inline-block;
       }
-      /* keyframes & reveal */
       @keyframes drift-buoy {
           0%,
           100% {
@@ -248,7 +246,6 @@
           stroke: #ffffff;
           -webkit-text-fill-color: #ffffff;
       }
-      /* header */
       header {
           position: fixed;
           top: 0;
@@ -329,7 +326,6 @@
           padding: 4px;
           font-family: inherit;
       }
-      /* hero */
       .hero {
           padding-top: 140px;
           padding-bottom: 100px;
@@ -645,7 +641,6 @@
               transform: translateY(-12px);
           }
       }
-      /* about */
       .about {
           background: var(--bg-secondary);
           position: relative;
@@ -811,7 +806,6 @@
       .stat:hover p {
           color: #ffffff;
       }
-      /* skills */
       .skills {
           background: var(--bg-primary);
           position: relative;
@@ -898,7 +892,6 @@
           position: relative;
           z-index: 2;
       }
-      /* projects */
       .projects {
           background: var(--bg-secondary);
           position: relative;
@@ -1103,33 +1096,10 @@
           color: #ffffff;
       }
       .freelance-divider {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          margin: 48px 0 40px;
-          opacity: 0.7;
-      }
-      .freelance-divider::before,
-      .freelance-divider::after {
-          content: '';
-          flex: 1;
           height: 1px;
           background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb), 0.5), transparent);
-      }
-      .freelance-divider .divider-icon {
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
-          background: rgba(var(--primary-rgb), 0.1);
-          border: 1px solid rgba(var(--primary-rgb), 0.3);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-      }
-      .freelance-divider .divider-icon i {
-          color: var(--primary);
-          font-size: 1rem;
+          margin: 48px 0 40px;
+          opacity: 0.7;
       }
       .freelance-cards-grid {
           display: flex;
@@ -1275,7 +1245,6 @@
       .freelance-card:hover .upwork-badge-bottom img {
           filter: hue-rotate(200deg) saturate(2) brightness(1.3);
       }
-      /* --- FOOTER --- */
       footer {
           background: rgba(10, 10, 10, 0.8);
           backdrop-filter: blur(20px);
@@ -1306,7 +1275,6 @@
           letter-spacing: -0.02em;
           white-space: nowrap;
       }
-      /* ── REVERSED GRADIENT for "&" in footer only ── */
       .footer-logo .footer-amp-gradient {
           background: linear-gradient(to right, #ffffff, var(--primary));
           -webkit-background-clip: text;
@@ -1314,8 +1282,6 @@
           background-clip: text;
           display: inline-block;
       }
-
-      /* ── PLAIN TEXT BLOCK — NO SPACES BETWEEN LINES ── */
       .footer-text {
           max-width: 520px;
           width: 100%;
@@ -1328,8 +1294,6 @@
           margin: 0;
           padding: 0;
       }
-
-      /* ── SOCIAL LINKS (moved under Contact) ── */
       .social-links {
           display: flex;
           gap: 12px;
@@ -1405,8 +1369,6 @@
       .social-link:hover .credly-svg path {
           fill: #ffffff;
       }
-
-      /* ── CONTACT (right column) ── */
       .footer-right {
           display: flex;
           flex-direction: column;
@@ -1517,7 +1479,6 @@
       .footer-contact-item:hover .fc-text span {
           color: #ffffff;
       }
-
       .copyright {
           text-align: center;
           padding-top: 24px;
@@ -1526,8 +1487,18 @@
           font-size: 0.85rem;
           line-height: 1.6;
       }
-
-      /* ── RESPONSIVE ── */
+      .stat-loading {
+          opacity: 0.6;
+          animation: pulse-loader 1.2s ease-in-out infinite alternate;
+      }
+      @keyframes pulse-loader {
+          0% {
+              opacity: 0.4;
+          }
+          100% {
+              opacity: 0.9;
+          }
+      }
       @media (prefers-reduced-motion: reduce) {
           .image-frame,
           .project-card,
@@ -1790,7 +1761,6 @@
           }
           .freelance-divider {
               margin: 32px 0 28px;
-              gap: 10px;
           }
           .freelance-card {
               padding: 18px 16px;
@@ -1854,13 +1824,13 @@
             </div>
             <h1><span class="gradient-text">Mahmoud Abdallah</span></h1>
             <p class="hero-sub">
-              Turning data into decisions that matter with 3+ years of
-              end‑to‑end analytics experience, bridging raw numbers and real
+              Turning data into decisions that matter with 2+ years of
+              end-to-end analytics experience, bridging raw numbers and real
               strategy.
             </p>
             <div class="hero-btns">
-              <a href="#projects" class="btn btn-outline"
-                >View Projects
+              <a href="#projects" class="btn btn-outline">
+                View Projects
                 <svg
                   width="20"
                   height="20"
@@ -1873,8 +1843,8 @@
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
               </a>
-              <a href="#contact" class="btn btn-outline"
-                >Contact Info
+              <a href="#contact" class="btn btn-outline">
+                Contact Info
                 <svg
                   width="20"
                   height="20"
@@ -1945,7 +1915,7 @@
             <p>
               My journey into data analytics started with a simple frustration:
               too many organizations sit on valuable data but have no clear way
-              to read it, trust it, or act on it.<br />Over the past 3+ years,
+              to read it, trust it, or act on it.<br />Over the past 2+ years,
               I've dedicated my career to closing that gap.<br />I've
               collaborated across industries to design interactive dashboards,
               build automated reporting pipelines, and create self-service
@@ -1997,22 +1967,22 @@
               that works for you.
             </p>
           </div>
-          <div class="about-stats">
-            <div class="stat reveal delay-1">
-              <h3>3+</h3>
+          <div class="about-stats" id="statsContainer">
+            <div class="stat reveal delay-1" id="statYears">
+              <h3 id="statYearsValue">—</h3>
               <p>Years Experience</p>
             </div>
-            <div class="stat reveal delay-2">
-              <h3>30+</h3>
+            <div class="stat reveal delay-2" id="statProjects">
+              <h3 id="statProjectsValue">—</h3>
               <p>Projects Completed</p>
             </div>
-            <div class="stat reveal delay-3">
-              <h3>20+</h3>
+            <div class="stat reveal delay-3" id="statRepos">
+              <h3 id="statReposValue">—</h3>
               <p>GitHub Repos</p>
             </div>
-            <div class="stat reveal delay-4">
-              <h3>100%</h3>
-              <p>On-Time Delivery</p>
+            <div class="stat reveal delay-4" id="statCommits">
+              <h3 id="statCommitsValue">—</h3>
+              <p>Total Commits</p>
             </div>
           </div>
         </div>
@@ -2146,9 +2116,7 @@
         </div>
         <div class="projects-grid" id="projectsGrid"></div>
 
-        <div class="freelance-divider reveal">
-          <div class="divider-icon"><i class="fas fa-briefcase"></i></div>
-        </div>
+        <div class="freelance-divider reveal"></div>
 
         <div class="section-header centered reveal" style="margin-bottom:36px">
           <span class="section-label">Freelance</span>
@@ -2162,20 +2130,15 @@
       </div>
     </section>
 
-    <!-- ─── FOOTER (plain text message) ─── -->
     <footer id="contact">
       <div class="container">
         <div class="footer-main reveal">
-          <!-- LEFT COLUMN -->
           <div class="footer-left">
-            <!-- Logo with REVERSED gradient on "&" -->
             <div class="footer-logo">
               <span style="color:#fff">Data</span>
               <span class="footer-amp-gradient">&amp;</span>
               <span style="color:var(--primary)">Analytics</span>
             </div>
-
-            <!-- PLAIN TEXT — NO SPACES BETWEEN LINES -->
             <div class="footer-text">
               <p>Data tells a story.</p>
               <p>Let's make it yours.</p>
@@ -2189,8 +2152,6 @@
               <p>Let's turn your data into your biggest asset.</p>
             </div>
           </div>
-
-          <!-- RIGHT COLUMN: Contact + Social -->
           <div class="footer-right">
             <h4>Contact</h4>
             <a
@@ -2208,8 +2169,6 @@
                 <small>Phone</small><span>+20 102 165 4059</span>
               </div>
             </a>
-
-            <!-- Social links moved under Contact -->
             <div class="social-links">
               <a
                 href="https://github.com/MAHMOUD2ABDALLAH"
@@ -2246,7 +2205,6 @@
             </div>
           </div>
         </div>
-
         <div class="copyright">
           <p>
             Mahmoud Abdallah - Data &amp; Analytics<br />All Rights Reserved
@@ -2310,8 +2268,8 @@
               const gArray = plane.geometry.attributes.position.array
               const time = Date.now() * 0.0002
               for (let i = 0; i < gArray.length; i += 3) {
-                  gArray[i + 2] = simplex.noise4D(gArray[i] / conf.xyCoef, gArray[i + 1] / conf.xyCoef, time, time * 1.7) *
-                      conf.zCoef
+                  gArray[i + 2] = simplex.noise4D(gArray[i] / conf.xyCoef, gArray[i + 1] / conf.xyCoef, time, time *
+                      1.7) * conf.zCoef
               }
               plane.geometry.attributes.position.needsUpdate = true
               const t = Date.now() * 0.001,
@@ -2348,8 +2306,8 @@
       (function() {
           document.addEventListener('contextmenu', e => e.preventDefault())
           document.addEventListener('keydown', e => {
-              if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) || (e.ctrlKey && e
-                      .key === 'u')) { e.preventDefault();
+              if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) || (e.ctrlKey &&
+                      e.key === 'u')) { e.preventDefault();
                   return false }
           })
       })();
@@ -2357,7 +2315,7 @@
       const projectsData = [{
           id: 6,
           title: 'Immigration to Canada',
-          description: 'EDA on Canadian immigration data (1980‑2013) using Python, Pandas, Matplotlib to uncover trends and demographic insights.',
+          description: 'EDA on Canadian immigration data (1980-2013) using Python, Pandas, Matplotlib to uncover trends and demographic insights.',
           image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67',
           tags: ['python', 'pandas', 'data-visualization', 'matplotlib'],
           githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013',
@@ -2402,7 +2360,7 @@
           tags: ['power-bi', 'financial-analytics', 'fraud-detection'],
           githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200',
           websiteUrl: 'https://abwab.ai/'
-      }]
+      }];
 
       const freelanceProjectsData = [
           { id: 'f1', title: 'Furniture Sales Analytics', description: 'Sales performance dashboard & data analysis for a furniture business.',
@@ -2415,74 +2373,203 @@
               githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/HR-Database' },
           { id: 'f5', title: 'Family Members Segmentation', description: 'Customer segmentation analysis for family-based membership programs.',
               githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/family-members-segmentation' }
-      ]
+      ];
+
+      function extractRepoName(url) {
+          if (!url) return '';
+          const parts = url.replace(/\/$/, '').split('/');
+          return parts[parts.length - 1] || '';
+      }
+
+      const portfolioRepoSet = new Set();
+      projectsData.forEach(p => {
+          const name = extractRepoName(p.githubUrl);
+          if (name) portfolioRepoSet.add(name);
+      });
+      freelanceProjectsData.forEach(p => {
+          const name = extractRepoName(p.githubUrl);
+          if (name) portfolioRepoSet.add(name);
+      });
+
+      const GITHUB_USER = 'MAHMOUD2ABDALLAH';
 
       function renderProjects() {
-          const grid = document.getElementById('projectsGrid')
-          if (!grid) return
+          const grid = document.getElementById('projectsGrid');
+          if (!grid) return;
           grid.innerHTML = projectsData.map(p =>
               `<div class="project-card reveal" onclick="window.open('${p.githubUrl}','_blank')" role="button" tabindex="0" title="View project on GitHub">
-                <div class="card-bg-blur" style="background-image:url('${p.image}')"></div>
-                <div class="card-content">
-                    <h3>${p.title}</h3>
-                    <p>${p.description}</p>
-                    <div class="project-tags">${p.tags.map(t=>`<span class="project-tag">${t}</span>`).join('')}</div>
-                    <div class="card-actions">
-                        <a href="${p.websiteUrl}" target="_blank" class="btn-website-card" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt"></i> Website</a>
-                    </div>
-                </div>
-            </div>`
-          ).join('')
-          observeElements('.project-card')
+                  <div class="card-bg-blur" style="background-image:url('${p.image}')"></div>
+                  <div class="card-content">
+                      <h3>${p.title}</h3>
+                      <p>${p.description}</p>
+                      <div class="project-tags">${p.tags.map(t=>`<span class="project-tag">${t}</span>`).join('')}</div>
+                      <div class="card-actions">
+                          <a href="${p.websiteUrl}" target="_blank" class="btn-website-card" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt"></i> Website</a>
+                      </div>
+                  </div>
+              </div>`
+          ).join('');
+          observeElements('.project-card');
       }
 
       function renderFreelanceCards() {
-          const grid = document.getElementById('freelanceCardsGrid')
-          if (!grid) return
+          const grid = document.getElementById('freelanceCardsGrid');
+          if (!grid) return;
           grid.innerHTML = freelanceProjectsData.map((p, i) =>
-              `<div class="freelance-card-wrapper reveal delay-${i+1}">
-                <div class="freelance-card" onclick="window.open('${p.githubUrl}','_blank')" role="button" tabindex="0" title="View project on GitHub">
-                    <div class="card-inner-content">
-                        <span class="card-heading">${p.title}</span>
-                        <span class="card-para">${p.description}</span>
-                    </div>
-                    <div class="upwork-badge-bottom" aria-label="Upwork">
-                        <img src="https://github.com/user-attachments/assets/3bee725e-f9a7-47a5-83c9-321516bb12c9" alt="Upwork logo" />
-                    </div>
-                </div>
-            </div>`
-          ).join('')
-          observeElements('.freelance-card-wrapper')
+              `<div class="freelance-card-wrapper reveal delay-${(i % 5)+1}">
+                  <div class="freelance-card" onclick="window.open('${p.githubUrl}','_blank')" role="button" tabindex="0" title="View project on GitHub">
+                      <div class="card-inner-content">
+                          <span class="card-heading">${p.title}</span>
+                          <span class="card-para">${p.description}</span>
+                      </div>
+                      <div class="upwork-badge-bottom" aria-label="Upwork">
+                          <img src="https://github.com/user-attachments/assets/3bee725e-f9a7-47a5-83c9-321516bb12c9" alt="Upwork logo" />
+                      </div>
+                  </div>
+              </div>`
+          ).join('');
+          observeElements('.freelance-card-wrapper');
       }
 
       function observeElements(selector) {
           const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target
-                      .classList.add('active') }) }, { threshold: 0.1 })
-          document.querySelectorAll(selector).forEach(el => observer.observe(el))
+                      .classList.add('active') }) }, { threshold: 0.1 });
+          document.querySelectorAll(selector).forEach(el => observer.observe(el));
+      }
+
+      async function fetchGitHubStats() {
+          const statYearsEl = document.getElementById('statYearsValue');
+          const statProjectsEl = document.getElementById('statProjectsValue');
+          const statReposEl = document.getElementById('statReposValue');
+          const statCommitsEl = document.getElementById('statCommitsValue');
+
+          [statYearsEl, statProjectsEl, statReposEl, statCommitsEl].forEach(el => {
+              if (el) { el.textContent = '…';
+                  el.parentElement.classList.add('stat-loading'); }
+          });
+
+          try {
+              const reposUrl = `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`;
+              const reposResp = await fetch(reposUrl, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
+              if (!reposResp.ok) throw new Error(`GitHub API error: ${reposResp.status}`);
+              const repos = await reposResp.json();
+              const totalRepos = repos.length;
+
+              const repoNames = repos.map(r => r.name);
+              let matchingCount = 0;
+              for (const pName of portfolioRepoSet) {
+                  if (repoNames.some(r => r.toLowerCase() === pName.toLowerCase())) {
+                      matchingCount++;
+                  }
+              }
+
+              let totalCommits = 0;
+              for (const repo of repos) {
+                  try {
+                      const cUrl =
+                          `https://api.github.com/repos/${GITHUB_USER}/${repo.name}/commits?per_page=1`;
+                      const cResp = await fetch(cUrl, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
+                      if (cResp.ok) {
+                          const linkHeader = cResp.headers.get('Link');
+                          if (linkHeader) {
+                              const match = linkHeader.match(/page=(\d+)>; rel="last"/);
+                              if (match) {
+                                  totalCommits += parseInt(match[1], 10);
+                              } else {
+                                  const data = await cResp.json();
+                                  if (data && data.length > 0) totalCommits += 1;
+                              }
+                          } else {
+                              const data = await cResp.json();
+                              if (data && data.length > 0) totalCommits += 1;
+                          }
+                      }
+                  } catch (_) {}
+              }
+
+              const start = new Date(2024, 5, 1);
+              const now = new Date();
+              let years = now.getFullYear() - start.getFullYear();
+              let months = now.getMonth() - start.getMonth();
+              if (months < 0) { years--;
+                  months += 12; }
+              if (now.getDate() < start.getDate()) {
+                  months--;
+                  if (months < 0) { years--;
+                      months += 12; }
+              }
+              const yearsDisplay = `${years}.${months}`;
+
+              const EXTERNAL_PROJECTS = 3;
+              const totalProjects = EXTERNAL_PROJECTS + matchingCount;
+
+              statYearsEl.textContent = yearsDisplay;
+              statProjectsEl.textContent = totalProjects;
+              statReposEl.textContent = totalRepos;
+              statCommitsEl.textContent = totalCommits.toLocaleString();
+
+              [statYearsEl, statProjectsEl, statReposEl, statCommitsEl].forEach(el => {
+                  if (el) el.parentElement.classList.remove('stat-loading');
+              });
+
+          } catch (err) {
+              console.warn('GitHub stats fetch failed, using fallback values.', err);
+              const start = new Date(2024, 5, 1);
+              const now = new Date();
+              let y = now.getFullYear() - start.getFullYear();
+              let m = now.getMonth() - start.getMonth();
+              if (m < 0) { y--;
+                  m += 12; }
+              if (now.getDate() < start.getDate()) { m--; if (m < 0) { y--;
+                      m += 12; } }
+              statYearsEl.textContent = `${y}.${m}`;
+              statProjectsEl.textContent = '14+';
+              statReposEl.textContent = '20+';
+              statCommitsEl.textContent = '1.2k+';
+              [statYearsEl, statProjectsEl, statReposEl, statCommitsEl].forEach(el => {
+                  if (el) el.parentElement.classList.remove('stat-loading');
+              });
+          }
       }
 
       document.addEventListener('DOMContentLoaded', () => {
-          const menuBtn = document.getElementById('mobileMenu'),
-              navLinks = document.getElementById('navLinks')
-          if (menuBtn) menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'))
-          if (navLinks) navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks
-              .classList.remove('active')))
-          const header = document.getElementById('header')
-          window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.pageYOffset > 20))
-          renderProjects()
-          renderFreelanceCards()
-          const revealObserver = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e
-                      .target.classList.add('active') }) }, { threshold: 0.1 })
-          document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .freelance-divider').forEach(el =>
-              revealObserver.observe(el))
+          const menuBtn = document.getElementById('mobileMenu');
+          const navLinks = document.getElementById('navLinks');
+          if (menuBtn) {
+              menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+          }
+          if (navLinks) {
+              navLinks.querySelectorAll('a').forEach(link =>
+                  link.addEventListener('click', () => navLinks.classList.remove('active'))
+              );
+          }
+
+          const header = document.getElementById('header');
+          window.addEventListener('scroll', () => {
+              header.classList.toggle('scrolled', window.pageYOffset > 20);
+          });
+
+          renderProjects();
+          renderFreelanceCards();
+
+          const revealObserver = new IntersectionObserver(entries => {
+              entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+          }, { threshold: 0.1 });
+          document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .freelance-divider')
+              .forEach(el => revealObserver.observe(el));
+
           document.addEventListener('keydown', function(e) {
               if (e.key === 'Enter' || e.key === ' ') {
-                  const target = e.target.closest('.project-card, .freelance-card')
-                  if (target && document.activeElement === target) { e.preventDefault();
-                      target.click() }
+                  const target = e.target.closest('.project-card, .freelance-card');
+                  if (target && document.activeElement === target) {
+                      e.preventDefault();
+                      target.click();
+                  }
               }
-          })
-      })
+          });
+
+          fetchGitHubStats();
+      });
     </script>
   </body>
 </html>
