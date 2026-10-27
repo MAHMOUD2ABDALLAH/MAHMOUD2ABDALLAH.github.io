@@ -1239,11 +1239,6 @@
           width: 28px;
           height: 28px;
           object-fit: contain;
-          filter: hue-rotate(200deg) saturate(2);
-          transition: filter 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .freelance-card:hover .upwork-badge-bottom img {
-          filter: hue-rotate(200deg) saturate(2) brightness(1.3);
       }
       footer {
           background: rgba(10, 10, 10, 0.8);
@@ -2122,7 +2117,7 @@
           <span class="section-label">Freelance</span>
           <h2 style="font-size:2.2rem">Paid Projects</h2>
           <p class="section-subtitle">
-            Delivered freelance data analytics solutions on Upwork — real client
+            Delivered freelance data analytics solutions on Upwork: real client
             work, real impact.
           </p>
         </div>
@@ -2207,7 +2202,7 @@
         </div>
         <div class="copyright">
           <p>
-            Mahmoud Abdallah - Data &amp; Analytics<br />All Rights Reserved
+            Mahmoud Abdallah | Data &amp; Analytics<br />All Rights Reserved
             &copy; 2024
           </p>
         </div>
@@ -2363,16 +2358,22 @@
       }];
 
       const freelanceProjectsData = [
-          { id: 'f1', title: 'Furniture Sales Analytics', description: 'Sales performance dashboard & data analysis for a furniture business.',
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/furniture-Sales' },
-          { id: 'f2', title: 'Market Share Prices', description: 'Market share price tracking, trend analysis & competitor benchmarking.',
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Market-share-prices' },
-          { id: 'f3', title: 'Bike Sales Analytics', description: 'Comprehensive bike sales performance & revenue analysis.',
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Bike-Sales' },
-          { id: 'f4', title: 'HR Database Solution', description: 'HR database analytics, employee insights & workforce reporting.',
+          { id: 'f1', title: 'AI Builder Automation', description: 'AI-powered automation workflows built with Microsoft Power Platform AI Builder.',
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/AI-Builder-Automation' },
+          { id: 'f2', title: 'HR Database Solution', description: 'HR database analytics, employee insights & workforce reporting.',
               githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/HR-Database' },
-          { id: 'f5', title: 'Family Members Segmentation', description: 'Customer segmentation analysis for family-based membership programs.',
-              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/family-members-segmentation' }
+          { id: 'f3', title: 'Furniture Sales Analytics', description: 'Sales performance dashboard & data analysis for a furniture business.',
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/furniture-Sales' },
+          { id: 'f4', title: 'Family Members Segmentation', description: 'Customer segmentation analysis for family-based membership programs.',
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/family-members-segmentation' },
+          { id: 'f5', title: 'Bike Sales Analytics', description: 'Comprehensive bike sales performance & revenue analysis.',
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Bike-Sales' },
+          { id: 'f6', title: 'Market Share Prices', description: 'Market share price tracking, trend analysis & competitor benchmarking.',
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Market-share-prices' },
+          { id: 'f7', title: 'Library Manager Canvas App', description: 'Power Apps canvas app for managing library books, members, and lending records.',
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Library-Manager-Canvas-App' },
+          { id: 'f8', title: 'Automotive EDA', description: 'Exploratory data analysis on automotive data covering pricing, performance, and market trends.',
+              githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Automotive-EDA' }
       ];
 
       function extractRepoName(url) {
@@ -2423,7 +2424,7 @@
                           <span class="card-para">${p.description}</span>
                       </div>
                       <div class="upwork-badge-bottom" aria-label="Upwork">
-                          <img src="https://github.com/user-attachments/assets/3bee725e-f9a7-47a5-83c9-321516bb12c9" alt="Upwork logo" />
+                          <img src="https://github.com/user-attachments/assets/43d8da7a-8c02-42f5-a367-eb83b90d078c" alt="Upwork Logo" />
                       </div>
                   </div>
               </div>`
