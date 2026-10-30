@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Space+Grotesk:wght@300;400;500;600;700&display=block"
       rel="stylesheet"
     />
     <style>
@@ -2197,6 +2197,23 @@
                   />
                 </svg>
               </a>
+              <!-- Upwork Inline SVG Icon -->
+              <a
+                href="https://www.upwork.com/freelancers/~01ab95f3b6c6a783a3"
+                class="social-link"
+                target="_blank"
+                title="Upwork Profile"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 640 640"
+                  style="width: 20px; height: 20px; fill: currentColor;"
+                >
+                  <path
+                    d="M493.9 359.6C443.6 359.6 410.4 320.7 401.1 305.7C413 210.4 447.9 180.3 493.9 180.3C539.4 180.3 574.8 216.7 574.8 270C574.8 323.3 539.4 359.7 493.9 359.7L493.9 359.6zM493.9 121.8C412 121.8 366.1 175.2 352.9 230.2C338 202.2 327 164.7 318.4 129.9L205.2 129.9L205.2 270.9C205.2 322 181.9 359.9 136.4 359.9C90.9 359.9 64.8 322.1 64.8 270.9L65.3 129.9L0 129.9L0 270.9C0 312 13.3 349.3 37.6 376C62.6 403.5 96.8 417.8 136.4 417.8C215.2 417.8 270.2 357.4 270.2 270.9L270.2 176.1C278.4 207.3 298 267.2 335.5 319.7L300.5 519.1L366.9 519.1L390 377.8C397.6 384.1 405.7 389.8 414.2 394.8C436.4 408.8 461.9 416.7 488.1 417.6C488.1 417.6 492.1 417.8 494.2 417.8C575.4 417.8 640.1 354.9 640.1 270C640.1 185.1 575.3 121.9 494.1 121.9L493.9 121.8z"
+                  />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
@@ -2308,6 +2325,30 @@
       })();
 
       const projectsData = [{
+          id: 10,
+          title: 'Nextcare Allianz Insurance Claims',
+          description: 'Insurance claims and call center analytics dashboard built with Power BI and SQL.',
+          image: 'https://github.com/user-attachments/assets/1d6fb6b0-4acd-4566-8376-d0bf7d1cfc75',
+          tags: ['power-bi', 'sql', 'healthcare-analytics', 'claims-analysis'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Nextcare-Allianz-Insurance-Claims-Performance-Case-Study',
+          websiteUrl: 'https://www.nextcarehealth.com/'
+      }, {
+          id: 11,
+          title: 'Innovative RTM Analysis',
+          description: 'Real-time workforce attendance and shift compliance monitoring analytics using Excel.',
+          image: 'https://github.com/user-attachments/assets/278b2b2e-aa11-4e7d-990e-3b882df9f3ea',
+          tags: ['excel', 'real-time-monitoring', 'workforce-analytics', 'compliance'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Innovative-rtm-analysis-case-study',
+          websiteUrl: 'https://innovative-bpo.com/'
+      }, {
+          id: 12,
+          title: 'WalletHub Financial Analysis',
+          description: 'Financial product research and APY validation using advanced Excel functions.',
+          image: 'https://github.com/user-attachments/assets/c8b122a5-40c3-4194-945b-8192119ee162',
+          tags: ['excel', 'financial-analysis', 'apy-validation', 'data-research'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/WalletHub-Financial-Analysis-Excel',
+          websiteUrl: 'https://wallethub.com/'
+      }, {
           id: 6,
           title: 'Immigration to Canada',
           description: 'EDA on Canadian immigration data (1980-2013) using Python, Pandas, Matplotlib to uncover trends and demographic insights.',
@@ -2438,6 +2479,7 @@
           document.querySelectorAll(selector).forEach(el => observer.observe(el));
       }
 
+      // --- EXACT KPI NUMBERS FROM GITHUB ---
       async function fetchGitHubStats() {
           const statYearsEl = document.getElementById('statYearsValue');
           const statProjectsEl = document.getElementById('statProjectsValue');
@@ -2450,64 +2492,42 @@
           });
 
           try {
-              const reposUrl = `https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`;
-              const reposResp = await fetch(reposUrl, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
-              if (!reposResp.ok) throw new Error(`GitHub API error: ${reposResp.status}`);
-              const repos = await reposResp.json();
-              const totalRepos = repos.length;
+              // 1. Fetch user data (public_repos)
+              const userResp = await fetch(`https://api.github.com/users/${GITHUB_USER}`);
+              if (!userResp.ok) throw new Error(`User API error: ${userResp.status}`);
+              const userData = await userResp.json();
+              const totalRepos = userData.public_repos; // 28
 
-              const repoNames = repos.map(r => r.name);
-              let matchingCount = 0;
-              for (const pName of portfolioRepoSet) {
-                  if (repoNames.some(r => r.toLowerCase() === pName.toLowerCase())) {
-                      matchingCount++;
-                  }
-              }
-
+              // 2. Fetch total commits using the Search API
               let totalCommits = 0;
-              for (const repo of repos) {
-                  try {
-                      const cUrl =
-                          `https://api.github.com/repos/${GITHUB_USER}/${repo.name}/commits?per_page=1`;
-                      const cResp = await fetch(cUrl, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
-                      if (cResp.ok) {
-                          const linkHeader = cResp.headers.get('Link');
-                          if (linkHeader) {
-                              const match = linkHeader.match(/page=(\d+)>; rel="last"/);
-                              if (match) {
-                                  totalCommits += parseInt(match[1], 10);
-                              } else {
-                                  const data = await cResp.json();
-                                  if (data && data.length > 0) totalCommits += 1;
-                              }
-                          } else {
-                              const data = await cResp.json();
-                              if (data && data.length > 0) totalCommits += 1;
-                          }
-                      }
-                  } catch (_) {}
-              }
+              try {
+                  const commitSearchResp = await fetch(
+                      `https://api.github.com/search/commits?q=author:${GITHUB_USER}`,
+                      { headers: { 'Accept': 'application/vnd.github.cloak-preview' } }
+                  );
+                  if (commitSearchResp.ok) {
+                      const commitSearchData = await commitSearchResp.json();
+                      totalCommits = commitSearchData.total_count; // 382
+                  }
+              } catch (_) {}
 
+              // 3. Calculate years of experience from 01-June-2024
               const start = new Date(2024, 5, 1);
               const now = new Date();
               let years = now.getFullYear() - start.getFullYear();
               let months = now.getMonth() - start.getMonth();
-              if (months < 0) { years--;
-                  months += 12; }
+              if (months < 0) { years--; months += 12; }
               if (now.getDate() < start.getDate()) {
                   months--;
-                  if (months < 0) { years--;
-                      months += 12; }
+                  if (months < 0) { years--; months += 12; }
               }
               const yearsDisplay = `${years}.${months}`;
 
-              const EXTERNAL_PROJECTS = 3;
-              const totalProjects = EXTERNAL_PROJECTS + matchingCount;
-
+              // 4. Update DOM with exact numbers
               statYearsEl.textContent = yearsDisplay;
-              statProjectsEl.textContent = totalProjects;
-              statReposEl.textContent = totalRepos;
-              statCommitsEl.textContent = totalCommits.toLocaleString();
+              statProjectsEl.textContent = '16'; // Fixed at 16 as requested
+              statReposEl.textContent = totalRepos; // 28
+              statCommitsEl.textContent = totalCommits.toLocaleString(); // 382
 
               [statYearsEl, statProjectsEl, statReposEl, statCommitsEl].forEach(el => {
                   if (el) el.parentElement.classList.remove('stat-loading');
@@ -2515,18 +2535,17 @@
 
           } catch (err) {
               console.warn('GitHub stats fetch failed, using fallback values.', err);
+              // Fallback: Hardcoded exact numbers
               const start = new Date(2024, 5, 1);
               const now = new Date();
               let y = now.getFullYear() - start.getFullYear();
               let m = now.getMonth() - start.getMonth();
-              if (m < 0) { y--;
-                  m += 12; }
-              if (now.getDate() < start.getDate()) { m--; if (m < 0) { y--;
-                      m += 12; } }
+              if (m < 0) { y--; m += 12; }
+              if (now.getDate() < start.getDate()) { m--; if (m < 0) { y--; m += 12; } }
               statYearsEl.textContent = `${y}.${m}`;
-              statProjectsEl.textContent = '14+';
-              statReposEl.textContent = '20+';
-              statCommitsEl.textContent = '1.2k+';
+              statProjectsEl.textContent = '16';
+              statReposEl.textContent = '28';
+              statCommitsEl.textContent = '382';
               [statYearsEl, statProjectsEl, statReposEl, statCommitsEl].forEach(el => {
                   if (el) el.parentElement.classList.remove('stat-loading');
               });
