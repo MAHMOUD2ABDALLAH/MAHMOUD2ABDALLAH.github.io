@@ -1019,6 +1019,20 @@
           opacity: 0.06;
           filter: blur(5px);
       }
+      /* === SVG logo backgrounds (all cards): FIT (contain) with inset padding === */
+      .card-bg-blur.card-bg-contain {
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-origin: content-box;
+          padding: 20px;
+          opacity: 0.3;
+          filter: blur(3px);
+      }
+      .project-card:hover .card-bg-blur.card-bg-contain {
+          opacity: 0.12;
+          filter: blur(5px);
+      }
       .card-content {
           display: flex;
           flex-direction: column;
@@ -1026,6 +1040,7 @@
           z-index: 2;
           position: relative;
           padding-right: 10px;
+          flex: 1;
       }
       .card-content h3 {
           font-size: 1.35rem;
@@ -1066,7 +1081,8 @@
           display: flex;
           align-items: center;
           gap: 16px;
-          margin-top: 12px;
+          margin-top: auto;
+          padding-top: 12px;
           flex-wrap: wrap;
       }
       .btn-website-card {
@@ -1239,6 +1255,26 @@
           width: 28px;
           height: 28px;
           object-fit: contain;
+      }
+      /* === Upwork background for freelance cards === */
+      .freelance-card .card-bg-blur {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-origin: content-box;
+          padding: 20px;
+          opacity: 0.3;
+          filter: blur(3px);
+          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+          border-radius: 24px;
+          pointer-events: none;
+      }
+      .freelance-card:hover .card-bg-blur {
+          opacity: 0.12;
+          filter: blur(5px);
       }
       footer {
           background: rgba(10, 10, 10, 0.8);
@@ -1728,6 +1764,15 @@
               filter: blur(2px);
               opacity: 0.18;
           }
+          .card-bg-blur.card-bg-contain {
+              padding: 14px;
+              opacity: 0.28;
+              filter: blur(2.5px);
+          }
+          .project-card:hover .card-bg-blur.card-bg-contain {
+              opacity: 0.1;
+              filter: blur(4px);
+          }
           .footer-text p {
               font-size: 0.82rem;
           }
@@ -1772,6 +1817,11 @@
           .card-bg-blur {
               filter: blur(2px);
               opacity: 0.16;
+          }
+          .card-bg-blur.card-bg-contain {
+              padding: 10px;
+              opacity: 0.25;
+              filter: blur(2px);
           }
           .footer-text p {
               font-size: 0.78rem;
@@ -2325,10 +2375,26 @@
       })();
 
       const projectsData = [{
+          id: 13,
+          title: 'Automotive World Market Analysis',
+          description: 'Comprehensive market analysis and visualisation for the automotive industry, covering pricing and performance trends.',
+          image: 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/AutomotiveWorld.svg',
+          tags: ['python', 'pandas', 'data-visualization', 'market-analysis'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Automotive-world',
+          websiteUrl: 'https://www.automotiveworld.com/'
+      }, {
+          id: 14,
+          title: 'Improvado Marketing Analytics',
+          description: 'Marketing analytics homework project focusing on data transformation and visualisation using Power BI.',
+          image: 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/Improvado.svg',
+          tags: ['power-bi', 'marketing-analytics', 'data-transformation'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Improvado-Marketing-Homework',
+          websiteUrl: 'https://improvado.io/'
+      }, {
           id: 10,
           title: 'Nextcare Allianz Insurance Claims',
           description: 'Insurance claims and call center analytics dashboard built with Power BI and SQL.',
-          image: 'https://github.com/user-attachments/assets/1d6fb6b0-4acd-4566-8376-d0bf7d1cfc75',
+          image: 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/nextcare.svg',
           tags: ['power-bi', 'sql', 'healthcare-analytics', 'claims-analysis'],
           githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Nextcare-Allianz-Insurance-Claims-Performance-Case-Study',
           websiteUrl: 'https://www.nextcarehealth.com/'
@@ -2336,7 +2402,7 @@
           id: 11,
           title: 'Innovative RTM Analysis',
           description: 'Real-time workforce attendance and shift compliance monitoring analytics using Excel.',
-          image: 'https://github.com/user-attachments/assets/278b2b2e-aa11-4e7d-990e-3b882df9f3ea',
+          image: 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/Innovative.svg',
           tags: ['excel', 'real-time-monitoring', 'workforce-analytics', 'compliance'],
           githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Innovative-rtm-analysis-case-study',
           websiteUrl: 'https://innovative-bpo.com/'
@@ -2344,7 +2410,7 @@
           id: 12,
           title: 'WalletHub Financial Analysis',
           description: 'Financial product research and APY validation using advanced Excel functions.',
-          image: 'https://github.com/user-attachments/assets/c8b122a5-40c3-4194-945b-8192119ee162',
+          image: 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/WalletHub.svg',
           tags: ['excel', 'financial-analysis', 'apy-validation', 'data-research'],
           githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/WalletHub-Financial-Analysis-Excel',
           websiteUrl: 'https://wallethub.com/'
@@ -2352,7 +2418,7 @@
           id: 6,
           title: 'Immigration to Canada',
           description: 'EDA on Canadian immigration data (1980-2013) using Python, Pandas, Matplotlib to uncover trends and demographic insights.',
-          image: 'https://github.com/user-attachments/assets/347e2fb5-3c83-43c1-8c5c-bb63a200bf67',
+          image: 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/Canada-ca.svg',
           tags: ['python', 'pandas', 'data-visualization', 'matplotlib'],
           githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Immigration-to-Canada-from-1980-to-2013',
           websiteUrl: 'https://www.canada.ca/'
@@ -2360,7 +2426,7 @@
           id: 2,
           title: 'Animal Shelter Home',
           description: 'Power Platform solution (Power BI, Apps, Automate) for shelter intake, medical records, and adoption efficiency.',
-          image: 'https://github.com/user-attachments/assets/06b33924-f1ac-4878-8891-9bd1ee0b7ea8',
+          image: 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/Microsoft.svg',
           tags: ['powerbi', 'powerapps', 'powerautomate', 'powerpages'],
           githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Animals-Shelter-Home-Power-Up-Challange',
           websiteUrl: 'https://powerup.microsoft.com/'
@@ -2368,7 +2434,7 @@
           id: 4,
           title: 'Walmart Product Analysis',
           description: 'Retail analytics dashboard with Power BI revealing product performance, category profitability, and inventory optimization.',
-          image: 'https://github.com/user-attachments/assets/370d7dab-24e7-467a-ac25-6c1f0fa43526',
+          image: 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/Walmart.svg',
           tags: ['power-bi', 'sales-analysis', 'e-commerce', 'dax-expression'],
           githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Walmart-Product-Analysis-Case-Study',
           websiteUrl: 'https://www.walmart.com/'
@@ -2376,7 +2442,7 @@
           id: 7,
           title: 'MaxAB Sales Analysis',
           description: "Comprehensive sales analytics dashboard for MaxAB, Egypt's leading B2B e-commerce platform.",
-          image: 'https://github.com/user-attachments/assets/e4487098-f9ae-46ca-bdd3-9c6c2304926f',
+          image: 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/Maxab.svg',
           tags: ['power-bi', 'sales-analysis', 'b2b', 'dax-expression'],
           githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/MaxAB-Sales-Analysis-Case-Study',
           websiteUrl: 'https://www.maxab.io/'
@@ -2384,7 +2450,7 @@
           id: 8,
           title: 'El Ezaby Pharmacy Digital Analytics',
           description: 'Digital analytics solution for El Ezaby Pharmacy, focusing on e-commerce performance and customer journey.',
-          image: 'https://github.com/user-attachments/assets/2bd6a1d4-1b45-4a15-8ac7-dad07a457eaa',
+          image: 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/ElEzaby.svg',
           tags: ['power-bi', 'e-commerce', 'pharmacy', 'digital-analytics'],
           githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Elezaby-Pharmacy-e-commerce-digital-analysis-Case-study',
           websiteUrl: 'https://elezabypharmacy.com/'
@@ -2392,7 +2458,7 @@
           id: 9,
           title: 'Abwab.AI Financial TRX 200',
           description: 'Financial transaction analysis and monitoring dashboard for Abwab.AI, providing fraud detection indicators.',
-          image: 'https://github.com/user-attachments/assets/9cc0136d-f306-4e7b-8419-e70af5ef950a',
+          image: 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/Abwab-ai.svg',
           tags: ['power-bi', 'financial-analytics', 'fraud-detection'],
           githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Abawb.ai-Financial-TRX-200',
           websiteUrl: 'https://abwab.ai/'
@@ -2435,12 +2501,19 @@
 
       const GITHUB_USER = 'MAHMOUD2ABDALLAH';
 
+      // All project cards now use the SVG logo as a contain-fit blurred background
+      const CONTAIN_BG_IDS = new Set([13, 14, 10, 11, 12, 6, 2, 4, 7, 8, 9]);
+
       function renderProjects() {
           const grid = document.getElementById('projectsGrid');
           if (!grid) return;
-          grid.innerHTML = projectsData.map(p =>
-              `<div class="project-card reveal" onclick="window.open('${p.githubUrl}','_blank')" role="button" tabindex="0" title="View project on GitHub">
-                  <div class="card-bg-blur" style="background-image:url('${p.image}')"></div>
+          grid.innerHTML = projectsData.map(p => {
+              const isContain = CONTAIN_BG_IDS.has(p.id);
+              const bgClass = 'card-bg-blur' + (isContain ? ' card-bg-contain' : '');
+              const bgUrl = p.image;
+              const cardClass = 'project-card reveal' + (isContain ? ' project-card-dark' : '');
+              return `<div class="${cardClass}" onclick="window.open('${p.githubUrl}','_blank')" role="button" tabindex="0" title="View project on GitHub">
+                  <div class="${bgClass}" style="background-image:url('${bgUrl}')"></div>
                   <div class="card-content">
                       <h3>${p.title}</h3>
                       <p>${p.description}</p>
@@ -2449,8 +2522,8 @@
                           <a href="${p.websiteUrl}" target="_blank" class="btn-website-card" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt"></i> Website</a>
                       </div>
                   </div>
-              </div>`
-          ).join('');
+              </div>`;
+          }).join('');
           observeElements('.project-card');
       }
 
@@ -2460,12 +2533,10 @@
           grid.innerHTML = freelanceProjectsData.map((p, i) =>
               `<div class="freelance-card-wrapper reveal delay-${(i % 5)+1}">
                   <div class="freelance-card" onclick="window.open('${p.githubUrl}','_blank')" role="button" tabindex="0" title="View project on GitHub">
+                      <div class="card-bg-blur" style="background-image:url('https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/Upwork.svg')"></div>
                       <div class="card-inner-content">
                           <span class="card-heading">${p.title}</span>
                           <span class="card-para">${p.description}</span>
-                      </div>
-                      <div class="upwork-badge-bottom" aria-label="Upwork">
-                          <img src="https://github.com/user-attachments/assets/43d8da7a-8c02-42f5-a367-eb83b90d078c" alt="Upwork Logo" />
                       </div>
                   </div>
               </div>`
@@ -2492,13 +2563,11 @@
           });
 
           try {
-              // 1. Fetch user data (public_repos)
               const userResp = await fetch(`https://api.github.com/users/${GITHUB_USER}`);
               if (!userResp.ok) throw new Error(`User API error: ${userResp.status}`);
               const userData = await userResp.json();
-              const totalRepos = userData.public_repos; // 28
+              const totalRepos = userData.public_repos;
 
-              // 2. Fetch total commits using the Search API
               let totalCommits = 0;
               try {
                   const commitSearchResp = await fetch(
@@ -2507,11 +2576,10 @@
                   );
                   if (commitSearchResp.ok) {
                       const commitSearchData = await commitSearchResp.json();
-                      totalCommits = commitSearchData.total_count; // 382
+                      totalCommits = commitSearchData.total_count;
                   }
               } catch (_) {}
 
-              // 3. Calculate years of experience from 01-June-2024
               const start = new Date(2024, 5, 1);
               const now = new Date();
               let years = now.getFullYear() - start.getFullYear();
@@ -2523,11 +2591,10 @@
               }
               const yearsDisplay = `${years}.${months}`;
 
-              // 4. Update DOM with exact numbers
               statYearsEl.textContent = yearsDisplay;
-              statProjectsEl.textContent = '16'; // Fixed at 16 as requested
-              statReposEl.textContent = totalRepos; // 28
-              statCommitsEl.textContent = totalCommits.toLocaleString(); // 382
+              statProjectsEl.textContent = '18';
+              statReposEl.textContent = totalRepos;
+              statCommitsEl.textContent = totalCommits.toLocaleString();
 
               [statYearsEl, statProjectsEl, statReposEl, statCommitsEl].forEach(el => {
                   if (el) el.parentElement.classList.remove('stat-loading');
@@ -2535,7 +2602,6 @@
 
           } catch (err) {
               console.warn('GitHub stats fetch failed, using fallback values.', err);
-              // Fallback: Hardcoded exact numbers
               const start = new Date(2024, 5, 1);
               const now = new Date();
               let y = now.getFullYear() - start.getFullYear();
@@ -2543,7 +2609,7 @@
               if (m < 0) { y--; m += 12; }
               if (now.getDate() < start.getDate()) { m--; if (m < 0) { y--; m += 12; } }
               statYearsEl.textContent = `${y}.${m}`;
-              statProjectsEl.textContent = '16';
+              statProjectsEl.textContent = '18';
               statReposEl.textContent = '28';
               statCommitsEl.textContent = '382';
               [statYearsEl, statProjectsEl, statReposEl, statCommitsEl].forEach(el => {
