@@ -1,12 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 27.5.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.2" baseProfile="tiny-ps" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-	viewBox="0 0 500 500"  xml:space="preserve"><title>WalletHub</title>
-<g>
-	<rect fill="#07D3D3" width="500" height="500"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800" height="600" viewBox="0 0 800 600" xml:space="preserve">
+<desc>Created with Fabric.js 6.5.3</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="100%" height="100%" fill="#ffffff"></rect>
+<g transform="matrix(0.5988 0 0 0.5988 400 300)"  >
+<g style=""   >
+		<g transform="matrix(1 0 0 1 0 0)" id="Layer_1"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(7,211,211); fill-rule: nonzero; opacity: 1;"  x="-250" y="-250" rx="0" ry="0" width="500" height="500" />
 </g>
-<g>
-	<polygon fill="#FFFFFF" points="322.42,141.699 299.364,278.847 276.039,141.699 223.222,141.699 203.199,278.108 181.945,141.699 
-		124.911,141.699 175.288,367.392 224.11,367.392 249.346,219.669 276.482,367.392 321.533,367.392 376.125,141.699 	"/>
+		<g transform="matrix(1 0 0 1 0.518 4.5455)" id="Layer_1"  >
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;"  points="71.902,-112.8465 48.846,24.3015 25.521,-112.8465 -27.296,-112.8465 -47.319,23.5625 -68.573,-112.8465 -125.607,-112.8465 -75.23,112.8465 -26.408,112.8465 -1.172,-34.8765 25.964,112.8465 71.015,112.8465 125.607,-112.8465 " />
+</g>
+</g>
 </g>
 </svg>
