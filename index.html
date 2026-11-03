@@ -1010,27 +1010,13 @@
           background-position: center;
           background-repeat: no-repeat;
           filter: blur(3px);
-          opacity: 0.22;
+          opacity: 0.3;
           transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
           border-radius: var(--radius-lg);
           pointer-events: none;
       }
       .project-card:hover .card-bg-blur {
-          opacity: 0.06;
-          filter: blur(5px);
-      }
-      /* === SVG logo backgrounds (all cards): FIT (contain) with inset padding === */
-      .card-bg-blur.card-bg-contain {
-          background-size: contain;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-origin: content-box;
-          padding: 20px;
-          opacity: 0.3;
-          filter: blur(3px);
-      }
-      .project-card:hover .card-bg-blur.card-bg-contain {
-          opacity: 0.12;
+          opacity: 0.1;
           filter: blur(5px);
       }
       .card-content {
@@ -1261,11 +1247,9 @@
           position: absolute;
           inset: 0;
           z-index: 0;
-          background-size: contain;
+          background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
-          background-origin: content-box;
-          padding: 20px;
           opacity: 0.3;
           filter: blur(3px);
           transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
@@ -1621,10 +1605,6 @@
               width: 24px;
               height: 24px;
           }
-          .card-bg-blur {
-              filter: blur(3px);
-              opacity: 0.22;
-          }
           .footer-text {
               max-width: 100%;
           }
@@ -1670,10 +1650,6 @@
           }
           .about-stats {
               grid-template-columns: 1fr 1fr;
-          }
-          .card-bg-blur {
-              filter: blur(3px);
-              opacity: 0.2;
           }
           .freelance-cards-grid {
               gap: 20px;
@@ -1760,19 +1736,6 @@
               width: 22px;
               height: 22px;
           }
-          .card-bg-blur {
-              filter: blur(2px);
-              opacity: 0.18;
-          }
-          .card-bg-blur.card-bg-contain {
-              padding: 14px;
-              opacity: 0.28;
-              filter: blur(2.5px);
-          }
-          .project-card:hover .card-bg-blur.card-bg-contain {
-              opacity: 0.1;
-              filter: blur(4px);
-          }
           .footer-text p {
               font-size: 0.82rem;
           }
@@ -1813,15 +1776,6 @@
           .freelance-card .upwork-badge-bottom img {
               width: 20px;
               height: 20px;
-          }
-          .card-bg-blur {
-              filter: blur(2px);
-              opacity: 0.16;
-          }
-          .card-bg-blur.card-bg-contain {
-              padding: 10px;
-              opacity: 0.25;
-              filter: blur(2px);
           }
           .footer-text p {
               font-size: 0.78rem;
@@ -2017,17 +1971,17 @@
               <h3 id="statYearsValue">—</h3>
               <p>Years Experience</p>
             </div>
-            <div class="stat reveal delay-2" id="statProjects">
-              <h3 id="statProjectsValue">—</h3>
-              <p>Projects Completed</p>
-            </div>
-            <div class="stat reveal delay-3" id="statRepos">
+            <div class="stat reveal delay-2" id="statRepos">
               <h3 id="statReposValue">—</h3>
-              <p>GitHub Repos</p>
+              <p>Total GitHub Repos</p>
             </div>
-            <div class="stat reveal delay-4" id="statCommits">
+            <div class="stat reveal delay-3" id="statCommits">
               <h3 id="statCommitsValue">—</h3>
               <p>Total Commits</p>
+            </div>
+            <div class="stat reveal delay-4" id="statCourses">
+              <h3 id="statCoursesValue">—</h3>
+              <p>Total Courses</p>
             </div>
           </div>
         </div>
@@ -2375,6 +2329,14 @@
       })();
 
       const projectsData = [{
+          id: 15,
+          title: 'Census 2022 Manufacturing E-Commerce (API Integration)',
+          description: 'U.S. Census Bureau 2022 manufacturing e-commerce data pulled via API, transformed and modelled into an interactive Power BI report.',
+          image: 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/U.S.%20Census%20Bureau.svg',
+          tags: ['power-bi', 'api-integration', 'e-commerce', 'census-data'],
+          githubUrl: 'https://github.com/MAHMOUD2ABDALLAH/Census-2022-Manufacturing-E-Commerce-to-Power-BI',
+          websiteUrl: 'https://www.census.gov/'
+      }, {
           id: 13,
           title: 'Automotive World Market Analysis',
           description: 'Comprehensive market analysis and visualisation for the automotive industry, covering pricing and performance trends.',
@@ -2501,19 +2463,12 @@
 
       const GITHUB_USER = 'MAHMOUD2ABDALLAH';
 
-      // All project cards now use the SVG logo as a contain-fit blurred background
-      const CONTAIN_BG_IDS = new Set([13, 14, 10, 11, 12, 6, 2, 4, 7, 8, 9]);
-
       function renderProjects() {
           const grid = document.getElementById('projectsGrid');
           if (!grid) return;
           grid.innerHTML = projectsData.map(p => {
-              const isContain = CONTAIN_BG_IDS.has(p.id);
-              const bgClass = 'card-bg-blur' + (isContain ? ' card-bg-contain' : '');
-              const bgUrl = p.image;
-              const cardClass = 'project-card reveal' + (isContain ? ' project-card-dark' : '');
-              return `<div class="${cardClass}" onclick="window.open('${p.githubUrl}','_blank')" role="button" tabindex="0" title="View project on GitHub">
-                  <div class="${bgClass}" style="background-image:url('${bgUrl}')"></div>
+              return `<div class="project-card reveal" onclick="window.open('${p.githubUrl}','_blank')" role="button" tabindex="0" title="View project on GitHub">
+                  <div class="card-bg-blur" style="background-image:url('${p.image}')"></div>
                   <div class="card-content">
                       <h3>${p.title}</h3>
                       <p>${p.description}</p>
@@ -2550,24 +2505,32 @@
           document.querySelectorAll(selector).forEach(el => observer.observe(el));
       }
 
-      // --- EXACT KPI NUMBERS FROM GITHUB ---
+      // --- NEW KPI LOGIC ---
       async function fetchGitHubStats() {
           const statYearsEl = document.getElementById('statYearsValue');
-          const statProjectsEl = document.getElementById('statProjectsValue');
           const statReposEl = document.getElementById('statReposValue');
           const statCommitsEl = document.getElementById('statCommitsValue');
+          const statCoursesEl = document.getElementById('statCoursesValue');
 
-          [statYearsEl, statProjectsEl, statReposEl, statCommitsEl].forEach(el => {
+          [statYearsEl, statReposEl, statCommitsEl, statCoursesEl].forEach(el => {
               if (el) { el.textContent = '…';
                   el.parentElement.classList.add('stat-loading'); }
           });
 
           try {
-              const userResp = await fetch(`https://api.github.com/users/${GITHUB_USER}`);
-              if (!userResp.ok) throw new Error(`User API error: ${userResp.status}`);
-              const userData = await userResp.json();
-              const totalRepos = userData.public_repos;
+              // 1. Years Experience Calculation (From 1 June 2024 to Now)
+              const startDate = new Date(2024, 5, 1); // Month is 0-indexed (5 = June)
+              const now = new Date();
+              let years = now.getFullYear() - startDate.getFullYear();
+              let months = now.getMonth() - startDate.getMonth();
+              if (months < 0) { years--; months += 12; }
+              if (now.getDate() < startDate.getDate()) {
+                  months--;
+                  if (months < 0) { years--; months += 12; }
+              }
+              const yearsDisplay = `${years}.${months}`;
 
+              // 2. Fetch Total Commits
               let totalCommits = 0;
               try {
                   const commitSearchResp = await fetch(
@@ -2580,39 +2543,31 @@
                   }
               } catch (_) {}
 
-              const start = new Date(2024, 5, 1);
-              const now = new Date();
-              let years = now.getFullYear() - start.getFullYear();
-              let months = now.getMonth() - start.getMonth();
-              if (months < 0) { years--; months += 12; }
-              if (now.getDate() < start.getDate()) {
-                  months--;
-                  if (months < 0) { years--; months += 12; }
-              }
-              const yearsDisplay = `${years}.${months}`;
+              // 3. Total Courses (Placeholder - requires manual update)
+              const totalCourses = '25+';
 
               statYearsEl.textContent = yearsDisplay;
-              statProjectsEl.textContent = '18';
-              statReposEl.textContent = totalRepos;
+              statReposEl.textContent = '30'; // Explicitly set to 30 as requested (excludes forks)
               statCommitsEl.textContent = totalCommits.toLocaleString();
+              statCoursesEl.textContent = totalCourses;
 
-              [statYearsEl, statProjectsEl, statReposEl, statCommitsEl].forEach(el => {
+              [statYearsEl, statReposEl, statCommitsEl, statCoursesEl].forEach(el => {
                   if (el) el.parentElement.classList.remove('stat-loading');
               });
 
           } catch (err) {
               console.warn('GitHub stats fetch failed, using fallback values.', err);
-              const start = new Date(2024, 5, 1);
+              const startDate = new Date(2024, 5, 1);
               const now = new Date();
-              let y = now.getFullYear() - start.getFullYear();
-              let m = now.getMonth() - start.getMonth();
+              let y = now.getFullYear() - startDate.getFullYear();
+              let m = now.getMonth() - startDate.getMonth();
               if (m < 0) { y--; m += 12; }
-              if (now.getDate() < start.getDate()) { m--; if (m < 0) { y--; m += 12; } }
+              if (now.getDate() < startDate.getDate()) { m--; if (m < 0) { y--; m += 12; } }
               statYearsEl.textContent = `${y}.${m}`;
-              statProjectsEl.textContent = '18';
-              statReposEl.textContent = '28';
-              statCommitsEl.textContent = '382';
-              [statYearsEl, statProjectsEl, statReposEl, statCommitsEl].forEach(el => {
+              statReposEl.textContent = '30';
+              statCommitsEl.textContent = '442'; // Using fallback from screenshot
+              statCoursesEl.textContent = '25+';
+              [statYearsEl, statReposEl, statCommitsEl, statCoursesEl].forEach(el => {
                   if (el) el.parentElement.classList.remove('stat-loading');
               });
           }
