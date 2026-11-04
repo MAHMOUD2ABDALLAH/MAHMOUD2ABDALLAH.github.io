@@ -1242,7 +1242,6 @@
           height: 28px;
           object-fit: contain;
       }
-      /* === Upwork background for freelance cards === */
       .freelance-card .card-bg-blur {
           position: absolute;
           inset: 0;
@@ -1388,111 +1387,17 @@
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          gap: 16px;
-          flex: 0 1 280px;
+          gap: 10px;
+          flex: 1 1 380px;
+          max-width: 460px;
       }
       .footer-right h4 {
-          font-size: 0.85rem;
+          font-size: 0.8rem;
           font-weight: 600;
           color: var(--text-muted);
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          margin-bottom: 4px;
-      }
-      .footer-contact-item {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          padding: 10px 16px;
-          background: var(--bg-card);
-          border-radius: var(--radius);
-          border: 1px solid var(--border-color);
-          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-          width: 100%;
-          text-decoration: none;
-          color: inherit;
-          position: relative;
-          overflow: hidden;
-          cursor: pointer;
-      }
-      .footer-contact-item::before,
-      .footer-contact-item::after {
-          content: '';
-          position: absolute;
-          right: -5.2rem;
-          top: -5.2rem;
-          width: 10.4rem;
-          height: 10.4rem;
-          background: var(--primary);
-          z-index: 0;
-          opacity: 0;
-          border-radius: 50%;
-          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .footer-contact-item::after {
-          left: -5.2rem;
-          bottom: -5.2rem;
-          right: auto;
-          top: auto;
-      }
-      .footer-contact-item:hover::before {
-          scale: 7;
-          opacity: 1;
-      }
-      .footer-contact-item:hover::after {
-          scale: 7;
-          opacity: 1;
-      }
-      .footer-contact-item:hover {
-          border-color: var(--primary);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-      }
-      .footer-contact-item .fc-icon {
-          width: 36px;
-          height: 36px;
-          background: rgba(var(--primary-rgb), 0.08);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--primary);
-          font-size: 0.9rem;
-          flex-shrink: 0;
-          border: 1px solid rgba(var(--primary-rgb), 0.1);
-          position: relative;
-          z-index: 2;
-          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .footer-contact-item:hover .fc-icon {
-          background: rgba(255, 255, 255, 0.2);
-          border-color: rgba(255, 255, 255, 0.4);
-          color: #ffffff;
-      }
-      .footer-contact-item .fc-text {
-          display: flex;
-          flex-direction: column;
-          position: relative;
-          z-index: 2;
-          transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .footer-contact-item .fc-text small {
-          font-size: 0.7rem;
-          color: var(--text-muted);
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-          transition: color 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .footer-contact-item .fc-text span {
-          color: var(--text-primary);
-          font-weight: 500;
-          font-size: 0.9rem;
-          transition: color 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-      }
-      .footer-contact-item:hover .fc-text small {
-          color: rgba(255, 255, 255, 0.8);
-      }
-      .footer-contact-item:hover .fc-text span {
-          color: #ffffff;
+          margin-bottom: 2px;
       }
       .copyright {
           text-align: center;
@@ -1514,6 +1419,151 @@
               opacity: 0.9;
           }
       }
+
+      /* ===== SERVICE REQUEST FORM (compact) ===== */
+      .service-form {
+          display: flex;
+          flex-direction: column;
+          gap: 9px;
+          width: 100%;
+      }
+      .form-row {
+          display: flex;
+          gap: 9px;
+          flex-wrap: wrap;
+      }
+      .form-row .form-group {
+          flex: 1 1 130px;
+          min-width: 0;
+      }
+      .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+          width: 100%;
+          min-width: 0;
+      }
+      .form-group label {
+          font-size: 0.68rem;
+          font-weight: 600;
+          color: var(--text-secondary);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+      }
+      .form-group input,
+      .form-group textarea {
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: 7px;
+          padding: 8px 11px;
+          color: var(--text-primary);
+          font-family: inherit;
+          font-size: 0.84rem;
+          line-height: 1.45;
+          transition: border-color 0.3s, box-shadow 0.3s;
+          width: 100%;
+          min-width: 0;
+          resize: vertical;
+      }
+      .form-group textarea {
+          min-height: 68px;
+      }
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+          color: var(--text-muted);
+          opacity: 0.7;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus {
+          outline: none;
+          border-color: var(--primary);
+          box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.2);
+      }
+      .form-group.invalid input,
+      .form-group.invalid textarea {
+          border-color: #ff6b6b;
+          box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.15);
+      }
+      .field-error {
+          color: #ff6b6b;
+          font-size: 0.68rem;
+          display: none;
+          margin-top: 1px;
+          line-height: 1.35;
+      }
+      .form-group.invalid .field-error {
+          display: block;
+      }
+      .btn-submit {
+          background: var(--primary);
+          color: #fff;
+          border: none;
+          padding: 10px 18px;
+          border-radius: 8px;
+          font-weight: 600;
+          font-size: 0.86rem;
+          cursor: pointer;
+          transition: var(--transition);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
+          width: 100%;
+          font-family: inherit;
+          margin-top: 2px;
+      }
+      .btn-submit:disabled {
+          opacity: 0.45;
+          cursor: not-allowed;
+          transform: none !important;
+      }
+      .btn-submit:not(:disabled):hover {
+          background: var(--primary-dark);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.3);
+      }
+      .form-note {
+          font-size: 0.68rem;
+          color: var(--text-muted);
+          line-height: 1.45;
+          margin-top: 1px;
+      }
+
+      /* Success Message Styles */
+      .form-success {
+          display: none;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 20px 10px;
+          background: rgba(76, 217, 100, 0.08);
+          border: 1px solid rgba(76, 217, 100, 0.2);
+          border-radius: 12px;
+          width: 100%;
+          animation: fadeIn 0.4s ease-out forwards;
+      }
+      .form-success i {
+          color: #4cd964;
+          font-size: 2.5rem;
+          margin-bottom: 10px;
+      }
+      .form-success h5 {
+          color: #4cd964;
+          font-size: 1.1rem;
+          font-weight: 700;
+          margin-bottom: 4px;
+      }
+      .form-success p {
+          color: var(--text-secondary);
+          font-size: 0.85rem;
+          margin: 0;
+      }
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+
       @media (prefers-reduced-motion: reduce) {
           .image-frame,
           .project-card,
@@ -1530,8 +1580,7 @@
           .tech-item,
           .skill-badge,
           .social-link,
-          .btn-website-card,
-          .footer-contact-item {
+          .btn-website-card {
               transition: none !important;
           }
           .floating-badge::before,
@@ -1549,9 +1598,7 @@
           .skill-badge::before,
           .skill-badge::after,
           .social-link::before,
-          .social-link::after,
-          .footer-contact-item::before,
-          .footer-contact-item::after {
+          .social-link::after {
               transition: none !important;
               scale: 1 !important;
               opacity: 0 !important;
@@ -1607,6 +1654,19 @@
           }
           .footer-text {
               max-width: 100%;
+          }
+      }
+      /* Tablet / small laptop: form goes full width under the left column */
+      @media (max-width: 900px) {
+          .footer-main {
+              gap: 32px;
+          }
+          .footer-right {
+              flex: 1 1 100%;
+              max-width: 100%;
+          }
+          .service-form {
+              gap: 10px;
           }
       }
       @media (max-width: 768px) {
@@ -1691,12 +1751,10 @@
           .footer-right {
               flex: 1 1 100%;
               width: 100%;
+              max-width: 100%;
           }
           .footer-right {
               align-items: flex-start;
-          }
-          .footer-contact-item {
-              width: 100%;
           }
           .copyright {
               text-align: center;
@@ -1707,6 +1765,25 @@
           }
           .footer-text p {
               font-size: 0.88rem;
+          }
+      }
+      /* Phones: stack first / last name */
+      @media (max-width: 560px) {
+          .form-row {
+              flex-direction: column;
+              gap: 9px;
+          }
+          .form-row .form-group {
+              flex: 1 1 100%;
+          }
+          .form-group input,
+          .form-group textarea {
+              font-size: 16px; /* prevents iOS zoom-on-focus */
+              padding: 9px 11px;
+          }
+          .btn-submit {
+              font-size: 0.9rem;
+              padding: 11px 18px;
           }
       }
       @media (max-width: 640px) {
@@ -1843,7 +1920,7 @@
                 </svg>
               </a>
               <a href="#contact" class="btn btn-outline">
-                Contact Info
+                Service Request
                 <svg
                   width="20"
                   height="20"
@@ -2150,29 +2227,12 @@
               <p>Drop me a message, any time.</p>
               <p>Let's turn your data into your biggest asset.</p>
             </div>
-          </div>
-          <div class="footer-right">
-            <h4>Contact</h4>
-            <a
-              href="mailto:Mahmoud_abdallah20@outlook.com"
-              class="footer-contact-item"
-            >
-              <div class="fc-icon"><i class="fas fa-envelope"></i></div>
-              <div class="fc-text">
-                <small>Email</small><span>Mahmoud_abdallah20@outlook.com</span>
-              </div>
-            </a>
-            <a href="tel:+201021654059" class="footer-contact-item">
-              <div class="fc-icon"><i class="fas fa-phone-alt"></i></div>
-              <div class="fc-text">
-                <small>Phone</small><span>+20 102 165 4059</span>
-              </div>
-            </a>
             <div class="social-links">
               <a
                 href="https://github.com/MAHMOUD2ABDALLAH"
                 class="social-link"
                 target="_blank"
+                title="GitHub"
               >
                 <i class="fab fa-github"></i>
               </a>
@@ -2180,6 +2240,7 @@
                 href="https://www.linkedin.com/in/mahmoud-abdallah20"
                 class="social-link"
                 target="_blank"
+                title="LinkedIn"
               >
                 <i class="fab fa-linkedin-in"></i>
               </a>
@@ -2201,26 +2262,105 @@
                   />
                 </svg>
               </a>
-              <!-- Upwork Inline SVG Icon -->
-              <a
-                href="https://www.upwork.com/freelancers/~01ab95f3b6c6a783a3"
-                class="social-link"
-                target="_blank"
-                title="Upwork Profile"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 640 640"
-                  style="width: 20px; height: 20px; fill: currentColor;"
-                >
-                  <path
-                    d="M493.9 359.6C443.6 359.6 410.4 320.7 401.1 305.7C413 210.4 447.9 180.3 493.9 180.3C539.4 180.3 574.8 216.7 574.8 270C574.8 323.3 539.4 359.7 493.9 359.7L493.9 359.6zM493.9 121.8C412 121.8 366.1 175.2 352.9 230.2C338 202.2 327 164.7 318.4 129.9L205.2 129.9L205.2 270.9C205.2 322 181.9 359.9 136.4 359.9C90.9 359.9 64.8 322.1 64.8 270.9L65.3 129.9L0 129.9L0 270.9C0 312 13.3 349.3 37.6 376C62.6 403.5 96.8 417.8 136.4 417.8C215.2 417.8 270.2 357.4 270.2 270.9L270.2 176.1C278.4 207.3 298 267.2 335.5 319.7L300.5 519.1L366.9 519.1L390 377.8C397.6 384.1 405.7 389.8 414.2 394.8C436.4 408.8 461.9 416.7 488.1 417.6C488.1 417.6 492.1 417.8 494.2 417.8C575.4 417.8 640.1 354.9 640.1 270C640.1 185.1 575.3 121.9 494.1 121.9L493.9 121.8z"
+            </div>
+          </div>
+
+          <div class="footer-right">
+            <h4>Service Request</h4>
+            <form class="service-form" id="serviceRequestForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="srFirstName">First Name</label>
+                  <input
+                    type="text"
+                    id="srFirstName"
+                    name="firstName"
+                    placeholder="John"
+                    autocomplete="given-name"
+                    required
                   />
-                </svg>
-              </a>
+                  <span class="field-error" id="errFirstName"
+                    >Please enter your first name.</span
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="srLastName">Last Name</label>
+                  <input
+                    type="text"
+                    id="srLastName"
+                    name="lastName"
+                    placeholder="Doe"
+                    autocomplete="family-name"
+                    required
+                  />
+                  <span class="field-error" id="errLastName"
+                    >Please enter your last name.</span
+                  >
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="srEmail">Email</label>
+                <input
+                  type="email"
+                  id="srEmail"
+                  name="email"
+                  placeholder="you@company.com"
+                  autocomplete="email"
+                  inputmode="email"
+                  required
+                />
+                <span class="field-error" id="errEmail"
+                  >Please enter a valid email address.</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="srServiceType">Service Type</label>
+                <input
+                  type="text"
+                  id="srServiceType"
+                  name="serviceType"
+                  placeholder="e.g. Power BI Dashboard"
+                  required
+                />
+                <span class="field-error" id="errServiceType"
+                  >Please enter the service you need.</span
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="srDescription">Service Description</label>
+                <textarea
+                  id="srDescription"
+                  name="description"
+                  rows="3"
+                  placeholder="Describe your requirement, scope and any deadlines..."
+                  required
+                ></textarea>
+                <span class="field-error" id="errDescription"
+                  >Please describe your service request.</span
+                >
+              </div>
+
+              <button type="submit" class="btn-submit" id="srSubmit" disabled>
+                <i class="fas fa-paper-plane"></i> Send Service Request
+              </button>
+
+              <p class="form-note">
+                All fields are required. Your request will be sent directly to Mahmoud Abdallah.
+              </p>
+            </form>
+
+            <!-- Success Message Container -->
+            <div class="form-success" id="formSuccess">
+              <i class="fas fa-check-circle"></i>
+              <h5>Request Submitted!</h5>
+              <p>Your service request has been sent successfully.</p>
             </div>
           </div>
         </div>
+
         <div class="copyright">
           <p>
             Mahmoud Abdallah | Data &amp; Analytics<br />All Rights Reserved
@@ -2505,7 +2645,7 @@
           document.querySelectorAll(selector).forEach(el => observer.observe(el));
       }
 
-      // --- NEW KPI LOGIC ---
+      // --- KPI LOGIC ---
       async function fetchGitHubStats() {
           const statYearsEl = document.getElementById('statYearsValue');
           const statReposEl = document.getElementById('statReposValue');
@@ -2610,6 +2750,167 @@
           });
 
           fetchGitHubStats();
+
+          // ===== SERVICE REQUEST FORM LOGIC =====
+          const srForm = document.getElementById('serviceRequestForm');
+          const formSuccess = document.getElementById('formSuccess');
+          
+          if (srForm) {
+              const firstNameInput = document.getElementById('srFirstName');
+              const lastNameInput = document.getElementById('srLastName');
+              const emailInput = document.getElementById('srEmail');
+              const serviceTypeInput = document.getElementById('srServiceType');
+              const descriptionInput = document.getElementById('srDescription');
+              const submitBtn = document.getElementById('srSubmit');
+
+              const fieldGroups = {
+                  firstName: firstNameInput.closest('.form-group'),
+                  lastName: lastNameInput.closest('.form-group'),
+                  email: emailInput.closest('.form-group'),
+                  serviceType: serviceTypeInput.closest('.form-group'),
+                  description: descriptionInput.closest('.form-group')
+              };
+
+              const EMAIL_RE = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*\.[A-Za-z]{2,24}$/;
+
+              function isEmailValid(value) {
+                  const email = value.trim();
+                  if (!EMAIL_RE.test(email)) return false;
+                  const domain = email.split('@')[1] || '';
+                  const parts = domain.split('.');
+                  if (parts.length < 2) return false;
+                  return parts.every(p => p.length > 0 && !p.startsWith('-') && !p.endsWith('-'));
+              }
+
+              function validateTextField(input, group) {
+                  const ok = input.value.trim().length > 0;
+                  group.classList.toggle('invalid', !ok);
+                  return ok;
+              }
+
+              function validateEmailField() {
+                  const ok = isEmailValid(emailInput.value);
+                  fieldGroups.email.classList.toggle('invalid', !ok);
+                  return ok;
+              }
+
+              function updateSubmitState() {
+                  const ok =
+                      firstNameInput.value.trim().length > 0 &&
+                      lastNameInput.value.trim().length > 0 &&
+                      serviceTypeInput.value.trim().length > 0 &&
+                      descriptionInput.value.trim().length > 0 &&
+                      isEmailValid(emailInput.value);
+                  submitBtn.disabled = !ok;
+              }
+
+              firstNameInput.addEventListener('input', () => {
+                  validateTextField(firstNameInput, fieldGroups.firstName);
+                  updateSubmitState();
+              });
+              lastNameInput.addEventListener('input', () => {
+                  validateTextField(lastNameInput, fieldGroups.lastName);
+                  updateSubmitState();
+              });
+              serviceTypeInput.addEventListener('input', () => {
+                  validateTextField(serviceTypeInput, fieldGroups.serviceType);
+                  updateSubmitState();
+              });
+              descriptionInput.addEventListener('input', () => {
+                  validateTextField(descriptionInput, fieldGroups.description);
+                  updateSubmitState();
+              });
+              emailInput.addEventListener('input', () => {
+                  if (emailInput.value.trim().length === 0) {
+                      fieldGroups.email.classList.remove('invalid');
+                  } else {
+                      validateEmailField();
+                  }
+                  updateSubmitState();
+              });
+              emailInput.addEventListener('blur', () => {
+                  if (emailInput.value.trim().length > 0) validateEmailField();
+                  updateSubmitState();
+              });
+
+              // Handle form submission via AJAX
+              srForm.addEventListener('submit', async (e) => {
+                  e.preventDefault();
+                  
+                  const allValid =
+                      validateTextField(firstNameInput, fieldGroups.firstName) &
+                      validateTextField(lastNameInput, fieldGroups.lastName) &
+                      validateTextField(serviceTypeInput, fieldGroups.serviceType) &
+                      validateTextField(descriptionInput, fieldGroups.description) &
+                      validateEmailField();
+                  updateSubmitState();
+                  if (!allValid || submitBtn.disabled) return;
+
+                  // UI Loading state
+                  const originalBtnText = submitBtn.innerHTML;
+                  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                  submitBtn.disabled = true;
+
+                  const firstName = firstNameInput.value.trim();
+                  const lastName = lastNameInput.value.trim();
+                  const email = emailInput.value.trim();
+                  const serviceType = serviceTypeInput.value.trim();
+                  const description = descriptionInput.value.trim();
+                  const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                  // Format message body exactly as requested
+                  const messageBody = 
+                      `Subject: Request for ${serviceType}\n\n` +
+                      `Dear Mahmoud Abdallah,\n\n` +
+                      `I am writing to formally request ${serviceType} for ${description}.\n\n` +
+                      `We require this service to be carried out at your earliest convenience.\n\n` +
+                      `Please provide confirmation of your availability and any terms or requirements we should be aware of.\n\n` +
+                      `Thank you for your prompt attention to this request.\n\n` +
+                      `Sincerely,\n\n` +
+                      `${firstName} ${lastName}\n` +
+                      `Client\n` +
+                      `N/A\n\n` +
+                      `${today}`;
+
+                  // Prepare data for Web3Forms
+                  const formData = {
+                      access_key: "YOUR_WEB3FORMS_ACCESS_KEY_HERE", // <--- PASTE YOUR ACCESS KEY HERE
+                      subject: `Service Request: ${serviceType}`,
+                      from_name: `${firstName} ${lastName}`,
+                      reply_to: email, // So you can reply directly to the client
+                      message: messageBody
+                  };
+
+                  try {
+                      const response = await fetch("https://api.web3forms.com/submit", {
+                          method: "POST",
+                          headers: {
+                              "Content-Type": "application/json",
+                              Accept: "application/json"
+                          },
+                          body: JSON.stringify(formData)
+                      });
+
+                      const result = await response.json();
+
+                      if (result.success) {
+                          // Show success message
+                          srForm.style.display = 'none';
+                          formSuccess.style.display = 'flex';
+                      } else {
+                          alert("Something went wrong. Please try again later.");
+                          submitBtn.innerHTML = originalBtnText;
+                          submitBtn.disabled = false;
+                      }
+                  } catch (error) {
+                      alert("Network error. Please check your connection and try again.");
+                      submitBtn.innerHTML = originalBtnText;
+                      submitBtn.disabled = false;
+                  }
+              });
+
+              updateSubmitState();
+          }
       });
     </script>
   </body>
