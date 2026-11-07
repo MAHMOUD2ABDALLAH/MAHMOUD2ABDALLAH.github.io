@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -50,10 +50,6 @@
           --radius: 12px;
           --radius-lg: 20px;
           --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-          /* ===== GLOBAL FONT TOKENS (change fonts here) ===== */
-          --font-body: 'Nunito Sans', sans-serif;
-          --font-mono: 'JetBrains Mono', monospace;
       }
       html {
           scroll-behavior: smooth;
@@ -61,9 +57,7 @@
           -moz-osx-font-smoothing: grayscale;
       }
       body {
-          font-family: var(--font-body);
-          font-optical-sizing: auto;
-          font-variation-settings: "wdth" 100, "YTLC" 500;
+          font-family: 'Roboto', sans-serif;
           background: var(--bg-primary);
           color: var(--text-primary);
           line-height: 1.7;
@@ -178,7 +172,7 @@
       }
       .section-label {
           display: inline-block;
-          font-family: var(--font-mono);
+          font-family: 'Roboto', sans-serif;
           font-size: 0.7rem;
           font-weight: 700;
           letter-spacing: 0.12em;
@@ -273,7 +267,7 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 16px 0;
+          padding: 20px 0;
       }
       .logo-container {
           display: flex;
@@ -281,34 +275,29 @@
           gap: 10px;
           text-decoration: none;
       }
-      /* ===== DAE LOGO (keeps Nunito Sans) ===== */
+      /* ===== SMALLIZED BLOG TEXT LOGO ===== */
       .logo {
-          display: inline-flex;
+          display: flex;
           align-items: center;
-          gap: 7px;
-          font-family: var(--font-body);
-          font-optical-sizing: auto;
-          font-variation-settings: "wdth" 100, "YTLC" 500;
-          font-size: 1.55rem;
-          font-weight: 800;
-          letter-spacing: 0.04em;
           white-space: nowrap;
-          line-height: 1;
       }
-      .logo-dae {
-          background: linear-gradient(to right, #ffffff 0%, var(--primary) 100%);
+      .logo-text {
+          font-family: 'Roboto', sans-serif;
+          font-size: 1.8rem;
+          font-weight: 700;
+          background: linear-gradient(to right, var(--primary), #ffffff);
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
           color: transparent;
+          letter-spacing: -0.5px;
+          line-height: 1.2;
+          padding-bottom: 3px;
           display: inline-block;
+          transition: all 0.3s ease;
       }
-      .logo-check {
-          width: 1.05em;
-          height: 1.05em;
-          flex-shrink: 0;
-          color: var(--primary);
-          display: block;
+      .logo-container:hover .logo-text {
+          filter: drop-shadow(0 0 15px rgba(var(--primary-rgb), 0.6));
       }
       .nav-links {
           display: flex;
@@ -316,9 +305,9 @@
           align-items: center;
       }
       .nav-links a {
-          font-family: var(--font-mono);
-          font-size: 0.82rem;
-          font-weight: 400;
+          font-family: 'Roboto', sans-serif;
+          font-size: 0.85rem;
+          font-weight: 500;
           color: var(--text-secondary);
           text-decoration: none;
           position: relative;
@@ -407,36 +396,34 @@
           }
       }
       .badge {
-          font-family: var(--font-mono);
-          font-size: 13px;
-          font-weight: 400;
+          font-family: 'Roboto', sans-serif;
+          font-size: 14px;
+          font-weight: 500;
           color: var(--text-primary);
       }
       .hero-text {
           text-align: center;
       }
-      /* ===== HERO NAME (WHITE, UPPERCASE, JETBRAINS MONO) ===== */
       .hero-text h1 {
-          font-family: var(--font-mono);
-          font-size: clamp(24px, 3.8vw, 48px);
-          font-weight: 700;
-          line-height: 1.12;
-          margin-bottom: 16px;
-          letter-spacing: -0.01em;
+          font-family: 'Roboto', sans-serif;
+          font-size: clamp(26px, 4vw, 52px);
+          font-weight: 800;
+          line-height: 1.1;
+          margin-bottom: 14px;
+          letter-spacing: 0.01em;
           color: #ffffff;
           text-transform: uppercase;
       }
       .hero-text h1 .gradient-text {
           display: inline;
       }
-      /* ===== HERO ROLE (WHITE -> BLUE GRADIENT, JETBRAINS MONO) ===== */
       .hero-role {
           display: inline-block;
-          font-family: var(--font-mono);
-          font-size: clamp(15px, 1.75vw, 22px);
-          font-weight: 400;
-          line-height: 1.35;
-          letter-spacing: 0.01em;
+          font-family: 'Roboto', sans-serif;
+          font-size: clamp(16px, 1.9vw, 24px);
+          font-weight: 500;
+          line-height: 1.3;
+          letter-spacing: 0.02em;
           margin: 0 auto 26px auto;
           background: linear-gradient(to right, #ffffff 0%, var(--primary) 100%);
           -webkit-background-clip: text;
@@ -451,7 +438,7 @@
           line-height: 1.6;
           max-width: 580px;
           margin: 0 auto 48px auto;
-          font-weight: 300;
+          font-weight: 400;
       }
       .hero-btns {
           display: flex;
@@ -461,11 +448,11 @@
           flex-wrap: wrap;
       }
       .hero-btns .btn {
-          font-family: var(--font-mono);
+          font-family: 'Roboto', sans-serif;
           padding: 16px 32px;
           border-radius: 14px;
           font-weight: 700;
-          font-size: 14px;
+          font-size: 15px;
           transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
       }
       .hero-btns .btn-outline {
@@ -484,8 +471,8 @@
           gap: 20px;
       }
       .stack-label {
-          font-family: var(--font-mono);
-          font-size: 12px;
+          font-family: 'Roboto', sans-serif;
+          font-size: 13px;
           text-transform: uppercase;
           letter-spacing: 2px;
           color: #ffffff;
@@ -496,7 +483,7 @@
           gap: 12px;
       }
       .tech-item {
-          font-family: var(--font-mono);
+          font-family: 'Roboto', sans-serif;
           width: 40px;
           height: 40px;
           border-radius: 10px;
@@ -505,7 +492,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 9px;
+          font-size: 10px;
           font-weight: 700;
           color: var(--text-secondary);
           transition: all 0.3s ease;
@@ -802,9 +789,9 @@
           background: var(--bg-card-hover);
       }
       .stat h3 {
-          font-family: var(--font-mono);
+          font-family: 'Roboto', sans-serif;
           font-size: 2rem;
-          font-weight: 700;
+          font-weight: 800;
           color: var(--primary);
           margin-bottom: 4px;
           position: relative;
@@ -812,11 +799,11 @@
           transition: color 0.48s cubic-bezier(0.23, 1, 0.32, 1);
       }
       .stat p {
-          font-family: var(--font-mono);
-          font-size: 0.7rem;
+          font-family: 'Roboto', sans-serif;
+          font-size: 0.75rem;
           color: var(--text-muted);
           margin: 0;
-          font-weight: 400;
+          font-weight: 500;
           position: relative;
           z-index: 2;
           transition: color 0.48s cubic-bezier(0.23, 1, 0.32, 1);
@@ -1101,13 +1088,13 @@
           margin: 8px 0 6px;
       }
       .project-tag {
-          font-family: var(--font-mono);
+          font-family: 'Roboto', sans-serif;
           background: rgba(var(--primary-rgb), 0.08);
           color: var(--primary-light);
           padding: 4px 12px;
           border-radius: 40px;
-          font-size: 0.62rem;
-          font-weight: 400;
+          font-size: 0.7rem;
+          font-weight: 500;
           border: 1px solid rgba(var(--primary-rgb), 0.15);
           transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
       }
@@ -1120,14 +1107,14 @@
           flex-wrap: wrap;
       }
       .btn-website-card {
-          font-family: var(--font-mono);
+          font-family: 'Roboto', sans-serif;
           background: transparent;
           color: var(--text-secondary);
           border: 1px solid var(--border-color);
           padding: 8px 20px;
           border-radius: 40px;
-          font-size: 0.74rem;
-          font-weight: 400;
+          font-size: 0.8rem;
+          font-weight: 500;
           transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
           text-decoration: none;
           display: inline-flex;
@@ -1331,31 +1318,25 @@
           gap: 12px;
           flex: 1 1 300px;
       }
-      /* ===== FOOTER LOGO (keeps Nunito Sans, reversed gradient) ===== */
+      /* ===== SMALLIZED FOOTER BLOG TEXT LOGO ===== */
       .footer-logo {
-          display: inline-flex;
+          display: flex;
           align-items: center;
-          gap: 8px;
-          font-family: var(--font-body);
-          font-optical-sizing: auto;
-          font-variation-settings: "wdth" 100, "YTLC" 500;
-          font-size: 1.75rem;
-          font-weight: 800;
-          letter-spacing: 0.04em;
           white-space: nowrap;
-          line-height: 1;
       }
-      .footer-logo .logo-dae {
-          background: linear-gradient(to right, var(--primary) 0%, #ffffff 100%);
+      .footer-logo-text {
+          font-family: 'Roboto', sans-serif;
+          font-size: 2.5rem;
+          font-weight: 700;
+          background: linear-gradient(to right, #ffffff, var(--primary));
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
           color: transparent;
+          letter-spacing: -0.5px;
+          line-height: 1.2;
+          padding-bottom: 4px;
           display: inline-block;
-      }
-      .footer-logo .logo-check {
-          width: 1.05em;
-          height: 1.05em;
       }
       .footer-text {
           max-width: 520px;
@@ -1453,8 +1434,8 @@
           max-width: 460px;
       }
       .footer-right h4 {
-          font-family: var(--font-mono);
-          font-size: 0.7rem;
+          font-family: 'Roboto', sans-serif;
+          font-size: 0.8rem;
           font-weight: 700;
           color: var(--text-muted);
           text-transform: uppercase;
@@ -1482,7 +1463,7 @@
           }
       }
 
-      /* ===== SERVICE REQUEST FORM (compact) ===== */
+      /* ===== SERVICE REQUEST FORM ===== */
       .service-form {
           display: flex;
           flex-direction: column;
@@ -1506,12 +1487,12 @@
           min-width: 0;
       }
       .form-group label {
-          font-family: var(--font-mono);
-          font-size: 0.62rem;
+          font-family: 'Roboto', sans-serif;
+          font-size: 0.68rem;
           font-weight: 700;
           color: var(--text-secondary);
           text-transform: uppercase;
-          letter-spacing: 0.05em;
+          letter-spacing: 0.06em;
       }
 
       .form-group input,
@@ -1531,7 +1512,6 @@
           resize: vertical;
       }
 
-      /* Hide arrows for number inputs if any fallback occurs */
       input[type="number"]::-webkit-outer-spin-button,
       input[type="number"]::-webkit-inner-spin-button {
           -webkit-appearance: none;
@@ -1583,14 +1563,14 @@
           display: block;
       }
       .btn-submit {
-          font-family: var(--font-mono);
+          font-family: 'Roboto', sans-serif;
           background: var(--primary);
           color: #fff;
           border: none;
           padding: 10px 18px;
           border-radius: 8px;
           font-weight: 700;
-          font-size: 0.76rem;
+          font-size: 0.85rem;
           cursor: pointer;
           transition: var(--transition);
           display: inline-flex;
@@ -1617,7 +1597,6 @@
           margin-top: 1px;
       }
 
-      /* Success Message Styles (Now Blue) */
       .form-success {
           display: none;
           flex-direction: column;
@@ -1648,7 +1627,6 @@
           margin: 0;
       }
 
-      /* New Success Buttons (Now Blue) */
       .success-actions {
           display: flex;
           gap: 10px;
@@ -1658,10 +1636,10 @@
           width: 100%;
       }
       .btn-success-outline, .btn-success-primary {
-          font-family: var(--font-mono);
+          font-family: 'Roboto', sans-serif;
           padding: 8px 16px;
           border-radius: 8px;
-          font-size: 0.72rem;
+          font-size: 0.78rem;
           font-weight: 700;
           cursor: pointer;
           transition: var(--transition);
@@ -1785,7 +1763,6 @@
               max-width: 100%;
           }
       }
-      /* Tablet / small laptop: form goes full width under the left column */
       @media (max-width: 900px) {
           .footer-main {
               gap: 32px;
@@ -1802,7 +1779,7 @@
           .nav-links {
               display: none;
               position: absolute;
-              top: 66px;
+              top: 80px;
               left: 0;
               width: 100%;
               background: rgba(10, 10, 10, 0.98);
@@ -1823,11 +1800,11 @@
               min-height: auto;
           }
           .hero-text h1 {
-              font-size: 1.7rem;
+              font-size: 1.85rem;
           }
           .hero-role {
               white-space: normal;
-              font-size: 0.9rem;
+              font-size: 0.95rem;
           }
           .image-frame {
               max-width: 250px;
@@ -1900,7 +1877,6 @@
               font-size: 0.88rem;
           }
       }
-      /* Phones: stack first / last name */
       @media (max-width: 560px) {
           .form-row {
               flex-direction: column;
@@ -1912,14 +1888,14 @@
           .form-group input,
           .form-group textarea,
           .form-group select {
-              font-size: 16px; /* prevents iOS zoom-on-focus */
+              font-size: 16px;
               padding: 12px 14px;
           }
           .form-group select {
               padding-right: 30px;
           }
           .btn-submit {
-              font-size: 0.78rem;
+              font-size: 0.82rem;
               padding: 11px 18px;
           }
       }
@@ -1956,10 +1932,10 @@
       }
       @media (max-width: 480px) {
           .hero-text h1 {
-              font-size: 1.4rem;
+              font-size: 1.55rem;
           }
           .hero-role {
-              font-size: 0.82rem;
+              font-size: 0.88rem;
           }
           .image-frame {
               max-width: 220px;
@@ -2001,38 +1977,14 @@
     </style>
   </head>
   <body>
-    <!-- ===== SVG SPRITE (DAE badge check mark) ===== -->
-    <svg
-      width="0"
-      height="0"
-      style="position:absolute;overflow:hidden"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <symbol id="dae-check" viewBox="0 0 71 71">
-        <g
-          transform="translate(35.5,35.5) scale(6.1952) translate(-103.8897,-923.0103)"
-        >
-          <path
-            fill="currentColor"
-            fill-rule="evenodd"
-            d="M 106.6 921.9 L 103.4 925.1 C 103.2 925.3 102.9 925.3 102.7 925.1 C 102.7 925.1 102.7 925.1 102.7 925.1 L 101.3 923.7 C 101.1 923.5 101.1 923.2 101.3 923 C 101.5 922.8 101.8 922.8 102 923 C 102 923 102 923 102 923 L 103.1 924.1 L 106 921.2 C 106.2 921 106.5 921 106.7 921.2 C 106.8 921.5 106.8 921.7 106.6 921.9 C 106.6 921.9 106.6 921.9 106.6 921.9 M 109.5 924.1 L 109 923 L 109.5 921.9 C 109.6 921.6 109.5 921.3 109.3 921.1 L 108.3 920.5 L 108.2 919.3 C 108.2 919 107.9 918.8 107.6 918.7 L 106.4 918.6 L 105.8 917.6 C 105.6 917.4 105.3 917.3 105 917.4 L 103.9 917.9 L 102.8 917.4 C 102.5 917.3 102.2 917.4 102 917.6 L 101.4 918.6 L 100.2 918.7 C 99.9 918.7 99.7 919 99.6 919.3 L 99.5 920.5 L 98.5 921.1 C 98.2 921.3 98.2 921.6 98.3 921.9 L 98.8 923 L 98.3 924.1 C 98.2 924.4 98.3 924.7 98.5 924.9 L 99.5 925.5 L 99.6 926.7 C 99.6 927 99.9 927.2 100.2 927.3 L 101.4 927.4 L 102 928.4 C 102.2 928.6 102.5 928.7 102.8 928.6 L 103.9 928.1 L 105 928.6 C 105.3 928.7 105.6 928.7 105.8 928.4 L 106.4 927.4 L 107.6 927.3 C 107.9 927.3 108.1 927 108.2 926.7 L 108.3 925.5 L 109.3 924.9 C 109.5 924.7 109.6 924.3 109.5 924.1"
-          />
-        </g>
-      </symbol>
-    </svg>
-
     <canvas id="hero-bg"></canvas>
 
     <header id="header">
       <div class="container">
         <nav class="navbar">
-          <a href="#home" class="logo-container" aria-label="DAE — Home">
+          <a href="#home" class="logo-container" aria-label="Home">
             <span class="logo">
-              <span class="logo-dae">DAE</span>
-              <svg class="logo-check" aria-hidden="true">
-                <use href="#dae-check"></use>
-              </svg>
+              <span class="logo-text">Blog.</span>
             </span>
           </a>
           <ul class="nav-links" id="navLinks">
@@ -2374,10 +2326,7 @@
         <div class="footer-main reveal">
           <div class="footer-left">
             <div class="footer-logo">
-              <span class="logo-dae">DAE</span>
-              <svg class="logo-check" aria-hidden="true">
-                <use href="#dae-check"></use>
-              </svg>
+              <span class="footer-logo-text">Blog.</span>
             </div>
             <div class="footer-text">
               <p>Data tells a story.</p>
@@ -2493,7 +2442,6 @@
                 >
               </div>
 
-              <!-- Service Package and Down Payment Fields (Integer only) -->
               <div class="form-row">
                 <div class="form-group">
                   <label for="srServicePackage">Service Package</label>
@@ -2564,13 +2512,11 @@
               </p>
             </form>
 
-            <!-- Success Message Container -->
             <div class="form-success" id="formSuccess">
               <i class="fas fa-check-circle"></i>
               <h5>Request Submitted!</h5>
               <p>Your service request has been sent successfully.</p>
 
-              <!-- New Buttons -->
               <div class="success-actions">
                 <button type="button" class="btn-success-outline" id="btnLeave">
                   Leave
@@ -2871,7 +2817,6 @@
           document.querySelectorAll(selector).forEach(el => observer.observe(el));
       }
 
-      // --- KPI LOGIC ---
       async function fetchGitHubStats() {
           const statYearsEl = document.getElementById('statYearsValue');
           const statReposEl = document.getElementById('statReposValue');
@@ -2884,8 +2829,7 @@
           });
 
           try {
-              // 1. Years Experience Calculation (From 1 June 2024 to Now)
-              const startDate = new Date(2024, 5, 1); // Month is 0-indexed (5 = June)
+              const startDate = new Date(2024, 5, 1);
               const now = new Date();
               let years = now.getFullYear() - startDate.getFullYear();
               let months = now.getMonth() - startDate.getMonth();
@@ -2896,7 +2840,6 @@
               }
               const yearsDisplay = `${years}.${months}`;
 
-              // 2. Fetch Total Commits
               let totalCommits = 0;
               try {
                   const commitSearchResp = await fetch(
@@ -2909,11 +2852,10 @@
                   }
               } catch (_) {}
 
-              // 3. Total Courses (Placeholder - requires manual update)
               const totalCourses = '25+';
 
               statYearsEl.textContent = yearsDisplay;
-              statReposEl.textContent = '30'; // Explicitly set to 30 as requested (excludes forks)
+              statReposEl.textContent = '30';
               statCommitsEl.textContent = totalCommits.toLocaleString();
               statCoursesEl.textContent = totalCourses;
 
@@ -2931,7 +2873,7 @@
               if (now.getDate() < startDate.getDate()) { m--; if (m < 0) { y--; m += 12; } }
               statYearsEl.textContent = `${y}.${m}`;
               statReposEl.textContent = '30';
-              statCommitsEl.textContent = '442'; // Using fallback from screenshot
+              statCommitsEl.textContent = '442';
               statCoursesEl.textContent = '25+';
               [statYearsEl, statReposEl, statCommitsEl, statCoursesEl].forEach(el => {
                   if (el) el.parentElement.classList.remove('stat-loading');
@@ -2977,7 +2919,6 @@
 
           fetchGitHubStats();
 
-          // ===== SERVICE REQUEST FORM LOGIC =====
           const srForm = document.getElementById('serviceRequestForm');
           const formSuccess = document.getElementById('formSuccess');
 
@@ -3042,7 +2983,6 @@
                   submitBtn.disabled = !ok;
               }
 
-              // Attach events to standard text inputs
               [firstNameInput, lastNameInput, serviceTypeInput, descriptionInput].forEach(input => {
                   input.addEventListener('input', () => {
                       validateTextField(input, input.closest('.form-group'));
@@ -3050,10 +2990,9 @@
                   });
               });
 
-              // Attach events to number-only inputs (strip out decimals and letters)
               [servicePackageInput, downPaymentInput].forEach(input => {
                   input.addEventListener('input', () => {
-                      input.value = input.value.replace(/[^0-9]/g, ''); // Allow only 0-9
+                      input.value = input.value.replace(/[^0-9]/g, '');
                       validateTextField(input, input.closest('.form-group'));
                       updateSubmitState();
                   });
@@ -3078,7 +3017,6 @@
                   updateSubmitState();
               });
 
-              // Leave Button logic
               if (btnLeave) {
                   btnLeave.addEventListener('click', () => {
                       window.location.href = window.location.pathname + '#home';
@@ -3086,21 +3024,19 @@
                   });
               }
 
-              // Submit Another Button logic
               if (btnAnother) {
                   btnAnother.addEventListener('click', () => {
-                      srForm.reset(); // Clears all inputs
-                      Object.values(fieldGroups).forEach(group => group.classList.remove('invalid')); // Removes red error borders
-                      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Service Request'; // Resets button text
+                      srForm.reset();
+                      Object.values(fieldGroups).forEach(group => group.classList.remove('invalid'));
+                      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Service Request';
 
                       formSuccess.style.display = 'none';
                       srForm.style.display = 'flex';
 
-                      updateSubmitState(); // Re-evaluates form to ensure submit is disabled (since fields are empty)
+                      updateSubmitState();
                   });
               }
 
-              // Handle form submission via AJAX
               srForm.addEventListener('submit', async (e) => {
                   e.preventDefault();
 
@@ -3116,7 +3052,6 @@
                   updateSubmitState();
                   if (!allValid || submitBtn.disabled) return;
 
-                  // UI Loading state
                   const originalBtnText = submitBtn.innerHTML;
                   submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                   submitBtn.disabled = true;
@@ -3132,7 +3067,6 @@
 
                   const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-                  // Format message body exactly as requested
                   const messageBody =
                       `Hello Mahmoud, New Service request from "${firstName} ${lastName}"\n\n` +
                       `Subject: Request for ${serviceType}\n\n` +
@@ -3144,7 +3078,6 @@
                       `Client\n\n` +
                       `${today}`;
 
-                  // Prepare data for Web3Forms
                   const formData = {
                       access_key: "ef65ac7a-b564-4b70-b4da-841f018398f6",
                       subject: `Request for ${serviceType}`,
@@ -3166,7 +3099,6 @@
                       const result = await response.json();
 
                       if (result.success) {
-                          // Show success message, hide form
                           srForm.style.display = 'none';
                           formSuccess.style.display = 'flex';
                       } else {
