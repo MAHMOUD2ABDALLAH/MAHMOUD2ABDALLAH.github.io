@@ -51,6 +51,7 @@
           --radius: 12px;
           --radius-lg: 20px;
           --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          --container-max: 1320px; /* was 1200px — now 110% wider */
       }
 
       /* ===== FONT LOADING FIX ===== */
@@ -185,7 +186,7 @@
 
       .container {
           width: 100%;
-          max-width: 1200px;
+          max-width: var(--container-max);
           margin: 0 auto;
           padding: 0 24px;
       }
@@ -236,6 +237,8 @@
       .section-header.centered .section-subtitle {
           text-align: center;
       }
+
+      /* Global Button Style */
       .btn {
           display: inline-flex;
           align-items: center;
@@ -255,34 +258,36 @@
           overflow: hidden;
       }
       .btn-outline {
-          border: 2px solid rgba(255, 255, 255, 0.15);
+          border: 2px solid rgba(255, 255, 255, 0.3);
           color: #ffffff;
+          background: transparent;
           transition: all 0.3s ease;
       }
       .btn-outline:hover {
           border-color: var(--primary);
-          color: #fff;
+          color: var(--primary);
+          background: transparent;
           box-shadow: 0 0 15px rgba(33, 133, 254, 0.4);
       }
-      .btn:hover, .btn:hover *, .btn:hover svg {
-          color: #ffffff;
-          stroke: #ffffff;
-          -webkit-text-fill-color: #ffffff;
+      .btn-outline:hover svg {
+          stroke: var(--primary);
       }
+
+      /* =========================================
+         UPDATED HEADER (Solid Dark Mode Color)
+         ========================================= */
       header {
           position: fixed;
           top: 0;
           left: 0;
           width: 100%;
           z-index: 1000;
-          background: rgba(10, 10, 10, 0.8);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
+          background: var(--bg-card); /* Solid #161616 */
           border-bottom: 1px solid var(--border-color);
           transition: var(--transition);
       }
       header.scrolled {
-          background: rgba(10, 10, 10, 0.95);
+          background: var(--bg-card); /* Kept solid on scroll */
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
       }
       .navbar {
@@ -321,31 +326,37 @@
           display: flex;
           gap: 32px;
           align-items: center;
+          list-style: none;
+      }
+      .nav-links li {
+          list-style: none;
       }
       .nav-links a {
           font-family: 'Roboto', sans-serif;
-          font-size: 0.85rem;
-          font-weight: 500;
+          font-size: 0.95rem;
+          font-weight: 700;
           color: var(--text-secondary);
           text-decoration: none;
           position: relative;
           transition: var(--transition);
+          display: flex;
+          align-items: center;
+          gap: 12px;
       }
-      .nav-links a:hover {
-          color: var(--text-primary);
-      }
-      .nav-links a::after {
+      .nav-links a::before {
           content: '';
-          position: absolute;
-          bottom: -4px;
-          left: 0;
-          width: 0;
-          height: 2px;
+          display: inline-block;
+          width: 6px;
+          height: 20px;
           background: var(--primary);
+          border-radius: 4px;
           transition: var(--transition);
       }
-      .nav-links a:hover::after {
-          width: 100%;
+      .nav-links a:hover {
+          color: var(--primary);
+      }
+      .nav-links a::after {
+          display: none;
       }
       .mobile-menu {
           display: none;
@@ -464,13 +475,18 @@
           transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
       }
       .hero-btns .btn-outline {
-          background: rgba(255, 255, 255, 0.03);
-          color: white;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: transparent;
+          color: #ffffff;
+          border: 1px solid rgba(255, 255, 255, 0.3);
       }
       .hero-btns .btn-outline:hover {
+          background: transparent;
           border-color: var(--primary);
+          color: var(--primary);
           box-shadow: 0 0 15px rgba(33, 133, 254, 0.4);
+      }
+      .hero-btns .btn-outline:hover svg {
+          stroke: var(--primary);
       }
       .tech-stack {
           display: flex;
@@ -507,11 +523,6 @@
           position: relative;
           overflow: hidden;
           cursor: default;
-      }
-      .tech-item:hover {
-          border-color: var(--primary);
-          color: #fff;
-          box-shadow: 0 0 15px rgba(33, 133, 254, 0.4);
       }
       .tech-item>* { position: relative; z-index: 2; }
 
@@ -638,7 +649,22 @@
           background: var(--primary); border-radius: 4px;
       }
       .about-text p {
-          color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 16px; line-height: 1.8;
+          color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 24px; line-height: 1.8;
+      }
+      .about-text strong {
+          color: #ffffff;
+      }
+
+      /* =========================================
+         NEW ABOUT CARD CONTAINER (Like KPIs)
+         ========================================= */
+      .about-text-card {
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-lg);
+          padding: 48px;
+          box-shadow: var(--shadow-card);
+          margin-bottom: 32px;
       }
 
       /* =========================================
@@ -666,15 +692,10 @@
           border-radius: 8px;
           position: relative;
           z-index: 1;
-          cursor: pointer;
+          cursor: default;
       }
       .stat:last-child {
           border-right-color: transparent;
-      }
-      .stat:hover {
-          border-color: var(--primary);
-          z-index: 2;
-          box-shadow: 0 0 15px rgba(33, 133, 254, 0.2);
       }
       .stat h3 {
           font-family: 'Roboto', sans-serif; font-size: 2.2rem; font-weight: 800;
@@ -715,7 +736,7 @@
       }
 
       .skill-accordion {
-          background: #111111;
+          background: var(--bg-card);
           border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 12px;
           overflow: hidden;
@@ -754,12 +775,13 @@
           text-transform: uppercase;
           color: #ffffff;
           padding-right: 15px;
+          transition: color 0.3s ease;
       }
 
       .skill-icon {
           color: #ffffff;
           font-size: 1.2rem;
-          transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.35s ease;
+          transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.35s ease, color 0.3s ease;
           width: 28px;
           height: 28px;
           display: flex;
@@ -768,6 +790,12 @@
           border-radius: 50%;
           background: rgba(255, 255, 255, 0.08);
           flex-shrink: 0;
+      }
+
+      /* Hover Effect for Skill Text and Icon */
+      .skill-accordion:hover .skill-title,
+      .skill-accordion:hover .skill-icon {
+          color: var(--primary);
       }
 
       .skill-accordion.active {
@@ -779,9 +807,13 @@
       .skill-accordion.active .skill-icon {
           background: var(--primary);
           transform: rotate(45deg);
+          color: #ffffff; /* Keep white when active/open */
       }
 
-      /* UPDATED: Smooth 60fps Grid Animation */
+      .skill-accordion.active .skill-title {
+          color: #ffffff;
+      }
+
       .skill-body {
           display: grid;
           grid-template-rows: 0fr;
@@ -796,7 +828,7 @@
       }
 
       .skill-body p {
-          overflow: hidden; /* Crucial for grid transition */
+          overflow: hidden;
           padding: 0 24px 24px;
           color: #a0a0a0;
           font-size: 0.9rem;
@@ -824,6 +856,7 @@
           }
           .stat { border-right-color: transparent; border-bottom-color: rgba(255, 255, 255, 0.05); }
           .stat:last-child { border-bottom-color: transparent; }
+          .about-text-card { padding: 28px 20px; }
       }
 
       /* =========================================
@@ -832,20 +865,32 @@
       .projects {
           background: transparent;
           position: relative;
-          padding: 0;
+          padding: 100px 0;
       }
       .projects::before {
           content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 1px;
           background: linear-gradient(90deg, transparent, var(--primary), transparent);
           z-index: 10;
       }
+
+      /* Wrapper for the Scrollytelling Card */
+      .projects-card-container {
+          position: relative;
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-card);
+          margin-bottom: 40px;
+          overflow: clip;
+      }
+
       .scrolly-stage-full {
           position: relative;
       }
       .scrolly-sticky-full {
           position: sticky;
-          top: 0;
-          height: 100vh;
+          top: 15vh; /* Adjusted offset */
+          height: 65vh; /* REDUCED HEIGHT */
           width: 100%;
           overflow: hidden;
           display: flex;
@@ -857,7 +902,7 @@
       /* Immersive Background */
       .scrolly-bg-full {
           position: absolute;
-          inset: -5%;
+          inset: 0;
           background-size: cover;
           background-position: center right;
           background-repeat: no-repeat;
@@ -872,8 +917,8 @@
       .scrolly-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(to right, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.85) 40%, rgba(10,10,10,0.2) 100%),
-                      linear-gradient(to top, rgba(10,10,10,0.98) 0%, transparent 60%);
+          background: linear-gradient(to right, rgba(22,22,22,0.98) 0%, rgba(22,22,22,0.85) 40%, rgba(22,22,22,0.2) 100%),
+                      linear-gradient(to top, rgba(22,22,22,0.98) 0%, transparent 60%);
           z-index: 2;
           pointer-events: none;
       }
@@ -920,11 +965,14 @@
       }
       .scrolly-actions {
           display: flex;
-          gap: 16px;
+          gap: 24px;
           flex-wrap: wrap;
           position: relative;
           z-index: 20;
+          align-items: center;
       }
+
+      /* Updated "View" Button - White Border/Text */
       .scrolly-btn {
           display: inline-flex;
           align-items: center;
@@ -937,26 +985,33 @@
           transition: all 0.3s ease;
           cursor: pointer;
           pointer-events: auto;
-          border: 1px solid transparent;
+          background: transparent;
+          color: #ffffff;
+          border: 1px solid #ffffff;
       }
-      .scrolly-btn-primary {
-          background: #ffffff;
-          color: #000000;
-      }
-      .scrolly-btn-primary:hover {
+      .scrolly-btn:hover {
           background: transparent;
           color: var(--primary);
           border-color: var(--primary);
           box-shadow: 0 0 15px rgba(33, 133, 254, 0.4);
       }
-      .scrolly-btn-outline {
-          background: transparent;
+
+      /* Text link for "Learn more" */
+      .scrolly-link {
+          display: inline-block;
           color: #ffffff;
-          border: 1px solid rgba(255,255,255,0.3);
+          text-decoration: none;
+          font-size: 1rem;
+          font-weight: 600;
+          transition: color 0.3s ease;
+          cursor: pointer;
+          pointer-events: auto;
+          background: none;
+          border: none;
+          padding: 0;
       }
-      .scrolly-btn-outline:hover {
-          border-color: var(--primary);
-          box-shadow: 0 0 15px rgba(33, 133, 254, 0.4);
+      .scrolly-link:hover {
+          color: var(--primary);
       }
 
       /* Fade Transition Classes */
@@ -978,38 +1033,34 @@
          NEW MARQUEE CAROUSEL FOR FREELANCE PROJECTS
          ========================================= */
       .freelance-section-wrapper {
-          padding: 60px 0 100px;
+          /* Removed background, border, radius, shadow to make it transparent */
+          background: transparent;
+          border: none;
+          box-shadow: none;
+          padding: 40px 0;
           position: relative;
           z-index: 10;
-          background: var(--bg-primary);
-          overflow: hidden; /* Prevents horizontal scroll from marquee */
-      }
-      .freelance-divider {
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb), 0.5), transparent);
-          margin: 0 0 60px;
-          opacity: 0.7;
+          overflow: hidden;
+          margin-bottom: 40px;
       }
 
       .upwork-carousel {
-          --items: 8; /* Will be overwritten by JS */
+          --items: 8;
           --carousel-duration: 50s;
           --carousel-item-width: 340px;
           --carousel-item-height: 420px;
           --carousel-item-gap: 24px;
 
           position: relative;
-          width: 100vw;
-          margin-left: calc(50% - 50vw); /* Breaks out of container to be full width */
+          width: 100vw; /* Make it full width again */
+          margin-left: calc(50% - 50vw);
           height: var(--carousel-item-height);
           overflow: clip;
 
-          /* fade out on sides */
           mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
           -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
       }
 
-      /* Pause animation on hover */
       .upwork-carousel:hover > .upwork-card {
           animation-play-state: paused;
       }
@@ -1025,14 +1076,13 @@
           justify-content: flex-end;
           padding: 32px;
           border-radius: 24px;
-          background: #0a0a0a;
+          background: var(--bg-card); /* Use dark card color */
           border: 1px solid rgba(255, 255, 255, 0.08);
           overflow: hidden;
           text-decoration: none;
           transition: border-color 0.4s ease, box-shadow 0.4s ease;
           cursor: pointer;
 
-          /* Animation */
           will-change: transform;
           animation-name: marquee;
           animation-duration: var(--carousel-duration);
@@ -1052,7 +1102,7 @@
           inset: 0;
           width: 100%;
           height: 100%;
-          object-fit: cover; /* Fills the card completely */
+          object-fit: cover;
           opacity: 0.15;
           transition: opacity 0.4s ease, transform 0.4s ease;
           z-index: 0;
@@ -1066,7 +1116,7 @@
       .upwork-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(to top, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(10, 10, 10, 0.2) 100%);
+          background: linear-gradient(to top, rgba(22, 22, 22, 0.98) 0%, rgba(22, 22, 22, 0.6) 50%, rgba(22, 22, 22, 0.2) 100%);
           z-index: 1;
           pointer-events: none;
       }
@@ -1090,6 +1140,7 @@
           color: #ffffff;
           margin-bottom: 4px;
           line-height: 1.3;
+          transition: color 0.3s ease;
       }
 
       .upwork-content p {
@@ -1101,6 +1152,13 @@
           -webkit-line-clamp: 3;
           -webkit-box-orient: vertical;
           overflow: hidden;
+          transition: color 0.3s ease;
+      }
+
+      /* Hover Effect for Upwork Text */
+      .upwork-card:hover .upwork-content h3,
+      .upwork-card:hover .upwork-content p {
+          color: var(--primary);
       }
 
       @keyframes marquee {
@@ -1127,10 +1185,11 @@
           .upwork-content p { font-size: 0.85rem; }
       }
 
+      /* =========================================
+         FOOTER (Solid Dark Mode Color)
+         ========================================= */
       footer {
-          background: rgba(10, 10, 10, 0.7);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
+          background: var(--bg-card);
           border-top: 1px solid var(--border-color);
           padding: 60px 0 30px;
           position: relative;
@@ -1158,22 +1217,29 @@
           display: flex; gap: 12px; align-items: center; margin-top: 14px; flex-wrap: wrap;
       }
       .social-link {
-          width: 42px; height: 42px; background: var(--bg-card); border-radius: 50%;
+          width: 42px; height: 42px; background: var(--bg-primary); border-radius: 50%;
           display: flex; align-items: center; justify-content: center;
           color: var(--text-secondary); transition: var(--transition);
           border: 1px solid var(--border-color); text-decoration: none;
           position: relative; overflow: hidden; flex-shrink: 0;
       }
+
+      /* Updated Hover Effect for Footer Icons */
       .social-link:hover {
-          color: #fff;
+          color: var(--primary);
           border-color: var(--primary);
           box-shadow: 0 0 15px rgba(33, 133, 254, 0.4);
           transform: translateY(-4px);
       }
-      .social-link i, .social-link svg { position: relative; z-index: 2; }
+      .social-link i, .social-link svg {
+          position: relative; z-index: 2;
+          transition: color 0.3s ease, fill 0.3s ease;
+      }
       .social-link .credly-svg { width: 22px; height: 22px; display: block; flex-shrink: 0; position: relative; z-index: 2; }
-      .social-link .credly-svg path { transition: fill 0.48s cubic-bezier(0.23, 1, 0.32, 1); }
-      .social-link:hover .credly-svg path { fill: #ffffff; }
+      .social-link .credly-svg path { transition: fill 0.3s ease; }
+
+      /* Ensures Credly icon also turns blue */
+      .social-link:hover .credly-svg path { fill: var(--primary); }
 
       .footer-right {
           display: flex; flex-direction: column; align-items: flex-start;
@@ -1201,7 +1267,7 @@
           color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.06em;
       }
       .form-group input, .form-group textarea, .form-group select {
-          background: var(--bg-card); border: 1px solid var(--border-color);
+          background: var(--bg-primary); border: 1px solid var(--border-color);
           border-radius: 7px; padding: 10px 12px; color: var(--text-primary);
           font-family: inherit; font-size: 0.9rem; line-height: 1.45;
           transition: all 0.3s ease; width: 100%; min-width: 0; resize: vertical;
@@ -1224,9 +1290,14 @@
       }
       .field-error { color: #ff6b6b; font-size: 0.68rem; display: none; margin-top: 1px; line-height: 1.35; }
       .form-group.invalid .field-error { display: block; }
+
+      /* Submit Button */
       .btn-submit {
-          font-family: 'Roboto', sans-serif; background: var(--primary); color: #fff;
-          border: 1px solid var(--primary); padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 0.85rem;
+          font-family: 'Roboto', sans-serif;
+          background: transparent;
+          color: #ffffff;
+          border: 1px solid #ffffff;
+          padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 0.85rem;
           cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center;
           justify-content: center; gap: 7px; width: 100%; margin-top: 2px;
       }
@@ -1234,9 +1305,11 @@
       .btn-submit:not(:disabled):hover {
           background: transparent;
           color: var(--primary);
+          border-color: var(--primary);
           box-shadow: 0 0 15px rgba(33, 133, 254, 0.4);
           transform: translateY(-2px);
       }
+
       .form-note { font-size: 0.68rem; color: var(--text-muted); line-height: 1.45; margin-top: 1px; }
       .form-success {
           display: none; flex-direction: column; align-items: center; justify-content: center;
@@ -1248,15 +1321,20 @@
       .form-success h5 { color: var(--primary); font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
       .form-success p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; }
       .success-actions { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; justify-content: center; width: 100%; }
+
+      /* Success Buttons */
       .btn-success-outline, .btn-success-primary {
           font-family: 'Roboto', sans-serif; padding: 8px 16px; border-radius: 8px;
           font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease;
-          border: 1px solid transparent; display: inline-flex; align-items: center; justify-content: center;
+          border: 1px solid #ffffff; background: transparent; color: #ffffff;
+          display: inline-flex; align-items: center; justify-content: center;
       }
-      .btn-success-outline { background: transparent; border: 1px solid rgba(var(--primary-rgb), 0.4); color: var(--primary); }
-      .btn-success-outline:hover { border-color: var(--primary); box-shadow: 0 0 10px rgba(33, 133, 254, 0.3); }
-      .btn-success-primary { background: var(--primary); color: #fff; border: 1px solid var(--primary); }
-      .btn-success-primary:hover { background: transparent; color: var(--primary); box-shadow: 0 0 10px rgba(33, 133, 254, 0.3); }
+      .btn-success-outline:hover, .btn-success-primary:hover {
+          background: transparent;
+          color: var(--primary);
+          border-color: var(--primary);
+          box-shadow: 0 0 10px rgba(33, 133, 254, 0.3);
+      }
       @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
       /* Responsive Adjustments */
@@ -1266,13 +1344,13 @@
           .scrolly-content-full { padding: 0 40px 60px; }
           .scrolly-bg-full { background-position: center; opacity: 0.2; }
           .scrolly-overlay {
-              background: linear-gradient(to top, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.85) 50%, rgba(10,10,10,0.4) 100%);
+              background: linear-gradient(to top, rgba(22,22,22,0.98) 0%, rgba(22,22,22,0.85) 50%, rgba(22,22,22,0.4) 100%);
           }
       }
       @media (max-width: 768px) {
           .nav-links {
               display: none; position: absolute; top: 80px; left: 0; width: 100%;
-              background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(20px);
+              background: var(--bg-card);
               flex-direction: column; padding: 24px 28px; gap: 16px;
               border-bottom: 1px solid var(--border-color);
           }
@@ -1287,7 +1365,8 @@
           .scrolly-content-full { padding: 0 24px 60px; }
           .scrolly-title { font-size: 1.8rem; }
           .scrolly-desc { font-size: 1rem; }
-          .freelance-section-wrapper { padding: 40px 0 60px; }
+          .freelance-section-wrapper { padding: 30px 0; }
+          .scrolly-sticky-full { top: 80px; height: calc(100vh - 100px); }
       }
       @media (max-width: 480px) {
           .hero-text h1 { font-size: 1.55rem; }
@@ -1295,7 +1374,7 @@
           .hero-btns { flex-direction: column; width: 100%; }
           .hero-btns .btn { width: 100%; justify-content: center; }
           .scrolly-actions { flex-direction: column; width: 100%; }
-          .scrolly-btn { width: 100%; justify-content: center; }
+          .scrolly-btn, .scrolly-link { width: 100%; justify-content: center; text-align: center; }
       }
     </style>
   </head>
@@ -1424,41 +1503,89 @@
     <section id="about" class="about">
       <div class="container">
         <div class="section-header reveal">
-          <h2>Who I Am</h2>
+          <h2>WHO I AM</h2>
           <p class="section-subtitle">
             A Data Analytics professional dedicated to turning complexity into
             clarity.
           </p>
         </div>
         <div class="about-content">
-          <div class="about-text reveal">
-            <div class="story-headline">My Story</div>
-            <p>
-              I've seen too many organizations sit on valuable data, lacking the
-              clarity to act on it.<br />
-              That gap between raw data and real-world strategy is where I
-              thrive.<br />
-              Over the past 2+ years, I've partnered with stakeholders across
-              industries, from HR and Operations to Sales and C-Suite, to bridge
-              this gap.<br />
-              By designing interactive dashboards, building automated reporting
-              pipelines, and creating self-service analytics tools, I don't just
-              deliver reports; I deliver time back to your team and clarity to
-              your decision-making.<br />
-              Whether you are an HR leader optimizing workforce planning, a
-              manager tracking KPIs, or a business owner seeking untapped
-              revenue, my goal is to ensure you never have to guess again.<br />
-              Beyond traditional analytics, I actively expand into AI and
-              machine learning to keep your business ahead of the curve.<br />
-              Data without context is just noise.<br />
-              <strong
-                >Let's turn yours into your biggest competitive
-                advantage.</strong
-              >
-            </p>
+          <!-- New About Text Container (Like KPIs) -->
+          <div class="about-text-card reveal delay-1">
+            <div class="about-text">
+              <div class="story-headline">MY STORY</div>
+              <p>
+                It began with a single question.<br />
+                Could the signals from a patient’s body warn us before it is too
+                late?<br />
+                <br />
+                That question became my graduation project.<br />
+                A ventilator monitor, fitted with sensors for heart rate, oxygen
+                and temperature.<br />
+                Live readings streaming to a mobile app.<br />
+                A machine learning model detecting possible conditions with
+                <strong>85% accuracy</strong>.<br />
+                The biggest lesson had nothing to do with code.<br />
+                Data only matters when someone can act on it.<br />
+                <br />
+                Freelancing on Upwork was the next test.<br />
+                Businesses in e-commerce, retail, HR and finance handed over
+                their data with one request.<br />
+                Tell us what to do next.<br />
+                Clear answers earned repeat clients, a
+                <strong>4.9 out of 5 rating</strong> and a perfect Job Success
+                Score.<br />
+                <br />
+                Then came Microsoft’s Power Up Program, where simplicity became
+                the goal.<br />
+                A library app tracking more than 500 books and flagging overdue
+                loans.<br />
+                An animal shelter system keeping every record in one place.<br />
+                Automated document checks replacing manual review.<br />
+                The best tools are the ones people use without a second
+                thought.<br />
+                <br />
+                Next, a real estate team needed visibility.<br />
+                More than 500 processes were automated every month.<br />
+                12GB of monthly data became reports ready for audit.<br />
+                Two junior analysts learned the craft along the way, because
+                knowledge grows when it is shared.<br />
+                <br />
+                Then came the biggest challenge yet.<br />
+                Data on <strong>27 million students</strong>, gathered from the
+                Ministry of Education and Al-Azhar institutes.<br />
+                The task was to turn that complexity into one clear picture.<br />
+                The result was a unified reporting system, with live dashboards
+                that put the numbers that matter in plain sight.<br />
+                Today, those dashboards guide decisions for more than
+                <strong>1 million platform users</strong>.<br />
+                Alongside them came a reading app designed for children and
+                teens.<br />
+                <br />
+                The mission remains unchanged.<br />
+                Turning tangled numbers into decisions people can trust.<br />
+                Behind every dataset stands a real person.<br />
+                A patient.<br />
+                A student.<br />
+                A customer.<br />
+                A team waiting for direction.<br />
+                That is what keeps this work personal.<br />
+                <br />
+                Now it is your turn to explore.<br />
+                Scroll down to discover the skills behind the work and the
+                projects that prove it.<br />
+                Each one began with messy data and an important question.<br />
+                Spotted something that sparks an idea for your own business?<br />
+                The Service Request form at the bottom of the page is the
+                fastest way to start.<br />
+                Describe what you need, and let’s take it from there.<br />
+                <br />
+                <strong>Your data has a story.<br />Let’s tell it well.</strong>
+              </p>
+            </div>
           </div>
 
-          <!-- New Grouped Stats Container -->
+          <!-- Grouped Stats Container -->
           <div class="about-stats-wrapper reveal delay-2">
             <div class="about-stats" id="statsContainer">
               <div class="stat" id="statYears">
@@ -1848,53 +1975,57 @@
          NEW IMMERSIVE PROJECTS SECTION
          ========================================= -->
     <section id="projects" class="projects">
-      <!-- Sticky Full Screen Container -->
-      <div class="scrolly-stage-full" id="scrollyStage">
-        <div class="scrolly-sticky-full" id="scrollySticky">
-          <!-- Dynamic Background Only (No central logo) -->
-          <div class="scrolly-bg-full" id="scrollyBg"></div>
+      <div class="container">
+        <!-- Scrollytelling Card Container -->
+        <div class="projects-card-container">
+          <div class="scrolly-stage-full" id="scrollyStage">
+            <div class="scrolly-sticky-full" id="scrollySticky">
+              <!-- Dynamic Background Only (No central logo) -->
+              <div class="scrolly-bg-full" id="scrollyBg"></div>
 
-          <!-- Dark gradient overlay for text readability -->
-          <div class="scrolly-overlay"></div>
+              <!-- Dark gradient overlay for text readability -->
+              <div class="scrolly-overlay"></div>
 
-          <!-- Bottom Left Content -->
-          <div class="scrolly-content-full">
-            <!-- Progress Dashes -->
-            <div class="scrolly-progress" id="scrollyProgress"></div>
+              <!-- Bottom Left Content -->
+              <div class="scrolly-content-full">
+                <!-- Progress Dashes -->
+                <div class="scrolly-progress" id="scrollyProgress"></div>
 
-            <h2 class="scrolly-title" id="scrollyTitle"></h2>
-            <p class="scrolly-desc" id="scrollyDesc"></p>
+                <h2 class="scrolly-title" id="scrollyTitle"></h2>
+                <p class="scrolly-desc" id="scrollyDesc"></p>
 
-            <div class="scrolly-actions">
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="scrolly-btn scrolly-btn-primary"
-                id="scrollyGithub"
-              >
-                <i class="fab fa-github"></i> View Project
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="scrolly-btn scrolly-btn-outline"
-                id="scrollyWebsite"
-              >
-                <i class="fas fa-external-link-alt"></i> View Website
-              </a>
+                <div class="scrolly-actions">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="scrolly-btn"
+                    id="scrollyGithub"
+                  >
+                    View
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="scrolly-link"
+                    id="scrollyWebsite"
+                  >
+                    Learn more
+                  </a>
+                </div>
+              </div>
             </div>
+
+            <!-- Invisible spacers to drive the scroll -->
+            <div class="scrolly-steps" id="scrollySteps"></div>
           </div>
         </div>
 
-        <!-- Invisible spacers to drive the scroll -->
-        <div class="scrolly-steps" id="scrollySteps"></div>
-      </div>
-
-      <!-- Freelance Projects Section (New Marquee Carousel) -->
-      <div class="freelance-section-wrapper">
-        <div class="upwork-carousel" id="freelanceCarousel"></div>
+        <!-- Freelance Projects (Transparent wrapper, no card) -->
+        <div class="freelance-section-wrapper">
+          <div class="upwork-carousel" id="freelanceCarousel"></div>
+        </div>
       </div>
     </section>
 
@@ -2124,10 +2255,7 @@
       // 1. SECURITY & ANTI-INSPECTION
       // ============================================
       (function() {
-          // Prevent Right Click
           document.addEventListener('contextmenu', e => e.preventDefault());
-
-          // Prevent Keyboard Shortcuts
           document.addEventListener('keydown', e => {
               if (
                   e.key === 'F12' ||
@@ -2150,7 +2278,6 @@
               document.documentElement.classList.remove('font-loading');
           });
       } else {
-          // Fallback for very old browsers
           setTimeout(() => {
               document.documentElement.classList.remove('font-loading');
           }, 500);
