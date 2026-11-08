@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="font-loading">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -22,6 +22,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+
     <style>
       *,
       *::before,
@@ -51,6 +52,20 @@
           --radius-lg: 20px;
           --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
+
+      /* ===== FONT LOADING FIX ===== */
+      html.font-loading body {
+          opacity: 0;
+      }
+      html:not(.font-loading) body {
+          opacity: 1;
+          transition: opacity 0.3s ease;
+      }
+      ::selection {
+          background: transparent;
+          color: inherit;
+      }
+
       html {
           scroll-behavior: smooth;
           -webkit-font-smoothing: antialiased;
@@ -290,12 +305,8 @@
       .logo-text {
           font-family: 'Roboto', sans-serif;
           font-size: 1.8rem;
-          font-weight: 700;
-          background: linear-gradient(to right, var(--primary), #ffffff);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          color: transparent;
+          font-weight: 800;
+          color: var(--primary);
           letter-spacing: -0.5px;
           line-height: 1.2;
           padding-bottom: 3px;
@@ -304,6 +315,7 @@
       }
       .logo-container:hover .logo-text {
           filter: drop-shadow(0 0 15px rgba(var(--primary-rgb), 0.6));
+          color: #ffffff;
       }
       .nav-links {
           display: flex;
@@ -421,15 +433,11 @@
           display: inline-block;
           font-family: 'Roboto', sans-serif;
           font-size: clamp(16px, 1.9vw, 24px);
-          font-weight: 500;
+          font-weight: 600;
           line-height: 1.3;
           letter-spacing: 0.02em;
           margin: 0 auto 26px auto;
-          background: linear-gradient(to right, #ffffff 0%, var(--primary) 100%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          color: transparent;
+          color: var(--primary);
           white-space: nowrap;
       }
       .hero-text .hero-sub {
@@ -607,9 +615,23 @@
           grid-template-columns: 1fr;
           gap: 40px;
       }
+      .about .section-header h2 {
+          text-transform: uppercase;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+      }
+      .about .section-header h2::before {
+          content: '';
+          width: 6px;
+          height: 40px;
+          background: var(--primary);
+          border-radius: 4px;
+      }
       .about-text .story-headline {
           font-size: 1.4rem; font-weight: 700; color: var(--text-primary);
           margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+          text-transform: uppercase;
       }
       .about-text .story-headline::before {
           content: ''; width: 4px; height: 28px;
@@ -697,7 +719,7 @@
           border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 12px;
           overflow: hidden;
-          transition: all 0.3s ease;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
           display: flex;
           flex-direction: column;
       }
@@ -737,7 +759,7 @@
       .skill-icon {
           color: #ffffff;
           font-size: 1.2rem;
-          transition: all 0.3s ease;
+          transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.35s ease;
           width: 28px;
           height: 28px;
           display: flex;
@@ -759,17 +781,22 @@
           transform: rotate(45deg);
       }
 
+      /* UPDATED: Smooth 60fps Grid Animation */
       .skill-body {
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          display: grid;
+          grid-template-rows: 0fr;
+          transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+          opacity: 0;
+          will-change: grid-template-rows;
       }
 
       .skill-accordion.active .skill-body {
-          max-height: 250px;
+          grid-template-rows: 1fr;
+          opacity: 1;
       }
 
       .skill-body p {
+          overflow: hidden; /* Crucial for grid transition */
           padding: 0 24px 24px;
           color: #a0a0a0;
           font-size: 0.9rem;
@@ -948,13 +975,14 @@
       }
 
       /* =========================================
-         NEW BENTO GRID FOR FREELANCE PROJECTS
+         NEW MARQUEE CAROUSEL FOR FREELANCE PROJECTS
          ========================================= */
       .freelance-section-wrapper {
           padding: 60px 0 100px;
           position: relative;
           z-index: 10;
           background: var(--bg-primary);
+          overflow: hidden; /* Prevents horizontal scroll from marquee */
       }
       .freelance-divider {
           height: 1px;
@@ -963,16 +991,35 @@
           opacity: 0.7;
       }
 
-      .bento-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          grid-auto-rows: 280px;
-          gap: 24px;
-          width: 100%;
+      .upwork-carousel {
+          --items: 8; /* Will be overwritten by JS */
+          --carousel-duration: 50s;
+          --carousel-item-width: 340px;
+          --carousel-item-height: 420px;
+          --carousel-item-gap: 24px;
+
+          position: relative;
+          width: 100vw;
+          margin-left: calc(50% - 50vw); /* Breaks out of container to be full width */
+          height: var(--carousel-item-height);
+          overflow: clip;
+
+          /* fade out on sides */
+          mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
       }
 
-      .bento-card {
-          position: relative;
+      /* Pause animation on hover */
+      .upwork-carousel:hover > .upwork-card {
+          animation-play-state: paused;
+      }
+
+      .upwork-card {
+          position: absolute;
+          top: 0;
+          left: calc(100% + var(--carousel-item-gap));
+          width: var(--carousel-item-width);
+          height: var(--carousel-item-height);
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
@@ -982,43 +1029,41 @@
           border: 1px solid rgba(255, 255, 255, 0.08);
           overflow: hidden;
           text-decoration: none;
-          transition: all 0.4s ease;
+          transition: border-color 0.4s ease, box-shadow 0.4s ease;
+          cursor: pointer;
+
+          /* Animation */
+          will-change: transform;
+          animation-name: marquee;
+          animation-duration: var(--carousel-duration);
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-delay: calc(var(--carousel-duration) / var(--items) * 1 * var(--i) * -1);
       }
 
-      /* EXPLICIT TREEMAP LAYOUT MAPPING */
-      .bento-card:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 3; }
-      .bento-card:nth-child(2) { grid-column: 3 / 4; grid-row: 1 / 5; }
-      .bento-card:nth-child(3) { grid-column: 1 / 2; grid-row: 3 / 4; }
-      .bento-card:nth-child(4) { grid-column: 2 / 3; grid-row: 3 / 4; }
-      .bento-card:nth-child(5) { grid-column: 1 / 3; grid-row: 4 / 5; }
-      .bento-card:nth-child(6) { grid-column: 3 / 4; grid-row: 5 / 6; }
-      .bento-card:nth-child(7) { grid-column: 1 / 3; grid-row: 5 / 6; }
-      .bento-card:nth-child(8) { grid-column: 1 / 4; grid-row: 6 / 7; }
+      .upwork-card:hover {
+          border-color: var(--primary);
+          box-shadow: 0 0 20px rgba(33, 133, 254, 0.3);
+          z-index: 10;
+      }
 
-      /* Card Visuals */
-      .bento-bg {
+      .upwork-bg-logo {
           position: absolute;
           inset: 0;
-          z-index: 0;
-          pointer-events: none;
           width: 100%;
           height: 100%;
-      }
-
-      .bento-bg img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+          object-fit: cover; /* Fills the card completely */
           opacity: 0.15;
           transition: opacity 0.4s ease, transform 0.4s ease;
+          z-index: 0;
       }
 
-      .bento-card:hover .bento-bg img {
-          opacity: 0.3;
+      .upwork-card:hover .upwork-bg-logo {
+          opacity: 0.25;
           transform: scale(1.05);
       }
 
-      .bento-overlay {
+      .upwork-overlay {
           position: absolute;
           inset: 0;
           background: linear-gradient(to top, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(10, 10, 10, 0.2) 100%);
@@ -1026,60 +1071,60 @@
           pointer-events: none;
       }
 
-      .bento-card:hover {
-          border-color: var(--primary);
-          box-shadow: 0 0 20px rgba(33, 133, 254, 0.3);
-      }
-
-      .bento-content {
+      .upwork-content {
           position: relative;
           z-index: 2;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
           transition: transform 0.4s ease;
       }
 
-      .bento-card:hover .bento-content {
+      .upwork-card:hover .upwork-content {
           transform: translateY(-4px);
       }
 
-      .bento-content h3 {
-          font-size: 1.5rem;
+      .upwork-content h3 {
+          font-size: 1.35rem;
           font-weight: 700;
           color: #ffffff;
-          margin-bottom: 12px;
+          margin-bottom: 4px;
           line-height: 1.3;
       }
 
-      .bento-content p {
-          font-size: 1.05rem;
+      .upwork-content p {
+          font-size: 0.95rem;
           color: #b0b0b0;
           line-height: 1.5;
           margin: 0;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
       }
 
-      /* Responsive Adjustments for Bento */
-      @media (max-width: 1024px) {
-          .bento-grid {
-              grid-template-columns: repeat(2, 1fr);
+      @keyframes marquee {
+          100% {
+              transform: translateX(
+                  calc(
+                      (var(--items) * (var(--carousel-item-width) + var(--carousel-item-gap))) *
+                          -1
+                  )
+              );
           }
-          .bento-card:nth-child(n) { grid-column: auto; grid-row: auto; }
-          .bento-card:nth-child(1),
-          .bento-card:nth-child(5),
-          .bento-card:nth-child(7),
-          .bento-card:nth-child(8) { grid-column: span 2; }
       }
 
       @media (max-width: 768px) {
-          .bento-grid {
-              grid-template-columns: 1fr;
+          .upwork-carousel {
+              --carousel-item-width: 280px;
+              --carousel-item-height: 380px;
+              --carousel-duration: 40s;
           }
-          .bento-card:nth-child(n) {
-              grid-column: span 1;
-              grid-row: span 1;
-              min-height: 250px;
+          .upwork-card {
               padding: 24px;
           }
-          .bento-content h3 { font-size: 1.3rem; }
-          .bento-content p { font-size: 1rem; }
+          .upwork-content h3 { font-size: 1.2rem; }
+          .upwork-content p { font-size: 0.85rem; }
       }
 
       footer {
@@ -1101,10 +1146,8 @@
       }
       .footer-logo { display: flex; align-items: center; white-space: nowrap; }
       .footer-logo-text {
-          font-family: 'Roboto', sans-serif; font-size: 2.5rem; font-weight: 700;
-          background: linear-gradient(to right, #ffffff, var(--primary));
-          -webkit-background-clip: text; background-clip: text;
-          -webkit-text-fill-color: transparent; color: transparent;
+          font-family: 'Roboto', sans-serif; font-size: 2.5rem; font-weight: 800;
+          color: var(--primary);
           letter-spacing: -0.5px; line-height: 1.2; padding-bottom: 4px; display: inline-block;
       }
       .footer-text { max-width: 520px; width: 100%; margin-top: 4px; }
@@ -1381,7 +1424,6 @@
     <section id="about" class="about">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-label">About</span>
           <h2>Who I Am</h2>
           <p class="section-subtitle">
             A Data Analytics professional dedicated to turning complexity into
@@ -1850,11 +1892,9 @@
         <div class="scrolly-steps" id="scrollySteps"></div>
       </div>
 
-      <!-- Freelance Projects Section (New Bento Style) -->
+      <!-- Freelance Projects Section (New Marquee Carousel) -->
       <div class="freelance-section-wrapper">
-        <div class="container">
-          <div class="bento-grid" id="freelanceCardsGrid"></div>
-        </div>
+        <div class="upwork-carousel" id="freelanceCarousel"></div>
       </div>
     </section>
 
@@ -2080,16 +2120,45 @@
     </footer>
 
     <script>
+      // ============================================
+      // 1. SECURITY & ANTI-INSPECTION
+      // ============================================
       (function() {
-          document.addEventListener('contextmenu', e => e.preventDefault())
+          // Prevent Right Click
+          document.addEventListener('contextmenu', e => e.preventDefault());
+
+          // Prevent Keyboard Shortcuts
           document.addEventListener('keydown', e => {
-              if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) || (e.ctrlKey && e.key === 'u')) {
+              if (
+                  e.key === 'F12' ||
+                  (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) ||
+                  (e.ctrlKey && e.key === 'u') ||
+                  (e.ctrlKey && e.key === 's') ||
+                  (e.ctrlKey && e.key === 'p')
+              ) {
                   e.preventDefault();
                   return false;
               }
-          })
+          });
       })();
 
+      // ============================================
+      // 2. FONT LOADING FIX (Remove Bold Flash)
+      // ============================================
+      if (document.fonts) {
+          document.fonts.ready.then(() => {
+              document.documentElement.classList.remove('font-loading');
+          });
+      } else {
+          // Fallback for very old browsers
+          setTimeout(() => {
+              document.documentElement.classList.remove('font-loading');
+          }, 500);
+      }
+
+      // ============================================
+      // 3. PORTFOLIO LOGIC
+      // ============================================
       const projectsData = [{
           id: 15,
           title: 'Census 2022 Manufacturing E-Commerce (API Integration)',
@@ -2335,18 +2404,22 @@
       }
 
       function renderFreelanceCards() {
-          const grid = document.getElementById('freelanceCardsGrid');
-          if (!grid) return;
+          const container = document.getElementById('freelanceCarousel');
+          if (!container) return;
 
           const upworkLogo = 'https://raw.githubusercontent.com/MAHMOUD2ABDALLAH/MAHMOUD2ABDALLAH.github.io/main/Upwork.svg';
 
-          grid.innerHTML = freelanceProjectsData.map((p) => `
-              <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="bento-card">
-                  <div class="bento-bg">
-                      <img src="${upworkLogo}" alt="Upwork" />
-                  </div>
-                  <div class="bento-overlay"></div>
-                  <div class="bento-content">
+          // Duplicate array to make the infinite loop seamless
+          const allProjects = [...freelanceProjectsData, ...freelanceProjectsData];
+
+          // Update total items count for the CSS calculation
+          container.style.setProperty('--items', allProjects.length);
+
+          container.innerHTML = allProjects.map((p, index) => `
+              <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="upwork-card" style="--i: ${index};">
+                  <img src="${upworkLogo}" alt="Upwork" class="upwork-bg-logo" />
+                  <div class="upwork-overlay"></div>
+                  <div class="upwork-content">
                       <h3>${p.title}</h3>
                       <p>${p.description}</p>
                   </div>
@@ -2446,7 +2519,7 @@
 
           document.addEventListener('keydown', function(e) {
               if (e.key === 'Enter' || e.key === ' ') {
-                  const target = e.target.closest('.bento-card');
+                  const target = e.target.closest('.upwork-card');
                   if (target && document.activeElement === target) {
                       e.preventDefault();
                       target.click();
