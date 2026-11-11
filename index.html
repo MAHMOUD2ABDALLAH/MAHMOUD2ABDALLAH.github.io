@@ -2570,7 +2570,17 @@
               const yearsDisplay = `${years}.${months}`;
 
               let totalCommits = 0;
+              let totalRepos = 0;
+
               try {
+                  // Fetch total public repos
+                  const reposResp = await fetch(`https://api.github.com/users/${GITHUB_USER}`);
+                  if (reposResp.ok) {
+                      const reposData = await reposResp.json();
+                      totalRepos = reposData.public_repos;
+                  }
+
+                  // Fetch total commits
                   const commitSearchResp = await fetch(
                       `https://api.github.com/search/commits?q=author:${GITHUB_USER}`,
                       { headers: { 'Accept': 'application/vnd.github.cloak-preview' } }
@@ -2579,12 +2589,17 @@
                       const commitSearchData = await commitSearchResp.json();
                       totalCommits = commitSearchData.total_count;
                   }
-              } catch (_) {}
+              } catch (apiError) {
+                  console.warn('GitHub API fetch failed, using fallback values.', apiError);
+                  // Fallbacks if API fails
+                  totalRepos = 30;
+                  totalCommits = 471;
+              }
 
               const totalCourses = '25+';
 
               statYearsEl.textContent = yearsDisplay;
-              statReposEl.textContent = '30';
+              statReposEl.textContent = totalRepos.toString();
               statCommitsEl.textContent = totalCommits.toLocaleString();
               statCoursesEl.textContent = totalCourses;
 
@@ -2593,7 +2608,7 @@
               });
 
           } catch (err) {
-              console.warn('GitHub stats fetch failed, using fallback values.', err);
+              console.warn('Outer stats calculation failed, using fallback values.', err);
               const startDate = new Date(2024, 5, 1);
               const now = new Date();
               let y = now.getFullYear() - startDate.getFullYear();
@@ -2602,7 +2617,7 @@
               if (now.getDate() < startDate.getDate()) { m--; if (m < 0) { y--; m += 12; } }
               statYearsEl.textContent = `${y}.${m}`;
               statReposEl.textContent = '30';
-              statCommitsEl.textContent = '442';
+              statCommitsEl.textContent = '471';
               statCoursesEl.textContent = '25+';
               [statYearsEl, statReposEl, statCommitsEl, statCoursesEl].forEach(el => {
                   if (el) el.parentElement.classList.remove('stat-loading');
